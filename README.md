@@ -112,7 +112,7 @@ See the [open issues](https://github.com/vinjatovix/booking-flights-app/issues) 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-This is 2 shot project. I'ts homework for our formation @ [Hack a Boss](https://hackaboss.com/) .
+This is 2 shot project. I'ts homework for our formation at [Hack a Boss](https://hackaboss.com/) JSB07CO Bootcamp.
 
 
 <!-- LICENSE -->
