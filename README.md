@@ -12,16 +12,15 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
 
 
 <!-- PROJECT LOGO -->
-<br />
 <p align="center">
   <a href="https://github.com/vinjatovix/booking-flights-app">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">Aplicación de reserva de vuelos</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    BFapp
     <br />
     <a href="https://github.com/vinjatovix/booking-flights-app"><strong>Explore the docs »</strong></a>
     <br />
@@ -43,9 +42,9 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
   - [Table of Contents](#table-of-contents)
   - [About The Project](#about-the-project)
     - [Built With](#built-with)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
+  - [Getting Started - WIP](#getting-started---wip)
+    - [Prerequisites - WIP](#prerequisites---wip)
+    - [Installation - WIP](#installation---wip)
   - [Usage](#usage)
   - [Roadmap](#roadmap)
   - [Contributing](#contributing)
@@ -60,25 +59,20 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
-
-
 ### Built With
 
-* []()
-* []()
-* []()
+* [MySQL](https://www.mysql.com/)
+* [Node](https://nodejs.org/es/)
+* [Express](https://expressjs.com/es/)
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started - WIP
 
-To get a local copy up and running follow these simple steps.
+To get a local copy up and running follow these simple steps. (Not Yet)
 
-### Prerequisites
+### Prerequisites - WIP 
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
@@ -86,7 +80,7 @@ This is an example of how to list things you need to use the software and how to
 npm install npm@latest -g
 ```
 
-### Installation
+### Installation - WIP
 
 1. Clone the repo
 ```sh
@@ -118,7 +112,7 @@ See the [open issues](https://github.com/vinjatovix/booking-flights-app/issues) 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-This is 2 shot project. I'ts homework for our formation.
+This is 2 shot project. I'ts homework for our formation @ [Hack a Boss](https://hackaboss.com/) .
 
 
 <!-- LICENSE -->
@@ -152,16 +146,16 @@ Project Link: [https://github.com/vinjatovix/booking-flights-app/](https://githu
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/vinjatovix/booking-flights-app.svg?style=flat-square
 [contributors-url]: https://github.com/vinjatovix/booking-flights-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/vinjatovix/booking-flights-app.svg?style=flat-square
 [forks-url]: https://github.com/vinjatovix/booking-flights-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/vinjatovix/booking-flights-app.svg?style=flat-square
 [stars-url]: https://github.com/vinjatovix/booking-flights-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/vinjatovix/booking-flights-app.svg?style=flat-square
 [issues-url]: https://github.com/vinjatovix/booking-flights-app/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/vinjatovix/booking-flights-app.svg?style=flat-square
 [license-url]: https://github.com/vinjatovix/booking-flights-app/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://www.linkedin.com/in/1337sound/
 [product-screenshot]: images/screenshot.png
