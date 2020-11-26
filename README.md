@@ -14,7 +14,7 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
 <!-- PROJECT LOGO -->
 <p align="center">
   <a href="https://github.com/vinjatovix/booking-flights-app">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Aplicación de reserva de vuelos</h3>
