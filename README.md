@@ -127,7 +127,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Mateo Codesido - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Pablo Viña [@twitter_handle](https://twitter.com/vinjatovix) - vinjadevix@gmail.com
+Pablo Viña [@vinjatovix](https://twitter.com/vinjatovix) - vinjadevix@gmail.com
 
 Project Link: [https://github.com/vinjatovix/booking-flights-app/](https://github.com/vinjatovix/booking-flights-app/)
 
