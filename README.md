@@ -125,7 +125,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Mateo Codesido - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Mateo Codesido - [@matthewcodesido](https://twitter.com/matthewcodesido) - matthewcodesido@gmail.com
 
 Pablo Viña [@vinjatovix](https://twitter.com/vinjatovix) - vinjadevix@gmail.com
 
