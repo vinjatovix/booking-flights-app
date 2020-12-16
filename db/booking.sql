@@ -163,18 +163,18 @@ CREATE TABLE IF NOT EXISTS `booking`.`Usuarios` (
   `Usr_bio` VARCHAR(249) NOT NULL DEFAULT '',
   `Usr_signin` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Se almacena un timestamp del momento de registro.',
   `Usr_status` CHAR(1) NOT NULL DEFAULT 'a' COMMENT 'Estado de usuario. Los usuarios nunca se borran. Al darse de alta, por defecto estan activos. En caso de baja se cambia el estado a \\\'i\\\'.',
-  `Usr_PaisID` TINYINT UNSIGNED NULL,
+  `Usr_AeroID` SMALLINT UNSIGNED NULL,
   PRIMARY KEY (`Usr_ID`),
-  CONSTRAINT `fk_Usr_Pais_idx`
-    FOREIGN KEY (`Usr_PaisID`)
-    REFERENCES `booking`.`Paises` (`Pais_ID`)
+  CONSTRAINT `fk_Usr_Aero_idx`
+    FOREIGN KEY (`Usr_AeroID`)
+    REFERENCES `booking`.`Aeropuertos` (`Aero_ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 CREATE UNIQUE INDEX `Usr_mail_UNIQUE` ON `booking`.`Usuarios` (`Usr_mail` ASC) VISIBLE;
 
-CREATE INDEX `fk_Usuarios_1_idx` ON `booking`.`Usuarios` (`Usr_PaisID` ASC) VISIBLE;
+CREATE INDEX `fk_Usuarios_1_idx` ON `booking`.`Usuarios` (`Usr_AeroID` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
