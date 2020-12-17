@@ -3,40 +3,28 @@
 //? IMPORTS
 require("dotenv").config();
 const express = require("express");
-const morgan = require("morgan");
-const fs = require("fs");
+const loggers = require("./config/loggers");
+const routeUtils = require("./routes/utils/");
+const utils = require("./utils/");
 
 //? SETUP
+//* ========= ENV
 const HOST = process.env.BENDER_HOST || "localhost";
-exports.HOST = HOST;
 const PORT = process.env.BENDER_PORT || 8081;
-exports.PORT = PORT;
-process.title = process.env.BENDER_TITLE || "backEnd-server";
 
 //? APP
 const app = express();
-exports.app = app;
-const accessLogStream = fs.createWriteStream("./logs/acces.log", {
-  flags: "a",
-});
 
-// TODO: MIDDLEWARES
-app.use(morgan("combined", { inmediate: true, stream: accessLogStream }));
+//? MIDDLEWARES
+app.use(loggers.morganWare());
 
 //? ROUTES
-app.get("/", (req, res) => {
-  res.status(200).send({
-    title: "LO (&& behold ^^)",
-    message: "Route / is working properly",
-  });
-});
-app.get("*", (req, res) => {
-  res.status(404).send({ error: "URL not found" });
-});
+app.get("/", routeUtils.helloWorld());
+app.get("/testError", routeUtils.testError());
+app.get("*", routeUtils.response404());
+
+//!!!! WINSTON TIENE QUE ESTAR AL FINAL DE TODO
+app.use(loggers.winstonCatch());
 
 //? LISTEN
-app.listen(PORT, () => {
-  console.log(
-    `PID:${process.pid} named ${process.title} listening on http://${HOST}:${PORT}`
-  );
-});
+app.listen(PORT, utils.serverMotto(HOST, PORT));
