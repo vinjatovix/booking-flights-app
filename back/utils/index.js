@@ -1,3 +1,5 @@
-const { serverMotto } = require("./serverMotto");
+'use strict';
+
+const { serverMotto } = require('./serverMotto');
 
 module.exports = { serverMotto };

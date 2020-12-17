@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-process.title = process.env.BENDER_TITLE || "backEnd-server"; //? Esto le da un nombre al proceso dentro del sistema
+process.title = process.env.BENDER_TITLE || 'backEnd-server'; //? Esto le da un nombre al proceso dentro del sistema
 
 /**
  *
@@ -11,9 +11,7 @@ process.title = process.env.BENDER_TITLE || "backEnd-server"; //? Esto le da un 
  */
 function serverMotto(HOST, PORT) {
   return () => {
-    console.log(
-      `PID:${process.pid} named ${process.title} listening on http://${HOST}:${PORT}`
-    );
+    console.log(`PID:${process.pid} named ${process.title} listening on http://${HOST}:${PORT}`);
   };
 }
 

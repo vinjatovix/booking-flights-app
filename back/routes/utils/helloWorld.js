@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * Esta es la funcion de test de la ruta /
@@ -8,8 +8,8 @@
 function helloWorld() {
   return (req, res) => {
     res.status(200).send({
-      title: "LO (&& behold ^^)",
-      message: "Route / is working properly",
+      title: 'LO (&& behold ^^)',
+      message: 'Route / is working properly',
     });
   };
 }

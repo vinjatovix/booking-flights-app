@@ -1,8 +1,8 @@
-"use strict";
-const morgan = require("morgan");
+'use strict';
 
-const { morganSchema } = require("./morganSchema"); //? Formato
-const { logger } = require("./winston"); //? Método para loggear
+const morgan = require('morgan');
+const { morganSchema } = require('./morganSchema'); //? Formato
+const { logger } = require('./winston'); //? Método para loggear
 
 /**
  *Este Middleware registra los accesos a las rutas mediante el stream de winston

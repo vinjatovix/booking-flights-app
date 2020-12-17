@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const winston = require("winston");
-const path = require("path");
+const winston = require('winston');
+const path = require('path');
 
 /**
  * Esta clase define los transportes de winston hacia el archivo y hacia la consola
@@ -10,15 +10,15 @@ const path = require("path");
 const logger = new winston.createLogger({
   transports: [
     new winston.transports.File({
-      level: "info",
-      filename: path.join(__dirname, "../../logs/42.log"),
+      level: 'info',
+      filename: path.join(__dirname, '../../logs/42.log'),
       handleExceptions: true,
       json: true,
       maxsize: 5240880,
       maxFiles: 5,
     }),
     new winston.transports.Console({
-      level: "debug",
+      level: 'debug',
       handleExceptions: true,
       json: false,
     }),
@@ -29,8 +29,9 @@ const logger = new winston.createLogger({
 //? Este método que hace pipe hacia el logFile,
 //? replace se carga los saltos de linea \n que incrusta morgan en el string del log
 logger.stream = {
+  // eslint-disable-next-line no-unused-vars
   write: function (message, encoding) {
-    logger.info(message.replace(/\n$/, ""));
+    logger.info(message.replace(/\n$/, ''));
   },
 };
 
@@ -42,9 +43,9 @@ logger.stream = {
  */
 function logThis(err, req) {
   logger.error(
-    `ERROR: ${err.code} - ip: ${req.ip} - method: ${req.method} - url: ${
-      req.originalUrl
-    } - ${err.message}} - ${new Date(Date.now()).toUTCString()}`
+    `ERROR: ${err.code} - ip: ${req.ip} - method: ${req.method} - url: ${req.originalUrl} - ${
+      err.message
+    }} - ${new Date(Date.now()).toUTCString()}`
   );
 }
 
