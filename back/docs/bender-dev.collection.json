@@ -1,0 +1,342 @@
+{
+	"info": {
+		"_postman_id": "2f37c7cf-38ad-4c2f-9140-e880fc70de7b",
+		"name": "FLanders-bender",
+		"description": "# Colección de rutas del Back-End de Flanders.\n## Estructura\n- **Public**:\n- **Authorized**:",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0295095a-2327-46d7-a6a8-62dfde502eef",
+								"exec": [
+									"pm.test(\"Recibe respuesta?\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Easter-egg\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"LO (&& behold ^^)\");",
+									"});",
+									"pm.test(\"El json coincide\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.title).to.eql('LO (&& behold ^^)');",
+									"    pm.expect(jsonData.message).to.eql('Route / is working properly');",
+									"});",
+									"pm.test(\"Respuesta rápida 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Respuesta muy rápida 100ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "001eea32-15c3-472a-8a08-5bf36c521961",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-9a5a7MkU5a/fqXctALSC+a4ft8c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 04:52:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"LO (&& behold ^^)\",\n    \"message\": \"Route / is working properly\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec92ed34-bede-4381-866e-bfa5927fbd43",
+								"exec": [
+									"pm.test(\"El código esperado es correcto\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"El String de respuesta comienza correctamente\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Sorry, Can't find\");",
+									"});",
+									"",
+									"pm.test(\"Respuesta rápida 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Respuesta muy rápida 100ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ab512b29-e715-4f27-9e75-81bbd4ed8a45",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/anyInvalidURL",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"anyInvalidURL"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/anyInvalidURL",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"anyInvalidURL"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-hAQT09l0fHrZYytqdC2SesP7tVQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 04:22:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Sorry, Can't find /anyInvalidURL\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/testError",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "218c3cdb-a89a-4097-a684-44ff400f2e30",
+								"exec": [
+									"pm.test(\"El código esperado es correcto\", function () {",
+									"    pm.response.to.have.status(500);",
+									"});",
+									"pm.test(\"El string de respuesta es correcto\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Simple Error Log test\");",
+									"});",
+									"pm.test(\"El json de respuesta es correcto\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.error).to.eql(\"Simple Error Log test\");",
+									"});",
+									"pm.test(\"El Body de la respuesta es correcto\", function () {",
+									"    pm.response.to.have.body({",
+									"        \"error\": \"Simple Error Log test\"",
+									"    });",
+									"});",
+									"pm.test(\"Respuesta rápida 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Respuesta muy rápida 100ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(100);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "149abcfa-40b5-44af-9ab6-1b0854b71ede",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/testError",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"testError"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/testError",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/testError",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"testError"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-rXlLFk09YtBTjCwNKcjo+mwU+vg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 04:51:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Simple Error Log test\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Cualquier persona puede acceder a estas rutas\n- **/** - En el futuro devolverá el buscador\n\n- **/testError** - Sirve para probar que los loggers funcionan.\n\n- **/anyInvalidURL** - Cualquier path no prevenido en las rutas terminará aquí.\n\n---",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

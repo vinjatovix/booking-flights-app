@@ -4,8 +4,9 @@
   "description": "This is the Back End Crash Test Dummy Server for the Hack A Boss Final Project",
   "main": "bender.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon bender.js"
+    "test": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose",
+    "dev": "nodemon bender.js",
+    "start": "node bender.js"
   },
   "repository": {
     "type": "git",

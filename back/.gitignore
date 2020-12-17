@@ -1,4 +1,9 @@
+
+# 
 node_modules
+
+# environements
 .env
+*bender-dev.environment.json
 
 *.log
