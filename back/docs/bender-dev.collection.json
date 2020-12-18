@@ -15,7 +15,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0295095a-2327-46d7-a6a8-62dfde502eef",
 								"exec": [
 									"pm.test(\"Recibe respuesta?\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -42,7 +41,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "001eea32-15c3-472a-8a08-5bf36c521961",
 								"exec": [
 									""
 								],
@@ -123,7 +121,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ec92ed34-bede-4381-866e-bfa5927fbd43",
 								"exec": [
 									"pm.test(\"El código esperado es correcto\", function () {",
 									"    pm.response.to.have.status(404);",
@@ -146,7 +143,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ab512b29-e715-4f27-9e75-81bbd4ed8a45",
 								"exec": [
 									""
 								],
@@ -227,7 +223,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "218c3cdb-a89a-4097-a684-44ff400f2e30",
 								"exec": [
 									"pm.test(\"El código esperado es correcto\", function () {",
 									"    pm.response.to.have.status(500);",
@@ -258,7 +253,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "149abcfa-40b5-44af-9ab6-1b0854b71ede",
 								"exec": [
 									""
 								],
@@ -317,6 +311,57 @@
 								},
 								{
 									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:16:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Simple Error Log test\"\n}"
+						},
+						{
+							"name": "/testError",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/testError",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"testError"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "33"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"21-rXlLFk09YtBTjCwNKcjo+mwU+vg\""
+								},
+								{
+									"key": "Date",
 									"value": "Thu, 17 Dec 2020 04:51:51 GMT"
 								},
 								{
@@ -332,11 +377,179 @@
 							"body": "{\n    \"error\": \"Simple Error Log test\"\n}"
 						}
 					]
+				},
+				{
+					"name": "/signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Sign in\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/signin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-0+eyVlgPSzCxhrVNnSUZpKiNoaA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Sign in\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Log in\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14-wdgqbBCkp16mdOFuaIEn5F+fhMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Log in\"\n}"
+						}
+					]
 				}
 			],
-			"description": "Cualquier persona puede acceder a estas rutas\n- **/** - En el futuro devolverá el buscador\n\n- **/testError** - Sirve para probar que los loggers funcionan.\n\n- **/anyInvalidURL** - Cualquier path no prevenido en las rutas terminará aquí.\n\n---",
-			"protocolProfileBehavior": {}
+			"description": "Cualquier persona puede acceder a estas rutas\n- **/** - En el futuro devolverá el buscador\n\n- **/testError** - Sirve para probar que los loggers funcionan.\n\n- **/anyInvalidURL** - Cualquier path no prevenido en las rutas terminará aquí.\n\n- **/signin** - Responde el formulario de registro\n\n- **/login** - Responde el formulario de acceso.\n\n---"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
