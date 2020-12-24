@@ -19,19 +19,11 @@
 									"pm.test(\"Recibe respuesta?\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Easter-egg\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"LO (&& behold ^^)\");",
-									"});",
+									"",
 									"pm.test(\"El json coincide\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.title).to.eql('LO (&& behold ^^)');",
 									"    pm.expect(jsonData.message).to.eql('Route / is working properly');",
-									"});",
-									"pm.test(\"Respuesta rápida 200ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"pm.test(\"Respuesta muy rápida 100ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(100);",
 									"});",
 									""
 								],
@@ -116,25 +108,50 @@
 					]
 				},
 				{
+					"name": "About",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/about",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"about"
+							]
+						},
+						"description": "        "
+					},
+					"response": []
+				},
+				{
 					"name": "/404",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"El código esperado es correcto\", function () {",
+									"pm.test(\"ERROR 404\", function () {",
 									"    pm.response.to.have.status(404);",
 									"});",
-									"pm.test(\"El String de respuesta comienza correctamente\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Sorry, Can't find\");",
+									"pm.test(\"Página correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Not Found\");",
 									"});",
 									"",
-									"pm.test(\"Respuesta rápida 200ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"pm.test(\"Respuesta muy rápida 100ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(100);",
-									"});",
 									""
 								],
 								"type": "text/javascript"
@@ -218,43 +235,18 @@
 					]
 				},
 				{
-					"name": "/testError",
+					"name": "/signin",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"El código esperado es correcto\", function () {",
-									"    pm.response.to.have.status(500);",
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"El string de respuesta es correcto\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Simple Error Log test\");",
-									"});",
-									"pm.test(\"El json de respuesta es correcto\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.error).to.eql(\"Simple Error Log test\");",
-									"});",
-									"pm.test(\"El Body de la respuesta es correcto\", function () {",
-									"    pm.response.to.have.body({",
-									"        \"error\": \"Simple Error Log test\"",
-									"    });",
-									"});",
-									"pm.test(\"Respuesta rápida 200ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"pm.test(\"Respuesta muy rápida 100ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(100);",
-									"});",
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include('form method=\"post\" action=\"/signin\"');",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -264,33 +256,33 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/testError",
+							"raw": "{{url}}/signin",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"testError"
+								"signin"
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "/testError",
+							"name": "/signin",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/testError",
+									"raw": "{{url}}/signin",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"testError"
+										"signin"
 									]
 								}
 							},
-							"status": "Internal Server Error",
-							"code": 500,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -303,15 +295,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "33"
+									"value": "21"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"21-rXlLFk09YtBTjCwNKcjo+mwU+vg\""
+									"value": "W/\"15-0+eyVlgPSzCxhrVNnSUZpKiNoaA\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 17 Dec 2020 17:16:25 GMT"
+									"value": "Thu, 17 Dec 2020 17:18:35 GMT"
 								},
 								{
 									"key": "Connection",
@@ -323,58 +315,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"error\": \"Simple Error Log test\"\n}"
-						},
-						{
-							"name": "/testError",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/testError",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"testError"
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "33"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"21-rXlLFk09YtBTjCwNKcjo+mwU+vg\""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 17 Dec 2020 04:51:51 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"error\": \"Simple Error Log test\"\n}"
+							"body": "{\n    \"message\": \"Sign in\"\n}"
 						}
 					]
 				},
@@ -389,7 +330,7 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"pm.test(\"Es la pagina correcta\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Sign in\");",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");",
 									"});"
 								],
 								"type": "text/javascript"
@@ -397,8 +338,17 @@
 						}
 					],
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"{{$randomExampleEmail}}\",\n    \"password\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{url}}/signin",
 							"host": [
@@ -474,7 +424,7 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"pm.test(\"Es la pagina correcta\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"Log in\");",
+									"    pm.expect(pm.response.text()).to.include('form method=\"post\" action=\"/login');",
 									"});"
 								],
 								"type": "text/javascript"
@@ -547,6 +497,48 @@
 							"body": "{\n    \"message\": \"Log in\"\n}"
 						}
 					]
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"demo@mail.com\",\n    \"password\":\"123456\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Cualquier persona puede acceder a estas rutas\n- **/** - En el futuro devolverá el buscador\n\n- **/testError** - Sirve para probar que los loggers funcionan.\n\n- **/anyInvalidURL** - Cualquier path no prevenido en las rutas terminará aquí.\n\n- **/signin** - Responde el formulario de registro\n\n- **/login** - Responde el formulario de acceso.\n\n---"
