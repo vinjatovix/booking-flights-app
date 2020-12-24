@@ -57,9 +57,28 @@ function logThis(err, req) {
  */
 function winstonCatch() {
   return function (err, req, res, next) {
+    if (err.name === 'ValidationError') {
+      err.code = 400;
+    }
+    if (err.code === 'EAI_AGAIN') {
+      err.message = `${process.env.DATABASE_HOST} is'n a known host.`;
+      err.code = 400;
+    }
+    if (err.code === 'ECONNREFUSED') {
+      err.message = `Connection to port ${process.env.DATABASE_PORT} refused. Please, check settings.`;
+      err.code = 400;
+    }
+    if (err.code === 'ER_BAD_DB_ERROR') {
+      err.message = `Are you sure '${process.env.DATABASE_NAME}' is the correct database name?`;
+      err.code = 400;
+    }
+    if (err.code === 'ER_ACCESS_DENIED_ERROR') {
+      err.message = 'Access denied';
+      err.code = 401;
+    }
+
     logThis(err, req);
-    next(err);
-    res.status(err.code).send({ error: `${err.message}` });
+    res.status(err.code || 500).send({ error: err.message });
   };
 }
 
