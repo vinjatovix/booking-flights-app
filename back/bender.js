@@ -4,47 +4,46 @@
 require('dotenv').config();
 const express = require('express');
 const loggers = require('./config/loggers');
-const routeUtils = require('./routes/utils/');
-const utils = require('./utils/');
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
-const { usersController } = require('./controllers');
+const { e404 } = require('./middlewares/e404');
+const { publicController, usersController } = require('./controllers');
 
 //? SETUP
 //* ========= ENV
 const HOST = process.env.BENDER_HOST || 'localhost';
 const PORT = process.env.BENDER_PORT || 8081;
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
 //? APP
 const app = express();
 
 //? MIDDLEWARES
-app.use(loggers.morganWare());
+if (NODE_ENV === 'development') app.use(loggers.morganWare());
+
+app.use(fileUpload());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //? ROUTES
+
 //? PUBLIC
-app.get('/', routeUtils.helloWorld());
-app.get('/testError', routeUtils.testError());
-app.get('/signin', (req, res) => {
-  res.status(200).send({ message: 'Sign in ask' });
-});
-app.get('/login', login());
+app.get('/', publicController.showLanding);
+app.get('/about', publicController.showAbout);
+app.get('/signin', publicController.getSignIn);
+app.get('/login', publicController.getLogIn);
 
-app.post('/signin', (req, res) => {
-  res.status(200).send({ message: 'Sign in done' });
-});
-app.post('/login', (req, res) => {
-  res.status(200).send({ message: 'Log in done' });
-});
+app.post('/signin', usersController.postSignIn);
+app.post('/login', usersController.postLogIn);
 
-app.get('*', routeUtils.response404());
+//? AUTHORIZED
 
 //!!!! WINSTON TIENE QUE ESTAR AL FINAL DE TODO
+app.use(e404);
 app.use(loggers.winstonCatch());
 
 //? LISTEN
-app.listen(PORT, utils.serverMotto(HOST, PORT));
-function login() {
-  return (req, res) => {
-    res.status(200).send({ message: 'Log in ask' });
-  };
-}
+app.listen(PORT, () => {
+  console.log(`PID:${process.pid} named ${process.title} listening on http://${HOST}:${PORT}`);
+});
