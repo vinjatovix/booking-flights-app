@@ -56,6 +56,7 @@ function logThis(err, req) {
  * @return {*}
  */
 function winstonCatch() {
+  // eslint-disable-next-line no-unused-vars
   return function (err, req, res, next) {
     if (err.name === 'ValidationError') {
       err.code = 400;

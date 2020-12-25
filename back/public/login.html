@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta
+      name="google-signin-client_id"
+      content="1067297095827-goodtp6cekt9q88favpfjqh3m4jgtipo.apps.googleusercontent.com"
+    />
+  </head>
+  <body>
+    <header>Flanders</header>
+    <main>
+      <form method="post" action="/login" enctype="multipart/form-data">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email" required />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required />
+        <input type="submit" value="Send" />
+      </form>
+      <h2>Or Login with your google account</h2>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+      <script>
+        function onSignIn(googleUser) {
+          const profile = googleUser.getBasicProfile();
+
+          const id_token = googleUser.getAuthResponse().id_token;
+
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', '/google');
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhr.onload = function () {
+            console.log('Signed in as: ' + xhr.responseText);
+          };
+          xhr.send('idtoken=' + id_token);
+        }
+      </script>
+      <button>
+        <a href="#" onclick="signOut();">Sign out</a>
+      </button>
+      <script>
+        function signOut() {
+          const auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+      </script>
+    </main>
+  </body>
+</html>

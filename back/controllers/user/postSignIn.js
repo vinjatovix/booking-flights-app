@@ -1,8 +1,8 @@
 'use strict';
 
-const Joi = require('joi');
 const userRepository = require('../../repositories/user-repository');
 const bcrypt = require('bcryptjs');
+const { registerSchema } = require('../../repositories/registerSchema');
 
 /**
  * Controlador del registro de usuario.
@@ -17,15 +17,8 @@ const bcrypt = require('bcryptjs');
  */
 async function postSignIn(req, res, next) {
   try {
-    const registerSchema = Joi.object({
-      username: Joi.string().min(5).max(100).required(),
-      email: Joi.string().email().max(200).required(),
-      password: Joi.string().min(6).max(30).required(),
-      repeatPassword: Joi.ref('password'),
-      bio: Joi.string().max(255).allow(''),
-    });
     await registerSchema.validateAsync(req.body);
-    const { username, email, password, bio } = req.body;
+    const { username, email, password, avatar, bio } = req.body;
 
     const [user] = await userRepository.getUserByEmail(email);
     if (user) {
@@ -35,7 +28,7 @@ async function postSignIn(req, res, next) {
     }
 
     const passwordHash = await bcrypt.hash(password, 12);
-    const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
+    const id = (await userRepository.createUser([username, email, passwordHash, avatar, bio])).insertId;
     console.log(id);
     res.status(200).send({ userId: id });
   } catch (err) {

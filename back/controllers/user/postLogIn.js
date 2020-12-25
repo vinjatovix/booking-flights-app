@@ -2,6 +2,7 @@
 
 const Joi = require('joi');
 const userRepository = require('../../repositories/user-repository');
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -22,12 +23,12 @@ async function postLogIn(req, res, next) {
       password: Joi.string().required(),
     });
     await loginSchema.validateAsync(req.body);
-
     const { email, password } = req.body;
     const [user] = await userRepository.getUserByEmail(email);
-    const valid = await bcrypt.compare(password, user.Usr_password);
+    console.log(user);
 
-    if (!user || user.length === 0 || !valid) {
+    const valid = await bcrypt.compare(password, user.Usr_password);
+    if (!user || user.length === 0 || user === undefined || !valid) {
       const error = new Error('Invalid credentials, please try again');
       error.code = 401;
       throw error;
@@ -40,7 +41,7 @@ async function postLogIn(req, res, next) {
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
 
-    res.send(token);
+    res.send({ ok: true, token });
   } catch (err) {
     next(err);
   } finally {

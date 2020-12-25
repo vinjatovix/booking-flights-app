@@ -6,6 +6,7 @@ const express = require('express');
 const loggers = require('./config/loggers');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 const { e404 } = require('./middlewares/e404');
 const { publicController, usersController } = require('./controllers');
@@ -29,6 +30,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //? ROUTES
 
 //? PUBLIC
+app.use(express.static(path.join(__dirname, '/public')));
+
 app.get('/', publicController.showLanding);
 app.get('/about', publicController.showAbout);
 app.get('/signin', publicController.getSignIn);
@@ -36,6 +39,9 @@ app.get('/login', publicController.getLogIn);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
+app.post('/google', usersController.googleLogin);
+
+//Google setup
 
 //? AUTHORIZED
 

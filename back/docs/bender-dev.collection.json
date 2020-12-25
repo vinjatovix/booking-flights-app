@@ -342,7 +342,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"{{$randomExampleEmail}}\",\n    \"password\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+							"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"{{$randomExampleEmail}}\",\n    \"password\":\"123456\",\n    \"repeatPassword\":\"123456\",\n    \"avatar\":\"https://randomuser.me/api/portraits/men/{{randomnumber}}.jpg\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -499,6 +499,110 @@
 					]
 				},
 				{
+					"name": "/google",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include('eyJhbGciO');",
+									"});",
+									"",
+									"let resp = pm.response.json();",
+									"if (resp.ok){",
+									"    let token = resp.idtoken;",
+									"",
+									"    pm.environment.set('token', token)",
+									"} else {",
+									"    console.log('no se actualizó el token')",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idtoken",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZhZGMxMDFjYzc0OThjMDljMDEwZGMzZDUxNzZmYTk3Yzk2MjdlY2IiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMTA2NzI5NzA5NTgyNy1nb29kdHA2Y2VrdDlxODhmYXZwZmpxaDNtNGpndGlwby5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEwNjcyOTcwOTU4MjctZ29vZHRwNmNla3Q5cTg4ZmF2cGZqcWgzbTRqZ3RpcG8uYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA5ODgxNzM1NzE4MTIwNzA2MjQiLCJlbWFpbCI6ImZsYW5kZXJzLmRlbW9AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJrNkxHVG1EbFFCTHdndXZvU0xHeWhRIiwibmFtZSI6ImRlbW8gZmxhbmRlcnMiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1Ua2x6T1BTNElWWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BTVp1dWNtYzRlRVNJa3A3NHRRUnYtaFhrMlNIYWZIdTRnL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJkZW1vIiwiZmFtaWx5X25hbWUiOiJmbGFuZGVycyIsImxvY2FsZSI6ImVzIiwiaWF0IjoxNjA4OTA3OTIxLCJleHAiOjE2MDg5MTE1MjEsImp0aSI6IjBkNjdmNzk4MDY2YzJhMmQyZGJiNzU2Mjc2NzNmZmM5YmJhMjVlYzcifQ.LOA0ERXzMo6a08YbK6G-0zx45Bow6EqCbRZfvE1Mb2OUV6wf4BoVNoAJdH85kL4C1Iw22UduwKULeKYqOulq9y0QmRJ9hGJfgM2TA9Ujh4ag39CA2RQtmAXjWAag7bnAB8lCMAso8BHJdBgkX5-vTbOC1TNOmyh_bRUNCGfXZR3hVstCJgXQR5d3Ote_59Kb_aUZeIzUixgKUbWTdVduOa2JpmcaeH1W2c_yWWOn-bRHS31z-zC3z2XxcLNhFZwAaj7hk49KtH3Av0Vxz-InGl9uK2im1shWo_CowaPtBb9NhXDR_A1P7qHrfs1KRrFSBT1QsSNEzSXB85huArp5_g",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/google",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"google"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14-wdgqbBCkp16mdOFuaIEn5F+fhMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Log in\"\n}"
+						}
+					]
+				},
+				{
 					"name": "/login",
 					"event": [
 						{
@@ -510,7 +614,9 @@
 									"});",
 									"pm.test(\"Es la pagina correcta\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\");",
-									"});"
+									"});",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -521,7 +627,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"demo@mail.com\",\n    \"password\":\"123456\"\n\n}",
+							"raw": "{\n    \"email\":\"flanders.demo@gmail.com\",\n    \"password\":\"1234qwert\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
