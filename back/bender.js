@@ -34,10 +34,12 @@ app.get('/about', publicController.showAbout);
 app.get('/signin', publicController.getSignIn);
 app.get('/login', publicController.getLogIn);
 app.get('/update', usersController.getUpdateData);
+app.get('/updatepass', usersController.getUpdatePass);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
 app.post('/update', usersController.postUpdateData);
+app.post('/updatepass', usersController.postUpdatePass);
 
 //? AUTHORIZED
 

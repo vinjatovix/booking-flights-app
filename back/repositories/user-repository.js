@@ -31,7 +31,7 @@ async function createUser(arr) {
 /**
  * Actualiza los datos de usuario en la base de datos
  *
- * @param {*} arr [username,bio,password,photo]
+ * @param {*} arr [username,bio,photo, id]
  */
 async function updateData(arr) {
   const pool = await db.getPool();
@@ -41,4 +41,17 @@ async function updateData(arr) {
   return result;
 }
 
-module.exports = { getUserByEmail, createUser, updateData };
+/**
+ * Cambia la contraseña de inicio de sesión
+ *
+ * @param {*} arr [password, id]
+ */
+async function updatePass(arr) {
+  const pool = await db.getPool();
+  const query = 'UPDATE Usuarios SET Usr_password = ? WHERE Usr_ID = ?';
+  const [result] = await pool.execute(query, arr);
+
+  return result;
+}
+
+module.exports = { getUserByEmail, createUser, updateData, updatePass };

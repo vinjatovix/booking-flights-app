@@ -5,7 +5,8 @@ const Joi = require('joi');
 const userRepository = require('../../repositories/user-repository');
 
 /**
- *? Ruta hacia la update page. Recuperamos la información guardada en la DB a través del payload del token del usuario y se la devolvemos en los inputs del formulario para que se pueda actualizar
+ *? Ruta hacia la update page.
+ * Recuperamos la información guardada en la DB a través del payload del token del usuario y se la devolvemos en los inputs del formulario para que se pueda actualizar
  *
  * @param {*} req
  * @param {*} res
