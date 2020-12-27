@@ -35,12 +35,17 @@ async function postLogIn(req, res, next) {
 
     const tokenPayload = {
       id: user.Usr_ID,
+      name: user.Usr_nombre,
       mail: user.Usr_mail,
+      password: user.Usr_password,
+      photo: user.Usr_foto,
+      bio: user.Usr_bio,
+      status: user.Usr_status,
     };
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
 
-    res.send(token);
+    res.status(200).send({ token });
   } catch (err) {
     next(err);
   } finally {
