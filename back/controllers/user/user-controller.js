@@ -2,6 +2,6 @@
 
 const { postLogIn } = require('./postLogIn');
 const { postSignIn } = require('./postSignIn');
-const { getUpdateData } = require('./updateData');
+const { getUpdateData, postUpdateData } = require('./updateData');
 
-module.exports = { postLogIn, postSignIn, getUpdateData };
+module.exports = { postLogIn, postSignIn, getUpdateData, postUpdateData };

@@ -37,6 +37,7 @@ app.get('/update', usersController.getUpdateData);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
+app.post('/update', usersController.postUpdateData);
 
 //? AUTHORIZED
 

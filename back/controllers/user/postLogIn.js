@@ -35,7 +35,7 @@ async function postLogIn(req, res, next) {
 
     const tokenPayload = {
       id: user.Usr_ID,
-      name: user.Usr_nombre,
+      username: user.Usr_nombre,
       mail: user.Usr_mail,
       password: user.Usr_password,
       photo: user.Usr_foto,
