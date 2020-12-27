@@ -33,6 +33,7 @@ app.get('/', publicController.showLanding);
 app.get('/about', publicController.showAbout);
 app.get('/signin', publicController.getSignIn);
 app.get('/login', publicController.getLogIn);
+app.get('/update', usersController.getUpdateData);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
