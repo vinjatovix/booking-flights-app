@@ -66,7 +66,7 @@ async function uploadAvatar(req, res, next) {
 
     res.status(200).json({ ok: true, message: 'file upload successful' });
   } catch (error) {
-    deleteFile(req.files.archivo.tempFilePath); //? en caso de error, eliminamos el archivo subido para que no quede basura
+    // deleteFile(req.files.archivo.tempFilePath); //? en caso de error, eliminamos el archivo subido para que no quede basura
     next(error);
   }
 }
