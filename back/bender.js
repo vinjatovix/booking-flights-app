@@ -7,6 +7,7 @@ const loggers = require('./config/loggers');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 
+const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
 const { publicController, usersController, uploadController } = require('./controllers');
 
@@ -33,14 +34,14 @@ app.get('/', publicController.showLanding);
 app.get('/about', publicController.showAbout);
 app.get('/signin', publicController.getSignIn);
 app.get('/login', publicController.getLogIn);
-app.get('/update', usersController.getUpdateData);
-app.get('/updatepass', usersController.getUpdatePass);
+app.get('/update', validateAuth, usersController.getUpdateData);
+app.get('/updatepass', validateAuth, usersController.getUpdatePass);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
-app.post('/update', usersController.postUpdateData);
-app.post('/updatepass', usersController.postUpdatePass);
-app.post('/upload', uploadController.uploadAvatar);
+app.post('/update', validateAuth, usersController.postUpdateData);
+app.post('/updatepass', validateAuth, usersController.postUpdatePass);
+app.post('/upload', validateAuth, uploadController.uploadAvatar);
 
 //? AUTHORIZED
 
