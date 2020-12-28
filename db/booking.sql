@@ -177,7 +177,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE UNIQUE INDEX `Usr_mail_UNIQUE` ON `booking`.`Usuarios` (`Usr_mail` ASC) VISIBLE;
+CREATE UNIQUE INDEX `Usr_email_UNIQUE` ON `booking`.`Usuarios` (`Usr_email` ASC) VISIBLE;
 
 CREATE INDEX `fk_Usuarios_1_idx` ON `booking`.`Usuarios` (`Usr_AeroID` ASC) VISIBLE;
 
