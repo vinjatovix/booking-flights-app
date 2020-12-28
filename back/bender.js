@@ -39,9 +39,11 @@ app.get('/updatepass', validateAuth, usersController.getUpdatePass);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
-app.post('/update', validateAuth, usersController.postUpdateData);
-app.post('/updatepass', validateAuth, usersController.postUpdatePass);
-app.post('/upload', validateAuth, uploadController.uploadAvatar);
+
+app.put('/update', validateAuth, usersController.postUpdateData);
+app.put('/updatepass', validateAuth, usersController.postUpdatePass);
+app.put('/upload', validateAuth, uploadController.uploadAvatar);
+app.put('/delete', validateAuth, usersController.deleteAccount);
 
 //? AUTHORIZED
 
