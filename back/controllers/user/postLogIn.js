@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken');
  * Controlador del acceso de usuario. Validamos el contenido del body con Joi.
  * Recogemos la info relativa a ese mail si estuviese registrado
  * Comparamos la contraseña encriptada.
+ * Activamos la cuenta con status = "a"
  * Generamos el token.
  *
  * @param {*} req
@@ -38,6 +39,11 @@ async function postLogIn(req, res, next) {
       error.code = 401;
       throw error;
     }
+
+    if (user.Usr_status === 'i') {
+      await userRepository.changeStatus(['a', user.Usr_ID]);
+    }
+    console.log('Estado cambiado a activo');
     const tokenPayload = {
       id: user.Usr_ID,
       username: user.Usr_nombre,

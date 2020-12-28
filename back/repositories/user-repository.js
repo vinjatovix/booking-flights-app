@@ -75,4 +75,12 @@ async function storeAvatar(arr) {
 
   return result;
 }
-module.exports = { getUserByEmail, createUser, updateData, updatePass, storeAvatar, getAvatar };
+
+async function changeStatus(arr) {
+  const pool = await db.getPool();
+  const query = 'UPDATE Usuarios SET Usr_status = ? WHERE Usr_ID = ?';
+  const [result] = await pool.execute(query, arr);
+
+  return result;
+}
+module.exports = { getUserByEmail, createUser, updateData, updatePass, storeAvatar, getAvatar, changeStatus };
