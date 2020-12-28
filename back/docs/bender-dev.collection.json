@@ -1,0 +1,547 @@
+{
+	"info": {
+		"_postman_id": "2f37c7cf-38ad-4c2f-9140-e880fc70de7b",
+		"name": "FLanders-bender",
+		"description": "# Colección de rutas del Back-End de Flanders.\n## Estructura\n- **Public**:\n- **Authorized**:",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Recibe respuesta?\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"El json coincide\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.title).to.eql('LO (&& behold ^^)');",
+									"    pm.expect(jsonData.message).to.eql('Route / is working properly');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-9a5a7MkU5a/fqXctALSC+a4ft8c\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 04:52:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"title\": \"LO (&& behold ^^)\",\n    \"message\": \"Route / is working properly\"\n}"
+						}
+					]
+				},
+				{
+					"name": "About",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/about",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"about"
+							]
+						},
+						"description": "        "
+					},
+					"response": []
+				},
+				{
+					"name": "/404",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"ERROR 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"Página correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Not Found\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/anyInvalidURL",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"anyInvalidURL"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/anyInvalidURL",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"anyInvalidURL"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-hAQT09l0fHrZYytqdC2SesP7tVQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 04:22:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Sorry, Can't find /anyInvalidURL\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include('form method=\"post\" action=\"/signin\"');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/signin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-0+eyVlgPSzCxhrVNnSUZpKiNoaA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Sign in\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/signin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"{{$randomExampleEmail}}\",\n    \"password\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/signin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-0+eyVlgPSzCxhrVNnSUZpKiNoaA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Sign in\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include('form method=\"post\" action=\"/login');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14-wdgqbBCkp16mdOFuaIEn5F+fhMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Log in\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"demo@mail.com\",\n    \"password\":\"123456\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Cualquier persona puede acceder a estas rutas\n- **/** - En el futuro devolverá el buscador\n\n- **/testError** - Sirve para probar que los loggers funcionan.\n\n- **/anyInvalidURL** - Cualquier path no prevenido en las rutas terminará aquí.\n\n- **/signin** - Responde el formulario de registro\n\n- **/login** - Responde el formulario de acceso.\n\n---"
+		}
+	]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "bender-flanders-app",
+  "version": "0.0.1",
+  "description": "This is the Back End Crash Test Dummy Server for the Hack A Boss Final Project",
+  "main": "bender.js",
+  "scripts": {
+    "test": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose",
+    "dev": "nodemon bender.js",
+    "start": "node bender.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinjatovix/booking-flights-app.git"
+  },
+  "author": "MattCo23 - Vinjadevix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinjatovix/booking-flights-app/issues"
+  },
+  "homepage": "https://github.com/vinjatovix/booking-flights-app#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "file-type": "^16.1.0",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
+    "read-chunk": "^3.2.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "newman": "^5.2.1",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1"
+  }
+}
