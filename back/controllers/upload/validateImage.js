@@ -9,7 +9,7 @@ const readChunk = require('read-chunk');
  * El tamaño máximo de archivo serán de 5mb
  *
  * @param {*} req
- * @return {*} 
+ * @return {*}
  */
 async function validateImage(req) {
   if (!req.files) {
@@ -17,6 +17,7 @@ async function validateImage(req) {
     error.code = 400;
     throw error;
   }
+  console.log(req.files);
 
   //? Preparamos el chunk a comparar
   const tmpFile = req.files.archivo.tempFilePath;

@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
  * Controlador del acceso de usuario. Validamos el contenido del body con Joi.
  * Recogemos la info relativa a ese mail si estuviese registrado
  * Comparamos la contraseña encriptada.
- * Activamos la cuenta con status = "a"
+ * Activamos la cuenta con status = "a" y comprobamos si no está eliminada
  * Generamos el token.
  *
  * @param {*} req
@@ -42,8 +42,10 @@ async function postLogIn(req, res, next) {
 
     if (user.Usr_status === 'i') {
       await userRepository.changeStatus(['a', user.Usr_ID]);
+    } else if (user.Usr_status === 'e') {
+      throw new Error('Invalid credentials, this account has been deleted');
     }
-    console.log('Estado cambiado a activo');
+
     const tokenPayload = {
       id: user.Usr_ID,
       username: user.Usr_nombre,
