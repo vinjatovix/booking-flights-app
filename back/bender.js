@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 
 const { e404 } = require('./middlewares/e404');
-const { publicController, usersController } = require('./controllers');
+const { publicController, usersController, uploadController } = require('./controllers');
 
 //? SETUP
 //* ========= ENV
@@ -22,7 +22,7 @@ const app = express();
 //? MIDDLEWARES
 if (NODE_ENV === 'development') app.use(loggers.morganWare());
 
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -40,6 +40,7 @@ app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
 app.post('/update', usersController.postUpdateData);
 app.post('/updatepass', usersController.postUpdatePass);
+app.post('/upload', uploadController.uploadAvatar);
 
 //? AUTHORIZED
 
