@@ -162,12 +162,12 @@ DROP TABLE IF EXISTS `booking`.`Usuarios` ;
 CREATE TABLE IF NOT EXISTS `booking`.`Usuarios` (
   `Usr_ID` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Hasta  16777215  Usuarios.',
   `Usr_nombre` VARCHAR(100) NOT NULL,
-  `Usr_mail` VARCHAR(200) NOT NULL COMMENT 'El mail es único y será el login de usuario.',
+  `Usr_email` VARCHAR(200) NOT NULL COMMENT 'El mail es único y será el login de usuario.',
   `Usr_password` VARCHAR(255) NOT NULL COMMENT 'La contraseña se encriptará en el BE.',
-  `Usr_foto` VARCHAR(255) DEFAULT '' COMMENT 'Se guarda un path.',
-  `Usr_bio` VARCHAR(249) DEFAULT '',
+  `Usr_foto` VARCHAR(255) DEFAULT "" COMMENT 'Se guarda un path.',
+  `Usr_bio` VARCHAR(249) DEFAULT "",
   `Usr_signin` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Se almacena un timestamp del momento de registro.',
-  `Usr_status` CHAR(1) NOT NULL DEFAULT 'a' COMMENT 'Estado de usuario. Los usuarios nunca se borran. Al darse de alta, por defecto estan activos. En caso de baja se cambia el estado a \\\\\'i\\\\\'.',
+  `Usr_status` CHAR(1) NOT NULL DEFAULT 'i' COMMENT 'Estado de usuario. Los usuarios nunca se borran. Al darse de alta, por defecto estan activos. En caso de baja se cambia el estado a \\\\\'i\\\\\'.',
   `Usr_AeroID` SMALLINT UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`Usr_ID`),
   CONSTRAINT `fk_Usr_Aero_idx`
