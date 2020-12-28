@@ -54,4 +54,25 @@ async function updatePass(arr) {
   return result;
 }
 
-module.exports = { getUserByEmail, createUser, updateData, updatePass };
+/**
+ * Recupera la foto del usuario (Se podria sustiruir con la info del token)
+ *
+ * @param {*} id
+ * @return {*}
+ */
+async function getAvatar(id) {
+  const pool = await db.getPool();
+  const query = 'SELECT Usr_foto from Usuarios WHERE Usr_ID = ?';
+  const [result] = await pool.execute(query, [id]);
+
+  return result;
+}
+
+async function storeAvatar(arr) {
+  const pool = await db.getPool();
+  const query = 'UPDATE Usuarios SET Usr_foto = ? WHERE Usr_ID = ?';
+  const [result] = await pool.execute(query, arr);
+
+  return result;
+}
+module.exports = { getUserByEmail, createUser, updateData, updatePass, storeAvatar, getAvatar };

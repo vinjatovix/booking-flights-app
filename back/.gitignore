@@ -1,7 +1,8 @@
 
 # 
 node_modules
-
+avatars
+tmp
 # environements
 .env
 *bender-dev.environment.json

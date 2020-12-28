@@ -25,14 +25,19 @@ async function postLogIn(req, res, next) {
 
     const { email, password } = req.body;
     const [user] = await userRepository.getUserByEmail(email);
-    const valid = await bcrypt.compare(password, user.Usr_password);
 
-    if (!user || user.length === 0 || !valid) {
+    if (!user || user.length === 0) {
       const error = new Error('Invalid credentials, please try again');
       error.code = 401;
       throw error;
     }
 
+    const valid = await bcrypt.compare(password, user.Usr_password);
+    if (!valid) {
+      const error = new Error('Invalid credentials, please try again');
+      error.code = 401;
+      throw error;
+    }
     const tokenPayload = {
       id: user.Usr_ID,
       username: user.Usr_nombre,

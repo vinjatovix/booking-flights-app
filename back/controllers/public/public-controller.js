@@ -38,7 +38,6 @@ function getSignIn(req, res) {
         '<p>Email: <input type="email" name="email" id="email" placeholder="Email" required /></p>' +
         '<p>Password: <input type="password" name="password" id="password" placeholder="Password" required /></p>' +
         '<p>Repeat Password: <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required /></p>' +
-        '<p>Avatar: <input type="file" name="avatar" /></p>' +
         '<p>Bio: <input type="text" name="bio" id="bio" placeholder="Short bio"  /></p>' +
         '<p><input type="submit" value="Send" /></p>' +
         '</form>'
