@@ -9,7 +9,7 @@ const db = require('../infraestructure/database');
  */
 async function getUserByEmail(email) {
   const pool = await db.getPool();
-  const query = 'SELECT * FROM Usuarios WHERE Usr_mail = ?';
+  const query = 'SELECT * FROM Usuarios WHERE Usr_email = ?';
   const [result] = await pool.execute(query, [email]);
 
   return result;
@@ -22,7 +22,7 @@ async function getUserByEmail(email) {
  */
 async function createUser(arr) {
   const pool = await db.getPool();
-  const query = 'INSERT INTO Usuarios (Usr_nombre, Usr_mail, Usr_password,Usr_bio) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO Usuarios (Usr_nombre, Usr_email, Usr_password,Usr_bio) VALUES (?, ?, ?, ?)';
   const [result] = await pool.execute(query, arr);
 
   return result;
