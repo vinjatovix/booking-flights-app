@@ -53,7 +53,7 @@ async function uploadAvatar(req, res, next) {
     });
 
     //? almacenamos la ruta en la BBDD
-    /* // TODO: Tengo mis dudas acerca de que debemos guardar en realidad. si guardamos toda la ruta y luego modificamos la ubicacion por lo que sea, hay que modificar todos los registros de la base, pero si solo guardamos el nombre de archivo el resto de la ruta siempre queda en la logica del servidor.
+    /* si guardamos toda la ruta y luego modificamos la ubicacion por lo que sea, hay que modificar todos los registros de la base, pero si solo guardamos el nombre de archivo el resto de la ruta siempre queda en la logica del servidor.
     const pathToStore = uploadPath.split('/').splice(8).join('/'); 
     */
 
