@@ -2,14 +2,15 @@
 
 //? IMPORTS
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const loggers = require('./config/loggers');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
-const path = require('path');
 
+const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
-const { publicController, usersController } = require('./controllers');
+const { publicController, usersController, uploadController } = require('./controllers');
 
 //? SETUP
 //* ========= ENV
@@ -23,16 +24,14 @@ const app = express();
 //? MIDDLEWARES
 if (NODE_ENV === 'development') app.use(loggers.morganWare());
 
-app.use(fileUpload());
+app.use(fileUpload({ useTempFiles: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //? ROUTES
+app.use(express.static(path.resolve(__dirname + '/public')));
 
 //? PUBLIC
-app.use(express.static(path.join(__dirname, '/public')));
-
-app.get('/', publicController.showLanding);
 app.get('/about', publicController.showAbout);
 app.get('/signin', publicController.getSignIn);
 app.get('/login', publicController.getLogIn);
@@ -41,7 +40,15 @@ app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
 app.post('/google', usersController.googleLogin);
 
-//Google setup
+//? AUTHORIZED
+app.get('/update', validateAuth, usersController.getUpdateData);
+app.get('/updatepass', validateAuth, usersController.getUpdatePass);
+
+
+app.put('/update', validateAuth, usersController.postUpdateData);
+app.put('/updatepass', validateAuth, usersController.postUpdatePass);
+app.put('/upload', validateAuth, uploadController.uploadAvatar);
+app.put('/delete', validateAuth, usersController.deleteAccount);
 
 //? AUTHORIZED
 

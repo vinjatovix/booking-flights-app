@@ -18,7 +18,7 @@ const { registerSchema } = require('../../repositories/registerSchema');
 async function postSignIn(req, res, next) {
   try {
     await registerSchema.validateAsync(req.body);
-    const { username, email, password, avatar, bio } = req.body;
+    const { username, email, password, bio } = req.body;
 
     const [user] = await userRepository.getUserByEmail(email);
     if (user) {
@@ -28,8 +28,7 @@ async function postSignIn(req, res, next) {
     }
 
     const passwordHash = await bcrypt.hash(password, 12);
-    const id = (await userRepository.createUser([username, email, passwordHash, avatar, bio])).insertId;
-    console.log(id);
+    const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
     res.status(200).send({ userId: id });
   } catch (err) {
     next(err);

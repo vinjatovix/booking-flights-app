@@ -6,22 +6,35 @@
     <title>Document</title>
   </head>
   <body>
-    <header>Flanders</header>
+    <header>
+      <h1>Flight Landers</h1>
+      <p>Sign in</p>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signin">Sign In</a></li>
+        </ul>
+      </nav>
+    </header>
     <main>
       <form method="post" action="/signin" enctype="multipart/form-data">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="User name" required />
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="Email" required />
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password" required />
-        <label for="repeatPassword">Repeat Password</label>
-        <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required />
-        <label for="avatar">Avatar</label>
-        <input type="text" name="avatar" id="avatar" />
-        <!-- <input type="file" name="avatar" /> -->
-        <label for="bio">Bio</label>
-        <input type="text" name="bio" id="bio" placeholder="Short bio" />
+        <fieldset>
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="User name" required />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Email" required />
+        </fieldset>
+        <fieldset>
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Password" required />
+          <label for="repeatPassword">Repeat Password</label>
+          <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required />
+        </fieldset>
+        <fieldset>
+          <label for="bio">Bio</label>
+          <input type="text" name="bio" id="bio" placeholder="Short bio" />
+        </fieldset>
         <input type="submit" value="Send" />
       </form>
     </main>

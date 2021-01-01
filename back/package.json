@@ -30,6 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
+    "read-chunk": "^3.2.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {

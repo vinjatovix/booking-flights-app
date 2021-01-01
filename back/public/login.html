@@ -11,7 +11,17 @@
     />
   </head>
   <body>
-    <header>Flanders</header>
+    <header>
+      <h1>Flight Landers</h1>
+      <p>Login</p>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signin">Sign In</a></li>
+        </ul>
+      </nav>
+    </header>
     <main>
       <form method="post" action="/login" enctype="multipart/form-data">
         <label for="email">Email</label>
@@ -23,11 +33,13 @@
       <h2>Or Login with your google account</h2>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+      <!-- <script src="../back/controllers/google/onSignIn.js"></script> -->
       <script>
         function onSignIn(googleUser) {
           const profile = googleUser.getBasicProfile();
 
           const id_token = googleUser.getAuthResponse().id_token;
+          console.log(id_token);
 
           const xhr = new XMLHttpRequest();
           xhr.open('POST', '/google');
