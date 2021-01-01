@@ -17,7 +17,6 @@ async function validateImage(req) {
     error.code = 400;
     throw error;
   }
-  console.log(req.files);
 
   //? Preparamos el chunk a comparar
   const tmpFile = req.files.archivo.tempFilePath;

@@ -20,11 +20,6 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"El json coincide\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.title).to.eql('LO (&& behold ^^)');",
-									"    pm.expect(jsonData.message).to.eql('Route / is working properly');",
-									"});",
 									""
 								],
 								"type": "text/javascript"
@@ -54,6 +49,65 @@
 						}
 					},
 					"response": [
+						{
+							"name": "/",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Accept-Ranges",
+									"value": "bytes"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0"
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Fri, 01 Jan 2021 06:26:40 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e7-176bca07281\""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "487"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:39:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>Flanding page</title>\n    </head>\n    <body>\n        <header>\n            <h1>Flight Landers</h1>\n            <p>LO & behold</p>\n            <nav>\n                <ul>\n                    <li>\n                        <a href=\"/\">Home</a>\n                    </li>\n                    <li>\n                        <a href=\"/login\">Login</a>\n                    </li>\n                    <li>\n                        <a href=\"/signin\">Sign In</a>\n                    </li>\n                </ul>\n            </nav>\n        </header>\n    </body>\n</html>"
+						},
 						{
 							"name": "/",
 							"originalRequest": {
@@ -136,7 +190,55 @@
 						},
 						"description": "        "
 					},
-					"response": []
+					"response": [
+						{
+							"name": "About",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/about",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"about"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20-VDzW1ywXu0MSs6WZnQjL1QTICGE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:40:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"This is about page\"\n}"
+						}
+					]
 				},
 				{
 					"name": "/404",
@@ -181,6 +283,53 @@
 						}
 					},
 					"response": [
+						{
+							"name": "/404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/anyInvalidURL",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"anyInvalidURL"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-5KajTCx0AJD0xogoSeOjjV2M8K0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:40:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Not Found\"\n}"
+						},
 						{
 							"name": "/404",
 							"originalRequest": {
@@ -316,11 +465,70 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Sign in\"\n}"
+						},
+						{
+							"name": "/signin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Accept-Ranges",
+									"value": "bytes"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0"
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Fri, 01 Jan 2021 05:57:09 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b9-176bc856d13\""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1465"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:40:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>Document</title>\n    </head>\n    <body>\n        <header>\n            <h1>Flight Landers</h1>\n            <p>Sign in</p>\n            <nav>\n                <ul>\n                    <li>\n                        <a href=\"/\">Home</a>\n                    </li>\n                    <li>\n                        <a href=\"/login\">Login</a>\n                    </li>\n                    <li>\n                        <a href=\"/signin\">Sign In</a>\n                    </li>\n                </ul>\n            </nav>\n        </header>\n        <main>\n            <form method=\"post\" action=\"/signin\" enctype=\"multipart/form-data\">\n                <fieldset>\n                    <label for=\"username\">Username</label>\n                    <input type=\"text\" name=\"username\" id=\"username\" placeholder=\"User name\" required />\n                    <label for=\"email\">Email</label>\n                    <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" required />\n                </fieldset>\n                <fieldset>\n                    <label for=\"password\">Password</label>\n                    <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required />\n                    <label for=\"repeatPassword\">Repeat Password</label>\n                    <input type=\"password\" name=\"repeatPassword\" id=\"repeatPassword\" placeholder=\"Repeat password\" required />\n                </fieldset>\n                <fieldset>\n                    <label for=\"bio\">Bio</label>\n                    <input type=\"text\" name=\"bio\" id=\"bio\" placeholder=\"Short bio\" />\n                </fieldset>\n                <input type=\"submit\" value=\"Send\" />\n            </form>\n        </main>\n    </body>\n</html>"
 						}
 					]
 				},
 				{
-					"name": "/signin",
+					"name": "Register Demo User",
 					"event": [
 						{
 							"listen": "test",
@@ -342,7 +550,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"{{$randomExampleEmail}}\",\n    \"password\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+							"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"demo@gmail.com\",\n    \"password\":\"123456\",\n    \"repeatPassword\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -410,6 +618,212 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Sign in\"\n}"
+						},
+						{
+							"name": "/signin Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"{{$randomUserName}}\",\n    \"email\":\"demo@gmail.com\",\n    \"password\":\"123456\",\n    \"repeatPassword\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-HgKQrpGLeEbqpB5y9mM5kCCJD8E\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:41:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 24\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Random User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"userId\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"{{$randomUserName}} Ortiz\",\n    \"email\":\"{{$randomEmail}}\",\n    \"password\":\"123456\",\n    \"repeatPassword\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/signin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-0+eyVlgPSzCxhrVNnSUZpKiNoaA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Sign in\"\n}"
+						},
+						{
+							"name": "Register Random User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"{{$randomUserName}} Ortiz\",\n    \"email\":\"{{$randomEmail}}\",\n    \"password\":\"123456\",\n    \"repeatPassword\":\"123456\",\n    \"bio\":\"Bushini nigonwa nai\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/signin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-cZ9LUOkIrtE7w3O80GAcX/lCScE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:41:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"userId\": 25\n}"
 						}
 					]
 				},
@@ -495,6 +909,65 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Log in\"\n}"
+						},
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Accept-Ranges",
+									"value": "bytes"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0"
+								},
+								{
+									"key": "Last-Modified",
+									"value": "Fri, 01 Jan 2021 07:09:32 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"887-176bcc7b1b4\""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2183"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:42:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>Login</title>\n        <script src=\"https://apis.google.com/js/platform.js\" async defer></script>\n        <meta\n      name=\"google-signin-client_id\"\n      content=\"1067297095827-goodtp6cekt9q88favpfjqh3m4jgtipo.apps.googleusercontent.com\"\n    />\n    </head>\n    <body>\n        <header>\n            <h1>Flight Landers</h1>\n            <p>Login</p>\n            <nav>\n                <ul>\n                    <li>\n                        <a href=\"/\">Home</a>\n                    </li>\n                    <li>\n                        <a href=\"/login\">Login</a>\n                    </li>\n                    <li>\n                        <a href=\"/signin\">Sign In</a>\n                    </li>\n                </ul>\n            </nav>\n        </header>\n        <main>\n            <form method=\"post\" action=\"/login\" enctype=\"multipart/form-data\">\n                <label for=\"email\">Email</label>\n                <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" required />\n                <label for=\"password\">Password</label>\n                <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required />\n                <input type=\"submit\" value=\"Send\" />\n            </form>\n            <h2>Or Login with your google account</h2>\n            <div class=\"g-signin2\" data-onsuccess=\"onSignIn\"></div>\n            <!-- <script src=\"../back/controllers/google/onSignIn.js\"></script> -->\n            <script>\n        function onSignIn(googleUser) {\n          const profile = googleUser.getBasicProfile();\n\n          const id_token = googleUser.getAuthResponse().id_token;\n          console.log(id_token);\n\n          const xhr = new XMLHttpRequest();\n          xhr.open('POST', '/google');\n          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\n          xhr.onload = function () {\n            console.log('Signed in as: ' + xhr.responseText);\n          };\n          xhr.send('idtoken=' + id_token);\n        }\n      </script>\n            <button>\n                <a href=\"#\" onclick=\"signOut();\">Sign out</a>\n            </button>\n            <script>\n        function signOut() {\n          const auth2 = gapi.auth2.getAuthInstance();\n          auth2.signOut().then(function () {\n            console.log('User signed out.');\n          });\n        }\n      </script>\n        </main>\n    </body>\n</html>"
 						}
 					]
 				},
@@ -510,7 +983,9 @@
 									"});",
 									"pm.test(\"Es la pagina correcta\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\");",
-									"});"
+									"});",
+									"",
+									"pm.environment.set(\"token\", pm.response.json().token);"
 								],
 								"type": "text/javascript"
 							}
@@ -518,10 +993,16 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"demo@mail.com\",\n    \"password\":\"123456\"\n\n}",
+							"raw": "{\n    \"email\":\"demo@gmail.com\",\n    \"password\":\"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -538,10 +1019,1288 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"demo@gmail.com\",\n    \"password\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"118-5X/QmQhY0UtgNlQ0vE6tAhDRa24\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:42:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjQsInVzZXJuYW1lIjoiQmVydDQiLCJlbWFpbCI6ImRlbW9AZ21haWwuY29tIiwicGhvdG8iOiIwIiwiYmlvIjoiQnVzaGluaSBuaWdvbndhIG5haSIsInN0YXR1cyI6ImkiLCJpYXQiOjE2MDk0ODY5MzksImV4cCI6MTYxMjA3ODkzOX0.l7K4HsX8zg2QGF5V6ISw3wnuKEwBj7qNd9FGTzAAUcI\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/google",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Se recibe respuesta\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Es la pagina correcta\", function () {",
+									"    pm.expect(pm.response.text()).to.include('eyJhbGciO');",
+									"});",
+									"",
+									"let resp = pm.response.json();",
+									"if (resp.ok){",
+									"    let token = resp.idtoken;",
+									"",
+									"    pm.environment.set('token', token)",
+									"} else {",
+									"    console.log('no se actualizó el token')",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idtoken",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTI5YmE1NDNjNTZlOWZiZDUzZGZkY2I3Nzg5ZjhiZjhmMWExYTEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMTA2NzI5NzA5NTgyNy1nb29kdHA2Y2VrdDlxODhmYXZwZmpxaDNtNGpndGlwby5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEwNjcyOTcwOTU4MjctZ29vZHRwNmNla3Q5cTg4ZmF2cGZqcWgzbTRqZ3RpcG8uYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA5ODgxNzM1NzE4MTIwNzA2MjQiLCJlbWFpbCI6ImZsYW5kZXJzLmRlbW9AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiI4TFNHQzVFYnZaRS1KR3ZPNlZKZ3FnIiwibmFtZSI6ImRlbW8gZmxhbmRlcnMiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1Ua2x6T1BTNElWWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BTVp1dWNtYzRlRVNJa3A3NHRRUnYtaFhrMlNIYWZIdTRnL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJkZW1vIiwiZmFtaWx5X25hbWUiOiJmbGFuZGVycyIsImxvY2FsZSI6ImVzIiwiaWF0IjoxNjA5NDg0OTk5LCJleHAiOjE2MDk0ODg1OTksImp0aSI6ImE2MTg4ZTNhZTk5NGJlMjAyNjFiOGRkNzhkYTQyOTE3MWI3ZTljZGIifQ.eszOYWblUxV8cBh_1ABI-bnTVzEyYHJAzi6BuKuWxcqpw7OWXalRSyFKY2J0-7z59MQbnZKwkFfn7hdxtNiQ41kUBOFvE66Z6F2uDNWrh4cGk5_iKa1WGXzdc-QmwCRsCrTloBfoaqv8SJ9QH8uTu3zSIfGwHPbQm6K_TkxlOLBDMG8BYJFFNlRsht9nF3LSyyGnXe6t_otN5MSgyUSs27RXY_j9mMJZfw36DUOwf6OGzowJWjt9fadYXT6pDqfHJFLy7Xr4csyg7FDYXV0phZnQUdAetWd7Bp-5H6u5vEaIwpV0gXGwa6ACsbWmv2-DPYMxS60lWdAqxXwsJDeLIQ",
+									"description": "EL TOKEN HAY QUE REFRESCARLO MANUALMENTE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/google",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"google"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/google",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "idtoken",
+											"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MTI5YmE1NDNjNTZlOWZiZDUzZGZkY2I3Nzg5ZjhiZjhmMWExYTEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMTA2NzI5NzA5NTgyNy1nb29kdHA2Y2VrdDlxODhmYXZwZmpxaDNtNGpndGlwby5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEwNjcyOTcwOTU4MjctZ29vZHRwNmNla3Q5cTg4ZmF2cGZqcWgzbTRqZ3RpcG8uYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDA5ODgxNzM1NzE4MTIwNzA2MjQiLCJlbWFpbCI6ImZsYW5kZXJzLmRlbW9AZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiI4TFNHQzVFYnZaRS1KR3ZPNlZKZ3FnIiwibmFtZSI6ImRlbW8gZmxhbmRlcnMiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDQuZ29vZ2xldXNlcmNvbnRlbnQuY29tLy1Ua2x6T1BTNElWWS9BQUFBQUFBQUFBSS9BQUFBQUFBQUFBQS9BTVp1dWNtYzRlRVNJa3A3NHRRUnYtaFhrMlNIYWZIdTRnL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJkZW1vIiwiZmFtaWx5X25hbWUiOiJmbGFuZGVycyIsImxvY2FsZSI6ImVzIiwiaWF0IjoxNjA5NDg0OTk5LCJleHAiOjE2MDk0ODg1OTksImp0aSI6ImE2MTg4ZTNhZTk5NGJlMjAyNjFiOGRkNzhkYTQyOTE3MWI3ZTljZGIifQ.eszOYWblUxV8cBh_1ABI-bnTVzEyYHJAzi6BuKuWxcqpw7OWXalRSyFKY2J0-7z59MQbnZKwkFfn7hdxtNiQ41kUBOFvE66Z6F2uDNWrh4cGk5_iKa1WGXzdc-QmwCRsCrTloBfoaqv8SJ9QH8uTu3zSIfGwHPbQm6K_TkxlOLBDMG8BYJFFNlRsht9nF3LSyyGnXe6t_otN5MSgyUSs27RXY_j9mMJZfw36DUOwf6OGzowJWjt9fadYXT6pDqfHJFLy7Xr4csyg7FDYXV0phZnQUdAetWd7Bp-5H6u5vEaIwpV0gXGwa6ACsbWmv2-DPYMxS60lWdAqxXwsJDeLIQ",
+											"description": "EL TOKEN HAY QUE REFRESCARLO MANUALMENTE",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/google",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"google"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "196"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c4-e14KfrZj2VaDR99zQWso8VdSLNA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:42:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImVtYWlsIjoiZmxhbmRlcnMuZGVtb0BnbWFpbC5jb20iLCJpYXQiOjE2MDk0ODY5NTYsImV4cCI6MTYxMjA3ODk1Nn0.hOvfgWGWXDOoMeU8MocSIj_r5S2CggPqLZ2aRZHCWE8\"\n}"
+						},
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14-wdgqbBCkp16mdOFuaIEn5F+fhMs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 17 Dec 2020 17:18:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Log in\"\n}"
+						}
+					]
 				}
 			],
 			"description": "Cualquier persona puede acceder a estas rutas\n- **/** - En el futuro devolverá el buscador\n\n- **/testError** - Sirve para probar que los loggers funcionan.\n\n- **/anyInvalidURL** - Cualquier path no prevenido en las rutas terminará aquí.\n\n- **/signin** - Responde el formulario de registro\n\n- **/login** - Responde el formulario de acceso.\n\n---"
+		},
+		{
+			"name": "Authorized",
+			"item": [
+				{
+					"name": "update profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "398"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18e-Kf4jRfoFVDt/s5tk46WxQP02ALA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:06:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<form method=\"post\" action=\"/signin\" enctype=\"multipart/form-data\">\n    <p>Username: \n        <input type=\"text\" name=\"username\" id=\"username\" value=peprperp placeholder=\"Username\" required />\n    </p>\n    <p>Avatar: \n        <input type=\"file\" name=\"avatar\" value=hfiosfosdi.jpg />\n    </p>\n    <p>Bio: \n        <input type=\"text\" name=\"bio\" id=\"bio\" value='ifosdbio' placeholder=\"Short bio\"  />\n    </p>\n    <p>\n        <input type=\"submit\" value=\"Send\" />\n    </p>\n</form>"
+						}
+					]
+				},
+				{
+					"name": "upload Avatar",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"token\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.ok).to.eql(true);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/home/vinjadevix/Pictures/Screenshot from 2020-12-30 18-27-29.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/upload",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "upload Avatar",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "archivo",
+											"type": "file",
+											"src": "/home/vinjadevix/Pictures/Screenshot from 2020-12-30 18-27-29.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/upload",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"upload"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-dyJU/B2AnK6O/KQjA0g2M08DL3Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:06:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ok\": true,\n    \"message\": \"file upload successful\"\n}"
+						},
+						{
+							"name": "upload Avatar",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "archivo",
+											"type": "file",
+											"src": "/home/vinjadevix/Pictures/Screenshot from 2020-12-30 18-27-29.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/upload",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"upload"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-dyJU/B2AnK6O/KQjA0g2M08DL3Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:42:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ok\": true,\n    \"message\": \"file upload successful\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "peprperp",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "ifosdbio",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"value": "hfiosfosdi.jpg",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "peprperp",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "ifosdbio",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"value": "hfiosfosdi.jpg",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-aI864z6QbJRlYItaDvIes7FEeTo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:06:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Estado\": \"Perfil actualizado\"\n}"
+						},
+						{
+							"name": "update profile Copy",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "peprperp",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "ifosdbio",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"value": "hfiosfosdi.jpg",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"update"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-aI864z6QbJRlYItaDvIes7FEeTo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:01:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Estado\": \"Perfil actualizado\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update profile password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/updatepass",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"updatepass"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update profile password",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e3-WjIvRzBg3WbuCX8joVOuMLyPC8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:52:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<form method=\"post\" action=\"/signin\" enctype=\"multipart/form-data\">\n    <p>Password: \n        <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required />\n    </p>\n    <p>New Password: \n        <input type=\"password\" name=\"newPassword\" id=\"newPassword\" placeholder=\"New password\" required />\n    </p>\n    <p>Repeat New Password: \n        <input type=\"password\" name=\"repeatNewPassword\" id=\"repeatNewPassword\" placeholder=\"Repeat New password\" required />\n    </p>\n    <p>\n        <input type=\"submit\" value=\"Send\" />\n    </p>\n</form>"
+						},
+						{
+							"name": "update password",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e3-WjIvRzBg3WbuCX8joVOuMLyPC8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:52:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<form method=\"post\" action=\"/signin\" enctype=\"multipart/form-data\">\n    <p>Password: \n        <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required />\n    </p>\n    <p>New Password: \n        <input type=\"password\" name=\"newPassword\" id=\"newPassword\" placeholder=\"New password\" required />\n    </p>\n    <p>Repeat New Password: \n        <input type=\"password\" name=\"repeatNewPassword\" id=\"repeatNewPassword\" placeholder=\"Repeat New password\" required />\n    </p>\n    <p>\n        <input type=\"submit\" value=\"Send\" />\n    </p>\n</form>"
+						}
+					]
+				},
+				{
+					"name": "update profile password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "repeatNewPassword",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/updatepass",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"updatepass"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update profile password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "123456",
+											"type": "text"
+										},
+										{
+											"key": "repeatNewPassword",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-p/SSTR9YGfsKEKgkRRYgDhnhxBA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:15:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Estado\": \"Contraseña actualizada correctamente\"\n}"
+						},
+						{
+							"name": "update profile password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "121212",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "121212",
+											"type": "text"
+										},
+										{
+											"key": "repeatNewPassword",
+											"value": "121212",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-p/SSTR9YGfsKEKgkRRYgDhnhxBA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:07:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Estado\": \"Contraseña actualizada correctamente\"\n}"
+						},
+						{
+							"name": "update password",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e3-WjIvRzBg3WbuCX8joVOuMLyPC8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:52:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<form method=\"post\" action=\"/signin\" enctype=\"multipart/form-data\">\n    <p>Password: \n        <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required />\n    </p>\n    <p>New Password: \n        <input type=\"password\" name=\"newPassword\" id=\"newPassword\" placeholder=\"New password\" required />\n    </p>\n    <p>Repeat New Password: \n        <input type=\"password\" name=\"repeatNewPassword\" id=\"repeatNewPassword\" placeholder=\"Repeat New password\" required />\n    </p>\n    <p>\n        <input type=\"submit\" value=\"Send\" />\n    </p>\n</form>"
+						}
+					]
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "121212",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "newPassword",
+									"value": "121212",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "repeatNewPassword",
+									"value": "121212",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update profile password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "121212",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "121212",
+											"type": "text"
+										},
+										{
+											"key": "repeatNewPassword",
+											"value": "121212",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-p/SSTR9YGfsKEKgkRRYgDhnhxBA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 08:07:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Estado\": \"Contraseña actualizada correctamente\"\n}"
+						},
+						{
+							"name": "update password",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/updatepass",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"updatepass"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e3-WjIvRzBg3WbuCX8joVOuMLyPC8U\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Jan 2021 07:52:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "<form method=\"post\" action=\"/signin\" enctype=\"multipart/form-data\">\n    <p>Password: \n        <input type=\"password\" name=\"password\" id=\"password\" placeholder=\"Password\" required />\n    </p>\n    <p>New Password: \n        <input type=\"password\" name=\"newPassword\" id=\"newPassword\" placeholder=\"New password\" required />\n    </p>\n    <p>Repeat New Password: \n        <input type=\"password\" name=\"repeatNewPassword\" id=\"repeatNewPassword\" placeholder=\"Repeat New password\" required />\n    </p>\n    <p>\n        <input type=\"submit\" value=\"Send\" />\n    </p>\n</form>"
+						}
+					]
+				}
+			]
 		}
 	]
 }

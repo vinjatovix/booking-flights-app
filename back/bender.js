@@ -2,6 +2,7 @@
 
 //? IMPORTS
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const loggers = require('./config/loggers');
 const bodyParser = require('body-parser');
@@ -28,17 +29,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //? ROUTES
+app.use(express.static(path.resolve(__dirname + '/public')));
 
 //? PUBLIC
-app.get('/', publicController.showLanding);
 app.get('/about', publicController.showAbout);
 app.get('/signin', publicController.getSignIn);
 app.get('/login', publicController.getLogIn);
-app.get('/update', validateAuth, usersController.getUpdateData);
-app.get('/updatepass', validateAuth, usersController.getUpdatePass);
 
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
+app.post('/google', usersController.googleLogin);
+
+//? AUTHORIZED
+app.get('/update', validateAuth, usersController.getUpdateData);
+app.get('/updatepass', validateAuth, usersController.getUpdatePass);
+
 
 app.put('/update', validateAuth, usersController.postUpdateData);
 app.put('/updatepass', validateAuth, usersController.postUpdatePass);

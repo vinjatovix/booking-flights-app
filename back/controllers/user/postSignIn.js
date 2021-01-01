@@ -36,7 +36,6 @@ async function postSignIn(req, res, next) {
 
     const passwordHash = await bcrypt.hash(password, 12);
     const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
-    console.log(id);
     res.status(200).send({ userId: id });
   } catch (err) {
     next(err);

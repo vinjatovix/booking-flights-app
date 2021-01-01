@@ -14,13 +14,14 @@ const userRepository = require('../../repositories/user-repository');
 function getUpdateData(req, res) {
   const token = req.headers.authorization;
   const decoded = jwt.decode(token);
+  console.log(decoded)
   res
     .status(200)
     .send(
       '<form method="post" action="/signin" enctype="multipart/form-data">' +
-        `<p>Username: <input type="text" name="username" id="username" value=${decoded.name} placeholder="Username" required /></p>` +
+        `<p>Username: <input type="text" name="username" id="username" value=${decoded.username} placeholder="Username" required /></p>` +
         `<p>Avatar: <input type="file" name="avatar" value=${decoded.photo} /></p>` +
-        `<p>Bio: <input type="text" name="bio" id="bio" value=${decoded.bio}placeholder="Short bio"  /></p>` +
+        `<p>Bio: <input type="text" name="bio" id="bio" value='${decoded.bio}' placeholder="Short bio"  /></p>` +
         '<p><input type="submit" value="Send" /></p>' +
         '</form>'
     );
