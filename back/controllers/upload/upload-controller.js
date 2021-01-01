@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
 const { validateImage } = require('./validateImage');
 const { fileExists, deleteFile } = require('./utils');
+const { storePathInDb } = require('./storePahInDb');
 
 /**
  * Método para cargar imágenes de perfil.
@@ -57,12 +58,7 @@ async function uploadAvatar(req, res, next) {
     const pathToStore = uploadPath.split('/').splice(8).join('/'); 
     */
 
-    const storePathInDb = await userRepository.storeAvatar([fileName, id]);
-    if (!storePathInDb) {
-      const error = new Error('Something weird happened writting in DB, data may be lost. Please try again');
-      error.code = 500;
-      throw error;
-    }
+    await storePathInDb(fileName, id);
 
     res.status(200).json({ ok: true, message: 'file upload successful' });
   } catch (error) {

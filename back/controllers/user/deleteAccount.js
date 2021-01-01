@@ -14,7 +14,6 @@ async function deleteAccount(req, res, next) {
   try {
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
-    console.log(decoded);
 
     if (decoded.status === 'a') {
       await userRepository.changeStatus(['e', decoded.id]);

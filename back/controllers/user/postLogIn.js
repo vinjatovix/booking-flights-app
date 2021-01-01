@@ -2,6 +2,7 @@
 
 const Joi = require('joi');
 const userRepository = require('../../repositories/user-repository');
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -23,7 +24,6 @@ async function postLogIn(req, res, next) {
       password: Joi.string().required(),
     });
     await loginSchema.validateAsync(req.body);
-
     const { email, password } = req.body;
     const [user] = await userRepository.getUserByEmail(email);
 

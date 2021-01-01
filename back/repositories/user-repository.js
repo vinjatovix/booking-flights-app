@@ -18,7 +18,7 @@ async function getUserByEmail(email) {
 /**
  * Inserta los datos de usuario en la base de datos
  *
- * @param {*} arr [username,usermail,password,bio]
+ * @param {*} arr [username,usermail,password,avatar,bio]
  */
 async function createUser(arr) {
   const pool = await db.getPool();
