@@ -3,6 +3,7 @@
 const userRepository = require('../../repositories/user-repository');
 const bcrypt = require('bcryptjs');
 const { registerSchema } = require('../../repositories/registerSchema');
+const { sendEmail } = require('./sendEmail');
 
 /**
  * Controlador del registro de usuario.
@@ -27,8 +28,12 @@ async function postSignIn(req, res, next) {
       throw error;
     }
 
+    sendEmail();
+    console.log('Email enviado');
+
     const passwordHash = await bcrypt.hash(password, 12);
     const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
+
     res.status(200).send({ userId: id });
   } catch (err) {
     next(err);

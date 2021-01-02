@@ -6,6 +6,7 @@ const { googleLogin } = require('../google/googleLogin');
 const { getUpdateData, postUpdateData } = require('./updateData');
 const { getUpdatePass, postUpdatePass } = require('./updatePassword');
 const { deleteAccount } = require('./deleteAccount');
+const { sendEmail } = require('./sendEmail');
 
 module.exports = {
   postLogIn,
@@ -16,4 +17,5 @@ module.exports = {
   postUpdatePass,
   deleteAccount,
   googleLogin,
+  sendEmail,
 };
