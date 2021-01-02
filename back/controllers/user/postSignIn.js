@@ -19,16 +19,22 @@ const { sendEmail } = require('./sendEmail');
  */
 async function postSignIn(req, res, next) {
   try {
+    //? Validamos el Body
     await registerSchema.validateAsync(req.body);
     const { username, email, password, bio } = req.body;
 
+    //? Buscamos si ya existe ese usuario
     const [user] = await userRepository.getUserByEmail(email);
     if (user) {
       const error = new Error('Sorry that mail is already in use');
       error.code = 400;
       throw error;
     }
+    //? Encriptamos la contraseña y guardamos el usuario en la base
+    const passwordHash = await bcrypt.hash(password, 12);
+    const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
 
+    //? Generamos el mail de registro
     const mail = {
       email,
       subject: 'FLanders User Sign In',
@@ -36,13 +42,11 @@ async function postSignIn(req, res, next) {
       Your mail ${email} has been registered into the Fligh Landers service.`,
       html: `<H1>Greetings ${username}:</H1>
       <p>Your mail ${email} has been registered into the Fligh Landers service.</p>
-      <p>Please <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Log In </a> to activate your account.</p>`
-    }
+      <p>Please <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Log In </a> to activate your account.</p>`,
+    };
     sendEmail(mail, next);
 
-    const passwordHash = await bcrypt.hash(password, 12);
-    const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
-
+    //? Respondemos
     res.status(200).send({ userId: id });
   } catch (err) {
     next(err);
