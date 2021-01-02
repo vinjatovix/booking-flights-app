@@ -10,7 +10,7 @@ const fileUpload = require('express-fileupload');
 
 const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
-const { publicController, usersController, uploadController } = require('./controllers');
+const { publicController, usersController, uploadController, amadeusController } = require('./controllers');
 
 //? SETUP
 //* ========= ENV
@@ -49,6 +49,8 @@ app.put('/update', validateAuth, usersController.postUpdateData);
 app.put('/updatepass', validateAuth, usersController.postUpdatePass);
 app.put('/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/delete', validateAuth, usersController.deleteAccount);
+
+app.get('/amadeus/flanders', amadeusController.getFlight);
 
 //? AUTHORIZED
 
