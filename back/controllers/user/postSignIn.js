@@ -29,7 +29,16 @@ async function postSignIn(req, res, next) {
       throw error;
     }
 
-    sendEmail(email);
+    const mail = {
+      email,
+      subject: 'FLanders User Sign In',
+      text: `Greetings ${username}:
+      Your mail ${email} has been registered into the Fligh Landers service.`,
+      html: `<H1>Greetings ${username}:</H1>
+      <p>Your mail ${email} has been registered into the Fligh Landers service.</p>
+      <p>Please <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Log In </a> to activate your account.</p>`
+    }
+    sendEmail(mail, next);
 
     const passwordHash = await bcrypt.hash(password, 12);
     const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
