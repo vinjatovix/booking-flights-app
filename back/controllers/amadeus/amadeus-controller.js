@@ -27,6 +27,12 @@ async function getFlight(req, res, next) {
         headers: { authorization: 'Bearer ' + process.env.AMADEUS_TOKEN },
       }
     ).then((res) => res.json());
+
+    if (response.errors) {
+      const error = new Error(response.errors[0].detail);
+      error.code = response.errors[0].status;
+      throw error;
+    }
     const data = response.data;
     res.status(200).send(data);
   } catch (error) {
