@@ -9,6 +9,7 @@ const { sendEmail } = require('./sendEmail');
  * Controlador del registro de usuario.
  * Validamos el contenido del body con Joi.
  * Verificamos que no esxiste ese mail en la base.
+ * Mandamos un email de confirmación
  * Encroptamos la contraseña.
  * Insertamos el usuario en la base y devolvemos el Id del registro creado
  *
@@ -28,8 +29,7 @@ async function postSignIn(req, res, next) {
       throw error;
     }
 
-    sendEmail();
-    console.log('Email enviado');
+    sendEmail(email);
 
     const passwordHash = await bcrypt.hash(password, 12);
     const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;

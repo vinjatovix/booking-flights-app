@@ -1,5 +1,28 @@
 'use strict';
 
+const sgMail = require('@sendgrid/mail');
+const { SENDGRID_API_KEY } = process.env;
+
+async function sendEmail(email) {
+  try {
+    sgMail.setApiKey(SENDGRID_API_KEY);
+    const msg = {
+      to: email,
+      from: 'flanders.bender@gmail.com',
+      subject: 'Email automático',
+      text: 'Hola, soy un email y he sido enviado a través de un servidor Node.js',
+      html: '<strong> esto es una prueba solo, no se alarmen</strong>',
+    };
+
+    await sgMail.send(msg);
+  } catch (err) {
+    err.status = 400;
+    console.log(err);
+  }
+}
+
+module.exports = { sendEmail };
+
 // NODEMAILER
 // const nodemailer = require('nodemailer');
 // const { EMAIL_USER, EMAIL_PASS } = process.env;
@@ -27,26 +50,3 @@
 //     console.log(err);
 //   }
 // }
-
-const sgMail = require('@sendgrid/mail');
-const { SENDGRID_API_KEY } = process.env;
-
-async function sendEmail() {
-  try {
-    sgMail.setApiKey(SENDGRID_API_KEY);
-    const msg = {
-      to: 'luciamsobrido@gmail.com',
-      from: 'flanders.bender@gmail.com',
-      subject: 'Email automático',
-      text: 'Hola, soy un email y he sido enviado a través de un servidor Node.js',
-      html: '<strong> esto es una prueba solo, no se alarmen</strong>',
-    };
-
-    await sgMail.send(msg);
-  } catch (err) {
-    err.status = 400;
-    console.log(err);
-  }
-}
-
-module.exports = { sendEmail };
