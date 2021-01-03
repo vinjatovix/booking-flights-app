@@ -39,6 +39,10 @@ async function getFlight(req, res, next) {
       throw new Error('Choose an available date');
     }
 
+    if (date2 && date2 < date1) {
+      throw new Error('Choose an available date. Return date cannot be earlier than the date of origin');
+    }
+
     // await getToken(next);
     // const response = await fetch(
     //   `${url}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}`,
