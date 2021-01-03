@@ -15,7 +15,7 @@ async function getFlight(req, res, next) {
       destinationLocationCode: Joi.string().min(3).max(3).required(),
       departureDate: Joi.date().iso().required(),
       returnDate: Joi.date().iso(),
-      adults: Joi.number().required(),
+      adults: Joi.number().greater(0).required(),
       nonStop: Joi.boolean(),
     });
     await searchSchema.validateAsync(req.body);
@@ -32,8 +32,6 @@ async function getFlight(req, res, next) {
     const date2 = getMiliseconds(returnDate);
     const date = new Date();
     const dateNow = getMiliseconds(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
-
-    console.log(date1, dateNow);
 
     if (date1 < dateNow) {
       throw new Error('Choose an available date');
