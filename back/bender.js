@@ -44,13 +44,12 @@ app.post('/google', usersController.googleLogin);
 app.get('/update', validateAuth, usersController.getUpdateData);
 app.get('/updatepass', validateAuth, usersController.getUpdatePass);
 
-
 app.put('/update', validateAuth, usersController.postUpdateData);
 app.put('/updatepass', validateAuth, usersController.postUpdatePass);
 app.put('/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/delete', validateAuth, usersController.deleteAccount);
 
-app.get('/amadeus/flanders', amadeusController.getFlight);
+app.post('/search/flights', amadeusController.getFlight);
 
 //? AUTHORIZED
 
