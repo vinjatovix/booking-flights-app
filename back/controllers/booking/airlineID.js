@@ -1,5 +1,5 @@
 'use strict';
-const locationRepository = require('../../repositories/location-repository');
+const locationRepository = require('../../repositories/location/location-repository');
 const { getAirlineId } = require('../location/getAirlineId');
 
 /**
