@@ -10,7 +10,13 @@ const fileUpload = require('express-fileupload');
 
 const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
-const { publicController, usersController, uploadController, amadeusController } = require('./controllers');
+const {
+  publicController,
+  usersController,
+  uploadController,
+  amadeusController,
+  bookingController,
+} = require('./controllers');
 
 //? SETUP
 //* ========= ENV
@@ -44,15 +50,15 @@ app.post('/google', usersController.googleLogin);
 app.get('/update', validateAuth, usersController.getUpdateData);
 app.get('/updatepass', validateAuth, usersController.getUpdatePass);
 
-
 app.put('/update', validateAuth, usersController.postUpdateData);
 app.put('/updatepass', validateAuth, usersController.postUpdatePass);
 app.put('/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/delete', validateAuth, usersController.deleteAccount);
 
+// app.get('/search/airport', amadeusController.getAirport);
 app.get('/amadeus/flanders', amadeusController.getFlight);
 
-//? AUTHORIZED
+app.post('/bookFlight', validateAuth, bookingController.bookFlight); // TODO: Si no hay aeropuerto o ciudad ya los escribe en la base
 
 //!!!! WINSTON TIENE QUE ESTAR AL FINAL DE TODO
 app.use(e404);
