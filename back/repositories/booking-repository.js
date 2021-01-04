@@ -11,15 +11,24 @@ async function getAirportByIATA(iata) {
 }
 
 async function createFlight(object) {
-  const { Vue_origenID, Vue_destinoID, Vue_companyID, Vue_hora, Vue_duracion, Vue_paradas } = object;
+  const {
+    Vue_origenID,
+    Vue_destinoID,
+    Vue_companyID,
+    Vue_horaSalida,
+    Vue_horaLlegada,
+    Vue_duracion,
+    Vue_paradas,
+  } = object;
   const pool = await db.getPool();
   const query =
-    'INSERT INTO Vuelos (Vue_origenID, Vue_destinoID, Vue_companyID,Vue_hora,Vue_duracion,Vue_paradas) VALUES (?,?,?,?,?,?)';
+    'INSERT INTO Vuelos (Vue_origenID, Vue_destinoID, Vue_companyID,Vue_horaSalida,Vue_horaLlegada,Vue_duracion,Vue_paradas) VALUES (?,?,?,?,?,?,?)';
   const [result] = await pool.execute(query, [
     Vue_origenID,
     Vue_destinoID,
     Vue_companyID,
-    Vue_hora,
+    Vue_horaSalida,
+    Vue_horaLlegada,
     Vue_duracion,
     Vue_paradas,
   ]);
