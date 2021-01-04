@@ -1,7 +1,5 @@
 'use strict';
-const { fetchAmadeus } = require('../amadeus/amadeus-controller');
-const locationRepository = require('../../repositories/location-repository');
-const { makeAirportInfoUrl } = require('../amadeus/makeAirportInfoUrl');
+const locationRepository = require('../../repositories/location/location-repository');
 const { getPaisId } = require('./getPaisId');
 const { getLocaId } = require('./getLocaId');
 const airports = require('airportsjs');

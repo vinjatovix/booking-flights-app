@@ -1,7 +1,7 @@
 'use strict';
 
 const { fetchAmadeus } = require('../amadeus/amadeus-controller');
-const locationRepository = require('../../repositories/location-repository');
+const locationRepository = require('../../repositories/location/location-repository');
 
 async function getAirlineId(isOriginInDb, iata, next) {
   if (!isOriginInDb || isOriginInDb.length === 0) {

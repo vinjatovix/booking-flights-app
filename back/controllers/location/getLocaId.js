@@ -1,5 +1,5 @@
 'use strict';
-const locationRepository = require('../../repositories/location-repository');
+const locationRepository = require('../../repositories/location/location-repository');
 const fetch = require('node-fetch');
 const { makeInfoCityUrl } = require('../GeoDB/geoDB-controller');
 
@@ -11,13 +11,10 @@ const { makeInfoCityUrl } = require('../GeoDB/geoDB-controller');
  * @param {*} next "Error control middleware"
  * @return {Number} "City id in DB"
  */
-async function getLocaId(airport, paisId, next) {
-  // TODO: Provocar errores
-  console.log('hola')
+async function getLocaId(airport, paisId) {
   const [city] = await locationRepository.getCityByName(airport.city);
   if (!city || city.length === 0) {
     let url = makeInfoCityUrl(airport);
-    console.log(url)
     const { data } = await fetch(url, {
       method: 'GET',
       headers: {
@@ -27,7 +24,6 @@ async function getLocaId(airport, paisId, next) {
     }).then((response) => {
       return response.json();
     });
-    console.log(data)
     const newCity = data[0];
     const newCityData = [newCity.name, paisId, newCity.latitude, newCity.longitude];
 
