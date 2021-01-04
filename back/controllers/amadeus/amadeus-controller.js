@@ -28,6 +28,8 @@ async function getFlight(req, res, next) {
       throw new Error('Please choose a valid airport');
     }
 
+    console.log(req.body);
+
     const date1 = getMiliseconds(departureDate);
     const date2 = getMiliseconds(returnDate);
     const date = new Date();
@@ -41,16 +43,16 @@ async function getFlight(req, res, next) {
       throw new Error('Choose an available date. Return date cannot be earlier than the date of origin');
     }
 
-    // await getToken(next);
-    // const response = await fetch(
-    //   `${url}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}`,
-    //   {
-    //     method: 'get',
-    //     headers: { authorization: 'Bearer ' + process.env.AMADEUS_TOKEN },
-    //   }
-    // ).then((res) => res.json());
-    // const data = response.data;
-    // res.status(200).send(data);
+    await getToken(next);
+    const response = await fetch(
+      `${url}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}`,
+      {
+        method: 'get',
+        headers: { authorization: 'Bearer ' + process.env.AMADEUS_TOKEN },
+      }
+    ).then((res) => res.json());
+    const data = response.data;
+    res.status(200).send(data);
     res.send('Acaba aqui');
   } catch (error) {
     next(error);
