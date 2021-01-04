@@ -2,14 +2,10 @@
 const { airportID } = require('./airportID');
 const { airlineId } = require('./airlineID');
 const { createFlight, createBookingHeader, createBookingDetail } = require('../../repositories/booking-repository');
-const { object } = require('joi');
 
 const numeroParadas = (itinerario) => {
   return itinerario.segments.length - 1;
 };
-function myFunc(arg) {
-  console.log(`arg was => ${arg}`);
-}
 
 const bookFlight = async (req, res, next) => {
   try {
@@ -27,14 +23,14 @@ const bookFlight = async (req, res, next) => {
     const idaOrigenID = await airportID(idaOriginLocationCode, next);
     const idaDestinationLocationCode = ida.segments[idaParadas].arrival.iataCode;
     const idaFechaSalida = ida.segments[0].departure.at;
-    const idaFechaLLegada = ida.segments[idaParadas].arrival.at;
+    // const idaFechaLLegada = ida.segments[idaParadas].arrival.at;
 
     const vuelta = req.body.itineraries[1];
     const vueltaParadas = numeroParadas(vuelta);
     const vueltaCarrierId = vuelta.segments[vueltaParadas].operating.carrierCode;
     const vueltaOperatingCmp_ID = await airlineId([vueltaCarrierId], next);
     const vueltaFechaSalida = vuelta.segments[0].departure.at;
-    const vueltaFechaLLegada = vuelta.segments[vueltaParadas].arrival.at;
+    // const vueltaFechaLLegada = vuelta.segments[vueltaParadas].arrival.at;
 
     //? Airport Info
     
