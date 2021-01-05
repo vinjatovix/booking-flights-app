@@ -1,90 +1,55 @@
 'use strict';
-const { airportID } = require('./airportID');
-const { airlineId } = require('./airlineID');
-const { createFlight, createBookingHeader, createBookingDetail } = require('../../repositories/booking-repository');
-const { wait } = require('../utils/utils-controller');
-const numeroParadas = (itinerario) => {
-  return itinerario.segments.length - 1;
-};
 
+const path = require('path');
+const { basicInputDataValidation } = require('./basicInputDataValidation');
+const { setInitialBookingCache } = require('./setInitialBookingCache');
+const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
+const { createBookingHeader, createBookingDetail } = require('../../repositories/booking/booking-repository');
+const { bookingHeaderSchema } = require("../../repositories/booking/bookingHeaderSchema");
+
+/**
+ *  Receives flight booking data object, writes on MySQL DB and returns the results of the Booking
+ *
+ * @param {Object} req {auth,body}
+ * @param {Object} res
+ * @param {*} next
+ */
 async function bookFlight(req, res, next) {
   try {
-    const booking = {};
-    //? Flight info
-    const ida = req.body.itineraries[0];
-    const idaParadas = numeroParadas(ida);
-    const idaCarrierId = ida.segments[0].operating.carrierCode;
-    const idaOperatingCmp_ID = await airlineId([idaCarrierId], next);
-    const idaOriginLocationCode = ida.segments[0].departure.iataCode;
-    const idaDestinationLocationCode = ida.segments[idaParadas].arrival.iataCode;
-    const idaFechaSalida = ida.segments[0].departure.at;
-    const idaFechaLLegada = ida.segments[idaParadas].arrival.at;
-    const vuelta = req.body.itineraries[1];
-    const vueltaParadas = numeroParadas(vuelta);
-    const vueltaCarrierId = vuelta.segments[vueltaParadas].operating.carrierCode;
-    const vueltaOperatingCmp_ID = await airlineId([vueltaCarrierId], next);
-    const vueltaFechaSalida = vuelta.segments[0].departure.at;
-    const vueltaFechaLLegada = vuelta.segments[vueltaParadas].arrival.at;
-    //? Airport Info
-    const idaOrigenID = await airportID(idaOriginLocationCode, next);
-    await wait(1000); //! He tenido que ralentizar un segundo el proceso para que le de tiempo a escribir en caso de que falten datos
-    const idaDestinoID = await airportID(idaDestinationLocationCode, next);
-    console.log(idaOrigenID, idaDestinoID);
+    //? Validamos que existe el usuario y que los datos de entrada llegan
+    basicInputDataValidation(req);
 
-    //? Price Info
-    const { price } = req.body;
+    //TODO: RECIBIR NUMERO DE ADULTOS
+    const adults = 3;
 
-    //? User Info
-    //? Booking data
-    booking.idaToVue = {
-      Vue_origenID: idaOrigenID,
-      Vue_destinoID: idaDestinoID,
-      Vue_companyID: idaOperatingCmp_ID,
-      Vue_horaSalida: idaFechaSalida,
-      Vue_horaLlegada: idaFechaLLegada,
-      Vue_duracion: ida.duration,
-      Vue_paradas: idaParadas,
-    };
-    booking.vueltaToVue = {
-      Vue_origenID: idaDestinoID,
-      Vue_destinoID: idaOrigenID,
-      Vue_companyID: vueltaOperatingCmp_ID,
-      Vue_horaSalida: vueltaFechaSalida,
-      Vue_horaLlegada: vueltaFechaLLegada,
-      Vue_duracion: vuelta.duration,
-      Vue_paradas: vueltaParadas,
-    };
-    const idaVue_ID = await createFlight(booking.idaToVue);
-    const vueltaVue_ID = await createFlight(booking.vueltaToVue);
-    booking.toRC = {
-      RC_UsrID: req.auth.id,
-      RC_base: price.base,
-      RC_total: price.grandTotal,
-    };
-    const RC_ID = await createBookingHeader(booking.toRC);
-    booking.toRD = [
-      {
-        RD_VueID: idaVue_ID,
-        RD_RCID: RC_ID,
-        RD_adults: 1,
-      },
-      {
-        RD_VueID: vueltaVue_ID,
-        RD_RCID: RC_ID,
-        RD_adults: 1,
-      },
-    ];
-    let arr = [];
-    for (const vuelo of booking.toRD) {
-      arr.push(await createBookingDetail(vuelo));
+    //? Set the Cache
+    let bookingCache = setInitialBookingCache(req, adults);
+
+    await bookingHeaderSchema.validateAsync(bookingCache.header);
+    //? Creamos la Cabecera de reserva en la base MySQL
+    const RC_ID = await createBookingHeader(bookingCache);
+
+    //? Añadimos los detalles de reserva a la cache
+    bookingCache = await pushDetailsIntoCache('ida', RC_ID, bookingCache, req, next);
+
+    if (req.body.itineraries[1]) {
+      bookingCache = await pushDetailsIntoCache('vuelta', RC_ID, bookingCache, req, next);
     }
-    console.log(arr);
-    const rDetails = await booking.toRD.map((object) => createBookingDetail(object));
-    console.log(await rDetails);
-    console.table(booking);
+
+    //? Escribimos los datos de detalle en la base MySQL
+    for (const detail of bookingCache.details) {
+      await createBookingDetail(detail);
+    }
+
     //? Response
-    res.status(200).send(booking);
+    res.status(200).send(bookingCache);
   } catch (error) {
+    // TODO: Si algo falla que borre todo lo escrito en la base de esta operacion
+
+    if (error.name === 'ValidationError') {
+      error.code = 400;
+      error.file = path.basename(__filename);
+    }
     next(error);
   }
 }

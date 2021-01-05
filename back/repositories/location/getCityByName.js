@@ -3,7 +3,8 @@ const db = require('../../infraestructure/database');
 
 //? CITIES
 /**
- * Returns MySQL fields for the given city
+ * Returns MySQL fields for the given city, 
+ * May return empty arrays
  *
  * @param {String} cityName
  * @return {Array}

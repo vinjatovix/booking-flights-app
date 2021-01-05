@@ -9,7 +9,6 @@ const { storePathInDb } = require('../upload/storePahInDb');
 const { registerSchema } = require('../../repositories/registerSchema');
 const bcrypt = require('bcryptjs');
 
-// TODO almacenar la foto de google en la base
 
 // const jwt = require('jsonwebtoken');
 

@@ -79,7 +79,7 @@ function winstonCatch() {
     }
 
     logThis(err, req);
-    res.status(err.code || 500).send({ error: err.message });
+    res.json(err);
   };
 }
 

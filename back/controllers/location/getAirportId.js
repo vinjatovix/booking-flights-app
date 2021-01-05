@@ -3,6 +3,7 @@ const locationRepository = require('../../repositories/location/location-reposit
 const { getPaisId } = require('./getPaisId');
 const { getLocaId } = require('./getLocaId');
 const airports = require('airportsjs');
+const { validateReturn } = require('../utils/utils-controller');
 /**
  *  May receive or not an array with info from MySQL DB.
  * if there is no airport stored will create a new one.
@@ -14,21 +15,31 @@ const airports = require('airportsjs');
  * @return {Number} "Returns an Airport ID"
  */
 async function getAirportId(isOriginInDb, originLocationCode, next) {
-  if (!isOriginInDb || isOriginInDb.length === 0) {
-    //? Si no existe hay que registrarlo.
-    const airportInfo = airports.lookupByIataCode(originLocationCode);
-    console.log(airportInfo);
-    //? A que pais pertenece (Necesitamos Pais_ID)
-    const { name, country, latitude, longitude } = airportInfo;
-    const paisId = await getPaisId(country);
-    console.log(paisId);
-    //? A que ciudad pertence (Necesitamos Loca_ID)
-    const locaId = await getLocaId(airportInfo, paisId, next);
-    console.log(locaId);
-    const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
-    const newAirportId = await locationRepository.createAirport(aeropuerto);
-    return newAirportId;
+  try {
+    if (!isOriginInDb || isOriginInDb.length === 0) {
+      //? Si no hay info en la base MySQL buscará info en la librería
+      const airportInfo = await airports.lookupByIataCode(originLocationCode);
+
+      //? Si no hay info no podemos continuar
+      validateReturn(airportInfo);
+
+      const { name, country, latitude, longitude } = airportInfo;
+
+      //? localizaará el país y localidad a los que pertenece
+      const paisId = await getPaisId(country);
+      const locaId = await getLocaId(airportInfo, paisId, next);
+
+      //? Y guardará esa información en la base de datos
+      const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
+      const newAirportId = await locationRepository.createAirport(aeropuerto);
+
+      //?Respuesta
+      return newAirportId;
+    }
+    return isOriginInDb[0].Aero_ID;
+  } catch (error) {
+    error.code = error.code || 500;
+    next(error);
   }
-  return isOriginInDb[0].Aero_ID;
 }
 module.exports = { getAirportId };

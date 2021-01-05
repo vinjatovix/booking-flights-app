@@ -9,8 +9,14 @@ const { getAirportId } = require('../location/location-controller');
  * @return {Number} "number id"
  */
 async function airportID(iata, next) {
-  const isInDb = await locationRepository.getAirportByIATA(iata);
-  const airportID = await getAirportId(isInDb, iata, next);
-  return airportID;
+  try {
+    //? Se busca el aeropuerto en la base MySQL que puede o no estar
+    const storedAirport = await locationRepository.getAirportByIATA(iata);
+
+    //? Se devuelve un ID de aeropuerto
+    return await getAirportId(storedAirport, iata, next);
+  } catch (err) {
+    next(err);
+  }
 }
 module.exports = { airportID };
