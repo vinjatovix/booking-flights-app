@@ -26,8 +26,10 @@ async function postSignIn(req, res, next) {
     //? Buscamos si ya existe ese usuario
     const [user] = await userRepository.getUserByEmail(email);
     if (user) {
-      const error = new Error('Sorry that mail is already in use');
+      const error = new Error();
+      error.ok = false;
       error.code = 400;
+      error.details = 'That mail is already in use';
       throw error;
     }
     //? Encriptamos la contraseña y guardamos el usuario en la base
@@ -47,7 +49,7 @@ async function postSignIn(req, res, next) {
     sendEmail(mail, next);
 
     //? Respondemos
-    res.status(200).send({ userId: id });
+    res.status(200).json({ ok: true, user: { id, username, email } });
   } catch (err) {
     next(err);
   }
