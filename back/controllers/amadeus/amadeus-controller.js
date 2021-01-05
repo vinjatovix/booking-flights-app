@@ -19,7 +19,12 @@ async function getFlight(req, res, next) {
       nonStop: Joi.boolean(),
     });
     await searchSchema.validateAsync(req.body);
+
     const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults, nonStop } = req.body;
+
+    if (req.body.nonStop === undefined) {
+      req.body.nonStop = 'false';
+    }
 
     const airport1 = validAirport(originLocationCode);
     const airport2 = validAirport(destinationLocationCode);
@@ -39,9 +44,12 @@ async function getFlight(req, res, next) {
       throw new Error('Choose an available date');
     }
 
+    // Comprobar cuando se distinga de ida o ida y vuelta comprobar si funciona esta validación
     if (date2 && date2 < date1) {
       throw new Error('Choose an available date. Return date cannot be earlier than the date of origin');
     }
+
+    console.log(nonStop);
 
     await getToken(next);
     const response = await fetch(
@@ -53,7 +61,6 @@ async function getFlight(req, res, next) {
     ).then((res) => res.json());
     const data = response.data;
     res.status(200).send(data);
-    res.send('Acaba aqui');
   } catch (error) {
     next(error);
   }
