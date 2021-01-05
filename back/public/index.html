@@ -16,6 +16,27 @@
           <li><a href="/signin">Sign In</a></li>
         </ul>
       </nav>
+      <form method="post" action="/" enctype="multipart/form-data">
+        <label for="originLocationCode">Origen</label>
+        <input type="text" name="originLocationCode" id="originLocationCode" placeholder="Origen" required /><br />
+        <label for="destinationLocationCode">Destino</label>
+        <input
+          type="text"
+          name="destinationLocationCode"
+          id="destinationLocationCode"
+          placeholder="Destino"
+          required
+        /><br />
+        <label for="departureDate">Fecha de salida</label>
+        <input type="date" name="departureDate" id="departureDate" required /><br />
+        <label for="returnDate">Fecha de vuelta</label>
+        <input type="date" name="returnDate" id="returnDate" /><br />
+        <label for="adults">Personas</label>
+        <input type="number" name="adults" id="adults" placeholder="Personas" required /><br />
+        <label for="nonStop">Sin escalas</label>
+        <input type="checkbox" name="nonStop" id="nonStop" value="true" /><br />
+        <input type="submit" value="Send" formaction="/search/flights" />
+      </form>
     </header>
   </body>
 </html>

@@ -55,8 +55,7 @@ app.put('/updatepass', validateAuth, usersController.postUpdatePass);
 app.put('/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/delete', validateAuth, usersController.deleteAccount);
 
-// app.get('/search/airport', amadeusController.getAirport);
-app.get('/amadeus/flanders', amadeusController.getFlight);
+app.post('/search/flights', amadeusController.getFlight);
 
 app.post('/bookFlight', validateAuth, bookingController.bookFlight); // TODO: Si no hay aeropuerto o ciudad ya los escribe en la base
 
