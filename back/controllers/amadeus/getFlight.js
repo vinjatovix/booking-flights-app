@@ -2,8 +2,8 @@
 const Joi = require('joi');
 const path = require('path');
 const { fetchAmadeus } = require('./fetchAmadeus');
-const { validAirport, getMiliseconds } = require('../../repositories/booking-repository');
-
+const { getMiliseconds } = require('../../repositories/booking-repository');
+const { airportID } = require('../booking/airportID');
 /**
  * This is the fisrt function to search flighs on amadeus
  *
@@ -24,12 +24,11 @@ async function getFlight(req, res, next) {
     });
     await searchSchema.validateAsync(req.body);
     const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults } = req.body;
-    const nonStop = req.body.nonStop === undefined ? false : true;
+    const nonStop = req.body.nonStop === undefined ? false : req.body.nonStop;
+    const airport1 = await airportID(originLocationCode);
+    const airport2 = await airportID(destinationLocationCode);
 
-    const airport1 = validAirport(originLocationCode);
-    const airport2 = validAirport(destinationLocationCode);
-
-    if (airport1 !== true || airport2 !== true) {
+    if (!(airport1 || airport2)) {
       throw new Error('Please choose a valid airport');
     }
 
@@ -48,10 +47,16 @@ async function getFlight(req, res, next) {
     }
 
     //? API CONNECTION
-    const initialApiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-    const finalUrl = `${initialApiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}`;
-    const { data } = await fetchAmadeus(finalUrl, next);
-
+    const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
+    const url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    console.log(url);
+    const { data } = await fetchAmadeus(url, next);
+    if (!data || data.length === 0) {
+      return res.status(200).json({
+        ok: true,
+        data: 'No Flights avaibles for that search, please try another settings',
+      });
+    }
     res.status(200).send(data);
   } catch (error) {
     if (!error.file) {
