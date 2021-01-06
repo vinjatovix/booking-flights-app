@@ -10,4 +10,4 @@ function validateReturn(response) {
   }
   return true;
 }
-exports.validateReturn = validateReturn;
+module.exports = { validateReturn };
