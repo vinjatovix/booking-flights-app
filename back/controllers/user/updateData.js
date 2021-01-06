@@ -14,7 +14,6 @@ const userRepository = require('../../repositories/user-repository');
 function getUpdateData(req, res) {
   const token = req.headers.authorization;
   const decoded = jwt.decode(token);
-  console.log(decoded)
   res
     .status(200)
     .send(
@@ -50,7 +49,7 @@ async function postUpdateData(req, res, next) {
 
     await userRepository.updateData([username, bio, photo, decoded.id]);
 
-    res.send({ Estado: 'Perfil actualizado' });
+    res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio, photo } });
   } catch (err) {
     next(err);
   }
