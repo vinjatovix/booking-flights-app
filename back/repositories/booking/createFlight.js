@@ -1,10 +1,16 @@
 'use strict';
 const db = require('../../infraestructure/database');
 const { verifyMysqlWrite } = require('../verifyMysqlWrite');
-const { setItineraryType } = require('./booking-repository');
+const { setItineraryType } = require('./setItineraryType');
 
+/**
+ * Stores the booking cache to Vuelos in MySQL DB
+ *
+ * @param {Object} bookingCache
+ * @param {*} itineraryType
+ * @return {Number}
+ */
 async function createFlight(bookingCache, itineraryType) {
-  console.log(itineraryType);
   const itinerary = setItineraryType(itineraryType);
 
   const {
@@ -31,6 +37,5 @@ async function createFlight(bookingCache, itineraryType) {
 
   verifyMysqlWrite(result);
   return result.insertId;
-  // console.log(Vue_companyID);
 }
 module.exports = { createFlight };

@@ -1,6 +1,6 @@
 'use strict';
 const db = require('../../infraestructure/database');
-const { verifyMysqlWrite } = require("../verifyMysqlWrite");
+const { verifyMysqlWrite } = require('../verifyMysqlWrite');
 
 /**
  * Creates a row in ReservaDetalles in MySQL DB
@@ -22,4 +22,3 @@ async function createBookingDetail(bookingDetails) {
 }
 
 module.exports = { createBookingDetail };
-
