@@ -57,7 +57,7 @@ async function postLogIn(req, res, next) {
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
 
-    res.status(200).send({ token });
+    res.status(200).send({ ok:true,token });
   } catch (err) {
     next(err);
   } finally {
