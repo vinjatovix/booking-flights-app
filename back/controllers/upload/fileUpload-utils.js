@@ -39,8 +39,8 @@ async function deleteFile(path) {
  * @param {Object} req
  * @return {Object}
  */
-async function createFileChunk(req) {
-  const tmpFile = req.files.archivo.tempFilePath;
+async function createFileChunk(file) {
+  const tmpFile = file.tempFilePath;
   const buffer = readChunk.sync(tmpFile, 0, 4100);
   const fileBuffer = await FileType.fromBuffer(buffer);
   return fileBuffer;

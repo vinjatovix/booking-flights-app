@@ -2,7 +2,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const { fileExists } = require('./utils');
+const { fileExists } = require('./fileUpload-utils');
 
 /**
  * Returns the path to store the pictures, if if not exists creates a new one

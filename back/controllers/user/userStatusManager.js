@@ -2,6 +2,12 @@
 const userRepository = require('../../repositories/user-repository');
 const path = require('path');
 
+/**
+ * Manages the user status on login
+ *
+ * @param {*} user
+ * @return {*}
+ */
 async function userStatusManager(user) {
   if (!['a', 'i', 'e'].includes(user.Usr_status)) {
     const error = new Error();
@@ -22,4 +28,4 @@ async function userStatusManager(user) {
   }
   return true;
 }
-exports.userStatusManager = userStatusManager;
+module.exports = { userStatusManager };

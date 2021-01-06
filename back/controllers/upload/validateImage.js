@@ -1,6 +1,6 @@
 'use strict';
 
-const { fileMaxSize, fileMinSize, validateExtension, createFileChunk } = require('./utils');
+const { fileMaxSize, fileMinSize, validateExtension, createFileChunk } = require('./fileUpload-utils');
 
 /**
  * Esta funcion valida el archivo subido por el usuario con respecto a los parametros que prefijamos,
@@ -16,19 +16,14 @@ async function validateImage(req) {
     error.code = 400;
     throw error;
   }
+  const archivo = req.files.archivo;
 
   //? Preparamos el chunk a comparar
-  const fileBuffer = await createFileChunk(req);
-
-  //? verificamos que la extension que nos devuelve read-chunk es una de las permitidas
+  const fileBuffer = await createFileChunk(archivo);
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
   validateExtension(fileBuffer, validExtensions);
 
-  const archivo = req.files.archivo;
-  //? tamaño máximo
   fileMaxSize(archivo, 5);
-
-  //? tamaño mínimo
   fileMinSize(archivo, 0);
 
   return archivo;
