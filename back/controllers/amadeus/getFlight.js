@@ -49,7 +49,6 @@ async function getFlight(req, res, next) {
     //? API CONNECTION
     const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
     const url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
-    console.log(url);
     const { data } = await fetchAmadeus(url, next);
     if (!data || data.length === 0) {
       return res.status(200).json({
