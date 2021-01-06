@@ -1,7 +1,6 @@
 'use strict';
 
-const FileType = require('file-type');
-const readChunk = require('read-chunk');
+const { fileMaxSize, fileMinSize, validateExtension, createFileChunk } = require('./utils');
 
 /**
  * Esta funcion valida el archivo subido por el usuario con respecto a los parametros que prefijamos,
@@ -19,32 +18,18 @@ async function validateImage(req) {
   }
 
   //? Preparamos el chunk a comparar
-  const tmpFile = req.files.archivo.tempFilePath;
-  const buffer = readChunk.sync(tmpFile, 0, 4100);
-  const tipo = await FileType.fromBuffer(buffer);
+  const fileBuffer = await createFileChunk(req);
 
   //? verificamos que la extension que nos devuelve read-chunk es una de las permitidas
-  const archivo = req.files.archivo;
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
-  if (!tipo || tipo.length === 0 || !validExtensions.includes(tipo.ext)) {
-    const error = new Error('That file is not valid...');
-    error.code = 400;
-    throw error;
-  }
+  validateExtension(fileBuffer, validExtensions);
 
+  const archivo = req.files.archivo;
   //? tamaño máximo
-  if (archivo.size > 5000000) {
-    const error = new Error('File size is too large, image size must be less than 5mb.');
-    error.code = 400;
-    throw error;
-  }
+  fileMaxSize(archivo, 5);
 
   //? tamaño mínimo
-  if (archivo.size <= 0) {
-    const error = new Error('File is empty or corrupted');
-    error.code = 400;
-    throw error;
-  }
+  fileMinSize(archivo, 0);
 
   return archivo;
 }

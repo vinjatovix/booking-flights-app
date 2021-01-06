@@ -2,6 +2,13 @@
 
 const userRepository = require('../../repositories/user-repository');
 
+/**
+ * Stores the new path to the file in db
+ *
+ * @param {string} fileName
+ * @param {number} id
+ * @return {Boolean} 
+ */
 async function storePathInDb(fileName, id) {
   const storePathInDb = await userRepository.storeAvatar([fileName, id]);
   if (!storePathInDb) {
@@ -9,6 +16,7 @@ async function storePathInDb(fileName, id) {
     error.code = 500;
     throw error;
   }
+  return true
 }
 
 module.exports = { storePathInDb };

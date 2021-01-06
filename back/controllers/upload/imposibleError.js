@@ -1,4 +1,11 @@
 'use strict';
+
+/**
+ * This is a callback needed for deleting files.
+ * this should never happen.
+ *
+ * @return {Error} 
+ */
 function imposibleError() {
   return (error) => {
     if (error) {
