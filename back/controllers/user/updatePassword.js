@@ -50,15 +50,16 @@ async function postUpdatePass(req, res, next) {
     const valid = await bcrypt.compare(password, user.Usr_password);
 
     if (!valid) {
-      const error = new Error('Incorrect password. Enter a valid one');
-      error.code = 401;
+      const error = new Error();
+      (error.ok = false), (error.code = 401);
+      error.details = 'Incorrect password. Password not updated.';
       throw error;
     }
 
     const passwordHash = await bcrypt.hash(newPassword, 12);
     await userRepository.updatePass([passwordHash, decoded.id]);
 
-    res.send({ Estado: 'Contraseña actualizada correctamente' });
+    res.send({ ok: true, details: 'Password successfully updated.' });
   } catch (err) {
     next(err);
   }

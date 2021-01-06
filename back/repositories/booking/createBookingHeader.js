@@ -11,7 +11,7 @@ const { verifyMysqlWrite } = require('../verifyMysqlWrite');
 
 async function createBookingHeader(bookingCache) {
   const { RC_UsrID, RC_base, RC_total } = bookingCache.header;
-  const array = [RC_UsrID, +RC_base, +RC_total * bookingCache.adults];
+  const array = [RC_UsrID, +RC_base, +RC_total];
 
   const pool = await db.getPool();
   const query = 'INSERT INTO ReservaCabeceras (RC_UsrID,RC_base,RC_total) VALUES (?,?,?)';
