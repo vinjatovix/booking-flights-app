@@ -77,7 +77,8 @@ function winstonCatch() {
       err.message = 'Access denied';
       err.code = 401;
     }
-
+    err.ok = err.ok || false;
+    err.code = err.code || 500;
     logThis(err, req);
     res.status(err.code).json(err);
   };
