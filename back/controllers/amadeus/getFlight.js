@@ -56,7 +56,8 @@ async function getFlight(req, res, next) {
         data: 'No Flights avaibles for that search, please try another settings',
       });
     }
-    res.status(200).send(data);
+    const response = { adults, data };
+    res.status(200).json(response);
   } catch (error) {
     if (!error.file) {
       error.file = path.basename(__filename);
