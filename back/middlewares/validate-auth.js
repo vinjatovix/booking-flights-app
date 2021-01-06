@@ -10,7 +10,10 @@ function validateAuth(req, res, next) {
     req.auth = decodedToken;
     next();
   } catch (err) {
-    const error = new Error('Access denied. Please, log in with valid credentials.');
+    const error = new Error();
+    err.ok = false;
+    err.code = 401;
+    err.details = 'Access denied. Please, log in with valid credentials.';
     next(error);
   }
 }
