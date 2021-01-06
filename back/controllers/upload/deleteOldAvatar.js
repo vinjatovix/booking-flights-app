@@ -1,5 +1,5 @@
 'use strict';
-const { fileExists, deleteFile } = require('./fileUpload-utils');
+const { fileExists, deleteFile } = require('../utils/utils-controller');
 
 /**
  * Deletes the old avatar picture from the system
