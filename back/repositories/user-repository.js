@@ -1,7 +1,6 @@
 'use strict';
 
 const db = require('../infraestructure/database');
-const { verifyMysqlWrite } = require('./verifyMysqlWrite');
 
 /**
  * Devuelve el usuario de la base al que corresponde el email si lo hubiese
@@ -25,7 +24,7 @@ async function createUser(arr) {
   const pool = await db.getPool();
   const query = 'INSERT INTO Usuarios (Usr_nombre, Usr_email, Usr_password,Usr_bio) VALUES (?, ?, ?, ?)';
   const [result] = await pool.execute(query, arr);
-  verifyMysqlWrite(result);
+
 
   return result;
 }
@@ -39,7 +38,6 @@ async function updateData(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_nombre = ?, Usr_bio = ?, Usr_foto = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
-  verifyMysqlWrite(result);
   
   return result;
 }
@@ -53,7 +51,6 @@ async function updatePass(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_password = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
-  verifyMysqlWrite(result);
   
   return result;
 }
@@ -76,7 +73,7 @@ async function storeAvatar(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_foto = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
-  verifyMysqlWrite(result);
+
   
   return result;
 }
@@ -85,7 +82,7 @@ async function changeStatus(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_status = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
-  verifyMysqlWrite(result);
+
 
   return result;
 }
