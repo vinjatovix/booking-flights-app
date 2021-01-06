@@ -42,11 +42,11 @@ logger.stream = {
  * @param {*} req
  */
 function logThis(err, req) {
-  logger.error(
-    `ERROR: ${err.code} - ip: ${req.ip} - method: ${req.method} - url: ${req.originalUrl} - ${
-      err.message
-    }} - ${new Date(Date.now()).toUTCString()}`
-  );
+  logger.error({
+    date: `${new Date(Date.now()).toUTCString()}`,
+    head: { error: err.code, method: req.method, ip: req.ip, file: err.file },
+    error: { url: req.originalUrl, details: err.details },
+  });
 }
 
 /**
