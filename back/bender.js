@@ -52,8 +52,8 @@ app.get('/update/pass', validateAuth, usersController.getUpdatePass);
 
 app.put('/update', validateAuth, usersController.postUpdateData);
 app.put('/update/pass', validateAuth, usersController.postUpdatePass);
-app.put('/upload', validateAuth, uploadController.uploadAvatar);
-app.put('/delete', validateAuth, usersController.deleteAccount);
+app.put('/update/upload', validateAuth, uploadController.uploadAvatar);
+app.put('/update/delete', validateAuth, usersController.deleteAccount);
 
 app.post('/search/flights', amadeusController.getFlight);
 
