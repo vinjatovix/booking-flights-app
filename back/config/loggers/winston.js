@@ -79,6 +79,7 @@ function winstonCatch() {
     }
     err.ok = err.ok || false;
     err.code = err.code || 500;
+    err.details = err.details || 'Unknown error...'
     logThis(err, req);
     res.status(err.code).json(err);
   };
