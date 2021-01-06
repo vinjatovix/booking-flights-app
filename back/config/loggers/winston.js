@@ -79,7 +79,7 @@ function winstonCatch() {
     }
 
     logThis(err, req);
-    res.json(err);
+    res.status(err.code).json(err);
   };
 }
 
