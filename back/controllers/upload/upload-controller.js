@@ -7,28 +7,23 @@ const userRepository = require('../../repositories/user-repository');
 const { validateImage } = require('./validateImage');
 const { fileExists, deleteFile } = require('./utils');
 const { storePathInDb } = require('./storePahInDb');
-
+const { getStorePath } = require('./getStorePath');
 /**
- * Método para cargar imágenes de perfil.
+ * This method updates the picture profile on the system.
  *
- * @param {*} req
- * @param {*} res
+ * @param {Object} req
+ * @param {JSON} res
  * @param {*} next
  */
 async function uploadAvatar(req, res, next) {
   try {
     const { id } = jwt.decode(req.headers.authorization);
 
-    //? Validamos que el tipo de archivo sea segun especificaciones
-    const archivo = await validateImage(req, next);
+    //? Validamos que el tipo de archivo sea según especificaciones
+    const file = await validateImage(req, next);
 
     //? si no existe el directorio de almacenamiento lo creamos
-    const storePath = path.join(__dirname, '/../../assets/avatars/');
-    if (!(await fileExists(storePath))) {
-      await fs.mkdir(storePath, {
-        recursive: true,
-      });
-    }
+    const storePath = await getStorePath();
 
     //? Si Existe una foto anterior la borramos
     const [oldAvatar] = await userRepository.getAvatar(id);
@@ -40,14 +35,14 @@ async function uploadAvatar(req, res, next) {
     }
 
     //? Creamos los datos relativos al usuario, path,nombre de archivo...
-    let extension = archivo.name.split('.');
+    let extension = file.name.split('.');
     extension = extension[extension.length - 1].toLowerCase();
     //! le añado los milisegundos para evitar errores de chache que digan que la foto ya existe y para que no se pueda acceder a la foto simplemente sabiendo el id del usuario
     const fileName = `${id}-${Date.now()}.${extension}`;
     const uploadPath = path.join(__dirname, '/../../assets/avatars/', fileName);
 
     //? subimos el archivo a su directorio en el Back End
-    await archivo.mv(uploadPath, (error) => {
+    await file.mv(uploadPath, (error) => {
       if (error) {
         throw error; //TODO: EN CASO DE QUE NO EXISTIESE EL DIRECTORIO NO CONSIGO ENVIAR ESTE ERROR AL MIDDLEWARE Y QUE NO ENVIE LA RESPUESTA SIGUIENTE ------> HELP!!
       }
@@ -60,7 +55,7 @@ async function uploadAvatar(req, res, next) {
 
     await storePathInDb(fileName, id);
 
-    res.status(200).json({ ok: true, message: 'file upload successful' });
+    res.status(200).json({ ok: true, details: 'File upload successfully' });
   } catch (error) {
     // deleteFile(req.files.archivo.tempFilePath); //? en caso de error, eliminamos el archivo subido para que no quede basura
     next(error);
