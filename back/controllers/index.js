@@ -1,7 +1,7 @@
 'use strict';
 
 const amadeusController = require('./amadeus/amadeus-controller');
-const bookingController = require('./booking/bookingController');
+const bookingController = require('./booking/booking-controller');
 const geoDbController = require('./GeoDB/geoDB-controller');
 const googleController = require('./google/googleLogin');
 const locationController = require('./location/location-controller');
