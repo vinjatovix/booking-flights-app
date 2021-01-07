@@ -3,7 +3,7 @@
 const { createBookingDetail } = require('./createBookingDetail');
 const { createBookingHeader } = require('./createBookingHeader');
 const { createFlight } = require('./createFlight');
-const { getBookings, getBookingDetail, getFligthData, getAirport } = require('./showBookings');
+const { getBookings, getBookingDetail, getFligthData, getAirport, getCompany } = require('./showBookings');
 
 module.exports = {
   createFlight,
@@ -13,4 +13,5 @@ module.exports = {
   getBookingDetail,
   getFligthData,
   getAirport,
+  getCompany,
 };
