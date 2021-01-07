@@ -4,7 +4,7 @@ function setInitialBookingCache(req, adults) {
     header: {
       RC_UsrID: req.auth.id,
       RC_base: +req.body.price.base,
-      RC_total: +(req.body.price.grandTotal * adults).toFixed(2),
+      RC_total: +req.body.price.grandTotal,
       adults,
     },
     details: [],
