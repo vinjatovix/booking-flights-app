@@ -21,17 +21,20 @@ async function pushDetailsIntoCache(itinerarie, RD_RCID, bookingCache, req, next
 
   //? definimos el callback a usar para los datos, ida o vuelta y lo ejecutamos
   const itineraryData = await datosItinerario(itinerarie, req, next);
-
+  console.log('datos itinerario', itineraryData);
   //? añadimos el itinerario a la cache
   bookingCache = await addItineraryToBookingCache(bookingCache, itineraryData, itinerarie);
 
-  //? Validamos los datos contra el esquema para la base
-  await itinerarySchema.validateAsync(bookingCache[`${itinerary}`]);
+  // //? Validamos los datos contra el esquema para la base
 
-  //? Creamos el detalle de la reserva en la base MySQL
-  const RD_VueID = await createFlight(bookingCache, itinerarie);
-  bookingCache.details.push({ RD_RCID, RD_VueID, RD_adults: bookingCache.header.adults });
-  return bookingCache;
+  console.log('------------------> ', bookingCache[`${itinerary}`]);
+  bookingCache[`${itinerary}`].map((trayecto) => itinerarySchema.validateAsync(trayecto));
+  // await itinerarySchema.validateAsync(bookingCache[`${itinerary}`]);
+
+  // //? Creamos el detalle de la reserva en la base MySQL
+  // const RD_VueID = await createFlight(bookingCache, itinerarie);
+  // bookingCache.details.push({ RD_RCID, RD_VueID, RD_adults: bookingCache.header.adults });
+  // return bookingCache;
 }
 
 module.exports = { pushDetailsIntoCache };

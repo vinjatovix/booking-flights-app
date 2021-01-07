@@ -1,4 +1,5 @@
 'use strict';
+const { validateReturn } = require('../utils/validateReturn');
 const { setItineraryType } = require('./setItineraryType');
 
 /**
@@ -11,16 +12,10 @@ const { setItineraryType } = require('./setItineraryType');
  */
 async function addItineraryToBookingCache(bookingCache, itineraryObject, itineraryType) {
   const itinerary = await setItineraryType(itineraryType);
+  console.log('OBJETO ITINERARIO !!!!!!!!!!!!!!!!! ',itineraryObject);
 
-  bookingCache[`${itinerary}`] = {
-    Vue_paradas: itineraryObject.paradas,
-    Vue_horaSalida: itineraryObject.horaSalida,
-    Vue_horaLlegada: itineraryObject.horaLLegada,
-    Vue_duracion: itineraryObject.duracion,
-    Vue_origenID: itineraryObject.origenID,
-    Vue_destinoID: itineraryObject.destinoID,
-    Vue_companyID: itineraryObject.operatingCmp_ID,
-  };
+  bookingCache[`${itinerary}`] = [itineraryObject.paradas];
+
   return bookingCache;
 }
 module.exports = { addItineraryToBookingCache };
