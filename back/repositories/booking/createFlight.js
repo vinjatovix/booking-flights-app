@@ -8,7 +8,7 @@ const { verifyMysqlWrite } = require('../verifyMysqlWrite');
  * @param {String} itineraryType "ida || vuelta"
  * @return {Number} "Vue_ID"
  */
-async function createFlight(segment, itineraryType) {
+async function createFlight(segment) {
   const {
     Vue_origenID,
     Vue_destinoID,

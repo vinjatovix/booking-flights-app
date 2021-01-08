@@ -9,7 +9,7 @@ const { createFlight, createBookingDetail } = require('../../repositories/bookin
 
 async function storeBookingSegment(segment, itineraryType, RC_ID) {
   
-  const Vue_ID = await createFlight(segment, itineraryType);
+  const Vue_ID = await createFlight(segment);
   const RD_direccion = itineraryType === 'ida' ? 0 : 1;
   const RD_ID = await createBookingDetail(Vue_ID, RC_ID,RD_direccion);
   segment.Vue_ID = Vue_ID;
