@@ -1,6 +1,5 @@
 'use strict';
 const path = require('path');
-
 const locationRepository = require('../../repositories/location/location-repository');
 const { getAirlineId } = require('../location/getAirlineId');
 
@@ -11,13 +10,10 @@ const { getAirlineId } = require('../location/getAirlineId');
  * @param {*} next
  * @return {Number}
  */
-async function airlineId(iata, next) {
+async function airlineID(iata, next) {
   try {
-    //? Buscamos la aerolinea en la base
-    const isInDb = await locationRepository.getAirlineByIATA(iata);
-    const airlineId = await getAirlineId(isInDb, iata, next);
-
-    //? Si no la encuentra no podemos continuar
+    const existingAirline = await locationRepository.getAirlineByIATA(iata);
+    const airlineId = await getAirlineId(existingAirline, iata, next);
     if (!airlineId || airlineId.length === 0) {
       const error = new Error();
       error.code = 500;
@@ -30,4 +26,4 @@ async function airlineId(iata, next) {
     next(error);
   }
 }
-module.exports = { airlineId };
+module.exports = { airlineID };
