@@ -9,10 +9,10 @@ const { verifyMysqlWrite } = require('../verifyMysqlWrite');
  * @return {Number} "Inserted RD_ID"
  */
 
-async function createBookingDetail(RD_VueID, RD_RCID) {
+async function createBookingDetail(RD_VueID, RD_RCID, RD_direccion) {
   const pool = await db.getPool();
-  const query = 'INSERT INTO ReservaDetalles (RD_VueID,RD_RCID) VALUES (?,?)';
-  const [result] = await pool.execute(query, [RD_VueID, RD_RCID]);
+  const query = 'INSERT INTO ReservaDetalles (RD_VueID,RD_RCID,RD_direccion) VALUES (?,?,?)';
+  const [result] = await pool.execute(query, [RD_VueID, RD_RCID, RD_direccion]);
   verifyMysqlWrite(result);
 
   return result.insertId;

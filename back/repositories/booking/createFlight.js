@@ -19,7 +19,6 @@ async function createFlight(segment, itineraryType) {
     Vue_duracion,
     Vue_paradas,
   } = segment;
-  const Vue_direccion = itineraryType === 'ida' ? 0 : 1;
 
   const pool = await db.getPool();
   const fligthExists = 'SELECT Vue_ID FROM Vuelos WHERE (Vue_origenID,Vue_companyID,Vue_horaSalida) = (?,?,?)';
@@ -27,7 +26,7 @@ async function createFlight(segment, itineraryType) {
 
   if (!storedFlight || storedFlight.length === 0) {
     const newFlight =
-      'INSERT INTO Vuelos (Vue_origenID, Vue_destinoID, Vue_companyID, Vue_aircraft, Vue_horaSalida, Vue_horaLlegada, Vue_duracion, Vue_paradas, Vue_direccion) VALUES (?,?,?,?,?,?,?,?,?)';
+      'INSERT INTO Vuelos (Vue_origenID, Vue_destinoID, Vue_companyID, Vue_aircraft, Vue_horaSalida, Vue_horaLlegada, Vue_duracion, Vue_paradas) VALUES (?,?,?,?,?,?,?,?)';
     const [result] = await pool.execute(newFlight, [
       Vue_origenID,
       Vue_destinoID,
@@ -37,7 +36,6 @@ async function createFlight(segment, itineraryType) {
       Vue_horaLlegada,
       Vue_duracion,
       Vue_paradas,
-      Vue_direccion,
     ]);
 
     verifyMysqlWrite(result);
