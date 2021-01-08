@@ -15,5 +15,6 @@ module.exports = {
   getBookingDetail,
   getFligthData,
   getAirport,
+
   itinerarySchema,
 };
