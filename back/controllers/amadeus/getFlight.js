@@ -38,14 +38,19 @@ async function getFlight(req, res, next) {
     const dateNow = getMiliseconds(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
 
     if (date1 < dateNow) {
-      throw new Error('Choose an available date');
+      const error = new Error();
+      error.code=400;
+      error.details = 'Choose an available date'
+      next(error)
     }
-
+    
     // Comprobar cuando se distinga de ida o ida y vuelta comprobar si funciona esta validación
     if (date2 && date2 < date1) {
-      throw new Error('Choose an available date. Return date cannot be earlier than the date of origin');
+      const error = new Error();
+      error.code = 400
+      error.details = ('Choose an available date. Return date cannot be earlier than the date of origin');
+      next(error)
     }
-
     //? API CONNECTION
     const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
     const url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;

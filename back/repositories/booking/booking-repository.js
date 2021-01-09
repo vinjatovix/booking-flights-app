@@ -5,6 +5,8 @@ const { createBookingHeader } = require('./createBookingHeader');
 const { createFlight } = require('./createFlight');
 const { getBookings, getBookingDetail, getFligthData, getAirport, getCompany } = require('./showBookings');
 
+const { itinerarySchema } = require('./itinerarySchema');
+
 module.exports = {
   createFlight,
   createBookingHeader,
@@ -14,4 +16,5 @@ module.exports = {
   getFligthData,
   getAirport,
   getCompany,
+  itinerarySchema,
 };

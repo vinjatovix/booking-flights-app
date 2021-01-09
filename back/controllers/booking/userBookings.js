@@ -67,8 +67,9 @@ async function userBookings(req, res, next) {
           duración: fligthData[1].Vue_duracion,
         },
         detalles: {
-          por_persona: RC_bookings[0].RC_base,
-          total: RC_bookings[0].RC_total,
+          cada_vuelo: RC_bookings[0].RC_base,
+          total_por_persona: RC_bookings[0].RC_total,
+          subtotal: (RC_bookings[0].RC_total * RD_bookings[1].RD_adults).toFixed(2),
           estado: RC_bookings[0].RC_status,
         },
       },

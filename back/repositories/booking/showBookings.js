@@ -51,7 +51,7 @@ async function getAirport(id) {
 }
 
 /**
- * Muestra el nombre de la compañía de cada vuelo según su id
+ * Muestra el nombre de la compañía según su id
  *
  * @param {*} number (id)
  */
