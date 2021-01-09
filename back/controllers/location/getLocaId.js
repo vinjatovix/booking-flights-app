@@ -4,7 +4,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 const { makeInfoCityUrl } = require('../GeoDB/geoDB-controller');
 const { wait } = require('../utils/utils-controller');
-const { verifyGeoDbData } = require('./verifyGeoDbData');
+const { validateReturn } = require('../utils/utils-controller');
 
 /**
  * Search on MySQL DB for Loca_ID, if not exists creates a new city in DB
@@ -35,12 +35,12 @@ async function getLocaId(airport, paisId, next) {
       const { data: geoDbCityInfo } = await fetch(cityInfoDealer, fetchOptions).then((loot) => loot.json());
 
       //? Si no encontramos información sobre la ciudad no podemos continuar.
-      verifyGeoDbData(geoDbCityInfo);
+      validateReturn(geoDbCityInfo, 'City information', 404);
 
       //? Si obtenemos información creamos la ciudad en la Base MySQL
       const newCity = geoDbCityInfo[0];
       const newCityData = [newCity.name, paisId, newCity.latitude, newCity.longitude];
-      const newCityID = await locationRepository.createCity(newCityData);
+      const newCityID = await locationRepository.createCity(newCityData, next);
 
       //? RESPUESTA
       return newCityID;
@@ -49,11 +49,11 @@ async function getLocaId(airport, paisId, next) {
   } catch (error) {
     if (error.message === "Cannot read property '0' of undefined") {
       error.code = 503;
-      error.message = 'Cities Server Busy, please Try Again';
+      error.details = 'Cities Server Busy, please Try Again';
     }
     if (error.code === undefined || !error.code) {
       error.code = 500;
-      error.message = 'unknown error at: ' + path.basename(__filename);
+      error.details = 'unknown error at: ' + path.basename(__filename);
     }
     next(error);
   }

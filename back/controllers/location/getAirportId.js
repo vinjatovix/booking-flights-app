@@ -21,7 +21,7 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
       const airportInfo = await airports.lookupByIataCode(originLocationCode);
 
       //? Si no hay info no podemos continuar
-      validateReturn(airportInfo);
+      validateReturn(airportInfo, 'New Airport Info', 404);
 
       const { name, country, latitude, longitude } = airportInfo;
 
@@ -31,11 +31,12 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
 
       //? Y guardará esa información en la base de datos
       const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
-      return await locationRepository.createAirport(aeropuerto);
+      return await locationRepository.createAirport(aeropuerto, next);
     }
     return isOriginInDb[0].Aero_ID;
   } catch (error) {
     error.code = error.code || 500;
+    error.details = 'Unknown error about getAirportId';
     next(error);
   }
 }

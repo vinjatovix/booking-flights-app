@@ -15,14 +15,13 @@ async function airlineID(iata, next) {
     const existingAirline = await locationRepository.getAirlineByIATA(iata);
     const airlineId = await getAirlineId(existingAirline, iata, next);
     if (!airlineId || airlineId.length === 0) {
-      const error = new Error();
-      error.code = 500;
-      error.file = path.basename(__filename);
-      error.details = 'Error fetching Airline';
-      next(error);
+      throw new Error();
     }
     return airlineId;
   } catch (error) {
+    error.code = error.code || 503;
+    error.details = error.details || 'Error fetching Airline';
+    error.file = path.basename(__filename);
     next(error);
   }
 }

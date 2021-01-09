@@ -1,6 +1,5 @@
 'use strict';
 const db = require('../../infraestructure/database');
-const { verifyMysqlWrite } = require('../verifyMysqlWrite');
 
 /**
  * Register a new airline in MySQL DB
@@ -14,9 +13,9 @@ async function createAirline(airlineData, next) {
     const pool = await db.getPool();
     const query = 'INSERT INTO Companias (Cmp_iata, Cmp_nombre) VALUES (?,?)';
     const [result] = await pool.execute(query, airlineData);
-    verifyMysqlWrite(result);
     return result.insertId;
   } catch (error) {
+    error.code = isNaN(error.code) ? 503 : error.code;
     next(error);
   }
 }

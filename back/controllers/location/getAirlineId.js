@@ -19,7 +19,7 @@ async function getAirlineId(isOriginInDb, iata, next) {
       const { data: amadeusAirlineInfo } = await fetchAmadeus(airlineInfoUrl, next);
 
       //? Si amadeus no nos responde no podemos darla de alta
-      validateReturn(amadeusAirlineInfo);
+      validateReturn(amadeusAirlineInfo, 'Airline Info', 503);
 
       //? Introducimos la comapñia aérea en el sistema
       const newAirline = [iata, amadeusAirlineInfo[0].commonName];

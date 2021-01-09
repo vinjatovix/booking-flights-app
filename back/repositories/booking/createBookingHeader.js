@@ -1,6 +1,5 @@
 'use strict';
 const db = require('../../infraestructure/database');
-const { verifyMysqlWrite } = require('../verifyMysqlWrite');
 
 /**
  *  Inserts a new booking on ReservaCabeceras
@@ -17,10 +16,11 @@ async function createBookingHeader(bookingCache, next) {
     const pool = await db.getPool();
     const query = 'INSERT INTO ReservaCabeceras (RC_UsrID,RC_base,RC_total, RC_adults) VALUES (?,?,?,?)';
     const [result] = await pool.execute(query, array);
-    verifyMysqlWrite(result);
 
     return result.insertId;
   } catch (error) {
+    error.code = isNaN(error.code) ? 500 : error.code;
+    error.details = error.message;
     next(error);
   }
 }

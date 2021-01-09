@@ -22,9 +22,10 @@ async function fetchAmadeus(url, next) {
 
   //? En caso de error se prepara un paquete para el middleware
   if (amadeusResponse.errors) {
-    const error = new Error(amadeusResponse.errors[0].detail);
-    error.code = amadeusResponse.errors[0].status;
-    throw error;
+    const error = new Error();
+    error.code = amadeusResponse.errors[0].status || 500;
+    error.details = amadeusResponse.errors[0].detail;
+    next(error);
   }
 
   //? Respuesta
