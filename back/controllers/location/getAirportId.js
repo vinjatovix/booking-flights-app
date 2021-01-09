@@ -31,10 +31,7 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
 
       //? Y guardará esa información en la base de datos
       const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
-      const newAirportId = await locationRepository.createAirport(aeropuerto);
-
-      //?Respuesta
-      return newAirportId;
+      return await locationRepository.createAirport(aeropuerto);
     }
     return isOriginInDb[0].Aero_ID;
   } catch (error) {
