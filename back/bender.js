@@ -48,12 +48,12 @@ app.post('/google', usersController.googleLogin);
 
 //? AUTHORIZED
 app.get('/update', validateAuth, usersController.getUpdateData);
-app.get('/updatepass', validateAuth, usersController.getUpdatePass);
+app.get('/update/pass', validateAuth, usersController.getUpdatePass);
 
 app.put('/update', validateAuth, usersController.postUpdateData);
-app.put('/updatepass', validateAuth, usersController.postUpdatePass);
-app.put('/upload', validateAuth, uploadController.uploadAvatar);
-app.put('/delete', validateAuth, usersController.deleteAccount);
+app.put('/update/pass', validateAuth, usersController.postUpdatePass);
+app.put('/update/upload', validateAuth, uploadController.uploadAvatar);
+app.put('/update/delete', validateAuth, usersController.deleteAccount);
 
 app.post('/search/flights', amadeusController.getFlight);
 app.post('/book/flight', validateAuth, bookingController.bookFlight); // TODO: Si no hay aeropuerto o ciudad ya los escribe en la base
