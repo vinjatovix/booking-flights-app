@@ -56,8 +56,8 @@ app.put('/update/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/update/delete', validateAuth, usersController.deleteAccount);
 
 app.post('/search/flights', amadeusController.getFlight);
-
 app.post('/book/flight', validateAuth, bookingController.bookFlight); // TODO: Si no hay aeropuerto o ciudad ya los escribe en la base
+app.post('/myBookings', validateAuth, bookingController.userBookings);
 
 //!!!! WINSTON TIENE QUE ESTAR AL FINAL DE TODO
 app.use(e404);

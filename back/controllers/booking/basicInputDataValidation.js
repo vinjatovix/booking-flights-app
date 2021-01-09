@@ -4,7 +4,7 @@
  * Verifies if some data exists
  *
  * @param {Object} req
- * @return {Boolean} 
+ * @return {Boolean}
  */
 function basicInputDataValidation(req) {
   if (!req.auth.id) {
@@ -21,4 +21,4 @@ function basicInputDataValidation(req) {
   }
   return true;
 }
-exports.basicInputDataValidation = basicInputDataValidation;
+module.exports = { basicInputDataValidation };
