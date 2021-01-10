@@ -23,6 +23,7 @@ const {
 const HOST = process.env.BENDER_HOST || 'localhost';
 const PORT = process.env.BENDER_PORT || 8081;
 const NODE_ENV = process.env.NODE_ENV || 'development';
+process.title = process.env.BENDER_TITLE || 'benderServer';
 
 //? APP
 const app = express();
