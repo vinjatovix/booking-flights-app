@@ -18,7 +18,7 @@ async function getFlight(req, res, next) {
       originLocationCode: Joi.string().min(3).max(3).required(),
       destinationLocationCode: Joi.string().min(3).max(3).required(),
       departureDate: Joi.date().iso().required(),
-      returnDate: Joi.date().iso(),
+      returnDate: Joi.date().iso().allow(''),
       adults: Joi.number().greater(0).required(),
       nonStop: Joi.boolean(),
     });
@@ -39,21 +39,26 @@ async function getFlight(req, res, next) {
 
     if (date1 < dateNow) {
       const error = new Error();
-      error.code=400;
-      error.details = 'Choose an available date'
-      next(error)
+      error.code = 400;
+      error.details = 'Choose an available date';
+      next(error);
     }
-    
+
     // Comprobar cuando se distinga de ida o ida y vuelta comprobar si funciona esta validación
     if (date2 && date2 < date1) {
       const error = new Error();
-      error.code = 400
-      error.details = ('Choose an available date. Return date cannot be earlier than the date of origin');
-      next(error)
+      error.code = 400;
+      error.details = 'Choose an available date. Return date cannot be earlier than the date of origin';
+      next(error);
     }
     //? API CONNECTION
     const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-    const url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    let url;
+    if (!req.body.returnDate) {
+      url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    } else {
+      url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    }
     const { data } = await fetchAmadeus(url, next);
     if (!data || data.length === 0) {
       return res.status(200).json({
