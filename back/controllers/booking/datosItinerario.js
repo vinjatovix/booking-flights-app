@@ -28,8 +28,8 @@ async function datosItinerario(RC_ID, itineraryType, req, next) {
       error.code = 400;
       error.file = path.basename(__filename);
     }
-    error.code = error.code || 500;
-    error.details = error.details || 'Unknown error with datosItinerario';
+    error.code = error.code || 400;
+    error.details = error.details || 'Not valid itineraryData found, or malformed';
     next(error);
   }
 }

@@ -12,8 +12,9 @@ const { fileMaxSize, fileMinSize, validateExtension, createFileChunk } = require
  */
 async function validateImage(req) {
   if (!req.files) {
-    const error = new Error('No files were provided');
+    const error = new Error();
     error.code = 400;
+    error.details = 'No files were provided';
     throw error;
   }
   const archivo = req.files.archivo;
