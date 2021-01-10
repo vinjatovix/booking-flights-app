@@ -36,7 +36,7 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
     return isOriginInDb[0].Aero_ID;
   } catch (error) {
     error.code = error.code || 500;
-    error.details = 'Unknown error about getAirportId';
+    error.details = error.details || 'Unknown error about getAirportId';
     next(error);
   }
 }

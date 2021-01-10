@@ -25,8 +25,8 @@ async function getFlight(req, res, next) {
     await searchSchema.validateAsync(req.body);
     const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults } = req.body;
     const nonStop = req.body.nonStop === undefined ? false : req.body.nonStop;
-    const airport1 = await airportID(originLocationCode);
-    const airport2 = await airportID(destinationLocationCode);
+    const airport1 = await airportID(originLocationCode, next);
+    const airport2 = await airportID(destinationLocationCode, next);
 
     if (!(airport1 || airport2)) {
       throw new Error('Please choose a valid airport');

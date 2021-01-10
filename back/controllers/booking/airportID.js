@@ -14,6 +14,7 @@ async function airportID(iata, next) {
 
     return await getAirportId(existingAirport, iata, next);
   } catch (err) {
+    console.log('error', err);
     err.code = err.code || 500;
     err.details = err.details || 'unknown error about airportID';
     next(err);

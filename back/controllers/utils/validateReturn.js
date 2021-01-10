@@ -2,9 +2,9 @@
 
 function validateReturn(response, expected = 'unknown', code = 500) {
   if (!response || response.length === 0) {
-    const error = new Error(`Error fetching ${expected}`);
+    const error = new Error();
     error.code = code;
-    error.details = { expected };
+    error.details = `Error fetching ${expected}. Not Found`;
     throw error;
   }
   return true;
