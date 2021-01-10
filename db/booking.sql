@@ -39,7 +39,7 @@ CREATE TABLE `Aeropuertos` (
   KEY `fk_Aero_Pais_idx` (`Aero_PaisID`),
   CONSTRAINT `fk_Aero_Loca` FOREIGN KEY (`Aero_LocaID`) REFERENCES `Localidades` (`Loca_ID`) ON UPDATE CASCADE,
   CONSTRAINT `fk_Aero_Pais` FOREIGN KEY (`Aero_PaisID`) REFERENCES `Paises` (`Pais_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `Companias` (
   PRIMARY KEY (`Cmp_ID`),
   UNIQUE KEY `Cmp_iata_UNIQUE` (`Cmp_iata`),
   UNIQUE KEY `Cmp_nombre_UNIQUE` (`Cmp_nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `Localidades` (
   PRIMARY KEY (`Loca_ID`),
   KEY `fk_Loca_Pais_idx` (`Loca_PaisID`),
   CONSTRAINT `fk_Loca_Pais` FOREIGN KEY (`Loca_PaisID`) REFERENCES `Paises` (`Pais_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,7 @@ CREATE TABLE `ReservaCabeceras` (
   KEY `RC_fecha_idx` (`RC_fecha`),
   KEY `RC_status_idx` (`RC_status`),
   CONSTRAINT `fk_RC_Usr` FOREIGN KEY (`RC_UsrID`) REFERENCES `Usuarios` (`Usr_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='La tabla cabecera de reserva identifica un conjunto de reservas para cada usuario. Es como una cabecera de factura.';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='La tabla cabecera de reserva identifica un conjunto de reservas para cada usuario. Es como una cabecera de factura.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `ReservaDetalles` (
   KEY `fk_RD_vuelo_idx` (`RD_VueID`),
   CONSTRAINT `fk_RD_RC` FOREIGN KEY (`RD_RCID`) REFERENCES `ReservaCabeceras` (`RC_ID`) ON UPDATE CASCADE,
   CONSTRAINT `fk_RD_vuelo` FOREIGN KEY (`RD_VueID`) REFERENCES `Vuelos` (`Vue_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=735 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Es el desglose de un conjunto de reservas.Sería como el desglose de una factura.';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Es el desglose de un conjunto de reservas.Sería como el desglose de una factura.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,7 +233,7 @@ DROP TABLE IF EXISTS `Usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Usuarios` (
-  `Usr_ID` mediumint unsigned NOT NULL AUTO_INCREMENT COMMENT 'Hasta  16777215  Usuarios.',
+  `Usr_ID` mediumint unsigned NOT NULL AUTO_INCREMENT COMMENT 'Hasta 16777215 Usuarios.',
   `Usr_nombre` varchar(100) NOT NULL,
   `Usr_email` varchar(200) NOT NULL COMMENT 'El mail es único y será el login de usuario.',
   `Usr_password` varchar(255) NOT NULL COMMENT 'La contraseña se encriptará en el BE.',
@@ -246,7 +246,7 @@ CREATE TABLE `Usuarios` (
   UNIQUE KEY `Usr_email_UNIQUE` (`Usr_email`),
   KEY `fk_Usuarios_1_idx` (`Usr_AeroID`),
   CONSTRAINT `fk_Usr_Aero_idx` FOREIGN KEY (`Usr_AeroID`) REFERENCES `Aeropuertos` (`Aero_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +284,7 @@ CREATE TABLE `Vuelos` (
   CONSTRAINT `fk_Vue_Cmp` FOREIGN KEY (`Vue_companyID`) REFERENCES `Companias` (`Cmp_ID`) ON UPDATE CASCADE,
   CONSTRAINT `fk_Vue_destino` FOREIGN KEY (`Vue_destinoID`) REFERENCES `Aeropuertos` (`Aero_ID`) ON UPDATE CASCADE,
   CONSTRAINT `fk_Vue_origen` FOREIGN KEY (`Vue_origenID`) REFERENCES `Aeropuertos` (`Aero_ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,4 +309,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-10 18:38:03
+-- Dump completed on 2021-01-10 18:54:26
