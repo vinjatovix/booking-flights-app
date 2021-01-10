@@ -42,6 +42,12 @@ async function postUpdatePass(req, res, next) {
       repeatNewPassword: Joi.ref('newPassword'),
     });
     await updateSchema.validateAsync(req.body);
+    if (!req.body.repeatNewPassword) {
+      const error = new Error();
+      error.code = 418;
+      error.details = "You are trying to do something not allowed... and i'm a teapot";
+      next(error);
+    }
 
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);

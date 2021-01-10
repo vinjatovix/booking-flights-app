@@ -21,6 +21,12 @@ async function postSignIn(req, res, next) {
   try {
     //? Validamos el Body
     await registerSchema.validateAsync(req.body);
+    if (!req.body.repeatNewPassword) {
+      const error = new Error();
+      error.code = 418;
+      error.details = "You are trying to do something not allowed... and i'm a teapot";
+      next(error);
+    }
     const { username, email, password, bio } = req.body;
 
     //? Buscamos si ya existe ese usuario
