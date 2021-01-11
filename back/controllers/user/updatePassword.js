@@ -4,6 +4,7 @@ const Joi = require('joi');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
+const { wait } = require('../utils/wait');
 
 /**
  *? Ruta hacia la página de cambio de contraseña.
@@ -45,13 +46,14 @@ async function postUpdatePass(req, res, next) {
     if (!req.body.repeatNewPassword) {
       const error = new Error();
       error.code = 418;
-      error.details = "You are trying to do something not allowed... and i'm a teapot";
+      error.details = "You are tying to do something not allowed, and i'm a teapot";
       next(error);
     }
 
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
     const [user] = await userRepository.getUserByEmail(decoded.email);
+    await wait(1000);
     const { password, newPassword } = req.body;
     const valid = await bcrypt.compare(password, user.Usr_password);
 

@@ -33,8 +33,6 @@ async function postLogIn(req, res, next) {
     res.status(200).send({ ok: true, token });
   } catch (err) {
     next(err);
-  } finally {
-    // TODO: close connection
   }
 }
 

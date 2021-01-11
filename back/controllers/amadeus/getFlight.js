@@ -4,6 +4,7 @@ const path = require('path');
 const { fetchAmadeus } = require('./fetchAmadeus');
 const { getMiliseconds } = require('../../repositories/booking-repository');
 const { airportID } = require('../booking/airportID');
+const { wait } = require('../utils/wait');
 /**
  * This is the fisrt function to search flighs on amadeus
  *
@@ -19,7 +20,7 @@ async function getFlight(req, res, next) {
       destinationLocationCode: Joi.string().min(3).max(3).required(),
       departureDate: Joi.date().iso().required(),
       returnDate: Joi.date().iso().allow(''),
-      adults: Joi.number().greater(0).required(),
+      adults: Joi.number().min(1).max(9).required(),
       nonStop: Joi.boolean(),
     });
     await searchSchema.validateAsync(req.body);
@@ -59,6 +60,7 @@ async function getFlight(req, res, next) {
     } else {
       url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
     }
+    await wait(1500);
     const { data } = await fetchAmadeus(url, next);
     if (!data || data.length === 0) {
       return res.status(200).json({
