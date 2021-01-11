@@ -53,7 +53,6 @@ async function postUpdatePass(req, res, next) {
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
     const [user] = await userRepository.getUserByEmail(decoded.email);
-    await wait(1000);
     const { password, newPassword } = req.body;
     const valid = await bcrypt.compare(password, user.Usr_password);
 
@@ -61,14 +60,16 @@ async function postUpdatePass(req, res, next) {
       const error = new Error();
       (error.ok = false), (error.code = 401);
       error.details = 'Incorrect password. Password not updated.';
-      throw error;
+      next(error);
     }
 
     const passwordHash = await bcrypt.hash(newPassword, 12);
+    await wait(1000);
     await userRepository.updatePass([passwordHash, decoded.id]);
 
     res.send({ ok: true, details: 'Password successfully updated.' });
   } catch (err) {
+    err.details = err.message;
     next(err);
   }
 }

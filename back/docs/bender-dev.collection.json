@@ -515,6 +515,7 @@
 									"});",
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"email\", jsonData.user.email);",
+									"pm.environment.set(\"username\", jsonData.user.username);",
 									""
 								],
 								"type": "text/javascript"
@@ -1377,7 +1378,8 @@
 									"});",
 									"pm.test(\"User info updated\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"actualizado\");",
-									"});"
+									"});",
+									"pm.environment.set(\"username\", pm.response.json().user.username);"
 								],
 								"type": "text/javascript"
 							}
@@ -1700,6 +1702,7 @@
 									"});",
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"email\", jsonData.user.email);",
+									"pm.environment.set(\"username\", jsonData.user.username);",
 									"",
 									""
 								],
@@ -3050,9 +3053,9 @@
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.ok).to.eql(false);",
 											"});",
-											"pm.test(\"It's a repeat password error\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.details[0].path[0]).to.eql(\"repeatNewPassword\");",
+											"",
+											"pm.test(\"Repeat password error\", function () {",
+											"    pm.expect(pm.response.text()).to.include(\"ref\");",
 											"});"
 										],
 										"type": "text/javascript"
