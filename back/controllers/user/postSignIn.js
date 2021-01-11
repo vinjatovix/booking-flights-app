@@ -21,7 +21,7 @@ async function postSignIn(req, res, next) {
   try {
     //? Validamos el Body
     await registerSchema.validateAsync(req.body);
-    if (!req.body.repeatNewPassword) {
+    if (!req.body.repeatPassword) {
       const error = new Error();
       error.code = 418;
       error.details = "You are trying to do something not allowed... and i'm a teapot";
