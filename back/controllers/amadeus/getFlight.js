@@ -1,10 +1,10 @@
 'use strict';
-const Joi = require('joi');
 const path = require('path');
 const { fetchAmadeus } = require('./fetchAmadeus');
 const { getMiliseconds } = require('../../repositories/booking-repository');
 const { airportID } = require('../booking/airportID');
 const { wait } = require('../utils/wait');
+const { getFlightSchema } = require('./getFlightSchema');
 /**
  * This is the fisrt function to search flighs on amadeus
  *
@@ -15,15 +15,7 @@ const { wait } = require('../utils/wait');
 async function getFlight(req, res, next) {
   try {
     //? VALIDATION
-    const searchSchema = Joi.object({
-      originLocationCode: Joi.string().min(3).max(3).required(),
-      destinationLocationCode: Joi.string().min(3).max(3).required(),
-      departureDate: Joi.date().iso().required(),
-      returnDate: Joi.date().iso().allow(''),
-      adults: Joi.number().min(1).max(9).required(),
-      nonStop: Joi.boolean(),
-    });
-    await searchSchema.validateAsync(req.body);
+    await getFlightSchema.validateAsync(req.body);
     const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults } = req.body;
     const nonStop = req.body.nonStop === undefined ? false : req.body.nonStop;
     const airport1 = await airportID(originLocationCode, next);

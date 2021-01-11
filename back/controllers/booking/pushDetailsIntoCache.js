@@ -1,26 +1,26 @@
 'use strict';
-3;
+
 const { datosItinerario } = require('./datosItinerario');
 
 /**
  * Stores itinerary data and returns cache
- * @param {String} itinerary "ida || vuelta"
- * @param {*} bookingCache
- * @param {*} req
+ * @param {String} itineraryType "ida || vuelta"
+ * @param {Object} bookingCache
+ * @param {Object} req "Original request"
  * @param {*} next
  */
-async function pushDetailsIntoCache(itinerary, bookingCache, req, next) {
-  if (!['ida', 'vuelta'].includes(itinerary)) {
+async function pushDetailsIntoCache(itineraryType, bookingCache, req, next) {
+  if (!['ida', 'vuelta'].includes(itineraryType)) {
     const error = new Error();
     error.code = 403;
-    error.details = `${itinerary} is not a valid itinerary`;
+    error.details = `${itineraryType} is not a valid itinerary`;
     next(error);
   }
 
   const { RC_ID } = bookingCache.header;
-  const itineraryData = await datosItinerario(RC_ID, itinerary, req, next);
+  const itineraryData = await datosItinerario(RC_ID, itineraryType, req, next);
 
-  bookingCache.details[`${itinerary}`] = itineraryData[`${itinerary}`];
+  bookingCache.details[`${itineraryType}`] = itineraryData[`${itineraryType}`];
 
   return bookingCache.details;
 }

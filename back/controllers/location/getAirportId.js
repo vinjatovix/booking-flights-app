@@ -1,9 +1,11 @@
 'use strict';
-const locationRepository = require('../../repositories/location/location-repository');
-const { getPaisId } = require('./getPaisId');
-const { getLocaId } = require('./getLocaId');
+
 const airports = require('airportsjs');
+const { getLocaId } = require('./getLocaId');
+const { getPaisId } = require('./getPaisId');
+const locationRepository = require('../../repositories/location/location-repository');
 const { validateReturn } = require('../utils/utils-controller');
+
 /**
  *  May receive or not an array with info from MySQL DB.
  * if there is no airport stored will create a new one.
@@ -16,28 +18,29 @@ const { validateReturn } = require('../utils/utils-controller');
  */
 async function getAirportId(isOriginInDb, originLocationCode, next) {
   try {
-    if (!isOriginInDb || isOriginInDb.length === 0) {
-      //? Si no hay info en la base MySQL buscará info en la librería
-      const airportInfo = await airports.lookupByIataCode(originLocationCode);
-
-      //? Si no hay info no podemos continuar
-      validateReturn(airportInfo, 'New Airport Info', 404);
-
-      const { name, country, latitude, longitude } = airportInfo;
-
-      //? localizaará el país y localidad a los que pertenece
-      const paisId = await getPaisId(country);
-      const locaId = await getLocaId(airportInfo, paisId, next);
-
-      //? Y guardará esa información en la base de datos
-      const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
-      return await locationRepository.createAirport(aeropuerto, next);
+    if (isOriginInDb[0] !== undefined && isOriginInDb[0].Aero_ID > 0) {
+      return isOriginInDb[0].Aero_ID;
     }
-    return isOriginInDb[0].Aero_ID;
+
+    //? Si no hay info en la base MySQL buscará info en la librería
+    const airportInfo = await airports.lookupByIataCode(originLocationCode);
+
+    //? Si no hay info no podemos continuar
+    validateReturn(airportInfo, 'New Airport Info', 404);
+
+    //? localizará el país y localidad a los que pertenece
+    const { name, country, latitude, longitude } = airportInfo;
+    const paisId = await getPaisId(country);
+    const locaId = await getLocaId(airportInfo, paisId, next);
+
+    //? Y guardará esa información en la base de datos
+    const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
+    return await locationRepository.createAirport(aeropuerto, next);
   } catch (error) {
     error.code = error.code || 500;
     error.details = error.details || 'Unknown error about getAirportId';
     next(error);
   }
 }
+
 module.exports = { getAirportId };

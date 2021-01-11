@@ -3,11 +3,11 @@
 const path = require('path');
 
 const { basicInputDataValidation } = require('./basicInputDataValidation');
-const { setInitialBookingCache } = require('./setInitialBookingCache');
-const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
 const { bookingHeaderSchema } = require('../../repositories/booking/bookingHeaderSchema');
 const { createBookingHeader } = require('../../repositories/booking/booking-repository');
+const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
 const { sendBookingPDF } = require('../pdf/pdf-controller');
+const { setInitialBookingCache } = require('./setInitialBookingCache');
 
 /**
  * Stores a new booking on the system

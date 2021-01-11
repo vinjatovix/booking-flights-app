@@ -1,7 +1,7 @@
 'use strict';
-const path = require('path');
-const locationRepository = require('../../repositories/location/location-repository');
 const { getAirlineId } = require('../location/getAirlineId');
+const locationRepository = require('../../repositories/location/location-repository');
+const path = require('path');
 
 /**
  *  Returns an airline id for a given IATA code

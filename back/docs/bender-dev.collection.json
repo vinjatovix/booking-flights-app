@@ -2215,7 +2215,7 @@
 										},
 										{
 											"key": "email",
-											"value": "flanders.demo@mailinator.com",
+											"value": "{{email}}",
 											"type": "text"
 										},
 										{
@@ -4618,6 +4618,178 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"code\": 400,\n    \"details\": \"Choose an available date\",\n    \"ok\": false\n}"
+								}
+							]
+						},
+						{
+							"name": "/search/flight (Return before going)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"pm.test(\"Return date cannot be earlier than the date of origin\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.details).to.eql(\"Choose an available date. Return date cannot be earlier than the date of origin\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "originLocationCode",
+											"value": "SCQ",
+											"type": "text"
+										},
+										{
+											"key": "destinationLocationCode",
+											"value": "LGW",
+											"type": "text"
+										},
+										{
+											"key": "departureDate",
+											"value": "2021-02-28",
+											"type": "text"
+										},
+										{
+											"key": "returnDate",
+											"value": "2021-01-28",
+											"type": "text"
+										},
+										{
+											"key": "adults",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "nonStop",
+											"value": "false",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/search/flights",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"search",
+										"flights"
+									]
+								},
+								"description": "# Try to time travel\nTries to search a date return before departure date"
+							},
+							"response": [
+								{
+									"name": "/search/flight (Return before going)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "originLocationCode",
+													"value": "SCQ",
+													"type": "text"
+												},
+												{
+													"key": "destinationLocationCode",
+													"value": "LGW",
+													"type": "text"
+												},
+												{
+													"key": "departureDate",
+													"value": "2021-02-28",
+													"type": "text"
+												},
+												{
+													"key": "returnDate",
+													"value": "2021-01-28",
+													"type": "text"
+												},
+												{
+													"key": "adults",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "nonStop",
+													"value": "false",
+													"type": "text"
+												}
+											],
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/search/flights",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"search",
+												"flights"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "115"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"73-ajw1KVdiClhq8gUGfMk8+RcRgAQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 11 Jan 2021 04:32:32 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 400,\n    \"details\": \"Choose an available date. Return date cannot be earlier than the date of origin\",\n    \"ok\": false\n}"
 								}
 							]
 						},

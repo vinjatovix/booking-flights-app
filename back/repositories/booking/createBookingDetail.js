@@ -17,6 +17,7 @@ async function createBookingDetail(RD_VueID, RD_RCID, RD_direccion, next) {
     return result.insertId;
   } catch (error) {
     error.code = isNaN(error.code) ? 500 : error.code;
+    error.details = error.message;
     next(error);
   }
 }
