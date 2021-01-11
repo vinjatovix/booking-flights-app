@@ -500,77 +500,6 @@
 					]
 				},
 				{
-					"name": "/signin  (demoUser)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Se recibe respuesta\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"pm.test(\"Es la pagina correcta\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"id\");",
-									"});",
-									"var jsonData = pm.response.json();",
-									"pm.environment.set(\"email\", jsonData.user.email);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "username",
-									"value": "{{$randomUserName}}",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "flanders.demo@mailinator.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123456",
-									"type": "text"
-								},
-								{
-									"key": "repeatPassword",
-									"value": "123456",
-									"type": "text"
-								},
-								{
-									"key": "bio",
-									"value": "Nasío pa testar",
-									"type": "text"
-								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/signin",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"signin"
-							]
-						},
-						"description": "# Register Demo User\nThis will register a new demo user in the system.\nWill also send a mail to the user mail.\nIn this case we are using a free public inbox:\nflanders.demo@mailinator.com\n\nMail is unique ID in the system.\n\nOnce a mail is deleted it can never be use again in that DB."
-					},
-					"response": []
-				},
-				{
 					"name": "/signin (randomUser)",
 					"event": [
 						{
@@ -580,7 +509,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Your test name\", function () {",
+									"pm.test(\"User registered\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.ok).to.eql(true);",
 									"});",
@@ -736,7 +665,7 @@
 									"pm.test(\"Se recibe respuesta\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Es la pagina correcta\", function () {",
+									"pm.test(\"User Logged In\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\");",
 									"});",
 									"",
@@ -850,8 +779,9 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"Body matches string\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"flight-offer\");",
+									"pm.test(\"Solo ida\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].itineraries.length).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1021,8 +951,9 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Body matches string\", function () {",
-									"    pm.expect(pm.response.text()).to.include(\"flight-offer\");",
+									"pm.test(\"Ida y Vuelta\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].itineraries.length).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1291,7 +1222,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"update ok\", function () {",
+									"pm.test(\"Update password ok\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.ok).to.eql(true);",
 									"});"
@@ -1444,7 +1375,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Body matches string\", function () {",
+									"pm.test(\"User info updated\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"actualizado\");",
 									"});"
 								],
@@ -1597,7 +1528,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"upload ok\", function () {",
+									"pm.test(\"Avatar upload ok\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.ok).to.eql(true);",
 									"});"
@@ -1718,7 +1649,7 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Body matches string\", function () {",
+									"pm.test(\"User deactivated\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"<p>Login</p>\");",
 									"});"
 								],
@@ -1763,12 +1694,13 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Your test name\", function () {",
+									"pm.test(\"User registered\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.ok).to.eql(true);",
 									"});",
 									"var jsonData = pm.response.json();",
 									"pm.environment.set(\"email\", jsonData.user.email);",
+									"",
 									""
 								],
 								"type": "text/javascript"
@@ -1919,7 +1851,7 @@
 									"pm.test(\"Se recibe respuesta\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"pm.test(\"Es la pagina correcta\", function () {",
+									"pm.test(\"User Logged In\", function () {",
 									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\");",
 									"});",
 									"",
@@ -2087,7 +2019,7 @@
 									"",
 									"pm.test(\"Round trip\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.ok).to.eql(true);",
+									"    pm.expect(jsonData.bookingCache.details.vuelta.length > 0).to.eql(true);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2583,7 +2515,7 @@
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.ok).to.eql(false);",
 											"});",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"YOU ARE A TEAPOT\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"i'm a teapot\");",
 											"});"
 										],
@@ -2653,7 +2585,7 @@
 											"pm.test(\"Bad request\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Es la pagina correcta\", function () {",
+											"pm.test(\"It's a validation error.\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"_original\");",
 											"});",
 											""
@@ -2780,7 +2712,7 @@
 											"pm.test(\"Error 401\", function () {",
 											"    pm.response.to.have.status(401);",
 											"});",
-											"pm.test(\"Es la pagina correcta\", function () {",
+											"pm.test(\"Invalid Credentials\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Invalid credentials, please try again\");",
 											"});",
 											""
@@ -2911,7 +2843,7 @@
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.ok).to.eql(false);",
 											"});",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"YOU ARE A TEAPOT\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"i'm a teapot\");",
 											"});"
 										],
@@ -3118,7 +3050,7 @@
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.ok).to.eql(false);",
 											"});",
-											"pm.test(\"Its a repeat password error\", function () {",
+											"pm.test(\"It's a repeat password error\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.details[0].path[0]).to.eql(\"repeatNewPassword\");",
 											"});"
@@ -3259,7 +3191,7 @@
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"It's a validation error\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"is not allowed to be empty\");",
 											"});"
 										],
@@ -3407,7 +3339,7 @@
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"It's an invalid form\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"required\");",
 											"});"
 										],
@@ -4178,7 +4110,7 @@
 											"pm.test(\"Bad Request\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Validation error\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"_original\");",
 											"});"
 										],
@@ -4699,7 +4631,7 @@
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Validation Error\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"_original\");",
 											"});"
 										],
@@ -4871,7 +4803,7 @@
 											"    pm.response.to.have.status(404);",
 											"});",
 											"",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Not found\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Error fetching New Airport Info. Not Found\");",
 											"});"
 										],
@@ -4990,7 +4922,7 @@
 											"    pm.response.to.have.status(503);",
 											"});",
 											"",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Service unavaible\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Error fetching Airline Info. Not Found\");",
 											"});"
 										],
@@ -5109,7 +5041,7 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Invalid data\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Adults must be between 1 or 9\");",
 											"});"
 										],
@@ -5228,7 +5160,7 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Invalid data\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Adults must be between 1 or 9\");",
 											"});"
 										],
@@ -5347,7 +5279,7 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Invalid data\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Not valid itinerary\");",
 											"});"
 										],
@@ -5466,7 +5398,7 @@
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"pm.test(\"Body matches string\", function () {",
+											"pm.test(\"Invalid Data\", function () {",
 											"    pm.expect(pm.response.text()).to.include(\"Not valid itinerary\");",
 											"});"
 										],
