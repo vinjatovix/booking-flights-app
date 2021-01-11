@@ -29,12 +29,12 @@ async function getBookingDetail(id) {
 /**
  * Muestra los datos de los vuelos según la reserva en detalle
  *
- * @param {*} arr (Id_Vuelo1, Id_Vuelo2)
+ * @param {*} number (Id_Vuelo)
  */
-async function getFligthData(arr) {
+async function getFligthData(id) {
   const pool = await db.getPool();
-  const query = 'SELECT * FROM Vuelos WHERE Vue_ID = ? OR Vue_ID = ?';
-  const [result] = await pool.execute(query, arr);
+  const query = 'SELECT * FROM Vuelos WHERE Vue_ID = ?';
+  const [result] = await pool.execute(query, [id]);
   return result;
 }
 

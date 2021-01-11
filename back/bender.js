@@ -48,10 +48,10 @@ app.post('/google', usersController.googleLogin);
 
 //? AUTHORIZED
 app.get('/update', validateAuth, usersController.getUpdateData);
-app.get('/updatepass', validateAuth, usersController.getUpdatePass);
+app.get('/update/pass', validateAuth, usersController.getUpdatePass);
 
 app.put('/update', validateAuth, usersController.postUpdateData);
-app.put('/updatepass', validateAuth, usersController.postUpdatePass);
+app.put('/update/pass', validateAuth, usersController.postUpdatePass);
 app.put('/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/delete', validateAuth, usersController.deleteAccount);
 app.put('/myBookings/delete', validateAuth, bookingController.deleteBooking);
