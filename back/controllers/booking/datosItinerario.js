@@ -1,13 +1,16 @@
-const path = require('path');
-const { itinerarySchema } = require('../../repositories/booking/booking-repository');
+'use strict';
+
 const { createBookingSegments } = require('./createBookingSegments');
+const { itinerarySchema } = require('../../repositories/booking/booking-repository');
+const path = require('path');
 const { storeBookingSegment } = require('./storeBookingSegment');
+
 /**
  * For a given booking header id and itineraryType creates booking details
  *
- * @param {Number} RC_ID
+ * @param {Number} RC_ID "This is the booking header number"
  * @param {String} itineraryType "ida || vuelta"
- * @param {*} req
+ * @param {Object} req "Original request"
  * @param {*} next
  */
 async function datosItinerario(RC_ID, itineraryType, req, next) {
@@ -15,7 +18,7 @@ async function datosItinerario(RC_ID, itineraryType, req, next) {
     const i = itineraryType === 'vuelta' ? 1 : 0;
 
     const bookingItinerary = req.body.itineraries[i].segments;
-    let bookingSegments = await createBookingSegments(bookingItinerary, next);
+    const bookingSegments = await createBookingSegments(bookingItinerary, next);
 
     for (const segment of bookingSegments) {
       await itinerarySchema.validateAsync(segment);
@@ -28,8 +31,8 @@ async function datosItinerario(RC_ID, itineraryType, req, next) {
       error.code = 400;
       error.file = path.basename(__filename);
     }
-    error.code = error.code || 500;
-    error.details = error.details || 'Unknown error with datosItinerario';
+    error.code = error.code || 400;
+    error.details = error.details || 'Not valid itineraryData found, or malformed';
     next(error);
   }
 }

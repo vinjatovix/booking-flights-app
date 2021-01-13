@@ -1,13 +1,12 @@
 'use strict';
 
-const userRepository = require('../../repositories/user-repository');
-
-const { joiLogin } = require('./joiLogin');
-const { validateUser } = require('./validateUser');
-const { validatePassword } = require('./validatePassword');
-const { userStatusManager } = require('./userStatusManager');
-const jwt = require('jsonwebtoken');
 const { generatePayload } = require('./generatePayload');
+const { joiLogin } = require('./joiLogin');
+const jwt = require('jsonwebtoken');
+const userRepository = require('../../repositories/user-repository');
+const { userStatusManager } = require('./userStatusManager');
+const { validatePassword } = require('./validatePassword');
+const { validateUser } = require('./validateUser');
 
 /**
  * Controlador del acceso de usuario. Validamos el contenido del body con Joi.
@@ -33,8 +32,6 @@ async function postLogIn(req, res, next) {
     res.status(200).send({ ok: true, token });
   } catch (err) {
     next(err);
-  } finally {
-    // TODO: close connection
   }
 }
 

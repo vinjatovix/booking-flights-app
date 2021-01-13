@@ -1,5 +1,5 @@
-const { getPaisId } = require('./getPaisId');
-const { getLocaId } = require('./getLocaId');
 const { getAirportId } = require('./getAirportId');
+const { getLocaId } = require('./getLocaId');
+const { getPaisId } = require('./getPaisId');
 
-module.exports = { getPaisId, getLocaId, getAirportId };
+module.exports = { getAirportId, getLocaId, getPaisId };

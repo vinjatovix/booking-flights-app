@@ -1,23 +1,23 @@
 'use strict';
 
-const { getCountryByCode } = require('./getCountryByCode');
-const { getCountryByName } = require('./getCountryByName');
-const { getCountryIdByCode } = require('./getCountryIdByCode');
-const { getAirportByIATA } = require('./getAirportByIATA');
+const { createAirline } = require('./createAirline');
 const { createAirport } = require('./createAirport');
-const { getCityByName } = require('./getCityByName');
 const { createCity } = require('./createCity');
 const { getAirlineByIATA } = require('./getAirlineByIATA');
-const { createAirline } = require('./createAirline');
+const { getAirportByIATA } = require('./getAirportByIATA');
+const { getCityByName } = require('./getCityByName');
+const { getCountryIdByCode } = require('./getCountryIdByCode');
+const { getCountryByCode } = require('./getCountryByCode');
+const { getCountryByName } = require('./getCountryByName');
 
 module.exports = {
-  getCountryByCode,
-  getCountryByName,
-  getCountryIdByCode,
-  getAirportByIATA,
+  createAirline,
   createAirport,
-  getCityByName,
   createCity,
   getAirlineByIATA,
-  createAirline,
+  getAirportByIATA,
+  getCityByName,
+  getCountryIdByCode,
+  getCountryByCode,
+  getCountryByName,
 };

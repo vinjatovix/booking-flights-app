@@ -1,8 +1,8 @@
 'use strict';
 
+const { fileExists } = require('../utils/utils-controller');
 const fs = require('fs').promises;
 const path = require('path');
-const { fileExists } = require('../utils/utils-controller');
 
 /**
  * Returns the path to store the pictures, if if not exists creates a new one

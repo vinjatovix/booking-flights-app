@@ -1,9 +1,10 @@
 'use strict';
 
-const Joi = require('joi');
 const bcrypt = require('bcryptjs');
+const Joi = require('joi');
 const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
+const { wait } = require('../utils/wait');
 
 /**
  *? Ruta hacia la página de cambio de contraseña.
@@ -42,6 +43,12 @@ async function postUpdatePass(req, res, next) {
       repeatNewPassword: Joi.ref('newPassword'),
     });
     await updateSchema.validateAsync(req.body);
+    if (!req.body.repeatNewPassword) {
+      const error = new Error();
+      error.code = 418;
+      error.details = "You are tying to do something not allowed, and i'm a teapot";
+      next(error);
+    }
 
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
@@ -53,14 +60,16 @@ async function postUpdatePass(req, res, next) {
       const error = new Error();
       (error.ok = false), (error.code = 401);
       error.details = 'Incorrect password. Password not updated.';
-      throw error;
+      next(error);
     }
 
     const passwordHash = await bcrypt.hash(newPassword, 12);
+    await wait(1000);
     await userRepository.updatePass([passwordHash, decoded.id]);
 
     res.send({ ok: true, details: 'Password successfully updated.' });
   } catch (err) {
+    err.details = err.message;
     next(err);
   }
 }

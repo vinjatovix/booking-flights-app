@@ -1,6 +1,6 @@
 'use strict';
 
-const { fileMaxSize, fileMinSize, validateExtension, createFileChunk } = require('../utils/utils-controller');
+const { validateExtension, createFileChunk, deleteFile } = require('../utils/utils-controller');
 
 /**
  * Esta funcion valida el archivo subido por el usuario con respecto a los parametros que prefijamos,
@@ -12,19 +12,36 @@ const { fileMaxSize, fileMinSize, validateExtension, createFileChunk } = require
  */
 async function validateImage(req) {
   if (!req.files) {
-    const error = new Error('No files were provided');
+    const error = new Error();
     error.code = 400;
+    error.details = 'No files were provided';
     throw error;
   }
   const archivo = req.files.archivo;
 
+  if (archivo.size > 5000000) {
+    const error = new Error();
+    error.code = 400;
+    error.details = 'File size is too large, image size must be less than 5mb.';
+    throw error;
+  }
+  if (archivo.size <= 0) {
+    const error = new Error();
+    error.code = 400;
+    error.details = 'File is empty or corrupted';
+    throw error;
+  }
+
   //? Preparamos el chunk a comparar
   const fileBuffer = await createFileChunk(archivo);
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
-  validateExtension(fileBuffer, validExtensions);
-
-  fileMaxSize(archivo, 5);
-  fileMinSize(archivo, 0);
+  if (!validateExtension(fileBuffer, validExtensions)) {
+    await deleteFile(archivo.tempFilePath);
+    const error = new Error();
+    error.code = 400;
+    error.details = 'That file is not valid...';
+    throw error;
+  }
 
   return archivo;
 }

@@ -15,4 +15,4 @@ function generatePayload(user) {
     status: user.Usr_status,
   };
 }
-exports.generatePayload = generatePayload;
+module.exports = { generatePayload };

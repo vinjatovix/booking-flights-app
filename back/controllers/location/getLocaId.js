@@ -18,34 +18,30 @@ async function getLocaId(airport, paisId, next) {
   try {
     //? Buscamos la ciudad en la base
     const [cityStoredInDB] = await locationRepository.getCityByName(airport.city);
-
-    if (!cityStoredInDB || cityStoredInDB.length === 0) {
-      await wait(1500); //! Margen de seguridad para las peticiones !!!!!!!!
-
-      //? Si no existe buscamos información sobre ella en internet
-      const cityInfoDealer = makeInfoCityUrl(airport);
-      const fetchOptions = {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-key': process.env.CITIES_API_KEY,
-          'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
-        },
-      };
-
-      const { data: geoDbCityInfo } = await fetch(cityInfoDealer, fetchOptions).then((loot) => loot.json());
-
-      //? Si no encontramos información sobre la ciudad no podemos continuar.
-      validateReturn(geoDbCityInfo, 'City information', 404);
-
-      //? Si obtenemos información creamos la ciudad en la Base MySQL
-      const newCity = geoDbCityInfo[0];
-      const newCityData = [newCity.name, paisId, newCity.latitude, newCity.longitude];
-      const newCityID = await locationRepository.createCity(newCityData, next);
-
-      //? RESPUESTA
-      return newCityID;
+    if (cityStoredInDB !== undefined && cityStoredInDB.Loca_ID > 0) {
+      return cityStoredInDB.Loca_ID;
     }
-    return cityStoredInDB.Loca_ID;
+
+    //? Si no existe buscamos información sobre ella en internet
+    await wait(1500); //! Margen de seguridad para las peticiones !!!!!!!!
+    const cityInfoDealer = makeInfoCityUrl(airport);
+    const fetchOptions = {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': process.env.CITIES_API_KEY,
+        'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
+      },
+    };
+
+    const { data: geoDbCityInfo } = await fetch(cityInfoDealer, fetchOptions).then((loot) => loot.json());
+    validateReturn(geoDbCityInfo, 'City information', 404); //? Si no encontramos información sobre la ciudad no podemos continuar.
+
+    //? Si obtenemos información creamos la ciudad en la Base MySQL
+    const newCity = geoDbCityInfo[0];
+    const newCityData = [newCity.name, paisId, newCity.latitude, newCity.longitude];
+    const newCityID = await locationRepository.createCity(newCityData, next);
+
+    return newCityID;
   } catch (error) {
     if (error.message === "Cannot read property '0' of undefined") {
       error.code = 503;

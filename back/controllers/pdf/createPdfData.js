@@ -1,7 +1,7 @@
 const { detailsToPdfCache } = require('./detailsToPdfCache');
 
 function createPdfData(bookingCache, req) {
-  let travel = { direction: [] };
+  const travel = { direction: [] };
 
   travel.direction.push(detailsToPdfCache('ida', bookingCache, travel));
   if (req.body.itineraries[1]) {

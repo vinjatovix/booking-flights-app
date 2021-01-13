@@ -1,12 +1,13 @@
 'use strict';
-const { fileExists, deleteFile } = require('../utils/utils-controller');
+
+const { deleteFile, fileExists } = require('../utils/utils-controller');
 
 /**
  * Deletes the old avatar picture from the system
  *
  * @param {String} oldPath
  * @param {*} next
- * @return {Boolean} 
+ * @return {Boolean}
  */
 async function deleteOldAvatar(oldPath, next) {
   if ((await fileExists(oldPath)) && !(await deleteFile(oldPath))) {
@@ -18,4 +19,4 @@ async function deleteOldAvatar(oldPath, next) {
   }
   return true;
 }
-exports.deleteOldAvatar = deleteOldAvatar;
+module.exports = { deleteOldAvatar };

@@ -1,11 +1,13 @@
-const { airportID } = require('./airportID');
+'use strict';
+
 const { airlineID } = require('./airlineID');
+const { airportID } = require('./airportID');
 
 /**
  * For a given itinerary creates segment data values
  *
- * @param {*} itineraryObject
- * @return {*}
+ * @param {Object} itineraryObject
+ * @return {Array}
  */
 
 async function createBookingSegments(itineraryObject, next) {

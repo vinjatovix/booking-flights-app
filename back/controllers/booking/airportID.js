@@ -1,6 +1,6 @@
 'use strict';
-const locationRepository = require('../../repositories/location/location-repository');
 const { getAirportId } = require('../location/location-controller');
+const locationRepository = require('../../repositories/location/location-repository');
 /**
  *  Returns an airport id for a given IATA code
  *

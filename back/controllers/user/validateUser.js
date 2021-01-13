@@ -7,7 +7,6 @@
 function validateUser(user) {
   if (!user || user.length === 0) {
     const error = new Error();
-    error.ok = false;
     error.code = 401;
     error.details = 'Invalid credentials, please try again';
     throw error;
