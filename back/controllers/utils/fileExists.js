@@ -1,5 +1,6 @@
-const fs = require('fs').promises;
+'use strict';
 
+const fs = require('fs').promises;
 
 /**
  *Esta función recibe un path y develve un booleano confirmando la existencia de un archivo

@@ -1,12 +1,6 @@
 'use strict';
 
-const {
-  fileMaxSize,
-  fileMinSize,
-  validateExtension,
-  createFileChunk,
-  deleteFile,
-} = require('../utils/utils-controller');
+const { validateExtension, createFileChunk, deleteFile } = require('../utils/utils-controller');
 
 /**
  * Esta funcion valida el archivo subido por el usuario con respecto a los parametros que prefijamos,

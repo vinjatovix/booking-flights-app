@@ -1,8 +1,10 @@
+'use strict';
+
 const { createPdfData } = require('./createPdfData');
-const { storePdf } = require('./storePdf');
+const { deleteFile } = require('../utils/deleteFile');
 const fs = require('fs').promises;
 const { sendBookingMail } = require('./sendBookingMail');
-const { deleteFile } = require('../utils/deleteFile');
+const { storePdf } = require('./storePdf');
 
 async function sendBookingPDF(bookingCache, req, next) {
   try {
@@ -11,6 +13,7 @@ async function sendBookingPDF(bookingCache, req, next) {
     const file = (await fs.readFile(storePath.filename)).toString('base64');
     await sendBookingMail(file, req, next);
     await deleteFile(storePath.filename);
+    return true;
   } catch (err) {
     err.details = err.message;
     next(err);

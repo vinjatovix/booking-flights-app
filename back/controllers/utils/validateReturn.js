@@ -1,6 +1,6 @@
 'use strict';
 
-function validateReturn(response, expected = 'unknown', code = 500) {
+function validateReturn(response, expected = 'unknown', code = 404) {
   if (!response || response.length === 0) {
     const error = new Error();
     error.code = code;

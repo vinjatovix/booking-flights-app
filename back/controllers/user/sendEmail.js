@@ -1,9 +1,9 @@
 'use strict';
 
-const sgMail = require('@sendgrid/mail');
 const { SENDGRID_API_KEY } = process.env;
+const sgMail = require('@sendgrid/mail');
 
-async function sendEmail( mail, next ) {
+async function sendEmail(mail, next) {
   try {
     sgMail.setApiKey(SENDGRID_API_KEY);
     const msg = {

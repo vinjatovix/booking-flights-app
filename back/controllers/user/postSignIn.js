@@ -1,9 +1,9 @@
 'use strict';
 
-const userRepository = require('../../repositories/user-repository');
 const bcrypt = require('bcryptjs');
 const { registerSchema } = require('../../repositories/registerSchema');
 const { sendEmail } = require('./sendEmail');
+const userRepository = require('../../repositories/user-repository');
 
 /**
  * Controlador del registro de usuario.
@@ -20,13 +20,13 @@ const { sendEmail } = require('./sendEmail');
 async function postSignIn(req, res, next) {
   try {
     //? Validamos el Body
-    await registerSchema.validateAsync(req.body);
     if (!req.body.repeatPassword) {
       const error = new Error();
       error.code = 418;
       error.details = "You are trying to do something not allowed... and i'm a teapot";
       next(error);
     }
+    await registerSchema.validateAsync(req.body);
     const { username, email, password, bio } = req.body;
 
     //? Buscamos si ya existe ese usuario
@@ -54,7 +54,6 @@ async function postSignIn(req, res, next) {
     };
     sendEmail(mail, next);
 
-    //? Respondemos
     res.status(200).json({ ok: true, user: { id, username, email } });
   } catch (err) {
     next(err);

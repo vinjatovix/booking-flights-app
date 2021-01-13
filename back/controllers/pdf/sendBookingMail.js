@@ -1,5 +1,7 @@
-const sgMail = require('@sendgrid/mail');
+'use strict';
+
 const { SENDGRID_API_KEY } = process.env;
+const sgMail = require('@sendgrid/mail');
 
 async function sendBookingMail(file, req, next) {
   try {

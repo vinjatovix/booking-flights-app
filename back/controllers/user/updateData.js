@@ -1,7 +1,7 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
 
 /**

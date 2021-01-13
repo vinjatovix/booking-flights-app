@@ -15,6 +15,7 @@ async function createCity(cityData, next) {
     return result.insertId;
   } catch (error) {
     error.code = isNaN(error.code) ? 503 : error.code;
+    error.details = error.message;
     next(error);
   }
 }

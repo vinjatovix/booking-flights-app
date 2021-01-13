@@ -1,5 +1,7 @@
-const path = require('path');
+'use strict';
+
 const fs = require('fs').promises;
+const path = require('path');
 const pdf = require('pdf-creator-node');
 
 async function readFileAsync(path) {
@@ -10,6 +12,7 @@ async function storePdf(pdfData, req, next) {
   try {
     const html = await readFileAsync(path.join(__dirname, '/template.html'), next);
     const filePath = path.join(__dirname, `../../tmp/${req.auth.id}-${Date.now()}.pdf`);
+
     const document = {
       html: html,
       data: {
@@ -17,15 +20,16 @@ async function storePdf(pdfData, req, next) {
       },
       path: filePath,
     };
+
     const options = {
       format: 'A4',
       orientation: 'portrait',
       border: '1rem',
     };
-    const pdfPath = await pdf.create(document, options).then((res) => {
+
+    return await pdf.create(document, options).then((res) => {
       return res;
     });
-    return pdfPath;
   } catch (err) {
     err.details = err.message;
     next(err);
