@@ -9,14 +9,19 @@ const { verifyMysqlWrite } = require('../verifyMysqlWrite');
  * @return {Number} "Inserted RC_ID"
  */
 
-async function createBookingHeader(bookingCache) {
-  const { RC_UsrID, RC_base, RC_total } = bookingCache.header;
-  const array = [RC_UsrID, +RC_base, +RC_total];
+async function createBookingHeader(bookingCache, next) {
+  try {
+    const { RC_UsrID, RC_base, RC_total, RC_adults } = bookingCache.header;
+    const array = [+RC_UsrID, +RC_base, +RC_total, +RC_adults];
 
-  const pool = await db.getPool();
-  const query = 'INSERT INTO ReservaCabeceras (RC_UsrID,RC_base,RC_total) VALUES (?,?,?)';
-  const [result] = await pool.execute(query, array);
-  verifyMysqlWrite(result);
-  return result.insertId;
+    const pool = await db.getPool();
+    const query = 'INSERT INTO ReservaCabeceras (RC_UsrID,RC_base,RC_total, RC_adults) VALUES (?,?,?,?)';
+    const [result] = await pool.execute(query, array);
+    verifyMysqlWrite(result);
+
+    return result.insertId;
+  } catch (error) {
+    next(error);
+  }
 }
 module.exports = { createBookingHeader };

@@ -1,15 +1,21 @@
 'use strict';
-function setInitialBookingCache(req, adults) {
+
+/**
+ * Fills the booking header with initial properties
+ * @param {*} req
+ */
+function setInitialBookingCache(req) {
   return {
     header: {
       RC_UsrID: req.auth.id,
       RC_base: +req.body.price.base,
-      RC_total: +(req.body.price.grandTotal * adults).toFixed(2),
-      adults,
+      RC_total: +req.body.price.grandTotal,
+      RC_adults: +req.body.adults,
     },
-    details: [],
-    idaToVue: {},
-    vueltaToVue: {},
+    details: {
+      ida: [],
+      vuelta: [],
+    },
   };
 }
-exports.setInitialBookingCache = setInitialBookingCache;
+module.exports = { setInitialBookingCache };

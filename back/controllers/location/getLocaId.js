@@ -23,7 +23,7 @@ async function getLocaId(airport, paisId, next) {
       await wait(1500); //! Margen de seguridad para las peticiones !!!!!!!!
 
       //? Si no existe buscamos información sobre ella en internet
-      const citiInfoDealer = makeInfoCityUrl(airport);
+      const cityInfoDealer = makeInfoCityUrl(airport);
       const fetchOptions = {
         method: 'GET',
         headers: {
@@ -32,7 +32,7 @@ async function getLocaId(airport, paisId, next) {
         },
       };
 
-      const { data: geoDbCityInfo } = await fetch(citiInfoDealer, fetchOptions).then((loot) => loot.json());
+      const { data: geoDbCityInfo } = await fetch(cityInfoDealer, fetchOptions).then((loot) => loot.json());
 
       //? Si no encontramos información sobre la ciudad no podemos continuar.
       verifyGeoDbData(geoDbCityInfo);

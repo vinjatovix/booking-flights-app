@@ -1,46 +1,34 @@
-const { airportID } = require('./airportID');
-const { airlineId } = require('./airlineID');
-const path = require('path');
+const { itinerarySchema } = require('../../repositories/booking/booking-repository');
+const { bookingItineraryExists } = require('./bookingItineraryExists');
+const { createBookingSegments } = require('./createBookingSegments');
+const { storeBookingSegment } = require('./storeBookingSegment');
 
-const stops = (itinerario) => {
-  return itinerario.segments.length - 1;
-};
 /**
- * Returns an object with the itinerary to store in bookingCache
+ * For a given booking header id and itineraryType creates booking details
  *
- * @param {String} itinerarie "ida || vuelta"
- * @param {Object} req
+ * @param {Number} RC_ID
+ * @param {String} itineraryType "ida || vuelta"
+ * @param {*} req
  * @param {*} next
- * @return {Object} {paradas,horaSalida,horaLlegada,duracion,origenID,destinoID,operatingCmp_ID }
+ * @return {Object}
  */
-async function datosItinerario(itinerarie, req, next) {
-  if (!['ida', 'vuelta'].includes(itinerarie)) {
-    const error = new Error();
-    error.code = 400;
-    error.details = 'Itinerarie not valid';
-    error.file = path.basename(__filename);
-    next(error);
-  }
-  const i = itinerarie === 'ida' ? 0 : 1;
-  if (!req.body.itineraries[i] || req.body.itineraries.length === 0) {
-    const error = new Error();
-    error.code = 400;
-    error.details = "You are trying to manage travel and there isn't";
-    error.file = path.basename(__filename);
-    next(error);
-  }
+async function datosItinerario(RC_ID, itineraryType, req, next) {
+  try {
+    const i = itineraryType === 'vuelta' ? 1 : 0;
 
-  const way = req.body.itineraries[i];
-  const wayStops = stops(way);
+    bookingItineraryExists(req, i, next);
 
-  return {
-    paradas: wayStops,
-    horaSalida: way.segments[0].departure.at,
-    horaLLegada: way.segments[wayStops].arrival.at,
-    duracion: way.duration,
-    origenID: await airportID(way.segments[0].departure.iataCode, next),
-    destinoID: await airportID(way.segments[wayStops].arrival.iataCode, next),
-    operatingCmp_ID: await airlineId(way.segments[wayStops].operating.carrierCode, next),
-  };
+    const bookingItinerary = req.body.itineraries[i].segments;
+    let bookingSegments = await createBookingSegments(bookingItinerary);
+
+    for (const segment of bookingSegments) {
+      await itinerarySchema.validateAsync(segment);
+      await storeBookingSegment(segment, itineraryType, RC_ID);
+    }
+
+    return { [`${itineraryType}`]: bookingSegments };
+  } catch (err) {
+    next(err);
+  }
 }
 module.exports = { datosItinerario };
