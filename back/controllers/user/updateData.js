@@ -1,7 +1,7 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
 
 /**
@@ -38,8 +38,8 @@ async function postUpdateData(req, res, next) {
   try {
     const updateSchema = Joi.object({
       username: Joi.string().min(5).max(100).required(),
-      bio: Joi.string().max(255).allow(''),
-      photo: Joi.string().allow(''),
+      bio: Joi.string().max(255).required().allow(''),
+      photo: Joi.string().required().allow(''),
     });
     await updateSchema.validateAsync(req.body);
 

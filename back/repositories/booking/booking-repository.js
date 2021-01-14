@@ -15,9 +15,9 @@ const { getMiliseconds, validAirport } = require('./supportBookingFunctions');
 const { itinerarySchema } = require('./itinerarySchema');
 
 module.exports = {
-  createFlight,
-  createBookingHeader,
   createBookingDetail,
+  createBookingHeader,
+  createFlight,
   getBookings,
   getBookingDetail,
   getFligthData,

@@ -4,7 +4,8 @@
   "description": "This is the Back End Crash Test Dummy Server for the Hack A Boss Final Project",
   "main": "bender.js",
   "scripts": {
-    "test": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose",
+    "test": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose --delay-request 500",
+    "test-fast": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json",
     "dev": "nodemon bender.js",
     "start": "node bender.js"
   },
@@ -34,6 +35,7 @@
     "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.4.17",
+    "pdf-creator-node": "^1.4.2",
     "read-chunk": "^3.2.0",
     "winston": "^3.3.3"
   },

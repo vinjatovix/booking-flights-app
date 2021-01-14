@@ -21,8 +21,9 @@ async function deleteAccount(req, res, next) {
 
     if (token) {
       res.redirect('/login');
-    } else throw new Error('Something weird happened ');
+    } else throw new Error();
   } catch (err) {
+    err.details = 'Something weird happened ';
     next(err);
   }
 }

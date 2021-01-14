@@ -1,5 +1,5 @@
 'use strict';
-const path = require('path')
+const path = require('path');
 /**
  *? Ruta hacia el about
  *
@@ -7,7 +7,12 @@ const path = require('path')
  * @param {*} res
  */
 function showAbout(req, res) {
-  res.status(200).send({ message: 'This is about page' });
+  res.status(200).send({
+    ok: true,
+    message: 'This is about page',
+    year: 2020,
+    authors: ['matthewcodesido@gmail.com', 'vinjadevix@gmail.com'],
+  });
 }
 
 /**

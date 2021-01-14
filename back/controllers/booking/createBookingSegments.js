@@ -1,20 +1,25 @@
-const { airportID } = require('./airportID');
+'use strict';
+
 const { airlineID } = require('./airlineID');
+const { airportID } = require('./airportID');
 
 /**
  * For a given itinerary creates segment data values
  *
- * @param {*} itineraryObject
- * @return {*}
+ * @param {Object} itineraryObject
+ * @return {Array}
  */
 
-async function createBookingSegments(itineraryObject) {
+async function createBookingSegments(itineraryObject, next) {
   let bookingSegments = [];
   for (const segment of itineraryObject) {
     bookingSegments.push({
-      Vue_origenID: await airportID(segment.departure.iataCode),
-      Vue_destinoID: await airportID(segment.arrival.iataCode),
-      Vue_companyID: await airlineID(segment.operating.carrierCode),
+      Vue_origen: segment.departure.iataCode,
+      Vue_origenID: await airportID(segment.departure.iataCode, next),
+      Vue_destino: segment.arrival.iataCode,
+      Vue_destinoID: await airportID(segment.arrival.iataCode, next),
+      Vue_company: segment.operating.carrierCode,
+      Vue_companyID: await airlineID(segment.operating.carrierCode, next),
       Vue_aircraft: segment.aircraft.code,
       Vue_horaSalida: segment.departure.at,
       Vue_horaLlegada: segment.arrival.at,

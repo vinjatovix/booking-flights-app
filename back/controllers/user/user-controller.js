@@ -1,21 +1,21 @@
 'use strict';
 
-const { postLogIn } = require('./postLogIn');
-const { postSignIn } = require('./postSignIn');
-const { googleLogin } = require('../google/googleLogin');
+const { deleteAccount } = require('./deleteAccount');
 const { getUpdateData, postUpdateData } = require('./updateData');
 const { getUpdatePass, postUpdatePass } = require('./updatePassword');
-const { deleteAccount } = require('./deleteAccount');
+const { googleLogin } = require('../google/googleLogin');
+const { postLogIn } = require('./postLogIn');
+const { postSignIn } = require('./postSignIn');
 const { sendEmail } = require('./sendEmail');
 
 module.exports = {
-  postLogIn,
-  postSignIn,
-  getUpdateData,
-  postUpdateData,
-  getUpdatePass,
-  postUpdatePass,
   deleteAccount,
+  getUpdateData,
+  getUpdatePass,
   googleLogin,
+  postLogIn,
+  postUpdateData,
+  postUpdatePass,
+  postSignIn,
   sendEmail,
 };

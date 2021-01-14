@@ -32,6 +32,8 @@ async function getToken(next) {
     validateReturn(response);
     return response.access_token;
   } catch (error) {
+    error.code = error.code || 400;
+    error.details = 'Something went wrong with Amadeus token';
     next(error);
   }
 }

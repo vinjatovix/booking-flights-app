@@ -7,10 +7,7 @@
  */
 function validateExtension(tipo, validExtensions) {
   if (!tipo || tipo.length === 0 || !validExtensions.includes(tipo.ext)) {
-    const error = new Error();
-    error.code = 400;
-    error.details = 'That file is not valid...';
-    throw error;
+    return false;
   }
   return true;
 }

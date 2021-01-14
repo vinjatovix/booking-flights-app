@@ -3,10 +3,11 @@
 const path = require('path');
 
 const { basicInputDataValidation } = require('./basicInputDataValidation');
-const { setInitialBookingCache } = require('./setInitialBookingCache');
-const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
 const { bookingHeaderSchema } = require('../../repositories/booking/bookingHeaderSchema');
 const { createBookingHeader } = require('../../repositories/booking/booking-repository');
+const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
+const { sendBookingPDF } = require('../pdf/pdf-controller');
+const { setInitialBookingCache } = require('./setInitialBookingCache');
 
 /**
  * Stores a new booking on the system
@@ -27,6 +28,7 @@ async function bookFlight(req, res, next) {
     if (req.body.itineraries[1]) {
       bookingCache.details = await pushDetailsIntoCache('vuelta', bookingCache, req, next);
     }
+    await sendBookingPDF(bookingCache, req, next);
 
     res.status(200).json({
       ok: true,

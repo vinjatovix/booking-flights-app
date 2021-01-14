@@ -1,9 +1,10 @@
 'use strict';
-const Joi = require('joi');
 const path = require('path');
 const { fetchAmadeus } = require('./fetchAmadeus');
 const { getMiliseconds } = require('../../repositories/booking/booking-repository');
 const { airportID } = require('../booking/airportID');
+const { wait } = require('../utils/wait');
+const { getFlightSchema } = require('./getFlightSchema');
 /**
  * This is the fisrt function to search flighs on amadeus
  *
@@ -14,19 +15,11 @@ const { airportID } = require('../booking/airportID');
 async function getFlight(req, res, next) {
   try {
     //? VALIDATION
-    const searchSchema = Joi.object({
-      originLocationCode: Joi.string().min(3).max(3).required(),
-      destinationLocationCode: Joi.string().min(3).max(3).required(),
-      departureDate: Joi.date().iso().required(),
-      returnDate: Joi.date().iso(),
-      adults: Joi.number().greater(0).required(),
-      nonStop: Joi.boolean(),
-    });
-    await searchSchema.validateAsync(req.body);
+    await getFlightSchema.validateAsync(req.body);
     const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults } = req.body;
     const nonStop = req.body.nonStop === undefined ? false : req.body.nonStop;
-    const airport1 = await airportID(originLocationCode);
-    const airport2 = await airportID(destinationLocationCode);
+    const airport1 = await airportID(originLocationCode, next);
+    const airport2 = await airportID(destinationLocationCode, next);
 
     if (!(airport1 || airport2)) {
       throw new Error('Please choose a valid airport');
@@ -53,7 +46,13 @@ async function getFlight(req, res, next) {
     }
     //? API CONNECTION
     const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-    const url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    let url;
+    if (!req.body.returnDate) {
+      url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    } else {
+      url = `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+    }
+    await wait(1500);
     const { data } = await fetchAmadeus(url, next);
     if (!data || data.length === 0) {
       return res.status(200).json({

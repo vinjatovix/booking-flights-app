@@ -1,14 +1,15 @@
 'use strict';
 
-const path = require('path');
+const { deleteOldAvatar } = require('./deleteOldAvatar');
+const { getStorePath } = require('./getStorePath');
+const { imposibleError } = require('./imposibleError');
 const jwt = require('jsonwebtoken');
+const { newAvatarData } = require('./newAvatarData');
+const path = require('path');
+const { storePathInDb } = require('./storePahInDb');
 const userRepository = require('../../repositories/user-repository');
 const { validateImage } = require('./validateImage');
-const { storePathInDb } = require('./storePahInDb');
-const { getStorePath } = require('./getStorePath');
-const { newAvatarData } = require('./newAvatarData');
-const { imposibleError } = require('./imposibleError');
-const { deleteOldAvatar } = require('./deleteOldAvatar');
+
 /**
  * This method updates the picture profile on the system.
  *
@@ -40,7 +41,7 @@ async function uploadAvatar(req, res, next) {
     await deleteOldAvatar(oldPath, next);
 
     /* 
-    TODO: DECIDIR!?!?! 
+    TODO: DECIDIR!?!?! 'Something weird happened writting in DB, da'Something weird happened writting in DB, da'Something weird happened writting in DB, da'Something weird happened writting in DB, data may be lost. Please try again'ta may be lost. Please try again'ta may be lost. Please try again'ta may be lost. Please try again'
     ? almacenamos la ruta en la BBDD
     ? si guardamos toda la ruta y luego modificamos la ubicacion por lo que sea, hay que modificar todos los registros de la base, pero si solo guardamos el nombre de archivo el resto de la ruta siempre queda en la logica del servidor.
     ? const pathToStore = uploadPath.split('/').splice(8).join('/'); 
@@ -49,7 +50,6 @@ async function uploadAvatar(req, res, next) {
 
     res.status(200).json({ ok: true, details: 'File upload successfully' });
   } catch (error) {
-    // deleteFile(req.files.archivo.tempFilePath); //? en caso de error, eliminamos el archivo subido para que no quede basura
     next(error);
   }
 }

@@ -13,8 +13,9 @@ async function getPaisId(countryName) {
 
   //? It's supossed to be a table with countries stored in MySQL DB
   if (!country || country.length === 0) {
-    const err = new Error('Country not found, are you sure?');
-    err.code = 400;
+    const err = new Error();
+    err.code = 404;
+    err.details = `'Country ${countryName} not found, are you sure?'`;
     throw err;
   }
 

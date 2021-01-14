@@ -23,6 +23,7 @@ const {
 const HOST = process.env.BENDER_HOST || 'localhost';
 const PORT = process.env.BENDER_PORT || 8081;
 const NODE_ENV = process.env.NODE_ENV || 'development';
+process.title = process.env.BENDER_TITLE || 'benderServer';
 
 //? APP
 const app = express();
@@ -58,7 +59,7 @@ app.put('/update/delete', validateAuth, usersController.deleteAccount);
 app.put('/myBookings/delete', validateAuth, bookingController.deleteBooking);
 
 app.post('/search/flights', amadeusController.getFlight);
-app.post('/book/flight', validateAuth, bookingController.bookFlight); // TODO: Si no hay aeropuerto o ciudad ya los escribe en la base
+app.post('/book/flight', validateAuth, bookingController.bookFlight);
 app.post('/myBookings', validateAuth, bookingController.userBookings);
 
 //!!!! WINSTON TIENE QUE ESTAR AL FINAL DE TODO
