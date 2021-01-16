@@ -4,17 +4,19 @@
 
 Bender is the Back-end server for FLanders.
 
-For work properly you must fullfill .env-TEMPLATE with your settings and rename to .env
+### env
 
-If you want to tun automated testing do the same with bender-dev.environement-TEMPLATE.json
+For work properly you must fullfill **.env-TEMPLATE** with your settings and **rename to it .env**
+
+You must have [Sendgrid](https://sendgrid.com/), [Amadeus](https://developers.amadeus.com/) and [GeoDB cities](https://rapidapi.com/wirefreethought/api/geodb-cities) users to work properly.
 
 
-### Installation
+
+## Installation
 
 ```
 npm install
 ```
-
 
 ### Dev for run development server
 
@@ -22,9 +24,29 @@ npm install
 npm run dev
 ```
 
+### Postman collection && Newman runner
 
-### Run all tests
+Check postman collection [here](https://documenter.getpostman.com/view/12243544/TVzRGdp5) or in **/back/docs**
+
+If you want to tun automated testing you must add a postman env.
+You can just use the one supplied in bender-dev.environement-TEMPLATE.json at **/back/docs**
+
+
+
+## TESTS
+
+#### Initial test
 
 ```
-npm test
+npm run test-init
 ```
+
+This will try all the valid routes with valid data.
+
+#### Error tests
+
+```
+npm run test-error
+```
+
+This will try all the routes with invalid data and weird requests.

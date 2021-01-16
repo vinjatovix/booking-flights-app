@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "url",
-			"value": "http://localhost:####  <<<<---------------------<<<<--------------",
+			"value": "http://localhost:####  <<<<---------------------<<<<-------------- YOUR B.End PORT",
 			"enabled": true
 		},
 		{
@@ -14,36 +14,41 @@
 		},
 		{
 			"key": "originLocationCode",
-			"value": "SCQ",
+			"value": "XXX  <<<<---------------------<<<<-------------- ANY IATA 3 CODE ", 
 			"enabled": true
 		},
 		{
 			"key": "destinationLocationCode",
-			"value": "LGW",
+			"value": "XXX <<<<---------------------<<<<-------------- ANY IATA 3 CODE ",
 			"enabled": true
 		},
 		{
 			"key": "departureDate",
-			"value": "2021-02-03",
+			"value": "YYYY-MM-DD <<<<---------------------<<<<-------------- ANY VALID DATE",
 			"enabled": true
 		},
 		{
 			"key": "returnDate",
-			"value": "2021-02-09",
+			"value": "YYYY-MM-DD <<<<---------------------<<<<-------------- ANY VALID DATE",
 			"enabled": true
 		},
 		{
 			"key": "nonStop",
-			"value": "false",
+			"value": "BOOLEAN   <<<<---------------------<<<<-------------- ANY VALID DATE",
 			"enabled": true
 		},
 		{
 			"key": "adults",
-			"value": "1",
+			"value": "#   <<<<---------------------<<<<-------------- NUMBER BETWEEN 1 && 9",
 			"enabled": true
 		},
 		{
 			"key": "email",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "username",
 			"value": "",
 			"enabled": true
 		},
@@ -54,7 +59,7 @@
 		},
 		{
 			"key": "client_id",
-			"value": "Your Amadeus Clien Id  <<<<---------------------<<<<--------------",
+			"value": "Your Amadeus Client Id  <<<<---------------------<<<<--------------",
 			"enabled": true
 		}
 	],

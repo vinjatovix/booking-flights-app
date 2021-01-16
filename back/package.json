@@ -4,8 +4,8 @@
   "description": "This is the Back End Crash Test Dummy Server for the Hack A Boss Final Project",
   "main": "bender.js",
   "scripts": {
-    "test": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose --delay-request 500",
-    "test-fast": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json",
+    "test-init": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose --delay-request 1000",
+    "test-error": "newman run docs/bender-error.collection.json -e docs/bender-dev.environment.json --verbose --delay-request 1000",
     "dev": "nodemon bender.js",
     "start": "node bender.js"
   },
