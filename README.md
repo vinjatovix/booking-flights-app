@@ -18,7 +18,7 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
     <img src="./docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Aplicación de reserva de vuelos</h3>
+  <h3 align="center">Booking flights app</h3>
 
   <p align="center">
     BFapp
@@ -26,7 +26,7 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
     <a href="https://github.com/vinjatovix/booking-flights-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/vinjatovix/booking-flights-app">View Demo</a>
+    <!-- <a href="https://github.com/vinjatovix/booking-flights-app">View Demo</a> -->
     ·
     <a href="https://github.com/vinjatovix/booking-flights-app/issues">Report Bug</a>
     ·
@@ -56,7 +56,8 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+This is the final proyecto of Hack A Boss Bootcamp on MERN for Mateo Codesido and Pablo Viña. 2020-2021
 
 ### Built With
 
@@ -68,17 +69,13 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
 
 ## Getting Started - WIP
 
-To get a local copy up and running follow these simple steps. (Not Yet)
+At this time can try our first version of the back end server.
 
 ### Prerequisites - WIP
 
-This is an example of how to list things you need to use the software and how to install them.
+You will need node and MySQL.
 
-- npm
-
-```sh
-npm install npm@latest -g
-```
+You must have [Sendgrid](https://sendgrid.com/), [Amadeus](https://developers.amadeus.com/) and [GeoDB cities](https://rapidapi.com/wirefreethought/api/geodb-cities) users to work properly.
 
 ### Installation - WIP
 
@@ -86,27 +83,36 @@ npm install npm@latest -g
 
 ```sh
 git clone https://github.com/vinjatovix/booking-flights-app.git
-```
 
-2. Install NPM packages
+```
+2. Navigate to /back (Follow readme.md file there for detailed specs)
+
+3. Install NPM packages
 
 ```sh
 npm install
 ```
+4. Fullfill .env-Template and rename to .env
+
+5. Run the dev server
+```sh
+npm run dev
+```
+
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
-It is a flight booking application. Not much to add at the moment.
+It is a flight booking application. User CRUD, Search for one way or round trip flights around the world, and manage bookings.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://documenter.getpostman.com/view/12243544/TVzRGdp5)_
 
 <!-- ROADMAP -->
 
-## Roadmap
+<!-- ## Roadmap
 
-See the [open issues](https://github.com/vinjatovix/booking-flights-app/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/vinjatovix/booking-flights-app/issues) for a list of proposed features (and known issues). -->
 
 <!-- CONTRIBUTING -->
 
@@ -132,11 +138,11 @@ Project Link: [https://github.com/vinjatovix/booking-flights-app/](https://githu
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## Acknowledgements
+<!-- ## Acknowledgements
 
 - []()
 - []()
-- []()
+- []() -->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
