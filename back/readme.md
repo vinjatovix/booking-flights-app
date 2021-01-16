@@ -14,6 +14,8 @@ You must have [Sendgrid](https://sendgrid.com/), [Amadeus](https://developers.am
 
 ## Installation
 
+Please run the db.sql provided in the top level folder of the repo /db/booking.sql on your MySQL database to start.
+
 ```
 npm install
 ```
