@@ -1,7 +1,7 @@
 'use strict';
 
-const jwt = require('jsonwebtoken');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
 
 /**
@@ -18,9 +18,9 @@ function getUpdateData(req, res) {
     .status(200)
     .send(
       '<form method="post" action="/signin" enctype="multipart/form-data">' +
-        `<p>Username: <input type="text" name="username" id="username" value=${decoded.name} placeholder="Username" required /></p>` +
+        `<p>Username: <input type="text" name="username" id="username" value=${decoded.username} placeholder="Username" required /></p>` +
         `<p>Avatar: <input type="file" name="avatar" value=${decoded.photo} /></p>` +
-        `<p>Bio: <input type="text" name="bio" id="bio" value=${decoded.bio}placeholder="Short bio"  /></p>` +
+        `<p>Bio: <input type="text" name="bio" id="bio" value='${decoded.bio}' placeholder="Short bio"  /></p>` +
         '<p><input type="submit" value="Send" /></p>' +
         '</form>'
     );
@@ -38,8 +38,8 @@ async function postUpdateData(req, res, next) {
   try {
     const updateSchema = Joi.object({
       username: Joi.string().min(5).max(100).required(),
-      bio: Joi.string().max(255).allow(''),
-      photo: Joi.string().allow(''),
+      bio: Joi.string().max(255).required().allow(''),
+      photo: Joi.string().required().allow(''),
     });
     await updateSchema.validateAsync(req.body);
 
@@ -49,7 +49,7 @@ async function postUpdateData(req, res, next) {
 
     await userRepository.updateData([username, bio, photo, decoded.id]);
 
-    res.send({ Estado: 'Perfil actualizado' });
+    res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio, photo } });
   } catch (err) {
     next(err);
   }

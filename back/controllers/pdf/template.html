@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YourBooking</title>
+    <style>
+      body {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>Booking Number: {{pdfData.bookingNumber}}</h3>
+      <p>Ordered by: {{pdfData.user.email}}</p>
+      <p>Adults: {{pdfData.adults}}</p>
+      <p>Total Ammount: {{pdfData.priceTotal}} €</p>
+    </header>
+
+    <section>
+      {{#each pdfData.travel.direction}}
+      <h4>Trayecto</h4>
+      <ul>
+        <li>Origen: {{this.origin}}</li>
+        <li>Destino: {{this.destination}}</li>
+        <li>Salida: {{this.departure}}</li>
+        <li>Llegada: {{this.arrival}}</li>
+        <li>Paradas: {{this.stops}}</li>
+        <li>Duración: {{this.duration}}</li>
+      </ul>
+      {{/each}}
+    </section>
+    <footer>
+      <p>Thanks for using Flight Landers</p>
+    </footer>
+  </body>
+</html>

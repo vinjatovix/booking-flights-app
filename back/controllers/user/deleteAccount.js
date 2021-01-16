@@ -14,7 +14,6 @@ async function deleteAccount(req, res, next) {
   try {
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
-    console.log(decoded);
 
     if (decoded.status === 'a') {
       await userRepository.changeStatus(['e', decoded.id]);
@@ -22,8 +21,9 @@ async function deleteAccount(req, res, next) {
 
     if (token) {
       res.redirect('/login');
-    } else throw new Error('Something weird happened ');
+    } else throw new Error();
   } catch (err) {
+    err.details = 'Something weird happened ';
     next(err);
   }
 }

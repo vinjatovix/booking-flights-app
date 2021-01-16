@@ -4,7 +4,8 @@
   "description": "This is the Back End Crash Test Dummy Server for the Hack A Boss Final Project",
   "main": "bender.js",
   "scripts": {
-    "test": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose",
+    "test-init": "newman run docs/bender-dev.collection.json -e docs/bender-dev.environment.json --verbose --delay-request 1000",
+    "test-error": "newman run docs/bender-error.collection.json -e docs/bender-dev.environment.json --verbose --delay-request 1000",
     "dev": "nodemon bender.js",
     "start": "node bender.js"
   },
@@ -19,16 +20,22 @@
   },
   "homepage": "https://github.com/vinjatovix/booking-flights-app#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "airportsjs": "^0.3.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "file-type": "^16.1.0",
+    "google-auth-library": "^6.1.3",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.4.17",
+    "pdf-creator-node": "^1.4.2",
     "read-chunk": "^3.2.0",
     "winston": "^3.3.3"
   },

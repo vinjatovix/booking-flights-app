@@ -18,12 +18,13 @@ async function getUserByEmail(email) {
 /**
  * Inserta los datos de usuario en la base de datos
  *
- * @param {*} arr [username,usermail,password,bio]
+ * @param {*} arr [username,usermail,password,avatar,bio]
  */
 async function createUser(arr) {
   const pool = await db.getPool();
   const query = 'INSERT INTO Usuarios (Usr_nombre, Usr_email, Usr_password,Usr_bio) VALUES (?, ?, ?, ?)';
   const [result] = await pool.execute(query, arr);
+
 
   return result;
 }
@@ -37,7 +38,7 @@ async function updateData(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_nombre = ?, Usr_bio = ?, Usr_foto = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
-
+  
   return result;
 }
 
@@ -50,7 +51,7 @@ async function updatePass(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_password = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
-
+  
   return result;
 }
 
@@ -64,7 +65,7 @@ async function getAvatar(id) {
   const pool = await db.getPool();
   const query = 'SELECT Usr_foto from Usuarios WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, [id]);
-
+  
   return result;
 }
 
@@ -73,6 +74,7 @@ async function storeAvatar(arr) {
   const query = 'UPDATE Usuarios SET Usr_foto = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
 
+  
   return result;
 }
 
@@ -80,6 +82,7 @@ async function changeStatus(arr) {
   const pool = await db.getPool();
   const query = 'UPDATE Usuarios SET Usr_status = ? WHERE Usr_ID = ?';
   const [result] = await pool.execute(query, arr);
+
 
   return result;
 }

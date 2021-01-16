@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flanding page</title>
+  </head>
+  <body>
+    <header>
+      <h1>Flight Landers</h1>
+      <p>LO & behold</p>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signin">Sign In</a></li>
+        </ul>
+      </nav>
+      <form method="post" action="/" enctype="multipart/form-data">
+        <label for="originLocationCode">Origen</label>
+        <input type="text" name="originLocationCode" id="originLocationCode" placeholder="Origen" required /><br />
+        <label for="destinationLocationCode">Destino</label>
+        <input
+          type="text"
+          name="destinationLocationCode"
+          id="destinationLocationCode"
+          placeholder="Destino"
+          required
+        /><br />
+        <label for="departureDate">Fecha de salida</label>
+        <input type="date" name="departureDate" id="departureDate" required /><br />
+        <label for="returnDate">Fecha de vuelta</label>
+        <input type="date" name="returnDate" id="returnDate" /><br />
+        <label for="adults">Personas</label>
+        <input type="number" name="adults" id="adults" placeholder="Personas" required /><br />
+        <label for="nonStop">Sin escalas</label>
+        <input type="checkbox" name="nonStop" id="nonStop" value="true" /><br />
+        <input type="submit" value="Send" formaction="/search/flights" />
+      </form>
+    </header>
+  </body>
+</html>

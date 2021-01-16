@@ -42,11 +42,11 @@ logger.stream = {
  * @param {*} req
  */
 function logThis(err, req) {
-  logger.error(
-    `ERROR: ${err.code} - ip: ${req.ip} - method: ${req.method} - url: ${req.originalUrl} - ${
-      err.message
-    }} - ${new Date(Date.now()).toUTCString()}`
-  );
+  logger.error({
+    date: `${new Date(Date.now()).toUTCString()}`,
+    head: { error: err.code, method: req.method, ip: req.ip, file: err.file },
+    error: { url: req.originalUrl, details: err.details },
+  });
 }
 
 /**
@@ -56,6 +56,7 @@ function logThis(err, req) {
  * @return {*}
  */
 function winstonCatch() {
+  // eslint-disable-next-line no-unused-vars
   return function (err, req, res, next) {
     if (err.name === 'ValidationError') {
       err.code = 400;
@@ -76,9 +77,11 @@ function winstonCatch() {
       err.message = 'Access denied';
       err.code = 401;
     }
-
+    err.ok = err.ok || false;
+    err.code = err.code || 500;
+    err.details = err.details || 'Unknown error...'
     logThis(err, req);
-    res.status(err.code || 500).send({ error: err.message });
+    res.status(err.code).json(err);
   };
 }
 
