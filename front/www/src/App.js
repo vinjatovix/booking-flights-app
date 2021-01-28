@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,16 +7,33 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-function App() {
+const Login = () => {
+  return <h1>Login</h1>;
+};
+
+const App = () => {
   return (
     <div className="App">
       <Router>
+        <nav>
+          <ul>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register">Register</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+          </ul>
+        </nav>
         <Switch>
           <Route path="/">
             <h1>Inicio</h1>
           </Route>
           <Route path="/login">
-            <h1>Login</h1>
+            <Login />
           </Route>
           <Route path="/register">
             <h1>Register</h1>
@@ -27,6 +45,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
