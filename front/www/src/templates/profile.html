@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLanders Perfil</title>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1><a href="/">FLanders</a></h1>
+      <img class="burguer" src="./assets/svg/bars-solid.svg" alt="menu" />
+    </header>
+    <nav>
+      <ul>
+        <li><a href="/bookings.html">Reservas</a></li>
+        <li><a href="/profile.html">Perfil</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section class="sign-in">
+        <article>
+          <h2>Perfil</h2>
+          <form>
+            <img
+              class="userImage"
+              src="./assets/svg/imagen-de-usuario-con-fondo-negro.svg"
+              alt="User image"
+            />
+            <fieldset>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="User Name"
+              />
+            </fieldset>
+            <fieldset>
+              <input
+                type="email"
+                name="userMail"
+                id="userMail"
+                placeholder="Em@il"
+              />
+            </fieldset>
+            <fieldset>
+              <input
+                type="text"
+                name="originAirport"
+                id="originAirport"
+                placeholder="SCQ - Lavacolla"
+              />
+            </fieldset>
+            <fieldset>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="******"
+              />
+            </fieldset>
+            <fieldset>
+              <input type="text" name="bio" id="bio" placeholder="Bio" />
+            </fieldset>
+            <fieldset>
+              <button class="update">Modificar</button>
+              <button class="cancel">Cancelar</button>
+            </fieldset>
+            <fieldset>
+              <button class="deactivate">Desactivar</button>
+              <button class="delete">Eliminar</button>
+            </fieldset>
+          </form>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
