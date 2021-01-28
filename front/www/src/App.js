@@ -7,10 +7,6 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-const Login = () => {
-  return <h1>Login</h1>;
-};
-
 const App = () => {
   return (
     <div className="App">
@@ -29,17 +25,17 @@ const App = () => {
           </ul>
         </nav>
         <Switch>
-          <Route path="/">
-            <h1>Inicio</h1>
-          </Route>
           <Route path="/login">
-            <Login />
+            <h1>Login</h1>
           </Route>
           <Route path="/register">
             <h1>Register</h1>
           </Route>
           <Route path="/about">
             <h1>About</h1>
+          </Route>
+          <Route path="/">
+            <h1>Inicio</h1>
           </Route>
         </Switch>
       </Router>
