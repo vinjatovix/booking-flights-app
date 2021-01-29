@@ -23,7 +23,7 @@ export const About = () => {
           <img className="about-logo" src={logo} alt="logo" />
           <p>{intro}</p>
           {info.map((p) => (
-            <p>{p}</p>
+            <p key={p.id}>{p.text}</p>
           ))}
           <AboutLinks cssClassName="aboutLinks" title="FYI" items={links} />
         </Article>
@@ -32,7 +32,7 @@ export const About = () => {
         <Article className="about" title="Pila">
           <ul>
             {stack.map((tech) => (
-              <li>{tech}</li>
+              <li key={tech}>{tech}</li>
             ))}
           </ul>
         </Article>
@@ -40,7 +40,7 @@ export const About = () => {
       <section>
         <Article className="about" title="Herramientas">
           {tools.map((tool) => (
-            <li>{tool}</li>
+            <li key={tool}>{tool}</li>
           ))}
         </Article>
       </section>
@@ -48,11 +48,11 @@ export const About = () => {
         <Article className="about" title="Créditos">
           <h3>Formadores</h3>
           {formers.map((teacher) => (
-            <li>{teacher}</li>
+            <li key={teacher}>{teacher}</li>
           ))}
           <h3>Agradecimientos</h3>
           {thanks.sort().map((person) => (
-            <li>{person}</li>
+            <li key={person}>{person}</li>
           ))}
           <AboutLinks
             cssClassName="aboutLinks"
