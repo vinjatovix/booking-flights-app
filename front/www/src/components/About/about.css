@@ -1,0 +1,15 @@
+/* ABOUT */
+.about h3 {
+    margin-top: 2rem;
+}
+
+.about-logo {
+    border-radius: 50%;
+    width: 150px;
+    padding: 0.5rem;
+}
+.aboutLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

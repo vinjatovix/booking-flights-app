@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
-} from 'react-router-dom';
-import "./css/index.css"
+} from "react-router-dom";
+import "./css/index.css";
+import { Main } from "./components/common/Main";
+import { AboutPage } from "./pages/AboutPage";
 
 const App = () => {
   return (
@@ -24,20 +26,22 @@ const App = () => {
             </li>
           </ul>
         </nav>
-        <Switch>
-          <Route path="/login">
-            <h1>Login</h1>
-          </Route>
-          <Route path="/register">
-            <h1>Register</h1>
-          </Route>
-          <Route path="/about">
-            <h1>About</h1>
-          </Route>
-          <Route path="/">
-            <h1>Inicio</h1>
-          </Route>
-        </Switch>
+        <Main>
+          <Switch>
+            <Route path="/login">
+              <h1>Login</h1>
+            </Route>
+            <Route path="/register">
+              <h1>Register</h1>
+            </Route>
+            <Route path="/about">
+              <AboutPage/>
+            </Route>
+            <Route path="/">
+              <h1>Inicio</h1>
+            </Route>
+          </Switch>
+        </Main>
       </Router>
     </div>
   );

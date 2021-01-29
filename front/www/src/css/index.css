@@ -65,9 +65,8 @@ section {
   padding: 1rem;
 }
 
-article {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.829);
+img {
+  max-width: 100%;
 }
 
 form {
@@ -212,11 +211,6 @@ button.delete {
 input[value="Login"] {
   color: #fff;
   background-color: #3f6abe;
-}
-
-/* ABOUT */
-.about p {
-  padding: 0 1rem 1rem;
 }
 
 /* RESULTS */

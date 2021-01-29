@@ -1,0 +1,13 @@
+article {
+    background-color: rgba(255, 255, 255, 0.829);
+    padding: 0 1rem 1rem;
+    text-align: center;
+}
+
+article h2{
+    font-size: 2rem;
+}
+
+article h3{
+    font-size: 1.5rem;
+}
