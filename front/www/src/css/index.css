@@ -10,6 +10,8 @@
 @import "./comp/firefox.css";
 @import "./comp/ios.css";
 
+/* FONTS */
+
 @font-face {
   font-family: "atkinson";
   src: url("./fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2"),
@@ -23,18 +25,35 @@
 }
 
 body {
+  background-attachment: fixed;
   background-color: #fff;
+  background-image: url("../assets/img/bgi.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+.App {
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+}
+
+/* HEADER */
 .app-header {
+  grid-area: "header";
+  position: fixed;
+  align-items: center;
   background: url("../assets/svg/plane-arrival-solid.svg");
+  background-color: #fff;
   background-repeat: no-repeat;
   background-size: 2rem;
   background-position: 0.5rem center;
   display: flex;
+  height: 10vh;
   justify-content: space-between;
-  align-items: center;
   padding: 0.5rem;
+  width: 100vw;
+  z-index: 1337;
 }
 .app-header h1 {
   margin-left: 2rem;
@@ -55,14 +74,14 @@ nav a {
   border: 1px solid black;
 }
 
-main {
-  height: 90vh;
-  background-image: url("../assets/img/bgi.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+/* MAIN  */
+.app-main {
+  position: relative;
+  min-height: 90vh;
+  top: 10vh;
 }
 section {
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
 }
 
 img {
@@ -117,6 +136,7 @@ input {
   background-size: 1.5rem;
   background-position: 0.2rem center;
 }
+
 select {
   background-color: #ccc;
 }
@@ -265,4 +285,12 @@ h5 {
 }
 .response article {
   margin-bottom: 0.5rem;
+}
+
+.app-footer {
+  grid-area: "header";
+  background-color: #ececec;
+  color: #3f6abe;
+  text-align: center;
+  padding: 0.5rem;
 }
