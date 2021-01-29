@@ -40,7 +40,7 @@ body {
 
 /* HEADER */
 .app-header {
-  grid-area: 'header';
+  grid-area: "header";
   position: fixed;
   align-items: center;
   background: url('../assets/svg/plane-arrival-solid.svg');

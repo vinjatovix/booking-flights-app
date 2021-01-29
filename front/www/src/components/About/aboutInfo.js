@@ -1,15 +1,18 @@
 export const aboutInfo = {
   logo: "/assets/logo.png",
-  intro:
-    "Flight Landers es una app desarrollada como proyecto final de curso en Hack A Boss por Mateo Codesido y Pablo Viña con meros fines didácticos y sin ánimo de lucro.",
   info: [
     {
       id: 1,
       text:
-        "Se trata de una aplicación de búsqueda y reserva de vuelos que trabaja consumiendo datos de la API de Amadeus, una de los proveedores de información aérea más importante del mundo.",
+        "Flight Landers es una app desarrollada como proyecto final de curso en Hack A Boss por Mateo Codesido y Pablo Viña con meros fines didácticos y sin ánimo de lucro.",
     },
     {
       id: 2,
+      text:
+        "Se trata de una aplicación de búsqueda y reserva de vuelos que trabaja consumiendo datos de la API de Amadeus, una de los proveedores de información aérea más importante del mundo.",
+    },
+    {
+      id: 3,
       text:
         "Cualquier persona puede realizar una búsqueda en tiempo real de vuelos disponibles entre dos destinos cualquiera del mundo y ordenar los resultados según precio, duración o paradas.",
     },
