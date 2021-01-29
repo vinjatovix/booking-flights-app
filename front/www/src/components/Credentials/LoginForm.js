@@ -1,6 +1,27 @@
 import React from "react";
+import { ListDrawer } from "../common/ListDrawer/ListDrawer";
 import "./credentials.css";
 
+const loginInputs = [
+  {
+    type: "email",
+    name: "userMail",
+    id: "userMail",
+    placeholder: "Em@il",
+    required: "required",
+  },
+  {
+    type: "password",
+    name: "password",
+    id: "password",
+    placeholder: "password",
+    required: "required",
+  },
+  {
+    type: "submit",
+    value: "Entrar",
+  },
+];
 export const LoginForm = () => {
   //TODO: state para el auth, email, etc... probablemente custom hook
   return (
@@ -10,21 +31,7 @@ export const LoginForm = () => {
       action="/login"
       encType="multipart/form-data"
     >
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Password"
-        required
-      />
-      <input type="submit" value="Send" />
+      <ListDrawer type="inputs" items={loginInputs} />
     </form>
   );
 };
