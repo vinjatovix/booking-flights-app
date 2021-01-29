@@ -8,7 +8,7 @@ export const GenericList = (props) => {
             <h3>{props.title}</h3>
             <ul className={props.cssClassName}>
                 {props.items.map((item) => {
-                    return <ListItem key={`li${item}`} name={item}></ListItem>;
+                    return <ListItem key={`li${item}`}>{item}</ListItem>;
                 })}
             </ul>
         </>

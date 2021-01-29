@@ -1,13 +1,19 @@
 import React from "react";
 
 /** */
-export const ListItem = ({ name: item, children }) => {
-  if (children) {
+export const ListItem = ({ name, children }) => {
+  if (!name && !children) {
+    return <li>Faltan props</li>;
+  }
+  if (name && children) {
     return (
       <li>
-        {item}: {children}
+        {name}: {children}
       </li>
     );
   }
-  return <li>{item}</li>;
+  if (!children) {
+    return <li>{name}</li>;
+  }
+  return <li>{children}</li>;
 };

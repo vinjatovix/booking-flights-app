@@ -10,7 +10,7 @@ export const LinkList = (props) => {
                 {props.items.map((item) => {
                     return (
                         <ListItem key={`a${item.name}`} name={item.name}>
-                            <a href={item.url} children={item.linkText || "Link"} />
+                            <a href={item.url} children={item.linkText || item.children} />
                         </ListItem>
                     );
                 })}

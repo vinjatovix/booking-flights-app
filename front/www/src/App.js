@@ -12,6 +12,7 @@ import { AboutPage } from './pages/AboutPage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { MenuPage } from './pages/MenuPage';
+import { Footer } from './components/common/Footer';
 
 const App = () => {
   return (
@@ -54,7 +55,7 @@ const App = () => {
           </Switch>
         </Main>
       </Router>
-      <footer className="app-footer">Code-Vix &copy; 2021</footer>
+        <Footer/>
     </div>
   );
 };
