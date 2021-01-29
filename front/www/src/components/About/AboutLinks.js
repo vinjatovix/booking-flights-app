@@ -9,7 +9,7 @@ export const AboutLinks = ({ cssClassName, title, items }) => {
         {items.map((item) => {
           return (
             <ListItem key={item.name} name={item.name}>
-              <a href={item.url} children={item.linkText} />
+              <a href={item.url} children={item.linkText || "Link"} />
             </ListItem>
           );
         })}

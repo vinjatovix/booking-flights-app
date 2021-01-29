@@ -8,6 +8,10 @@
     width: 150px;
     padding: 0.5rem;
 }
+
+.about p {
+    margin-bottom: 1rem;
+}
 .aboutLinks {
     display: flex;
     flex-direction: column;

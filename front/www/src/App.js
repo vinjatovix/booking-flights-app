@@ -8,34 +8,39 @@ import {
 import "./css/index.css";
 import { Main } from "./components/common/Main";
 import { AboutPage } from "./pages/AboutPage";
+import { LoginPage } from "./pages/LoginPage";
+import { RegisterPage } from "./pages/RegisterPage";
 
 const App = () => {
   return (
     <div className="App">
       <Router>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-          </ul>
-        </nav>
-        <Main>
+        <header className="app-header">
+          <h1>FL</h1>
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+              <li>
+                <NavLink to="/register">Register</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <Main className="app-main">
           <Switch>
             <Route path="/login">
-              <h1>Login</h1>
+              <LoginPage />
             </Route>
             <Route path="/register">
-              <h1>Register</h1>
+              <RegisterPage />
             </Route>
             <Route path="/about">
-              <AboutPage/>
+              <AboutPage />
             </Route>
             <Route path="/">
               <h1>Inicio</h1>
@@ -43,6 +48,7 @@ const App = () => {
           </Switch>
         </Main>
       </Router>
+      <footer className="app-footer">Code-Vix &copy; 2021</footer>
     </div>
   );
 };

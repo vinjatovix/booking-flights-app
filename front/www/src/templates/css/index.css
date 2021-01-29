@@ -153,42 +153,7 @@ input[value="Buscar"] {
   background-color: #3f6abe;
 }
 
-/* CREDENCIALES */
-.userImage {
-  height: 7rem;
-}
-#username {
-  background-image: url("../assets/svg/user-solid.svg");
-  background-size: 1rem;
-  background-position: 0.5rem;
-}
-#userMail {
-  background-image: url("../assets/svg/email.svg");
-  background-size: 1.2rem;
-  background-position: 0.5rem;
-}
-#password {
-  background-image: url("../assets/svg/password.svg");
-  background-size: 1.5rem;
-  background-position: 0.5rem;
-}
-#repeatPassword {
-  background-image: url("../assets/svg/repeat.svg");
-  background-size: 1.2rem;
-  background-position: 0.5rem;
-}
-#bio {
-  height: 99px;
-  overflow: auto;
-  background-image: url("../assets/svg/biography.svg");
-  background-size: 1.5rem;
-  background-position: 0.5rem;
-}
-#originAirport {
-  background-image: url("../assets/svg/airport-tower.svg");
-  background-size: 1.2rem;
-  background-position: 0.5rem;
-}
+
 
 button {
   text-align: center;
@@ -214,10 +179,6 @@ input[value="Login"] {
   background-color: #3f6abe;
 }
 
-/* ABOUT */
-.about p {
-  padding: 0 1rem 1rem;
-}
 
 /* RESULTS */
 .response header {
