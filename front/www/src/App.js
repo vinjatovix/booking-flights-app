@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   NavLink,
-} from "react-router-dom";
-import "./css/index.css";
-import { Main } from "./components/common/Main";
-import { AboutPage } from "./pages/AboutPage";
-import { LoginPage } from "./pages/LoginPage";
-import { RegisterPage } from "./pages/RegisterPage";
+} from 'react-router-dom';
+import LogoMenu from './assets/svg/bars-solid.svg';
+import './css/index.css';
+import { Main } from './components/common/Main';
+import { AboutPage } from './pages/AboutPage';
+import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
+import { MenuPage } from './pages/MenuPage';
 
 const App = () => {
   return (
@@ -17,7 +19,10 @@ const App = () => {
       <Router>
         <header className="app-header">
           <h1>FL</h1>
-          <nav>
+          <a href="/menu" className="enlace">
+            <img className="burguer" src={LogoMenu} alt="Botón de menú" />
+          </a>
+          {/* <nav>
             <ul>
               <li>
                 <NavLink to="/login">Login</NavLink>
@@ -29,9 +34,10 @@ const App = () => {
                 <NavLink to="/about">About</NavLink>
               </li>
             </ul>
-          </nav>
+          </nav> */}
         </header>
         <Main className="app-main">
+          <MenuPage />
           <Switch>
             <Route path="/login">
               <LoginPage />

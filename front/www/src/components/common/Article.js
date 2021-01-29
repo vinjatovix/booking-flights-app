@@ -1,5 +1,5 @@
-import React from "react";
-import "./article.css";
+import React from 'react';
+import './article.css';
 
 export const Article = ({ className, title, children }) => {
   return (

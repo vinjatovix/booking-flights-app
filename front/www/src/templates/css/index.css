@@ -2,33 +2,33 @@
 
 /* RESET */
 
-@import "./reset.css";
+@import './reset.css';
 
 /* COMPATIBILITY */
 
-@import "./comp/ie.css";
-@import "./comp/firefox.css";
-@import "./comp/ios.css";
+@import './comp/ie.css';
+@import './comp/firefox.css';
+@import './comp/ios.css';
 
 @font-face {
-  font-family: "atkinson";
-  src: url("./fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2"),
-    url("./fonts/Atkinson-Hyperlegible-Regular-102.woff") format("woff");
+  font-family: 'atkinson';
+  src: url('./fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
+    url('./fonts/Atkinson-Hyperlegible-Regular-102.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: "Atkinson", sans-serif;
+  font-family: 'Atkinson', sans-serif;
 }
 
 body {
   background-color: #fff;
 }
 
-.app-header {
-  background: url("../assets/svg/plane-arrival-solid.svg");
-  background-repeat: no-repeat;
+/* .app-header {
+  background: url('../assets/svg/plane-arrival-solid.svg');
+  background-repeat: repeat;
   background-size: 2rem;
   background-position: 0.5rem center;
   display: flex;
@@ -38,7 +38,8 @@ body {
 }
 .app-header h1 {
   margin-left: 2rem;
-}
+  color: red;
+} */
 
 .burguer {
   height: 1.3rem;
@@ -55,9 +56,13 @@ nav a {
   border: 1px solid black;
 }
 
+.enlace {
+  border: 1px solid black;
+}
+
 main {
   height: 90vh;
-  background-image: url("../assets/img/bgi.jpg");
+  background-image: url('../assets/img/bgi.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -92,18 +97,18 @@ fieldset.date {
   background-repeat: no-repeat;
   background-size: 1.5rem;
   background-position: 0.2rem center;
-  background-image: url("../assets/svg/plane-departure-solid.min.svg");
+  background-image: url('../assets/svg/plane-departure-solid.min.svg');
 }
 #destination {
   background-repeat: no-repeat;
   background-size: 1.5rem;
   background-position: 0.2rem center;
-  background-image: url("../assets/svg/plane-arrival-solid.svg");
+  background-image: url('../assets/svg/plane-arrival-solid.svg');
 }
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"] {
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'] {
   width: 85vw;
 }
 
@@ -125,42 +130,40 @@ option {
   background-size: contain;
   background-repeat: no-repeat;
 }
-option[value="oneWay"] {
-  background-image: url("../assets/svg/long-arrow-alt-right-solid.svg");
+option[value='oneWay'] {
+  background-image: url('../assets/svg/long-arrow-alt-right-solid.svg');
 }
-option[value="roundTrip"] {
-  background-image: url("../assets/svg/exchange-alt-solid.svg");
+option[value='roundTrip'] {
+  background-image: url('../assets/svg/exchange-alt-solid.svg');
   background-size: contain;
 }
 
-input[type="number"]#passengers {
-  background-image: url("../assets/svg/user-friends-solid.svg");
+input[type='number']#passengers {
+  background-image: url('../assets/svg/user-friends-solid.svg');
 }
-input[type="number"]#escales {
-  background-image: url("../assets/svg/route-solid.svg");
+input[type='number']#escales {
+  background-image: url('../assets/svg/route-solid.svg');
 }
-input[type="number"]#price {
-  background-image: url("../assets/svg/funnel-dollar-solid.svg");
+input[type='number']#price {
+  background-image: url('../assets/svg/funnel-dollar-solid.svg');
 }
 button,
-input[type="submit"] {
+input[type='submit'] {
   font-size: 1.5rem;
   padding: 1rem;
   margin: 0 auto;
 }
-input[value="Buscar"] {
+input[value='Buscar'] {
   color: #fff;
   background-color: #3f6abe;
 }
-
-
 
 button {
   text-align: center;
   width: 40vw;
   font-size: 1rem;
 }
-input[value="Registro"],
+input[value='Registro'],
 button.update {
   background-color: #f9e24c;
 }
@@ -174,11 +177,10 @@ button.delete {
   background-color: red;
   color: white;
 }
-input[value="Login"] {
+input[value='Login'] {
   color: #fff;
   background-color: #3f6abe;
 }
-
 
 /* RESULTS */
 .response header {
@@ -191,35 +193,35 @@ input[value="Login"] {
 }
 .round-trip-icon {
   width: 1rem;
-  background-image: url("../assets/svg/exchange-alt-solid.svg");
+  background-image: url('../assets/svg/exchange-alt-solid.svg');
   background-repeat: no-repeat;
   background-position: center center;
 }
 .editQuery {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url("../assets/svg/pen-solid.svg");
+  background-image: url('../assets/svg/pen-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .route {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url("../assets/svg/route-solid.svg");
+  background-image: url('../assets/svg/route-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .duration {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url("../assets/svg/stopwatch-solid.svg");
+  background-image: url('../assets/svg/stopwatch-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .price {
   margin-left: 0.5rem;
   width: 1.6rem;
-  background-image: url("../assets/svg/funnel-dollar-solid.svg");
+  background-image: url('../assets/svg/funnel-dollar-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
