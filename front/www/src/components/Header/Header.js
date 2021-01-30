@@ -1,5 +1,8 @@
-import React from 'react';
+import { React, useState } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
+import { Menu } from '../Menu/Menu';
+import './header.css';
+// const [style, use] = useState('');
 
 const Header = () => {
   const displayMenu = (e) => {
@@ -8,15 +11,13 @@ const Header = () => {
   };
 
   return (
-    <header className="app-header">
-      <h1>FL</h1>
-      <img
-        className="burguer"
-        src={LogoMenu}
-        alt="Botón de menú"
-        onClick={displayMenu}
-      />
-    </header>
+    <div className="app-header">
+      <header>
+        <h1>FL</h1>
+        <img className="burguer" src={LogoMenu} alt="Botón de menú" onClick={displayMenu} />
+      </header>
+      <Menu />
+    </div>
   );
 };
 

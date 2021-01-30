@@ -5,7 +5,6 @@ import './css/index.css';
 import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
 import { SearchForm } from './components/SearchForm/SearchForm';
-import { MenuPage } from './pages/MenuPage';
 import { CredentialsPage } from './pages/CredentialsPage';
 import { AboutPage } from './pages/AboutPage';
 import { Footer } from './components/common/Footer';
@@ -22,7 +21,6 @@ const App = () => {
       <Router>
         <Header />
         <Main className="app-main">
-          <MenuPage />
           <Switch>
             <Route path="/login">
               <LoginPage {...loginProps} />
