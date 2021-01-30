@@ -1,6 +1,5 @@
 import { React, useState } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
-import { Menu } from '../Menu/Menu';
 import './header.css';
 // const [style, use] = useState('');
 
@@ -11,13 +10,10 @@ const Header = () => {
   };
 
   return (
-    <div className="app-header">
-      <header>
-        <h1>FL</h1>
-        <img className="burguer" src={LogoMenu} alt="Botón de menú" onClick={displayMenu} />
-      </header>
-      <Menu />
-    </div>
+    <header className="app-header">
+      <h1>FL</h1>
+      <img className="burguer" src={LogoMenu} alt="Botón de menú" onClick={displayMenu} />
+    </header>
   );
 };
 

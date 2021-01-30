@@ -1,4 +1,59 @@
-nav {
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  padding: 1rem 0;
   border: 1px solid black;
-  min-width: 100vw;
+  width: 91vw;
+  background-color: rgb(255, 255, 255);
+  -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+}
+
+.menu section {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.menu section img {
+  height: 70px;
+  width: 70px;
+  margin: 0 0 0.75rem 1.5rem;
+}
+
+.menu ul {
+  padding-top: 1rem;
+}
+
+.menu ul li {
+  margin: 1rem;
+  width: 70vw;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: #c4c4c4;
+  border: 1px solid black;
+}
+
+.login {
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: 0.5rem center;
+  background-image: url('../../assets/svg/login.svg');
+}
+
+.register {
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: 0.5rem center;
+  background-image: url('../../assets/svg/register.svg');
+}
+
+.about {
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: 0.5rem center;
+  background-image: url('../../assets/svg/about.svg');
 }

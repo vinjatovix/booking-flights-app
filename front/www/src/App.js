@@ -6,6 +6,7 @@ import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
 import { SearchForm } from './components/SearchForm/SearchForm';
 import { CredentialsPage } from './pages/CredentialsPage';
+import { Menu } from './components/Menu/Menu';
 import { AboutPage } from './pages/AboutPage';
 import { Footer } from './components/common/Footer';
 
@@ -21,6 +22,7 @@ const App = () => {
       <Router>
         <Header />
         <Main className="app-main">
+          <Menu />
           <Switch>
             <Route path="/login">
               <LoginPage {...loginProps} />
@@ -31,9 +33,9 @@ const App = () => {
             <Route path="/about">
               <AboutPage url="http://localhost:8337/about" />
             </Route>
-            <Route path="/">
+            {/* <Route path="/">
               <SearchForm />
-            </Route>
+            </Route> */}
           </Switch>
         </Main>
       </Router>
