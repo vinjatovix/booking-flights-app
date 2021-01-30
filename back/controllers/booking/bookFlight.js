@@ -35,7 +35,6 @@ async function bookFlight(req, res, next) {
       bookingCache,
     });
   } catch (error) {
-    // TODO: Si algo falla que borre todo lo escrito en la base de esta operacion
 
     if (error.name === 'ValidationError') {
       error.code = 400;
