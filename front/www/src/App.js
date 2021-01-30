@@ -14,6 +14,8 @@ import { Footer } from './components/common/Footer';
 /* RENDER PROPS */
 import { registerProps } from './registerProps';
 import { loginProps } from './loginProps';
+import { RegisterPage } from './pages/RegisterPage';
+import { LoginPage } from './pages/LoginPage';
 
 const App = () => {
   return (
@@ -42,10 +44,10 @@ const App = () => {
           <MenuPage />
           <Switch>
             <Route path="/login">
-              <CredentialsPage {...loginProps} />
+              <LoginPage {...loginProps} />
             </Route>
             <Route path="/register">
-              <CredentialsPage {...registerProps} />
+              <RegisterPage {...registerProps} />
             </Route>
             <Route path="/about">
               <AboutPage url="http://localhost:8337/about" />

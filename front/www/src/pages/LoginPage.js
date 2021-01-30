@@ -1,12 +1,13 @@
 import React from 'react';
 import { Article } from '../components/common/Article';
 import { CredentialsForm } from '../components/Credentials/CredentialsForm';
+import { LoginForm } from '../components/Credentials/LoginForm';
 
 export const LoginPage = (props) => {
   return (
     <section>
       <Article title={props.title}>
-        <CredentialsForm {...props} />
+        <LoginForm {...props} />
       </Article>
     </section>
   );
