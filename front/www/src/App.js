@@ -5,8 +5,9 @@ import {
   Route,
   NavLink,
 } from 'react-router-dom';
-import LogoMenu from './assets/svg/bars-solid.svg';
+
 import './css/index.css';
+import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
 import { AboutPage } from './pages/AboutPage';
 import { LoginPage } from './pages/LoginPage';
@@ -17,25 +18,7 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <header className="app-header">
-          <h1>FL</h1>
-          <a href="/menu" className="enlace">
-            <img className="burguer" src={LogoMenu} alt="Botón de menú" />
-          </a>
-          {/* <nav>
-            <ul>
-              <li>
-                <NavLink to="/login">Login</NavLink>
-              </li>
-              <li>
-                <NavLink to="/register">Register</NavLink>
-              </li>
-              <li>
-                <NavLink to="/about">About</NavLink>
-              </li>
-            </ul>
-          </nav> */}
-        </header>
+        <Header />
         <Main className="app-main">
           <MenuPage />
           <Switch>
