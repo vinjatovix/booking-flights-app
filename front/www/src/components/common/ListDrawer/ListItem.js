@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 /** */
 export const ListItem = ({ name, children }) => {
@@ -16,4 +17,9 @@ export const ListItem = ({ name, children }) => {
     return <li>{name}</li>;
   }
   return <li>{children}</li>;
+};
+
+ListItem.propTypes = {
+  children: PropTypes.any,
+  name: PropTypes.any,
 };
