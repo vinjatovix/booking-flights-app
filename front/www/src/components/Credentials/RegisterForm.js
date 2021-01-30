@@ -64,8 +64,12 @@ export const RegisterForm = ({ action, cssClassName, encType, inputs, method }) 
     const json = await res.json();
     console.log(json.details[0].message);
     if (res.status === 400) {
+      if (json?.details[0]?.message) {
+        setErrorMessage(json.details[0].message);
+      } else {
+        setErrorMessage(json.details);
+      }
       // setAuth("");
-      setErrorMessage(json.details[0].message);
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
       console.log({ email, password, event: e, json });
@@ -82,20 +86,20 @@ export const RegisterForm = ({ action, cssClassName, encType, inputs, method }) 
         <Input value={password} setValue={setPassword} {...passwordProps} />
         <Input value={repeatPassword} setValue={setRepeatPassword} {...rePasswordProps} />
         <Input value={bio} setValue={setBio} {...bioProps} />
-        <div style={{ display: 'block', color: 'red', minHeight: '1.5em' }}> {errorMessage}</div>
         <Input {...buttonProps} />
         {/* <ListDrawer type="inputs" items={inputs}></ListDrawer> */}
       </form>
+      <div style={{ display: 'block', color: 'red', minHeight: '1.5em' }}> {errorMessage}</div>
     </>
   );
 };
 
 RegisterForm.propTypes = {
-  action: PropTypes.string.isRequired,
+  action: PropTypes.string,
   cssClassName: PropTypes.string,
   encType: PropTypes.string,
-  inputs: PropTypes.array.isRequired,
-  method: PropTypes.string.isRequired,
+  inputs: PropTypes.array,
+  method: PropTypes.string,
 };
 RegisterForm.defaultProps = {
   encType: 'multipart/form-data',
