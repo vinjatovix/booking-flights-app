@@ -2,48 +2,45 @@
 
 /* RESET */
 
-@import './reset.css';
+@import "./reset.css";
 
 /* COMPATIBILITY */
 
-@import './comp/ie.css';
-@import './comp/firefox.css';
-@import './comp/ios.css';
+@import "./comp/ie.css";
+@import "./comp/firefox.css";
+@import "./comp/ios.css";
 
 /* FONTS */
 
 @font-face {
-  font-family: 'atkinson';
-  src: url('./fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
-    url('./fonts/Atkinson-Hyperlegible-Regular-102.woff') format('woff');
+  font-family: "atkinson";
+  src: url("./fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2"),
+    url("./fonts/Atkinson-Hyperlegible-Regular-102.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: 'Atkinson', sans-serif;
+  font-family: "Atkinson", sans-serif;
 }
 
 body {
-  background-attachment: fixed;
-  background-color: #fff;
-  background-image: url('../assets/img/bgi.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
 }
 
 .App {
   display: grid;
-  grid-template-areas: 'header' 'main' 'footer';
+  justify-content: space-between;
+  height: 100%;
+  grid-template-areas: "header" "main" "footer";
 }
 
 /* HEADER */
 .app-header {
-  grid-area: 'header';
+  grid-area: "header";
   position: fixed;
   align-items: center;
-  background: url('../assets/svg/plane-arrival-solid.svg');
+  background: url("../assets/svg/plane-arrival-solid.svg");
   background-color: #fff;
   background-repeat: no-repeat;
   background-size: 2rem;
@@ -76,13 +73,18 @@ nav a {
 
 /* MAIN  */
 .app-main {
-  position: relative;
-  min-height: 90vh;
-  top: 10vh;
+  padding: 1rem;
+  background-attachment: fixed;
+  background-color: #fff;
+  background-image: url("../assets/img/bgi.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-area: "main";
+  min-height: 80vh;
+  margin-top: 10vh;
 }
-section {
-  padding: 1rem 1rem 0 1rem;
-}
+
 
 img {
   max-width: 100%;
@@ -109,19 +111,19 @@ fieldset.date {
 #origin {
   background-repeat: no-repeat;
   background-size: 1.5rem;
-  background-position: 0.2rem center;
-  background-image: url('../assets/svg/plane-departure-solid.min.svg');
+  background-position: 10vh center;
+  background-image: url("../assets/svg/plane-departure-solid.min.svg");
 }
 #destination {
   background-repeat: no-repeat;
   background-size: 1.5rem;
   background-position: 0.2rem center;
-  background-image: url('../assets/svg/plane-arrival-solid.svg');
+  background-image: url("../assets/svg/plane-arrival-solid.svg");
 }
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'] {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
   width: 85vw;
 }
 
@@ -144,30 +146,30 @@ option {
   background-size: contain;
   background-repeat: no-repeat;
 }
-option[value='oneWay'] {
-  background-image: url('../assets/svg/long-arrow-alt-right-solid.svg');
+option[value="oneWay"] {
+  background-image: url("../assets/svg/long-arrow-alt-right-solid.svg");
 }
-option[value='roundTrip'] {
-  background-image: url('../assets/svg/exchange-alt-solid.svg');
+option[value="roundTrip"] {
+  background-image: url("../assets/svg/exchange-alt-solid.svg");
   background-size: contain;
 }
 
-input[type='number']#passengers {
-  background-image: url('../assets/svg/user-friends-solid.svg');
+input[type="number"]#passengers {
+  background-image: url("../assets/svg/user-friends-solid.svg");
 }
-input[type='number']#escales {
-  background-image: url('../assets/svg/route-solid.svg');
+input[type="number"]#escales {
+  background-image: url("../assets/svg/route-solid.svg");
 }
-input[type='number']#price {
-  background-image: url('../assets/svg/funnel-dollar-solid.svg');
+input[type="number"]#price {
+  background-image: url("../assets/svg/funnel-dollar-solid.svg");
 }
 button,
-input[type='submit'] {
+input[type="submit"] {
   font-size: 1.5rem;
   padding: 1rem;
   margin: 0 auto;
 }
-input[value='Buscar'] {
+input[value="Buscar"] {
   color: #fff;
   background-color: #3f6abe;
 }
@@ -185,34 +187,34 @@ input[value='Buscar'] {
   height: 7rem;
 }
 #username {
-  background-image: url('../assets/svg/user-solid.svg');
+  background-image: url("../assets/svg/user-solid.svg");
   background-size: 1rem;
   background-position: 0.5rem;
 }
 #userMail {
-  background-image: url('../assets/svg/email.svg');
+  background-image: url("../assets/svg/email.svg");
   background-size: 1.2rem;
   background-position: 0.5rem;
 }
 #password {
-  background-image: url('../assets/svg/password.svg');
+  background-image: url("../assets/svg/password.svg");
   background-size: 1.5rem;
   background-position: 0.5rem;
 }
 #repeatPassword {
-  background-image: url('../assets/svg/repeat.svg');
+  background-image: url("../assets/svg/repeat.svg");
   background-size: 1.2rem;
   background-position: 0.5rem;
 }
 #bio {
   height: 99px;
   overflow: auto;
-  background-image: url('../assets/svg/biography.svg');
+  background-image: url("../assets/svg/biography.svg");
   background-size: 1.5rem;
   background-position: 0.5rem;
 }
 #originAirport {
-  background-image: url('../assets/svg/airport-tower.svg');
+  background-image: url("../assets/svg/airport-tower.svg");
   background-size: 1.2rem;
   background-position: 0.5rem;
 }
@@ -222,7 +224,7 @@ button {
   width: 40vw;
   font-size: 1rem;
 }
-input[value='Registro'],
+input[value="Registro"],
 button.update {
   background-color: #f9e24c;
 }
@@ -236,7 +238,7 @@ button.delete {
   background-color: red;
   color: white;
 }
-input[value='Login'] {
+input[value="Login"] {
   color: #fff;
   background-color: #3f6abe;
 }
@@ -252,35 +254,35 @@ input[value='Login'] {
 }
 .round-trip-icon {
   width: 1rem;
-  background-image: url('../assets/svg/exchange-alt-solid.svg');
+  background-image: url("../assets/svg/exchange-alt-solid.svg");
   background-repeat: no-repeat;
   background-position: center center;
 }
 .editQuery {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url('../assets/svg/pen-solid.svg');
+  background-image: url("../assets/svg/pen-solid.svg");
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .route {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url('../assets/svg/route-solid.svg');
+  background-image: url("../assets/svg/route-solid.svg");
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .duration {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url('../assets/svg/stopwatch-solid.svg');
+  background-image: url("../assets/svg/stopwatch-solid.svg");
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .price {
   margin-left: 0.5rem;
   width: 1.6rem;
-  background-image: url('../assets/svg/funnel-dollar-solid.svg');
+  background-image: url("../assets/svg/funnel-dollar-solid.svg");
   background-repeat: no-repeat;
   background-position: center bottom;
 }
@@ -296,9 +298,15 @@ h5 {
 }
 
 .app-footer {
-  grid-area: 'header';
+  height: 10vh;
+  width: 100vw;
+  grid-area: "footer";
   background-color: #ececec;
   color: #3f6abe;
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem;
+}
+.app-footer ul{
+  display:flex ;
+  justify-content: space-evenly;
 }

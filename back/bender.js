@@ -7,6 +7,7 @@ const express = require('express');
 const loggers = require('./config/loggers');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
 const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
@@ -30,7 +31,7 @@ const app = express();
 
 //? MIDDLEWARES
 if (NODE_ENV === 'development') app.use(loggers.morganWare());
-
+app.use(cors());
 app.use(fileUpload({ useTempFiles: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -1,45 +1,103 @@
-import React from "react";
+import React, { useState } from 'react';
+// import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 
+import PropTypes from 'prop-types';
+import { Input } from '../common/Input';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+export const RegisterForm = ({ action, cssClassName, encType, inputs, method }) => {
+  const [username, serUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [, setAccessToken] = useLocalStorage('', 'auth');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [bio, setBio] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-export const RegisterForm = () => {
+  const nameProps = {
+    type: 'text',
+    name: 'username',
+    id: 'username',
+    placeholder: 'User Name',
+    required: 'required',
+  };
+  const mailProps = {
+    type: 'email',
+    name: 'userMail',
+    id: 'userMail',
+    placeholder: 'Em@il',
+    required: 'required',
+  };
+  const passwordProps = {
+    type: 'password',
+    name: 'password',
+    id: 'password',
+    placeholder: 'password',
+    required: 'required',
+  };
+  const rePasswordProps = {
+    type: 'password',
+    name: 'repeatPassword',
+    id: 'repeatPassword',
+    placeholder: 'Repeat password',
+    required: 'required',
+  };
+  const bioProps = {
+    type: 'text',
+    name: 'bio',
+    id: 'bio',
+    placeholder: 'Bio',
+  };
+  const buttonProps = {
+    id: 'submit-button',
+    type: 'submit',
+    value: 'Registro',
+  };
+  const signIn = async (e) => {
+    e.preventDefault();
+    const res = await fetch('http://localhost:8337/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, email, password, repeatPassword, bio }),
+    });
+    const json = await res.json();
+    console.log(json.details[0].message);
+    if (res.status === 400) {
+      // setAuth("");
+      setErrorMessage(json.details[0].message);
+      setTimeout(() => setErrorMessage(''), 3000);
+    } else {
+      console.log({ email, password, event: e, json });
+      // setAccessToken(json.accessToken);
+      // setAuth(json.accessToken);
+    }
+  };
+
   return (
-    <form
-      className="credentialsForm"
-      method="post"
-      action="/login"
-      encType="multipart/form-data"
-    >
-      <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="User Name"
-        required
-      />
-      <input
-        type="email"
-        name="userMail"
-        id="userMail"
-        placeholder="Em@il"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Enter Password"
-        required
-      />
-      <input
-        type="password"
-        name="repeatPassword"
-        id="repeatPassword"
-        placeholder="Repeat Password"
-        required
-      />
-      <input type="text" name="bio" id="bio" placeholder="Bio" />
-
-      <input type="submit" value="Registro" />
-    </form>
+    <>
+      <form action={action} className={cssClassName} encType={encType} method={method} onSubmit={signIn}>
+        <Input value={username} setValue={serUserName} {...nameProps} />
+        <Input value={email} setValue={setEmail} {...mailProps} />
+        <Input value={password} setValue={setPassword} {...passwordProps} />
+        <Input value={repeatPassword} setValue={setRepeatPassword} {...rePasswordProps} />
+        <Input value={bio} setValue={setBio} {...bioProps} />
+        <div style={{ display: 'block', color: 'red', minHeight: '1.5em' }}> {errorMessage}</div>
+        <Input {...buttonProps} />
+        {/* <ListDrawer type="inputs" items={inputs}></ListDrawer> */}
+      </form>
+    </>
   );
+};
+
+RegisterForm.propTypes = {
+  action: PropTypes.string.isRequired,
+  cssClassName: PropTypes.string,
+  encType: PropTypes.string,
+  inputs: PropTypes.array.isRequired,
+  method: PropTypes.string.isRequired,
+};
+RegisterForm.defaultProps = {
+  encType: 'multipart/form-data',
+  cssClassName: 'credentialsForm',
 };
