@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export const useRemoteUrl = (url) => {
   const [data, setData] = useState([]);
@@ -6,9 +6,9 @@ export const useRemoteUrl = (url) => {
   useEffect(() => {
     async function getRemoteData() {
       const requestOptions = {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
       };
       const response = await fetch(url, requestOptions);
