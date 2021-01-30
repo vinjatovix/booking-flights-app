@@ -54,7 +54,7 @@ async function postSignIn(req, res, next) {
     };
     sendEmail(mail, next);
 
-    res.status(200).json({ ok: true, user: { id, username, email } });
+    res.status(201).json({ ok: true, user: { id, username, email } });
   } catch (err) {
     next(err);
   }

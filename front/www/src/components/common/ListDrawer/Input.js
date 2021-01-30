@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Input = ({ id, name, placeholder, required, type, value, ...item }) => {
+export const Input = ({ id, name, placeholder, required, type, value, setValue, ...item }) => {
   return (
     <input
       id={id}
@@ -11,6 +11,7 @@ export const Input = ({ id, name, placeholder, required, type, value, ...item })
       required={required}
       type={type}
       value={value}
+      onChange={(e) => setValue(e.target.value)}
       {...item}
     />
   );
