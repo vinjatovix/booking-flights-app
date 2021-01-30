@@ -1,11 +1,13 @@
 import React from "react";
 import "./about.css";
 import { Article } from "../common/Article";
-import { aboutInfo } from "./aboutInfo"; //? items
 import { ListDrawer } from "../common/ListDrawer/ListDrawer";
 import { ArticleWrapper } from "../common/ArticleWrapper";
+import { useRemoteUrl } from "../../hooks/useRemoteUrl";
+// import { useRemoteUrl } from "../../hooks/useRemoteUrl";
 
 export const About = () => {
+  const [aboutInfo, setAboutInfo] = useRemoteUrl("http://localhost:8337/about");
   const {
     logo,
     info,
@@ -16,7 +18,7 @@ export const About = () => {
     credits,
     thanks,
   } = aboutInfo;
-  return (
+  const res = (
     <>
       <ArticleWrapper>
         <Article className="about" title="About">
@@ -46,4 +48,8 @@ export const About = () => {
       </ArticleWrapper>
     </>
   );
+  return <>
+  {!aboutInfo?.ok && "loading...."}
+  {aboutInfo.ok && res}
+  </>;
 };
