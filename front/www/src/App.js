@@ -2,16 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LogoMenu from './assets/svg/bars-solid.svg';
 import './css/index.css';
-import { Main } from './components/common/Main';
-import { AboutPage } from './pages/AboutPage';
 // import { LoginPage } from './pages/LoginPage';
 // import { RegisterPage } from './pages/RegisterPage';
-import { MenuPage } from './pages/MenuPage';
-import { Footer } from './components/common/Footer';
+import { Main } from './components/common/Main';
 import { SearchForm } from './components/SearchForm/SearchForm';
+import { MenuPage } from './pages/MenuPage';
+import { CredentialsPage } from './pages/CredentialsPage';
+import { AboutPage } from './pages/AboutPage';
+import { Footer } from './components/common/Footer';
+
+/* RENDER PROPS */
 import { registerProps } from './registerProps';
 import { loginProps } from './loginProps';
-import { CredentialsPage } from './pages/CredentialsPage';
 
 const App = () => {
   return (
@@ -46,7 +48,7 @@ const App = () => {
               <CredentialsPage {...registerProps} />
             </Route>
             <Route path="/about">
-              <AboutPage />
+              <AboutPage url="http://localhost:8337/about" />
             </Route>
             <Route path="/">
               <SearchForm />
