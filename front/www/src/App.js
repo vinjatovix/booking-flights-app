@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LogoMenu from './assets/svg/bars-solid.svg';
 import './css/index.css';
 import { Main } from './components/common/Main';
@@ -13,6 +8,7 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { MenuPage } from './pages/MenuPage';
 import { Footer } from './components/common/Footer';
+import { SearchForm } from './components/SearchForm/SearchForm';
 
 const App = () => {
   return (
@@ -50,12 +46,12 @@ const App = () => {
               <AboutPage />
             </Route>
             <Route path="/">
-              <h1>Inicio</h1>
+              <SearchForm />
             </Route>
           </Switch>
         </Main>
       </Router>
-        <Footer/>
+      <Footer />
     </div>
   );
 };
