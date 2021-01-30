@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 import './credentials.css';
 import PropTypes from 'prop-types';
-import { Input } from '../common/ListDrawer/Input';
+import { Input } from '../common/Input';
 
 export const LoginForm = ({ action, cssClassName, encType, inputs, method }) => {
   //TODO: state para el auth, email, etc... probablemente custom hook

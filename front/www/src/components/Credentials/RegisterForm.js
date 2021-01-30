@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 
 import PropTypes from 'prop-types';
-import { Input } from '../common/ListDrawer/Input';
+import { Input } from '../common/Input';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 export const RegisterForm = ({ action, cssClassName, encType, inputs, method }) => {
   const [username, serUserName] = useState('');
