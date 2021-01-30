@@ -3,13 +3,10 @@ import './about.css';
 import { Article } from '../common/Article';
 import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 import { ArticleWrapper } from '../common/ArticleWrapper';
-import { useRemoteUrl } from '../../hooks/useRemoteUrl';
-// import { useRemoteUrl } from "../../hooks/useRemoteUrl";
+import PropTypes from 'prop-types';
 
-export const About = () => {
-  const [aboutInfo] = useRemoteUrl('http://localhost:8337/about');
-  const { logo, info, formers, stack, tools, links, credits, thanks } = aboutInfo;
-  const res = (
+export const About = ({ logo, info, formers, stack, tools, links, credits, thanks }) => {
+  return (
     <>
       <ArticleWrapper>
         <Article className="about" title="About">
@@ -34,10 +31,14 @@ export const About = () => {
       </ArticleWrapper>
     </>
   );
-  return (
-    <>
-      {!aboutInfo?.ok && 'loading....'}
-      {aboutInfo.ok && res}
-    </>
-  );
+};
+About.propTypes = {
+  logo: PropTypes.string,
+  info: PropTypes.array.isRequired,
+  formers: PropTypes.array,
+  tools: PropTypes.array,
+  stack: PropTypes.array,
+  links: PropTypes.array,
+  credits: PropTypes.array,
+  thanks: PropTypes.array,
 };
