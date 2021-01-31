@@ -65,6 +65,11 @@
 //   ],
 //   credits: [
 //     {
+//       name: "about",
+//       url: "https://www.flaticon.com/authors/bqlqn",
+//       linkText: "bqlqn",
+//     },
+//     {
 //       name: "airport-tower",
 //       url: "https://www.flaticon.com/authors/surang",
 //       linkText: "Surang",
@@ -88,6 +93,11 @@
 //       name: "calendar-alt-regular",
 //       url: "https://www.flaticon.com/authors/freepik",
 //       linkText: "Freepik",
+//     },
+//     {
+//       name: "cerrar",
+//       url: "https://www.flaticon.com/authors/pixel-perfect",
+//       linkText: "Pixel perfect",
 //     },
 //     {
 //       name: "cloud-computing",
@@ -124,7 +134,11 @@
 //       url: "https://www.flaticon.com/authors/kmg-design",
 //       linkText: "Kmg design",
 //     },
-
+//     {
+//       name: "login",
+//       url: "https://www.flaticon.com/authors/pixel-perfect",
+//       linkText: "Pixel perfect",
+//     },
 //     {
 //       name: "passport",
 //       url: "https://www.flaticon.com/authors/freepik",
@@ -149,6 +163,11 @@
 //       name: "plane-departure",
 //       url: "https://www.flaticon.com/authors/google",
 //       linkText: "Google",
+//     },
+//     {
+//       name: "register",
+//       url: "https://www.flaticon.com/authors/pixel-perfect",
+//       linkText: "Pixel perfect",
 //     },
 //     {
 //       name: "repeat",
@@ -194,3 +213,14 @@
 //     "Xabi Trigo - React",
 //   ],
 // };
+
+<div>
+  Iconos diseñados por{' '}
+  <a href="https://www.flaticon.es/autores/pixel-perfect" title="Pixel perfect">
+    Pixel perfect
+  </a>{' '}
+  from{' '}
+  <a href="https://www.flaticon.es/" title="Flaticon">
+    www.flaticon.es
+  </a>
+</div>;
