@@ -10,13 +10,13 @@ export const Menu = () => {
       </section>
 
       <ul>
-        <li className="login">
+        <li className="login-button">
           <a href="/login">Login</a>
         </li>
-        <li className="register">
+        <li className="register-button">
           <a href="/register">Register</a>
         </li>
-        <li className="about">
+        <li className="about-button">
           <a href="/about">About</a>
         </li>
       </ul>

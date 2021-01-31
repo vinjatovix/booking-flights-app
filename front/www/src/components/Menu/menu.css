@@ -47,15 +47,15 @@
   color: white;
 }
 
-.login {
+.login-button {
   background-image: url('../../assets/svg/login.svg');
 }
 
-.register {
+.register-button {
   background-image: url('../../assets/svg/register.svg');
 }
 
-.about {
+.about-button {
   background-image: url('../../assets/svg/about.svg');
 }
 
