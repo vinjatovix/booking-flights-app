@@ -36,4 +36,5 @@ export const buttonProps = {
   id: 'submit-button',
   type: 'submit',
   value: 'Registro',
+  cursor: 'pointer',
 };

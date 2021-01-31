@@ -19,7 +19,7 @@ export const RegisterForm = ({ action, cssClassName, encType, method }) => {
   const signIn = async (e) => {
     e.preventDefault();
     const res = await fetch(action, {
-      method,
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,7 +45,7 @@ export const RegisterForm = ({ action, cssClassName, encType, method }) => {
         <Input value={password} setValue={setPassword} {...passwordProps} />
         <Input value={repeatPassword} setValue={setRepeatPassword} {...rePasswordProps} />
         <Input value={bio} setValue={setBio} {...bioProps} />
-        <Input {...buttonProps} />
+        <input {...buttonProps} style={{ cursor: 'pointer' }} />
         {/* <ListDrawer type="inputs" items={inputs}></ListDrawer> */}
       </form>
       <div style={{ display: 'block', color: 'red', minHeight: '1.5em' }}> {errorMessage}</div>
