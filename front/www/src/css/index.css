@@ -261,3 +261,8 @@ h5 {
   display: flex;
   justify-content: space-evenly;
 }
+
+.app-footer:hover ul {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}

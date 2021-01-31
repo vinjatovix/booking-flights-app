@@ -35,25 +35,24 @@
   text-align: center;
   background-color: #c4c4c4;
   border: 1px solid black;
-}
-
-.login {
   background-repeat: no-repeat;
   background-size: 1.5rem;
   background-position: 0.5rem center;
+}
+
+.menu ul li:active {
+  background-color: rgb(109, 114, 114);
+  color: white;
+}
+
+.login {
   background-image: url('../../assets/svg/login.svg');
 }
 
 .register {
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
-  background-position: 0.5rem center;
   background-image: url('../../assets/svg/register.svg');
 }
 
 .about {
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
-  background-position: 0.5rem center;
   background-image: url('../../assets/svg/about.svg');
 }

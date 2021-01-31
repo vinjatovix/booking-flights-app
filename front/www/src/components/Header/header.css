@@ -21,6 +21,7 @@
 }
 
 .burguer {
-  height: 1.5rem;
+  padding: 0.25rem;
+  height: 2rem;
   margin: 0 1rem;
 }
