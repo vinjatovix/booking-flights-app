@@ -2,6 +2,8 @@
 
 const bcrypt = require('bcryptjs');
 const { registerSchema } = require('../../repositories/registerSchema');
+const jwt = require('jsonwebtoken');
+
 const { sendEmail } = require('./sendEmail');
 const userRepository = require('../../repositories/user-repository');
 
@@ -23,7 +25,7 @@ async function postSignIn(req, res, next) {
     if (!req.body.repeatPassword) {
       const error = new Error();
       error.code = 418;
-      error.details = "You are trying to do something not allowed... and i'm a teapot";
+      error.details = 'Eso que intentas es muy raro';
       next(error);
     }
     await registerSchema.validateAsync(req.body);
@@ -35,7 +37,7 @@ async function postSignIn(req, res, next) {
       const error = new Error();
       error.ok = false;
       error.code = 400;
-      error.details = 'That mail is already in use';
+      error.details = 'Ese mail ya está en uso';
       throw error;
     }
     //? Encriptamos la contraseña y guardamos el usuario en la base
@@ -53,8 +55,13 @@ async function postSignIn(req, res, next) {
       <p>Please <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Log In </a> to activate your account.</p>`,
     };
     sendEmail(mail, next);
-
-    res.status(201).json({ ok: true, user: { id, username, email } });
+    const tokenPayload = {
+      id,
+      username,
+      email,
+    };
+    const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '60s' });
+    res.status(201).json({ ok: true, token });
   } catch (err) {
     next(err);
   }
