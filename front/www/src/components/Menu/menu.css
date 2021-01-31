@@ -11,7 +11,7 @@
   -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
-  animation: menu 1s ease 0s;
+  animation: menu 0.5s ease 0s;
   animation-fill-mode: backwards;
 }
 

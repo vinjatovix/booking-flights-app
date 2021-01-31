@@ -3,9 +3,8 @@ import LogoMenu from '../../assets/svg/bars-solid.svg';
 import CloseMenu from '../../assets/svg/cerrar.svg';
 import './header.css';
 
-const Header = ({ props, style }) => {
+const Header = ({ props }) => {
   const { open, setOpen } = props;
-  const { mainStyle, setMainStyle } = style;
   const [shape, setShape] = useState(LogoMenu);
 
   const displayMenu = (e) => {
@@ -14,10 +13,8 @@ const Header = ({ props, style }) => {
 
     if (open === false) {
       setShape(CloseMenu);
-      setMainStyle(`app-main dark`);
     } else {
       setShape(LogoMenu);
-      setMainStyle(`app-main`);
     }
   };
 

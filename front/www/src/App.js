@@ -19,13 +19,12 @@ import { LoginPage } from './pages/LoginPage';
 const App = () => {
   /* STATES */
   const [open, setOpen] = useState(false);
-  const [mainStyle, setMainStyle] = useState('app-main');
 
   return (
     <div className="App">
       <Router>
-        <Header props={{ open, setOpen }} style={{ mainStyle, setMainStyle }} />
-        <Main className={mainStyle}>
+        <Header props={{ open, setOpen }} />
+        <Main className="app-main">
           {open ? <Menu /> : null}
           <Switch>
             <Route path="/login">
