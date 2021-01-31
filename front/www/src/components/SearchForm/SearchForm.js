@@ -19,8 +19,8 @@ export const SearchForm = () => {
           <input type="number" name="passengers" id="passengers" placeholder="1" />
         </fieldset>
         <fieldset>
-          <input type="number" name="escales" id="escales" placeholder="No limit" />
-          <input type="number" name="price" id="price" placeholder="No limit" />
+          <input type="number" name="escales" id="escales" placeholder="N/a" />
+          <input type="number" name="price" id="price" placeholder="N/a" />
         </fieldset>
         <fieldset className="origin">
           <input type="text" name="origin" id="origin" placeholder="SCQ - Lavacolla" />

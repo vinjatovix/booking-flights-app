@@ -1,0 +1,57 @@
+input[type="number"] {
+    width: 35vw;
+}
+
+input[type="number"]#passengers {
+    background-image: url("../../assets/svg/user-friends-solid.svg");
+}
+input[type="number"]#escales {
+    background-image: url("../../assets/svg/route-solid.svg");
+}
+input[type="number"]#price {
+    background-image: url("../../assets/svg/funnel-dollar-solid.svg");
+}
+
+/* TODO: Hay que buscar como resolver esta vaina */
+/* ! ESTO ES UNA LIADA */
+select {
+    background-color: #ccc;
+}
+/* 
+  option {
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  option[value="oneWay"] {
+    background-image: url("../assets/svg/long-arrow-alt-right-solid.svg");
+  }
+  option[value="roundTrip"] {
+    background-image: url("../assets/svg/exchange-alt-solid.svg");
+  }
+   */
+input[value="Buscar"] {
+    color: #fff;
+    background-color: #3f6abe;
+}
+
+#origin {
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    background-position: 0.2rem center;
+    background-image: url("../../assets/svg/plane-departure-solid.min.svg");
+}
+#destination {
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    background-position: 0.2rem center;
+    background-image: url("../../assets/svg/plane-arrival-solid.svg");
+}
+fieldset.origin,
+fieldset.destination,
+fieldset.date {
+    grid-template-columns: 1fr;
+}
+input[value="Buscar"] {
+    color: #fff;
+    background-color: #3f6abe;
+}
