@@ -24,9 +24,7 @@
   font-family: "Atkinson", sans-serif;
 }
 
-body {
 
-}
 
 .App {
   display: grid;
@@ -85,7 +83,6 @@ nav a {
   margin-top: 10vh;
 }
 
-
 img {
   max-width: 100%;
 }
@@ -98,33 +95,16 @@ form {
 }
 
 fieldset {
-  /* border: 1px solid black; */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
-fieldset.origin,
-fieldset.destination,
-fieldset.date {
-  grid-template-columns: 1fr;
-}
-#origin {
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
-  background-position: 10vh center;
-  background-image: url("../assets/svg/plane-departure-solid.min.svg");
-}
-#destination {
-  background-repeat: no-repeat;
-  background-size: 1.5rem;
-  background-position: 0.2rem center;
-  background-image: url("../assets/svg/plane-arrival-solid.svg");
-}
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"] {
-  width: 85vw;
+  width: 73vw;
 }
 
 option,
@@ -139,39 +119,11 @@ input {
   background-position: 0.2rem center;
 }
 
-select {
-  background-color: #ccc;
-}
-option {
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-option[value="oneWay"] {
-  background-image: url("../assets/svg/long-arrow-alt-right-solid.svg");
-}
-option[value="roundTrip"] {
-  background-image: url("../assets/svg/exchange-alt-solid.svg");
-  background-size: contain;
-}
-
-input[type="number"]#passengers {
-  background-image: url("../assets/svg/user-friends-solid.svg");
-}
-input[type="number"]#escales {
-  background-image: url("../assets/svg/route-solid.svg");
-}
-input[type="number"]#price {
-  background-image: url("../assets/svg/funnel-dollar-solid.svg");
-}
 button,
 input[type="submit"] {
   font-size: 1.5rem;
   padding: 1rem;
   margin: 0 auto;
-}
-input[value="Buscar"] {
-  color: #fff;
-  background-color: #3f6abe;
 }
 
 .menu-oculto {
@@ -180,43 +132,6 @@ input[value="Buscar"] {
 
 .menu {
   display: inherit;
-}
-
-/* CREDENCIALES */
-.userImage {
-  height: 7rem;
-}
-#username {
-  background-image: url("../assets/svg/user-solid.svg");
-  background-size: 1rem;
-  background-position: 0.5rem;
-}
-#userMail {
-  background-image: url("../assets/svg/email.svg");
-  background-size: 1.2rem;
-  background-position: 0.5rem;
-}
-#password {
-  background-image: url("../assets/svg/password.svg");
-  background-size: 1.5rem;
-  background-position: 0.5rem;
-}
-#repeatPassword {
-  background-image: url("../assets/svg/repeat.svg");
-  background-size: 1.2rem;
-  background-position: 0.5rem;
-}
-#bio {
-  height: 99px;
-  overflow: auto;
-  background-image: url("../assets/svg/biography.svg");
-  background-size: 1.5rem;
-  background-position: 0.5rem;
-}
-#originAirport {
-  background-image: url("../assets/svg/airport-tower.svg");
-  background-size: 1.2rem;
-  background-position: 0.5rem;
 }
 
 button {
@@ -237,10 +152,6 @@ button.deactivate {
 button.delete {
   background-color: red;
   color: white;
-}
-input[value="Login"] {
-  color: #fff;
-  background-color: #3f6abe;
 }
 
 /* RESULTS */
@@ -306,7 +217,7 @@ h5 {
   text-align: center;
   padding: 1rem;
 }
-.app-footer ul{
-  display:flex ;
+.app-footer ul {
+  display: flex;
   justify-content: space-evenly;
 }
