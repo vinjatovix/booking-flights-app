@@ -4,7 +4,7 @@ import { ListDrawer } from "./ListDrawer/ListDrawer";
 export const Footer = () => {
   return (
     <footer className="app-footer">
-      Code-Vix &copy; 2021
+      Code-Vix &copy; 2021 FLanders v0.6
       <ListDrawer
         type="links"
         items={[

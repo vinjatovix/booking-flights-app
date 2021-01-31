@@ -62,7 +62,6 @@ export const RegisterForm = ({ action, cssClassName, encType, inputs, method }) 
       body: JSON.stringify({ username, email, password, repeatPassword, bio }),
     });
     const json = await res.json();
-    console.log(json.details[0].message);
     if (res.status === 400) {
       if (json?.details[0]?.message) {
         setErrorMessage(json.details[0].message);
