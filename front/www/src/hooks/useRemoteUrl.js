@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-export const useRemoteUrl = (url) => {
+export const useRemoteUrl = (url, method) => {
   const [data, setData] = useState([]);
   const [timestamp, setTimestamp] = useState(new Date());
   useEffect(() => {
     async function getRemoteData() {
       const requestOptions = {
-        method: 'GET',
+        method,
         headers: {
           'Content-type': 'application/json',
         },
@@ -16,7 +17,15 @@ export const useRemoteUrl = (url) => {
       setData(newData);
     }
     getRemoteData();
-  }, [url, timestamp]);
+  }, [url, timestamp, method]);
   const refetch = () => setTimestamp(new Date());
   return [data, refetch];
+};
+
+useRemoteUrl.propTypes = {
+  url: PropTypes.string.isRequired,
+  method: PropTypes.string,
+};
+useRemoteUrl.defaultProps = {
+  method: 'GET',
 };
