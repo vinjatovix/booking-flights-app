@@ -45,6 +45,10 @@
   margin-top: 10vh;
 }
 
+.app-main.dark:not:first-child {
+  opacity: 0.5;
+}
+
 img {
   max-width: 100%;
 }

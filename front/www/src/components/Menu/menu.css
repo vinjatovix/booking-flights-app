@@ -11,6 +11,8 @@
   -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  animation: menu 1s ease 0s;
+  animation-fill-mode: backwards;
 }
 
 .menu section {
@@ -55,4 +57,15 @@
 
 .about {
   background-image: url('../../assets/svg/about.svg');
+}
+
+@keyframes menu {
+  from {
+    transform: scale(0.8);
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

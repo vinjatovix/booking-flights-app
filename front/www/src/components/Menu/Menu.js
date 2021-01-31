@@ -11,13 +11,13 @@ export const Menu = () => {
 
       <ul>
         <li className="login">
-          <a href="/">Login</a>
+          <a href="/login">Login</a>
         </li>
         <li className="register">
-          <a href="/">Register</a>
+          <a href="/register">Register</a>
         </li>
         <li className="about">
-          <a href="/">About</a>
+          <a href="/about">About</a>
         </li>
       </ul>
     </nav>
