@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
+import { AuthContext } from '../../context/Auth.context';
 import { Input } from '../common/Input';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 

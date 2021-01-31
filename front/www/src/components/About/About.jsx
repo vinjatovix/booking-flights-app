@@ -1,16 +1,16 @@
 import React from 'react';
-import './about.css';
+import styles from './about.module.css';
 import { Article } from '../common/Article';
 import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 import { ArticleWrapper } from '../common/ArticleWrapper';
 import PropTypes from 'prop-types';
 
-export const About = ({ logo, info, formers, stack, tools, links, credits, thanks }) => {
+export const About = ({ logo = '', info, formers, stack, tools, links, credits, thanks }) => {
   return (
     <>
       <ArticleWrapper>
-        <Article className="about" title="About">
-          <img className="about-logo" src={logo} alt="logo" />
+        <Article className={styles.about} title="About">
+          {logo && <img className="about-logo" src={logo} alt="logo" />}
           <ListDrawer type="p" title="Info" items={info}></ListDrawer>
           <ListDrawer type="links" title="Enlaces" cssClassName="aboutLinks" items={links} />
         </Article>
@@ -22,6 +22,7 @@ export const About = ({ logo, info, formers, stack, tools, links, credits, thank
           <ListDrawer title="Herramientas" items={tools} />
         </Article>
       </ArticleWrapper>
+
       <ArticleWrapper>
         <Article className="about" title="Créditos">
           <ListDrawer title="Formadores" items={formers} />

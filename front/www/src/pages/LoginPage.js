@@ -1,6 +1,6 @@
 import React from 'react';
 import { Article } from '../components/common/Article';
-import { CredentialsForm } from '../components/Credentials/CredentialsForm';
+// import { CredentialsForm } from '../components/Credentials/CredentialsForm';
 import { LoginForm } from '../components/Credentials/LoginForm';
 
 export const LoginPage = (props) => {

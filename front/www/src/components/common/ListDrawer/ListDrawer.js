@@ -6,16 +6,22 @@ import { ParagraphList } from './ParagraphList';
 import PropTypes from 'prop-types';
 
 export const ListDrawer = ({ type, ...props }) => {
-  if (type === 'inputs') {
-    return <InputList {...props} />;
-  }
-  if (type === 'links') {
-    return <LinkList {...props} />;
-  }
-  if (type === 'p') {
-    return <ParagraphList {...props} />;
-  }
-  return <GenericList {...props} />;
+  const renderListDrawer = () => {
+    switch (type) {
+      case 'inputs':
+        return <InputList {...props} />;
+
+      case 'links':
+        return <LinkList {...props} />;
+
+      case 'p':
+        return <ParagraphList {...props} />;
+
+      default:
+        return <GenericList {...props} />;
+    }
+  };
+  return renderListDrawer();
 };
 ListDrawer.propTypes = {
   type: PropTypes.string,

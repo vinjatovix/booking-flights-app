@@ -1,11 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Article } from '../common/Article';
-import { AuthContext } from '../providers/AuthProvider';
+import { AuthContext } from '../../context/Auth.context';
 import './searchForm.css';
+import { useAuthContext } from '../../providers/Auth.context';
 
 export const SearchForm = () => {
   const [auth] = useContext(AuthContext);
+  const [order, setOrder] = useState('');
 
+  const { flightData } = useAuthContext([]);
+
+  useEffect(() => {
+    //dispatch order action payload duration
+  }, [order]);
   return (
     <>
       <Article title="Buscador" className="hide">
@@ -48,7 +55,9 @@ export const SearchForm = () => {
         </ul>
         <ul className="Response__filters">
           <li className="Response-filter__stops filter active sort">P</li>
-          <li className="Response-filter__duration filter">D</li>
+          <li className="Response-filter__duration filter">
+            <button onClick={() => setOrder('duration')}>ord</button>
+          </li>
           <li className="Response-filter__price filter active reverse">$</li>
         </ul>
         <ul className="Response__dates">

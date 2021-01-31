@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
+import { AuthContext } from '../../context/Auth.context';
 import { ListDrawer } from './ListDrawer/ListDrawer';
 
 export const Footer = () => {
