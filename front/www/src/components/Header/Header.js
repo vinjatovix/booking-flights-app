@@ -1,12 +1,13 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
 import './header.css';
-// const [style, use] = useState('');
 
-const Header = () => {
+const Header = ({ props }) => {
+  const { open, setOpen } = props;
+
   const displayMenu = (e) => {
     e.preventDefault();
-    console.log('Hola');
+    setOpen(!open);
   };
 
   return (

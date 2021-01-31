@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './css/index.css';
@@ -17,12 +17,15 @@ import { RegisterPage } from './pages/RegisterPage';
 import { LoginPage } from './pages/LoginPage';
 
 const App = () => {
+  /* STATES */
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header props={{ open, setOpen }} />
         <Main className="app-main">
-          <Menu />
+          {open ? <Menu /> : null}
           <Switch>
             <Route path="/login">
               <LoginPage {...loginProps} />
