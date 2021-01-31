@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 import './credentials.css';
 import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
