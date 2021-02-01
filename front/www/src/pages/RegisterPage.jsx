@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Article } from '../components/common/Article';
 import { RegisterForm } from '../components/Credentials/RegisterForm';
-import { AuthContext } from '../context/Auth.context';
+import { useAuthContext } from '../context/Auth.context';
 
 export const RegisterPage = (props) => {
+  const [{ logged }, dispatch] = useAuthContext();
 
-  const [auth] = useContext(AuthContext);
-  if (auth !== '') return <Redirect to="/" />;
+  console.log(logged);
+  if (logged) return <Redirect to="/" />;
 
   return (
     <section>

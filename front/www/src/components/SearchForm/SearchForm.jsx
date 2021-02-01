@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Article } from '../common/Article';
 import { AuthContext } from '../../context/Auth.context';
 import './searchForm.css';
-import { useAuthContext } from '../../providers/Auth.context';
+import { useAuthContext } from '../../context/Auth.context';
 
 export const SearchForm = () => {
   const [auth] = useContext(AuthContext);
