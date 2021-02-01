@@ -3,11 +3,12 @@ import * as C from './Auth.constants';
 /* UNO DE LOS USOS DEL REDUCER ES UNA ESPECIE DE STATE CON CINTURÓN DE HERRAMIENTAS */
 //? SEMILLA DE DATOS DEL CONTEXTO
 export const initialState = {
-  loading: true,
+  loading: false,
   logged: false,
   username: null,
   mail: null,
   id: null,
+  menu: false,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */
@@ -33,6 +34,12 @@ export const reducer = (state, { type, payload }) => {
         username: null,
         mail: null,
         id: null,
+      };
+    case C.CHANGE_MENU_VISIBILITY:
+      //? lógica
+      return {
+        ...state,
+        menu: !payload.menu,
       };
 
     default:

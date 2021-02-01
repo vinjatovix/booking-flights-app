@@ -32,8 +32,8 @@ const App = () => {
   ? del que la primera posición es un objeto con las claves del state, 
   ? y el segundo el método para manipular estos estados 
   */
-  const [/* { logged }, */ dispatch] = useAuthContext();
-
+  const [{ menu }, dispatch] = useAuthContext();
+  console.log(menu);
   // useEffect(() => {
   //   if (!logged) {
   //     try {
@@ -59,17 +59,15 @@ const App = () => {
   //   // eslint-disable-next-line
   // }, []);
   //! ################################################
-  /* STATES */
-  const [open, setOpen] = useState(false);
 
   return (
     <div className="App">
       {' '}
       {/* //TODO: Intentar eliminar este div, añade un nivel de profundidad innecesario a la jerarquía, el css se le puede aplicar al elemento div root en el html original */}
       <Router>
-        <Header props={{ open, setOpen }} />
+        <Header props={{ menu, dispatch }} />
         <Main className="app-main">
-          {open ? <Menu /> : null}
+          {menu ? <Menu /> : null}
           <Switch>
             {/* //TODO: mapear las rutas con Routes.map() */}
             <Route path="/login">

@@ -14,7 +14,7 @@ export const SearchForm = () => {
   }, [order]);
   return (
     <>
-      <Article title="Buscador" className="hide">
+      <Article title="Buscador" className="">
         <form
           className="SearchForm"
           method="POST"

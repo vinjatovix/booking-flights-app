@@ -14,3 +14,8 @@ export const authFailure = (payload) => ({
   type: C.AUTH_RESPONSE_FAILURE,
   payload,
 });
+
+export const changeMenu = (payload) => ({
+  type: C.CHANGE_MENU_VISIBILITY,
+  payload,
+});

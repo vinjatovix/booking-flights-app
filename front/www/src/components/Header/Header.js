@@ -1,17 +1,18 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
 import CloseMenu from '../../assets/svg/cerrar.svg';
+import { changeMenu } from '../../context/Auth.actions';
 import './header.css';
 
 const Header = ({ props }) => {
-  const { open, setOpen } = props;
+  const { menu, dispatch } = props;
   const [shape, setShape] = useState(LogoMenu);
 
   const displayMenu = (e) => {
     e.preventDefault();
-    setOpen(!open);
+    dispatch(changeMenu({ menu }));
 
-    if (open === false) {
+    if (menu === false) {
       setShape(CloseMenu);
     } else {
       setShape(LogoMenu);
