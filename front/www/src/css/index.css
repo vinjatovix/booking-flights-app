@@ -2,83 +2,45 @@
 
 /* RESET */
 
-@import "./reset.css";
+@import './reset.css';
 
 /* COMPATIBILITY */
 
-@import "./comp/ie.css";
-@import "./comp/firefox.css";
-@import "./comp/ios.css";
+@import './comp/ie.css';
+@import './comp/firefox.css';
+@import './comp/ios.css';
 
 /* FONTS */
 
 @font-face {
-  font-family: "atkinson";
-  src: url("./fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2"),
-    url("./fonts/Atkinson-Hyperlegible-Regular-102.woff") format("woff");
+  font-family: 'atkinson';
+  src: url('./fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
+    url('./fonts/Atkinson-Hyperlegible-Regular-102.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: "Atkinson", sans-serif;
+  font-family: 'Atkinson', sans-serif;
 }
-
-
 
 .App {
   display: grid;
   justify-content: space-between;
   height: 100%;
-  grid-template-areas: "header" "main" "footer";
+  grid-template-areas: 'header' 'main' 'footer';
 }
-
-/* HEADER */
-.app-header {
-  grid-area: "header";
-  position: fixed;
-  align-items: center;
-  background: url("../assets/svg/plane-arrival-solid.svg");
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-size: 2rem;
-  background-position: 0.5rem center;
-  display: flex;
-  height: 10vh;
-  justify-content: space-between;
-  padding: 0.5rem;
-  width: 100vw;
-  z-index: 1337;
-}
-.app-header h1 {
-  margin-left: 2rem;
-}
-
-.burguer {
-  height: 1.3rem;
-  margin: 0 1rem;
-}
-/* nav ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-nav a {
-  padding: 0.2rem;
-  text-align: center;
-  display: block;
-  border: 1px solid black;
-} */
 
 /* MAIN  */
 .app-main {
   padding: 1rem;
   background-attachment: fixed;
   background-color: #fff;
-  background-image: url("../assets/img/bgi.jpg");
+  background-image: url('../assets/img/bgi.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  grid-area: "main";
+  grid-area: 'main';
   min-height: 80vh;
   margin-top: 10vh;
 }
@@ -120,7 +82,7 @@ input {
 }
 
 button,
-input[type="submit"] {
+input[type='submit'] {
   font-size: 1.5rem;
   padding: 1rem;
   margin: 0 auto;
@@ -139,7 +101,7 @@ button {
   width: 40vw;
   font-size: 1rem;
 }
-input[value="Registro"],
+input[value='Registro'],
 button.update {
   background-color: #f9e24c;
 }
@@ -165,35 +127,35 @@ button.delete {
 }
 .round-trip-icon {
   width: 1rem;
-  background-image: url("../assets/svg/exchange-alt-solid.svg");
+  background-image: url('../assets/svg/exchange-alt-solid.svg');
   background-repeat: no-repeat;
   background-position: center center;
 }
 .editQuery {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url("../assets/svg/pen-solid.svg");
+  background-image: url('../assets/svg/pen-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .route {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url("../assets/svg/route-solid.svg");
+  background-image: url('../assets/svg/route-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .duration {
   margin-left: 0.5rem;
   width: 1.3rem;
-  background-image: url("../assets/svg/stopwatch-solid.svg");
+  background-image: url('../assets/svg/stopwatch-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
 .price {
   margin-left: 0.5rem;
   width: 1.6rem;
-  background-image: url("../assets/svg/funnel-dollar-solid.svg");
+  background-image: url('../assets/svg/funnel-dollar-solid.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
@@ -211,7 +173,7 @@ h5 {
 .app-footer {
   height: 10vh;
   width: 100vw;
-  grid-area: "footer";
+  grid-area: 'footer';
   background-color: #ececec;
   color: #3f6abe;
   text-align: center;
@@ -221,3 +183,8 @@ h5 {
   display: flex;
   justify-content: space-evenly;
 }
+
+/* .app-footer:hover ul {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+} */

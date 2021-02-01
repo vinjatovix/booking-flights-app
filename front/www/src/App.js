@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
@@ -10,7 +10,6 @@ import * as A from './context/Auth.actions'; //? Estas son las acciones disponib
 
 /* PÁGiNAS */
 import { AboutPage } from './pages/AboutPage';
-import { MenuPage } from './pages/MenuPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { LoginPage } from './pages/LoginPage';
 
@@ -18,6 +17,8 @@ import { LoginPage } from './pages/LoginPage';
 import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
 import { SearchForm } from './components/SearchForm/SearchForm';
+import { CredentialsPage } from './pages/CredentialsPage';
+import { Menu } from './components/Menu/Menu';
 import { Footer } from './components/common/Footer';
 
 /* RENDER PROPS */
@@ -58,14 +59,17 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
   //! ################################################
+  /* STATES */
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="App">
       {' '}
       {/* //TODO: Intentar eliminar este div, añade un nivel de profundidad innecesario a la jerarquía, el css se le puede aplicar al elemento div root en el html original */}
       <Router>
-        <Header />
+        <Header props={{ open, setOpen }} />
         <Main className="app-main">
-          <MenuPage />
+          {open ? <Menu /> : null}
           <Switch>
             {/* //TODO: mapear las rutas con Routes.map() */}
             <Route path="/login">

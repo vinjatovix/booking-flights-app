@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export const Main = ({ children }) => {
-  return <main className="app-main">{children}</main>;
+export const Main = ({ className, children }) => {
+  console.log(className);
+  return <main className={className}>{children}</main>;
 };

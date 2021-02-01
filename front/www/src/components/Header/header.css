@@ -1,0 +1,27 @@
+.app-header {
+  grid-area: 'header';
+  position: fixed;
+  align-items: center;
+  background: url('../../assets/svg/plane-arrival-solid.svg');
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  background-position: 0.5rem center;
+  display: flex;
+  width: 10vh;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 100vw;
+  margin: 0.25rem;
+  z-index: 1337;
+}
+
+.app-header h1 {
+  margin-left: 2.25rem;
+}
+
+.burguer {
+  padding: 0.25rem;
+  height: 2rem;
+  margin: 0 1rem;
+}
