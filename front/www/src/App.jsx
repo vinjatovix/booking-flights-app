@@ -6,7 +6,7 @@ import './css/index.css';
 ! CONTEXTO 
 *******************************/
 import { useAuthContext } from './context/Auth.context';
-import * as A from './context/Auth.actions';
+import * as A from './context/Auth.actions'; //? Estas son las acciones disponibles por el dispatch
 
 /* PÁGiNAS */
 import { AboutPage } from './pages/AboutPage';
