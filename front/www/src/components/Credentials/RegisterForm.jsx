@@ -1,20 +1,17 @@
-import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../context/Auth.context';
+import React, { useState } from 'react';
 import { Input } from '../common/Input';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import * as A from '../../context/Auth.actions';
 
 import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonProps } from './registerProps';
 import PropTypes from 'prop-types';
 
-export const RegisterForm = ({ action, cssClassName, encType, method }) => {
-  const [, setAccessToken] = useLocalStorage('', 'auth');
+export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }) => {
   const [username, serUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [bio, setBio] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [, setAuth] = useContext(AuthContext);
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -27,13 +24,18 @@ export const RegisterForm = ({ action, cssClassName, encType, method }) => {
     });
     const json = await res.json();
     if (res.status !== 201) {
+      dispatch(A.authFailure());
       setErrorMessage(json.details);
-      setAuth('');
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
       console.log({ email, password, event: e, json });
-      setAccessToken(json.token);
-      setAuth(json.token);
+      dispatch(
+        A.authSuccess({
+          username,
+          email,
+          id: json.id,
+        })
+      );
     }
   };
 

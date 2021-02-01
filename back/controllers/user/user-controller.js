@@ -7,6 +7,7 @@ const { googleLogin } = require('../google/googleLogin');
 const { postLogIn } = require('./postLogIn');
 const { postSignIn } = require('./postSignIn');
 const { sendEmail } = require('./sendEmail');
+const { verifyToken } = require('./verifyToken');
 
 module.exports = {
   deleteAccount,
@@ -18,4 +19,5 @@ module.exports = {
   postUpdatePass,
   postSignIn,
   sendEmail,
+  verifyToken,
 };

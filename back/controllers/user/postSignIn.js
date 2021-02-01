@@ -61,7 +61,7 @@ async function postSignIn(req, res, next) {
       email,
     };
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '60s' });
-    res.status(201).json({ ok: true, token });
+    res.status(201).json({ ok: true, token, tokenPayload });
   } catch (err) {
     next(err);
   }

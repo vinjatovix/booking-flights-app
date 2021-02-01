@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Article } from '../components/common/Article';
 import { RegisterForm } from '../components/Credentials/RegisterForm';
@@ -8,12 +8,12 @@ export const RegisterPage = (props) => {
   const [{ logged }, dispatch] = useAuthContext();
 
   console.log(logged);
-  if (logged) return <Redirect to="/" />;
+  if (logged === true) return <Redirect to="/" />;
 
   return (
     <section>
       <Article title={props.title}>
-        <RegisterForm {...props} />
+        <RegisterForm {...props} dispatch={dispatch} />
       </Article>
     </section>
   );

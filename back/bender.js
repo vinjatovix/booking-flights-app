@@ -9,7 +9,6 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
 
-
 const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
 const {
@@ -48,6 +47,7 @@ app.get('/login', publicController.getLogIn);
 app.post('/signin', usersController.postSignIn);
 app.post('/login', usersController.postLogIn);
 app.post('/google', usersController.googleLogin);
+app.get('/me', usersController.verifyToken);
 
 //? AUTHORIZED
 app.get('/update', validateAuth, usersController.getUpdateData);

@@ -5,10 +5,9 @@ import './searchForm.css';
 import { useAuthContext } from '../../context/Auth.context';
 
 export const SearchForm = () => {
-  const [auth] = useContext(AuthContext);
   const [order, setOrder] = useState('');
 
-  const { flightData } = useAuthContext([]);
+  const [{ logged }] = useAuthContext([]);
 
   useEffect(() => {
     //dispatch order action payload duration
@@ -96,7 +95,7 @@ export const SearchForm = () => {
           </ul>
           <ul className="offer">
             <li>137€</li>
-            {auth && (
+            {logged && (
               <li>
                 <div
                   className="heart"

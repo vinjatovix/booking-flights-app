@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../context/Auth.context';
+import React from 'react';
+import * as A from '../../context/Auth.actions';
 import { ListDrawer } from './ListDrawer/ListDrawer';
 
-export const Footer = () => {
-  const [, setAuth] = useContext(AuthContext);
+export const Footer = ({ dispatch }) => {
   return (
     <footer className="app-footer">
       Code-Vix &copy; 2021 FLanders v0.6
@@ -19,7 +18,7 @@ export const Footer = () => {
       <div
         onClick={(e) => {
           e.preventDefault();
-          setAuth('');
+          dispatch(A.authFailure());
         }}
       >
         x
