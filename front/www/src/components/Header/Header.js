@@ -17,6 +17,11 @@ const Header = ({ props }) => {
     } else {
       setShape(LogoMenu);
     }
+
+    //   if (shape === '/static/media/bars-solid.e8db7520.svg') {
+    //     console.log(shape);
+
+    //   }
   };
 
   return (

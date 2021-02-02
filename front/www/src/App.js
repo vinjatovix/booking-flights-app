@@ -1,4 +1,4 @@
-import React, { /* useEffect, */ useState } from 'react';
+import { React, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
@@ -33,7 +33,6 @@ const App = () => {
   ? y el segundo el método para manipular estos estados 
   */
   const [{ menu }, dispatch] = useAuthContext();
-  console.log(menu);
   // useEffect(() => {
   //   if (!logged) {
   //     try {

@@ -11,7 +11,7 @@
   -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
-  animation: menu 0.5s ease 0s;
+  animation: open 0.5s ease 0s;
   animation-fill-mode: backwards;
 }
 
@@ -59,7 +59,7 @@
   background-image: url('../../assets/svg/about.svg');
 }
 
-@keyframes menu {
+@keyframes open {
   from {
     transform: scale(0.8);
     opacity: 0.2;
@@ -67,5 +67,16 @@
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes close {
+  from {
+    transform: translateY(0px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(500px);
+    opacity: 0;
   }
 }
