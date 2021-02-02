@@ -70,7 +70,7 @@ const App = () => {
           <Switch>
             {/* //TODO: mapear las rutas con Routes.map() */}
             <Route path="/login">
-              <LoginPage {...loginProps} />
+              <LoginPage title="Log In" action="http://localhost:8337/login" method="POST" />
             </Route>
             <Route path="/register">
               <RegisterPage title="Sign In" action="http://localhost:8337/signin" method="POST" />

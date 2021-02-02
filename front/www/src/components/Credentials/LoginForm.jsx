@@ -3,35 +3,18 @@ import './credentials.css';
 import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
 
-export const LoginForm = ({ action, cssClassName, encType, inputs, method }) => {
+import { mailProps, passwordProps, buttonProps } from './loginProps';
+
+export const LoginForm = ({ action, cssClassName, encType, method }) => {
   //TODO: state para el auth, email, etc... probablemente custom hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  const mailProps = {
-    type: 'email',
-    name: 'userMail',
-    id: 'userMail',
-    placeholder: 'Em@il',
-    required: 'required',
-  };
-  const passwordProps = {
-    type: 'password',
-    name: 'password',
-    id: 'password',
-    placeholder: 'password',
-    required: 'required',
-  };
-  const buttonProps = {
-    id: 'submit-button',
-    type: 'submit',
-    value: 'Login',
-  };
+  console.log(email);
+  console.log(password);
   const logIn = async (e) => {
     e.preventDefault();
-    console.log(e); //TODO: gestionar submit
-    const res = await fetch('http://localhost:8337/signin', {
+    const res = await fetch(action, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,24 +22,26 @@ export const LoginForm = ({ action, cssClassName, encType, inputs, method }) => 
       body: JSON.stringify({ email, password }),
     });
     const json = await res.json();
-    console.log(json);
-    console.log(json.details[0].message);
-    if (res.status === 418) {
-      setErrorMessage('Algo va mal con el formulario');
-    }
-    if (res.status === 400) {
-      if (json?.details[0]?.message) {
-        setErrorMessage(json.details[0].message);
-      } else {
-        setErrorMessage(json.details);
-      }
-      // setAuth("");
-      setTimeout(() => setErrorMessage(''), 3000);
-    } else {
-      console.log({ email, password, event: e, json });
-      // setAccessToken(json.accessToken);
-      // setAuth(json.accessToken);
-    }
+    console.log(json.token);
+
+    // console.log(json);
+    // console.log(json.details[0].message);
+    // if (res.status === 418) {
+    //   setErrorMessage('Algo va mal con el formulario');
+    // }
+    // if (res.status === 400) {
+    //   if (json?.details[0]?.message) {
+    //     setErrorMessage(json.details[0].message);
+    //   } else {
+    //     setErrorMessage(json.details);
+    //   }
+    //   // setAuth("");
+    //   setTimeout(() => setErrorMessage(''), 3000);
+    // } else {
+    //   console.log({ email, password, event: e, json });
+    //   // setAccessToken(json.accessToken);
+    //   // setAuth(json.accessToken);
+    // }
   };
   return (
     <>

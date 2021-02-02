@@ -4,6 +4,7 @@ import { Article } from '../components/common/Article';
 import { LoginForm } from '../components/Credentials/LoginForm';
 
 export const LoginPage = (props) => {
+  console.log(props);
   return (
     <section>
       <Article title={props.title}>
