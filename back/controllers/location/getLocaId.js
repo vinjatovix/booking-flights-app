@@ -45,7 +45,7 @@ async function getLocaId(airport, paisId, next) {
   } catch (error) {
     if (error.message === "Cannot read property '0' of undefined") {
       error.code = 503;
-      error.details = 'Cities Server Busy, please Try Again';
+      error.details = 'El servidor de información de ciudades esta ocupado';
     }
     if (error.code === undefined || !error.code) {
       error.code = 500;

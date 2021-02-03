@@ -19,11 +19,11 @@ async function deleteAccount(req, res, next) {
       await userRepository.changeStatus(['e', decoded.id]);
     }
 
-    if (token) {
+    if (!token) {
       res.redirect('/login');
     } else throw new Error();
   } catch (err) {
-    err.details = 'Something weird happened ';
+    err.details = 'Ha ocurrido algo raro';
     next(err);
   }
 }

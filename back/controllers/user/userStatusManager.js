@@ -13,7 +13,7 @@ async function userStatusManager(user) {
   if (!['a', 'i', 'e'].includes(user.Usr_status)) {
     const error = new Error();
     error.code = 418;
-    error.details = 'Who are you?';
+    error.details = 'Hmmm esto no es normal, quién eres?';
     error.file = path.basename(__filename);
     throw error;
   }
@@ -22,7 +22,7 @@ async function userStatusManager(user) {
   } else if (user.Usr_status === 'e') {
     const error = new Error();
     error.code = 403;
-    error.details = 'Invalid credentials, this account has been deleted';
+    error.details = 'Credenciales inválidos, esta cuenta ha sido eliminada.';
     throw error;
   }
   return true;

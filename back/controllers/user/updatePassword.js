@@ -46,7 +46,7 @@ async function postUpdatePass(req, res, next) {
     if (!req.body.repeatNewPassword) {
       const error = new Error();
       error.code = 418;
-      error.details = "You are tying to do something not allowed, and i'm a teapot";
+      error.details = 'Estás intentando hacer algo prohibido. Ojito.';
       next(error);
     }
 
@@ -59,7 +59,7 @@ async function postUpdatePass(req, res, next) {
     if (!valid) {
       const error = new Error();
       (error.ok = false), (error.code = 401);
-      error.details = 'Incorrect password. Password not updated.';
+      error.details = 'Contraseña incorrecta, datos no actualizados.';
       next(error);
     }
 
@@ -67,7 +67,7 @@ async function postUpdatePass(req, res, next) {
     await wait(1000);
     await userRepository.updatePass([passwordHash, decoded.id]);
 
-    res.send({ ok: true, details: 'Password successfully updated.' });
+    res.send({ ok: true, details: 'Contraseña actualizada' });
   } catch (err) {
     err.details = err.message;
     next(err);

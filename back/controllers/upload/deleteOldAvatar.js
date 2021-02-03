@@ -14,7 +14,7 @@ async function deleteOldAvatar(oldPath, next) {
     const error = new Error();
     error.ok = false;
     error.code = 500;
-    error.details = 'Something weird happened, data may be lost, please try again';
+    error.details = 'Ha ocurrido algo raro en el proceso, Se puede haber perdido la foto';
     next(error);
   }
   return true;

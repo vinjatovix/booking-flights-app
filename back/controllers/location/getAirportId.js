@@ -38,7 +38,7 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
     return await locationRepository.createAirport(aeropuerto, next);
   } catch (error) {
     error.code = error.code || 500;
-    error.details = error.details || 'Unknown error about getAirportId';
+    error.details = error.details || 'Error con getAirportId';
     next(error);
   }
 }

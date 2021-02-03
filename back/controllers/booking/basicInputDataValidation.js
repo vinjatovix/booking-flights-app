@@ -12,26 +12,26 @@ function basicInputDataValidation(req) {
 
   if (!req.body.adults || req.body.adults <= 0 || req.body.adults >= 10) {
     const error = new Error();
-    error.details = 'Adults must be between 1 or 9';
+    error.details = 'El número de adultos debe de ser entre 1 y 9';
     error.code = 400;
     throw error;
   }
   if (!id) {
     const error = new Error();
-    error.details = 'User ID is required';
+    error.details = 'Se necesita el ID de usuario';
     error.code = 403;
     throw error;
   }
   if (!price || !adults || !validatingAirlineCodes) {
     const error = new Error();
     error.code = 400;
-    error.details = 'Invalid Flight Data';
+    error.details = 'Los datos de vuelo no son válidos';
     throw error;
   }
   if (!itineraries || itineraries.length === 0) {
     const error = new Error();
     error.code = 400;
-    error.details = 'Not valid itinerary found';
+    error.details = 'Los datos de intinerario no son válidos';
     throw error;
   }
 

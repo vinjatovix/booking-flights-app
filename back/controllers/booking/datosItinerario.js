@@ -32,7 +32,7 @@ async function datosItinerario(RC_ID, itineraryType, req, next) {
       error.file = path.basename(__filename);
     }
     error.code = error.code || 400;
-    error.details = error.details || 'Not valid itineraryData found, or malformed';
+    error.details = error.details || 'Itinerario inválido o mal formateado';
     next(error);
   }
 }

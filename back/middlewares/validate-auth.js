@@ -15,7 +15,7 @@ function validateAuth(req, res, next) {
     next();
   } catch (err) {
     err.code = 401;
-    err.details = 'Access denied. Please, log in with valid credentials.';
+    err.details = 'Acceso denegado, proporciona credenciales válidas por favor';
     next(err);
   }
 }

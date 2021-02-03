@@ -48,11 +48,11 @@ async function postSignIn(req, res, next) {
     const mail = {
       email,
       subject: 'FLanders User Sign In',
-      text: `Greetings ${username}:
-      Your mail ${email} has been registered into the Fligh Landers service.`,
-      html: `<H1>Greetings ${username}:</H1>
-      <p>Your mail ${email} has been registered into the Fligh Landers service.</p>
-      <p>Please <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Log In </a> to activate your account.</p>`,
+      text: `Saludos ${username}:
+      Tu email ${email} ha sido registrado en Flight Landers.`,
+      html: `<H1>Saludos ${username}:</H1>
+      <p>Tu email ${email} ha sido registrado en Flight Landers.</p>
+      <p>Por favor <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Accede </a> Para activar tu cuenta.</p>`,
     };
     sendEmail(mail, next);
     const tokenPayload = {

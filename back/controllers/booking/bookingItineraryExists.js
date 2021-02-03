@@ -12,7 +12,7 @@ function bookingItineraryExists(req, i, next) {
   if (!req.body.itineraries[i] || req.body.itineraries.length === 0) {
     const error = new Error();
     error.code = 400;
-    error.details = "You are trying to manage travel and there isn't";
+    error.details = "Estás intentando gestionar un viaje y no existe.";
     error.file = path.basename(__filename);
     next(error);
   }

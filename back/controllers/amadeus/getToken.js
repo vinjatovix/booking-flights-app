@@ -33,7 +33,7 @@ async function getToken(next) {
     return response.access_token;
   } catch (error) {
     error.code = error.code || 400;
-    error.details = 'Something went wrong with Amadeus token';
+    error.details = 'Algo ha ido mal con el token de Amadeus';
     next(error);
   }
 }

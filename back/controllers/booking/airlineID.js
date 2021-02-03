@@ -20,7 +20,7 @@ async function airlineID(iata, next) {
     return airlineId;
   } catch (error) {
     error.code = error.code || 503;
-    error.details = error.details || 'Error fetching Airline';
+    error.details = error.details || 'Error obteniendo aerolínea';
     error.file = path.basename(__filename);
     next(error);
   }

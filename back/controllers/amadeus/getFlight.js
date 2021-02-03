@@ -22,7 +22,7 @@ async function getFlight(req, res, next) {
     const airport2 = await airportID(destinationLocationCode, next);
 
     if (!(airport1 || airport2)) {
-      throw new Error('Please choose a valid airport');
+      throw new Error('Por favor selecciona un aeropuerto válido');
     }
 
     const date1 = getMiliseconds(departureDate);
@@ -30,20 +30,13 @@ async function getFlight(req, res, next) {
     const date = new Date();
     const dateNow = getMiliseconds(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
 
-    if (date1 < dateNow) {
+    if (date1 < dateNow || (date2 && date2 < date1)) {
       const error = new Error();
       error.code = 400;
-      error.details = 'Choose an available date';
+      error.details = 'La fecha introducida no es posible';
       next(error);
     }
 
-    // Comprobar cuando se distinga de ida o ida y vuelta comprobar si funciona esta validación
-    if (date2 && date2 < date1) {
-      const error = new Error();
-      error.code = 400;
-      error.details = 'Choose an available date. Return date cannot be earlier than the date of origin';
-      next(error);
-    }
     //? API CONNECTION
     const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
     let url;
@@ -57,7 +50,7 @@ async function getFlight(req, res, next) {
     if (!data || data.length === 0) {
       return res.status(200).json({
         ok: true,
-        data: 'No Flights avaibles for that search, please try another settings',
+        data: 'No hay vuelos disponibles para esos ajustes, por favor prueba otros.',
       });
     }
     const response = { adults, data };

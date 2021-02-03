@@ -70,5 +70,5 @@ app.use(loggers.winstonCatch());
 
 //? LISTEN
 app.listen(PORT, () => {
-  console.log(`PID:${process.pid} named ${process.title} listening on http://${HOST}:${PORT}`);
+  console.log(`PID:${process.pid} nombrado como ${process.title} escuchando en http://${HOST}:${PORT}`);
 });

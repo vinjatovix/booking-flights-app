@@ -13,7 +13,7 @@ async function pushDetailsIntoCache(itineraryType, bookingCache, req, next) {
   if (!['ida', 'vuelta'].includes(itineraryType)) {
     const error = new Error();
     error.code = 403;
-    error.details = `${itineraryType} is not a valid itinerary`;
+    error.details = `${itineraryType} no es un itinerario válido`;
     next(error);
   }
 

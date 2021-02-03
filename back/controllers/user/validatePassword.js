@@ -13,7 +13,7 @@ async function validatePassword(password, user) {
   if (!valid) {
     const error = new Error();
     error.code = 401;
-    error.details = 'Invalid credentials, please try again';
+    error.details = 'Credenciales inválidos, prueba de nuevo.';
     throw error;
   }
   return true;

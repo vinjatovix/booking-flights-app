@@ -29,7 +29,7 @@ async function userBookings(req, res, next) {
     if (RC_bookings.length === 0) {
       const error = new Error();
       error.code = 400;
-      error.details = 'User doesnt have active bookings';
+      error.details = 'No existen reservas';
       throw error;
     }
     // Creamos los datos de las reservas

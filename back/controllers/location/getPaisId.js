@@ -15,7 +15,7 @@ async function getPaisId(countryName) {
   if (!country || country.length === 0) {
     const err = new Error();
     err.code = 404;
-    err.details = `'Country ${countryName} not found, are you sure?'`;
+    err.details = `'¿El país ${countryName} existe?'`;
     throw err;
   }
 

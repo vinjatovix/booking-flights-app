@@ -9,7 +9,6 @@ async function verifyToken(req, res, next) {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, JWT_SECRET);
 
-    console.log('verify');
     res.status(200).send({
       ok: true,
       decodedToken,
