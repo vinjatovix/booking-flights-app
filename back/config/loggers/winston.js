@@ -2,7 +2,7 @@
 
 const winston = require('winston');
 const path = require('path');
-const { identifyError } = require("./identifyError");
+const { identifyError } = require('./identifyError');
 
 /**
  * Esta clase define los transportes de winston hacia el archivo y hacia la consola
@@ -57,8 +57,8 @@ function logThis(err, req) {
  * @return {*}
  */
 function winstonCatch() {
-  // eslint-disable-next-line no-unused-vars
   return function (err, req, res, next) {
+    //!!!!!!!! aunque el linter diga q no se usa, winton lo necesita
     identifyError(err);
     logThis(err, req);
     res.status(err.code).json(err);
@@ -66,4 +66,3 @@ function winstonCatch() {
 }
 
 module.exports = { logger, winstonCatch };
-
