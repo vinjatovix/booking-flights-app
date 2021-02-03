@@ -22,12 +22,14 @@ async function bookFlight(req, res, next) {
     let bookingCache = setInitialBookingCache(req);
 
     await bookingHeaderSchema.validateAsync(bookingCache.header);
+
     bookingCache.header.RC_ID = await createBookingHeader(bookingCache, next);
 
     bookingCache.details = await pushDetailsIntoCache('ida', bookingCache, req, next);
     if (req.body.itineraries[1]) {
       bookingCache.details = await pushDetailsIntoCache('vuelta', bookingCache, req, next);
     }
+    
     await sendBookingPDF(bookingCache, req, next);
 
     res.status(200).json({

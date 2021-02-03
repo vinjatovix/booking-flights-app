@@ -13,7 +13,6 @@ function bookingItineraryExists(req, i, next) {
     const error = new Error();
     error.code = 400;
     error.details = "Estás intentando gestionar un viaje y no existe.";
-    error.file = path.basename(__filename);
     next(error);
   }
   return true;

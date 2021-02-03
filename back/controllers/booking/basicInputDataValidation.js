@@ -9,29 +9,22 @@
 function basicInputDataValidation(req) {
   const { id } = req.auth;
   const { adults, itineraries, price, validatingAirlineCodes } = req.body;
+  const error = new Error();
 
   if (!req.body.adults || req.body.adults <= 0 || req.body.adults >= 10) {
-    const error = new Error();
-    error.details = 'El número de adultos debe de ser entre 1 y 9';
-    error.code = 400;
+    error.code = 'BADADULTS';
     throw error;
   }
   if (!id) {
-    const error = new Error();
-    error.details = 'Se necesita el ID de usuario';
-    error.code = 403;
+    error.code = 'NOID';
     throw error;
   }
   if (!price || !adults || !validatingAirlineCodes) {
-    const error = new Error();
-    error.code = 400;
-    error.details = 'Los datos de vuelo no son válidos';
+    error.code = 'BADFLIGHT';
     throw error;
   }
   if (!itineraries || itineraries.length === 0) {
-    const error = new Error();
-    error.code = 400;
-    error.details = 'Los datos de intinerario no son válidos';
+    error.code = 'BADITINERARY';
     throw error;
   }
 
