@@ -4,7 +4,7 @@ const { fetchAmadeus } = require('./fetchAmadeus');
 const { getMiliseconds } = require('../../repositories/booking/booking-repository');
 const { airportID } = require('../booking/airportID');
 const { wait } = require('../utils/wait');
-const { getFlightSchema } = require('./getFlightSchema');
+const { getFlightSchema } = require('../../repositories/schemas/getFlightSchema');
 /**
  * This is the fisrt function to search flighs on amadeus
  *

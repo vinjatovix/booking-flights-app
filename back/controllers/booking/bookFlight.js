@@ -3,7 +3,7 @@
 const path = require('path');
 
 const { basicInputDataValidation } = require('./basicInputDataValidation');
-const { bookingHeaderSchema } = require('../../repositories/booking/bookingHeaderSchema');
+const { bookingHeaderSchema } = require('../../repositories/schemas/bookingHeaderSchema');
 const { createBookingHeader } = require('../../repositories/booking/booking-repository');
 const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
 const { sendBookingPDF } = require('../pdf/pdf-controller');

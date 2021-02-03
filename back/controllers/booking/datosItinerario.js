@@ -1,7 +1,7 @@
 'use strict';
 
 const { createBookingSegments } = require('./createBookingSegments');
-const { itinerarySchema } = require('../../repositories/booking/booking-repository');
+const { itinerarySchema } = require('../../repositories/schemas/itinerarySchema');
 const path = require('path');
 const { storeBookingSegment } = require('./storeBookingSegment');
 

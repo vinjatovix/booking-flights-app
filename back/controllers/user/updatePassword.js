@@ -1,10 +1,10 @@
 'use strict';
 
 const bcrypt = require('bcryptjs');
-const Joi = require('joi');
 const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user-repository');
 const { wait } = require('../utils/wait');
+const { updatePasswordSchema } = require("../../repositories/schemas/updatePasswordSchema");
 
 /**
  *? Ruta hacia la página de cambio de contraseña.
@@ -37,12 +37,7 @@ function getUpdatePass(req, res) {
  */
 async function postUpdatePass(req, res, next) {
   try {
-    const updateSchema = Joi.object({
-      password: Joi.string().min(6).max(30).required(),
-      newPassword: Joi.string().min(6).max(30).required(),
-      repeatNewPassword: Joi.ref('newPassword'),
-    });
-    await updateSchema.validateAsync(req.body);
+    await updatePasswordSchema.validateAsync(req.body);
     if (!req.body.repeatNewPassword) {
       const error = new Error();
       error.code = 418;

@@ -1,7 +1,7 @@
 'use strict';
 
 const bcrypt = require('bcryptjs');
-const { registerSchema } = require('../../repositories/registerSchema');
+const { registerSchema } = require('../../repositories/schemas/registerSchema');
 const jwt = require('jsonwebtoken');
 
 const { sendEmail } = require('./sendEmail');

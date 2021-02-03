@@ -8,11 +8,10 @@ const {
   getBookingDetail,
   getFligthData,
   getAirport,
-  getCompany,
+  getCompany, 
   cancelBooking,
 } = require('./showBookings');
 const { getMiliseconds, validAirport } = require('./supportBookingFunctions');
-const { itinerarySchema } = require('./itinerarySchema');
 
 module.exports = {
   createBookingDetail,
@@ -23,7 +22,6 @@ module.exports = {
   getFligthData,
   getAirport,
   getCompany,
-  itinerarySchema,
   getMiliseconds,
   validAirport,
   cancelBooking,
