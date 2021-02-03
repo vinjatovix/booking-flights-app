@@ -13,8 +13,10 @@ async function verifyToken(req, res, next) {
       ok: true,
       decodedToken,
     });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    err.code = 401;
+    err.details = 'Sesión caducada, haz log in otra vez';
+    next(err);
   }
 }
 module.exports = { verifyToken };
