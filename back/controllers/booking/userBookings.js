@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 const path = require('path');
 const jwt = require('jsonwebtoken');
@@ -6,7 +6,6 @@ const {
   getBookings,
   // getBookingDetail,
   // getFligthData,
-  // getAirport,
   // getCompany,
 } = require('../../repositories/booking/booking-repository');
 const { createBookingData } = require('./createBookingData');
