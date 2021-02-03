@@ -1,7 +1,5 @@
 'use strict';
 
-const path = require('path');
-
 const { basicInputDataValidation } = require('./basicInputDataValidation');
 const { bookingHeaderSchema } = require('../../repositories/schemas/bookingHeaderSchema');
 const { createBookingHeader } = require('../../repositories/booking/booking-repository');
@@ -29,20 +27,18 @@ async function bookFlight(req, res, next) {
     if (req.body.itineraries[1]) {
       bookingCache.details = await pushDetailsIntoCache('vuelta', bookingCache, req, next);
     }
-    
+
     await sendBookingPDF(bookingCache, req, next);
 
     res.status(200).json({
       ok: true,
       bookingCache,
     });
-  } catch (error) {
-
-    if (error.name === 'ValidationError') {
-      error.code = 400;
-      error.file = path.basename(__filename);
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      err.code = 400;
     }
-    next(error);
+    next(err);
   }
 }
 

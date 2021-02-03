@@ -1,5 +1,5 @@
 'use strict';
-const { getMiliseconds } = require('../../repositories/booking/booking-repository');
+const { getMiliseconds } = require('../utils/getMiliseconds');
 
 function validateDates(departureDate, returnDate, next) {
   const date1 = getMiliseconds(departureDate);

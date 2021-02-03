@@ -11,10 +11,10 @@ const bcrypt = require('bcryptjs');
 async function validatePassword(password, user) {
   const valid = await bcrypt.compare(password, user.Usr_password);
   if (!valid) {
-    const error = new Error();
-    error.code = 401;
-    error.details = 'Credenciales inválidos, prueba de nuevo.';
-    throw error;
+    const err = new Error();
+    err.code = 401;
+    err.details = 'Credenciales inválidos, prueba de nuevo.';
+    throw err;
   }
   return true;
 }

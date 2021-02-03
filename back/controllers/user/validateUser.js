@@ -6,10 +6,10 @@
  */
 function validateUser(user) {
   if (!user || user.length === 0) {
-    const error = new Error();
-    error.code = 401;
-    error.details = 'Credenciales inválidos, prueba de nuevo';
-    throw error;
+    const err = new Error();
+    err.code = 401;
+    err.details = 'Credenciales inválidos, prueba de nuevo';
+    throw err;
   }
   return true;
 }

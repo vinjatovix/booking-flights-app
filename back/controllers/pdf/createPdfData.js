@@ -1,14 +1,14 @@
 const { detailsToPdfCache } = require('./detailsToPdfCache');
 
-function createPdfData(bookingCache, req) {
+function createPdfData(bookingCache, { auth, body }) {
   const travel = { direction: [] };
 
   travel.direction.push(detailsToPdfCache('ida', bookingCache, travel));
-  if (req.body.itineraries[1]) {
+  if (body.itineraries[1]) {
     travel.direction.push(detailsToPdfCache('vuelta', bookingCache, travel));
   }
 
-  const { email, username } = req.auth;
+  const { email, username } = auth;
   const { RC_ID: bookingNumber, RC_adults: adults, RC_base: priceBase, RC_total: priceTotal } = bookingCache.header;
 
   const pdfData = {

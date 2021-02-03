@@ -6,26 +6,26 @@
  * @param {Object} req
  * @return {Boolean}
  */
-function basicInputDataValidation(req) {
-  const { id } = req.auth;
-  const { adults, itineraries, price, validatingAirlineCodes } = req.body;
-  const error = new Error();
+function basicInputDataValidation({ auth, body }) {
+  const { id } = auth;
+  const { adults, itineraries, price, validatingAirlineCodes } = body;
+  const err = new Error();
 
-  if (!req.body.adults || req.body.adults <= 0 || req.body.adults >= 10) {
-    error.code = 'BADADULTS';
-    throw error;
+  if (!body.adults || body.adults <= 0 || body.adults >= 10) {
+    err.code = 'BADADULTS';
+    throw err;
   }
   if (!id) {
-    error.code = 'NOID';
-    throw error;
+    err.code = 'NOID';
+    throw err;
   }
   if (!price || !adults || !validatingAirlineCodes) {
-    error.code = 'BADFLIGHT';
-    throw error;
+    err.code = 'BADFLIGHT';
+    throw err;
   }
   if (!itineraries || itineraries.length === 0) {
-    error.code = 'BADITINERARY';
-    throw error;
+    err.code = 'BADITINERARY';
+    throw err;
   }
 
   return true;

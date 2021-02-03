@@ -1,6 +1,6 @@
 'use strict';
 
-const { validateExtension, createFileChunk, deleteFile } = require('../utils/utils-controller');
+const { createFileChunk, deleteFile, validateExtension } = require('../utils/utils-controller');
 
 /**
  * Esta funcion valida el archivo subido por el usuario con respecto a los parametros que prefijamos,
@@ -10,14 +10,14 @@ const { validateExtension, createFileChunk, deleteFile } = require('../utils/uti
  * @param {*} req
  * @return {*}
  */
-async function validateImage(req) {
-  if (!req.files) {
+async function validateImage({ files }) {
+  if (!files) {
     const error = new Error();
     error.code = 400;
     error.details = 'No se ha detectado ningun archivo';
     throw error;
   }
-  const archivo = req.files.archivo;
+  const archivo = files.archivo;
 
   if (archivo.size > 5000000) {
     const error = new Error();
@@ -37,10 +37,10 @@ async function validateImage(req) {
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
   if (!validateExtension(fileBuffer, validExtensions)) {
     await deleteFile(archivo.tempFilePath);
-    const error = new Error();
-    error.code = 400;
-    error.details = 'Ese tipo de archivo no está permitido. Solo jpg, png, gif y jpeg';
-    throw error;
+    const err = new Error();
+    err.code = 400;
+    err.details = 'Ese tipo de archivo no está permitido. Solo jpg, png, gif y jpeg';
+    throw err;
   }
 
   return archivo;

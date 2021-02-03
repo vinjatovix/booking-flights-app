@@ -1,6 +1,6 @@
 'use strict';
+const { getAirportByIATA } = require('../../repositories/location/location-repository');
 const { getAirportId } = require('../location/location-controller');
-const locationRepository = require('../../repositories/location/location-repository');
 /**
  *  Returns an airport id for a given IATA code
  *
@@ -10,7 +10,7 @@ const locationRepository = require('../../repositories/location/location-reposit
  */
 async function airportID(iata, next) {
   try {
-    const existingAirport = await locationRepository.getAirportByIATA(iata);
+    const existingAirport = await getAirportByIATA(iata);
 
     return await getAirportId(existingAirport, iata, next);
   } catch (err) {

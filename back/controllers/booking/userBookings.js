@@ -1,6 +1,5 @@
-'use strict'; 
+'use strict';
 
-const path = require('path');
 const jwt = require('jsonwebtoken');
 const {
   getBookings,
@@ -38,7 +37,6 @@ async function userBookings(req, res, next) {
   } catch (error) {
     if (error.name === 'ValidationError') {
       error.code = 400;
-      error.file = path.basename(__filename);
     }
     next(error);
   }

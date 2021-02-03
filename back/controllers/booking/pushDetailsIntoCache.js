@@ -9,20 +9,20 @@ const { datosItinerario } = require('./datosItinerario');
  * @param {Object} req "Original request"
  * @param {*} next
  */
-async function pushDetailsIntoCache(itineraryType, bookingCache, req, next) {
+async function pushDetailsIntoCache(itineraryType, { header, details }, req, next) {
   if (!['ida', 'vuelta'].includes(itineraryType)) {
-    const error = new Error();
-    error.code = 403;
-    error.details = `${itineraryType} no es un itinerario válido`;
-    next(error);
+    const err = new Error();
+    err.code = 403;
+    err.details = `${itineraryType} no es un itinerario válido`;
+    next(err);
   }
 
-  const { RC_ID } = bookingCache.header;
+  const { RC_ID } = header;
   const itineraryData = await datosItinerario(RC_ID, itineraryType, req, next);
 
-  bookingCache.details[`${itineraryType}`] = itineraryData[`${itineraryType}`];
+  details[`${itineraryType}`] = itineraryData[`${itineraryType}`];
 
-  return bookingCache.details;
+  return details;
 }
 
 module.exports = { pushDetailsIntoCache };

@@ -1,5 +1,5 @@
 'use strict';
-const locationRepository = require('../../repositories/location/location-repository');
+const { getCountryByName } = require('../../repositories/location/location-repository');
 
 /**
  * Returns the id of the country stored in MySQL DB
@@ -8,17 +8,15 @@ const locationRepository = require('../../repositories/location/location-reposit
  * @return {Number} "Country Id"
  */
 async function getPaisId(countryName) {
-  const [country] = await locationRepository.getCountryByName(countryName);
-  const paisId = country.Pais_ID;
+  const [data] = await getCountryByName(countryName);
 
-  //? It's supossed to be a table with countries stored in MySQL DB
-  if (!country || country.length === 0) {
+  if (!data || data.length === 0) {
     const err = new Error();
     err.code = 404;
-    err.details = `'¿El país ${countryName} existe?'`;
+    err.details = `'¿${countryName} existe?'`;
     throw err;
   }
 
-  return paisId;
+  return data.Pais_ID;
 }
 module.exports = { getPaisId };

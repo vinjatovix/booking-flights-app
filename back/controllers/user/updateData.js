@@ -1,8 +1,8 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user/user-repository');
-const { updateProfileSchema } = require("../../repositories/schemas/updateProfileSchema");
+const { updateData } = require('../../repositories/user/user-repository');
+const { updateProfileSchema } = require('../../repositories/schemas/updateProfileSchema');
 
 /**
  *? Ruta hacia la update page.
@@ -42,7 +42,7 @@ async function postUpdateData(req, res, next) {
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
 
-    await userRepository.updateData([username, bio, photo, decoded.id]);
+    await updateData([username, bio, photo, decoded.id]);
 
     res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio, photo } });
   } catch (err) {

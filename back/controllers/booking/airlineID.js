@@ -1,7 +1,6 @@
 'use strict';
+const { getAirlineByIATA } = require('../../repositories/location/location-repository');
 const { getAirlineId } = require('../location/getAirlineId');
-const locationRepository = require('../../repositories/location/location-repository');
-const path = require('path');
 
 /**
  *  Returns an airline id for a given IATA code
@@ -12,17 +11,16 @@ const path = require('path');
  */
 async function airlineID(iata, next) {
   try {
-    const existingAirline = await locationRepository.getAirlineByIATA(iata);
+    const existingAirline = await getAirlineByIATA(iata);
     const airlineId = await getAirlineId(existingAirline, iata, next);
     if (!airlineId || airlineId.length === 0) {
       throw new Error();
     }
     return airlineId;
-  } catch (error) {
-    error.code = error.code || 503;
-    error.details = error.details || 'Error obteniendo aerolínea';
-    error.file = path.basename(__filename);
-    next(error);
+  } catch (err) {
+    err.code = err.code || 503;
+    err.details = err.details || 'Error obteniendo aerolínea';
+    next(err);
   }
 }
 module.exports = { airlineID };

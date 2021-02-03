@@ -1,10 +1,9 @@
 'use strict';
-const locationRepository = require('../../repositories/location/location-repository');
-const path = require('path');
+const { createCity, getCityByName } = require('../../repositories/location/location-repository');
 const fetch = require('node-fetch');
 const { makeInfoCityUrl } = require('../GeoDB/geoDB-controller');
-const { wait } = require('../utils/utils-controller');
 const { validateReturn } = require('../utils/utils-controller');
+const { wait } = require('../utils/utils-controller');
 
 /**
  * Search on MySQL DB for Loca_ID, if not exists creates a new city in DB
@@ -17,7 +16,7 @@ const { validateReturn } = require('../utils/utils-controller');
 async function getLocaId(airport, paisId, next) {
   try {
     //? Buscamos la ciudad en la base
-    const [cityStoredInDB] = await locationRepository.getCityByName(airport.city);
+    const [cityStoredInDB] = await getCityByName(airport.city);
     if (cityStoredInDB !== undefined && cityStoredInDB.Loca_ID > 0) {
       return cityStoredInDB.Loca_ID;
     }
@@ -39,19 +38,13 @@ async function getLocaId(airport, paisId, next) {
     //? Si obtenemos información creamos la ciudad en la Base MySQL
     const newCity = geoDbCityInfo[0];
     const newCityData = [newCity.name, paisId, newCity.latitude, newCity.longitude];
-    const newCityID = await locationRepository.createCity(newCityData, next);
-
-    return newCityID;
-  } catch (error) {
-    if (error.message === "Cannot read property '0' of undefined") {
-      error.code = 503;
-      error.details = 'El servidor de información de ciudades esta ocupado';
+    return await createCity(newCityData, next);
+  } catch (err) {
+    if (err.message === "Cannot read property '0' of undefined") {
+      err.code = 503;
+      err.details = 'El servidor de información de ciudades esta ocupado';
     }
-    if (error.code === undefined || !error.code) {
-      error.code = 500;
-      error.details = 'unknown error at: ' + path.basename(__filename);
-    }
-    next(error);
+    next(err);
   }
 }
 module.exports = { getLocaId };

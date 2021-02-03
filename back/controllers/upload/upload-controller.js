@@ -2,12 +2,12 @@
 
 const { deleteOldAvatar } = require('./deleteOldAvatar');
 const { getStorePath } = require('./getStorePath');
+const { getAvatar } = require('../../repositories/user/user-repository');
 const { imposibleError } = require('./imposibleError');
 const jwt = require('jsonwebtoken');
 const { newAvatarData } = require('./newAvatarData');
 const path = require('path');
 const { storePathInDb } = require('./storePahInDb');
-const userRepository = require('../../repositories/user/user-repository');
 const { validateImage } = require('./validateImage');
 
 /**
@@ -28,7 +28,7 @@ async function uploadAvatar(req, res, next) {
     const storePath = await getStorePath();
 
     // ? obtenemos Los datos antiguos
-    const [oldAvatar] = await userRepository.getAvatar(id);
+    const [oldAvatar] = await getAvatar(id);
     const oldPath = path.join(storePath, oldAvatar.Usr_foto);
 
     //? Creamos los datos relativos al usuario, path,nombre de archivo...
@@ -48,8 +48,8 @@ async function uploadAvatar(req, res, next) {
     await storePathInDb(fileName, id);
 
     res.status(200).json({ ok: true, details: 'Foto subida.' });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 }
 

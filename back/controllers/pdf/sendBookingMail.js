@@ -32,4 +32,4 @@ async function sendBookingMail(file, req, next) {
     next(err);
   }
 }
-exports.sendBookingMail = sendBookingMail;
+module.exports = { sendBookingMail };

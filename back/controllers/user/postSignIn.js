@@ -1,11 +1,10 @@
 'use strict';
 
 const bcrypt = require('bcryptjs');
-const { registerSchema } = require('../../repositories/schemas/registerSchema');
+const { createUser, getUserByEmail } = require('../../repositories/user/user-repository');
 const jwt = require('jsonwebtoken');
-
+const { registerSchema } = require('../../repositories/schemas/registerSchema');
 const { sendEmail } = require('./sendEmail');
-const userRepository = require('../../repositories/user/user-repository');
 
 /**
  * Controlador del registro de usuario.
@@ -32,7 +31,7 @@ async function postSignIn(req, res, next) {
     const { username, email, password, bio } = req.body;
 
     //? Buscamos si ya existe ese usuario
-    const [user] = await userRepository.getUserByEmail(email);
+    const [user] = await getUserByEmail(email);
     if (user) {
       const error = new Error();
       error.ok = false;
@@ -42,7 +41,7 @@ async function postSignIn(req, res, next) {
     }
     //? Encriptamos la contraseña y guardamos el usuario en la base
     const passwordHash = await bcrypt.hash(password, 12);
-    const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
+    const id = (await createUser([username, email, passwordHash, bio])).insertId;
 
     //? Generamos el mail de registro
     const mail = {
@@ -59,6 +58,7 @@ async function postSignIn(req, res, next) {
       id,
       username,
       email,
+      bio,
     };
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '60s' });
     res.status(201).json({ ok: true, token, tokenPayload });

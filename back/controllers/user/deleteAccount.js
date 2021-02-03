@@ -10,9 +10,9 @@ const userRepository = require('../../repositories/user/user-repository');
  * @param {*} req
  * @param {*} res
  */
-async function deleteAccount(req, res, next) {
+async function deleteAccount({ headers }, res, next) {
   try {
-    const token = req.headers.authorization;
+    const token = headers.authorization;
     const decoded = jwt.decode(token);
 
     if (decoded.status === 'a') {
@@ -21,7 +21,9 @@ async function deleteAccount(req, res, next) {
 
     if (token) {
       res.redirect('/login');
-    } else throw new Error();
+    } else {
+      throw new Error();
+    }
   } catch (err) {
     err.details = 'Ha ocurrido algo raro';
     next(err);
