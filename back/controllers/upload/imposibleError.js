@@ -4,13 +4,12 @@
  * This is a callback needed for deleting files.
  * this should never happen.
  *
- * @return {Error} 
+ * @return {Error}
  */
 function imposibleError() {
   return (error) => {
     if (error) {
-      error.code = 500;
-      error.details = 'THIS SHOULD NEVER HAPPEN';
+      error.details = 'SI ESTO OCURRIESE ALGUNA VEZ, EL UNIVERSO ENTERO SE HA ROTO';
       throw error;
     }
   };

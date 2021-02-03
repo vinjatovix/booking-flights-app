@@ -11,11 +11,10 @@ const { deleteFile, fileExists } = require('../utils/utils-controller');
  */
 async function deleteOldAvatar(oldPath, next) {
   if ((await fileExists(oldPath)) && !(await deleteFile(oldPath))) {
-    const error = new Error();
-    error.ok = false;
-    error.code = 500;
-    error.details = 'Something weird happened, data may be lost, please try again';
-    next(error);
+    const err = new Error();
+    err.ok = false;
+    err.details = 'Ha ocurrido algo raro en el proceso, Se puede haber perdido la foto';
+    next(err);
   }
   return true;
 }

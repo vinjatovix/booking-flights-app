@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 
 /**
  * Manages the user status on login
@@ -11,19 +11,19 @@ const userRepository = require('../../repositories/user-repository');
  */
 async function userStatusManager(user) {
   if (!['a', 'i', 'e'].includes(user.Usr_status)) {
-    const error = new Error();
-    error.code = 418;
-    error.details = 'Who are you?';
-    error.file = path.basename(__filename);
-    throw error;
+    const err = new Error();
+    err.code = 418;
+    err.details = 'Hmmm esto no es normal, quién eres?';
+    err.file = path.basename(__filename);
+    throw err;
   }
   if (user.Usr_status === 'i') {
     await userRepository.changeStatus(['a', user.Usr_ID]);
   } else if (user.Usr_status === 'e') {
-    const error = new Error();
-    error.code = 403;
-    error.details = 'Invalid credentials, this account has been deleted';
-    throw error;
+    const err = new Error();
+    err.code = 403;
+    err.details = 'Credenciales inválidos, esta cuenta ha sido eliminada.';
+    throw err;
   }
   return true;
 }

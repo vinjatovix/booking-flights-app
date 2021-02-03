@@ -7,19 +7,20 @@ const db = require('../../infraestructure/database');
  * @param {String} itineraryType "ida || vuelta"
  * @return {Number} "Vue_ID"
  */
-async function createFlight(segment, next) {
+async function createFlight(
+  {
+    Vue_origenID,
+    Vue_destinoID,
+    Vue_companyID,
+    Vue_aircraft,
+    Vue_horaSalida,
+    Vue_horaLlegada,
+    Vue_duracion,
+    Vue_paradas,
+  },
+  next
+) {
   try {
-    const {
-      Vue_origenID,
-      Vue_destinoID,
-      Vue_companyID,
-      Vue_aircraft,
-      Vue_horaSalida,
-      Vue_horaLlegada,
-      Vue_duracion,
-      Vue_paradas,
-    } = segment;
-
     const pool = await db.getPool();
     const fligthExists = 'SELECT Vue_ID FROM Vuelos WHERE (Vue_origenID,Vue_companyID,Vue_horaSalida) = (?,?,?)';
     const [storedFlight] = await pool.execute(fligthExists, [Vue_origenID, Vue_companyID, Vue_horaSalida]);

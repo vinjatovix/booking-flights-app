@@ -1,12 +1,8 @@
 'use strict';
 
-const {
-  getBookingDetail,
-  getFligthData,
-  getAirport,
-  getCompany,
-} = require('../../repositories/booking/booking-repository');
+const { getBookingDetail, getFligthData, getCompany } = require('../../repositories/booking/booking-repository');
 
+const { getAirport } = require('../../repositories/location/location-repository');
 /**
  * Crea objetos con las distintas reservas del usuario
  *

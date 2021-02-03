@@ -1,6 +1,6 @@
 'use strict';
 
-const userRepository = require('../../repositories/user-repository');
+const { storeAvatar } = require('../../repositories/user/user-repository');
 
 /**
  * Stores the new path to the file in db
@@ -10,11 +10,12 @@ const userRepository = require('../../repositories/user-repository');
  * @return {Boolean}
  */
 async function storePathInDb(fileName, id) {
-  const storePathInDb = await userRepository.storeAvatar([fileName, id]);
+  const storePathInDb = await storeAvatar([fileName, id]);
   if (!storePathInDb) {
-    const error = new Error();
-    error.details = 'Something weird happened writting in DB, data may be lost. Please try again';
-    throw error;
+    const err = new Error();
+    err.details =
+      'Ha ocurrido algo raro escribiendo en la base de datos, se pueden haber perdido estos últimos datos. por favor, repite el proceso.';
+    throw err;
   }
   return true;
 }

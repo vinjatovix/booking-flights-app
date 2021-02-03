@@ -4,13 +4,13 @@
  * Fills the booking header with initial properties
  * @param {*} req
  */
-function setInitialBookingCache(req) {
+function setInitialBookingCache({ auth, body }) {
   return {
     header: {
-      RC_UsrID: req.auth.id,
-      RC_base: +req.body.price.base,
-      RC_total: +req.body.price.grandTotal,
-      RC_adults: +req.body.adults,
+      RC_UsrID: +auth.id,
+      RC_base: +body.price.base,
+      RC_total: +body.price.grandTotal,
+      RC_adults: +body.adults,
     },
     details: {
       ida: [],

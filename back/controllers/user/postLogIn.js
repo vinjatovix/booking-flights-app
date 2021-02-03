@@ -1,9 +1,9 @@
 'use strict';
 
 const { generatePayload } = require('./generatePayload');
+const { getUserByEmail } = require('../../repositories/user/user-repository');
 const { joiLogin } = require('./joiLogin');
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user-repository');
 const { userStatusManager } = require('./userStatusManager');
 const { validatePassword } = require('./validatePassword');
 const { validateUser } = require('./validateUser');
@@ -23,7 +23,7 @@ async function postLogIn(req, res, next) {
   try {
     await joiLogin(req);
     const { email, password } = req.body;
-    const [user] = await userRepository.getUserByEmail(email);
+    const [user] = await getUserByEmail(email);
     validateUser(user);
     await validatePassword(password, user);
     await userStatusManager(user);

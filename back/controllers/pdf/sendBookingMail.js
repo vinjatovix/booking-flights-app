@@ -10,12 +10,12 @@ async function sendBookingMail(file, req, next) {
     const msg = {
       to: req.auth.email,
       from: 'flanders.bender@gmail.com',
-      subject: 'New Flanders Booking',
-      text: `Greetings ${req.auth.username}:
-      Here you got a copy for the booking you've just made.
-      Enjoy your travel.`,
-      html: `<H1>Greetings ${req.auth.username}:</H1>
-      <p>Here you got a copy for the booking you've just made. Enjoy your travel.</p>`,
+      subject: 'Nueva Reserva en FLanders',
+      text: `Saludos ${req.auth.username}:
+      Te enviamos una copia de la reserva que acabas de hacer.
+      Disfruta del viaje.`,
+      html: `<H1>Saludos ${req.auth.username}:</H1>
+      <p>Te enviamos una copia de la reserva que acabas de hacer. Disfruta del viaje.</p>`,
       attachments: [
         {
           content: file,
@@ -32,4 +32,4 @@ async function sendBookingMail(file, req, next) {
     next(err);
   }
 }
-exports.sendBookingMail = sendBookingMail;
+module.exports = { sendBookingMail };

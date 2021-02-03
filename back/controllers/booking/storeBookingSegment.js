@@ -1,4 +1,4 @@
-const { createFlight, createBookingDetail } = require('../../repositories/booking/booking-repository');
+const { createBookingDetail, createFlight } = require('../../repositories/booking/booking-repository');
 
 /**
  *  Stores the given segment in DB and Updates bookingCache Data

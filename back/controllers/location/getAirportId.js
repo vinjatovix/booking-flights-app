@@ -1,9 +1,9 @@
 'use strict';
 
 const airports = require('airportsjs');
+const { createAirport } = require('../../repositories/location/location-repository');
 const { getLocaId } = require('./getLocaId');
 const { getPaisId } = require('./getPaisId');
-const locationRepository = require('../../repositories/location/location-repository');
 const { validateReturn } = require('../utils/utils-controller');
 
 /**
@@ -35,10 +35,10 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
 
     //? Y guardará esa información en la base de datos
     const aeropuerto = [name, originLocationCode, locaId, paisId, latitude, longitude];
-    return await locationRepository.createAirport(aeropuerto, next);
+    return await createAirport(aeropuerto, next);
   } catch (error) {
     error.code = error.code || 500;
-    error.details = error.details || 'Unknown error about getAirportId';
+    error.details = error.details || 'Error con getAirportId';
     next(error);
   }
 }

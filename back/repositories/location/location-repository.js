@@ -5,6 +5,7 @@ const { createAirport } = require('./createAirport');
 const { createCity } = require('./createCity');
 const { getAirlineByIATA } = require('./getAirlineByIATA');
 const { getAirportByIATA } = require('./getAirportByIATA');
+const { getAirport } = require('./getAirport');
 const { getCityByName } = require('./getCityByName');
 const { getCountryIdByCode } = require('./getCountryIdByCode');
 const { getCountryByCode } = require('./getCountryByCode');
@@ -17,6 +18,7 @@ module.exports = {
   getAirlineByIATA,
   getAirportByIATA,
   getCityByName,
+  getAirport,
   getCountryIdByCode,
   getCountryByCode,
   getCountryByName,

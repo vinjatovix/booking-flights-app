@@ -2,12 +2,12 @@
 
 const { deleteOldAvatar } = require('./deleteOldAvatar');
 const { getStorePath } = require('./getStorePath');
+const { getAvatar } = require('../../repositories/user/user-repository');
 const { imposibleError } = require('./imposibleError');
 const jwt = require('jsonwebtoken');
 const { newAvatarData } = require('./newAvatarData');
 const path = require('path');
 const { storePathInDb } = require('./storePahInDb');
-const userRepository = require('../../repositories/user-repository');
 const { validateImage } = require('./validateImage');
 
 /**
@@ -28,7 +28,7 @@ async function uploadAvatar(req, res, next) {
     const storePath = await getStorePath();
 
     // ? obtenemos Los datos antiguos
-    const [oldAvatar] = await userRepository.getAvatar(id);
+    const [oldAvatar] = await getAvatar(id);
     const oldPath = path.join(storePath, oldAvatar.Usr_foto);
 
     //? Creamos los datos relativos al usuario, path,nombre de archivo...
@@ -41,16 +41,15 @@ async function uploadAvatar(req, res, next) {
     await deleteOldAvatar(oldPath, next);
 
     /* 
-    TODO: DECIDIR!?!?! 'Something weird happened writting in DB, da'Something weird happened writting in DB, da'Something weird happened writting in DB, da'Something weird happened writting in DB, data may be lost. Please try again'ta may be lost. Please try again'ta may be lost. Please try again'ta may be lost. Please try again'
     ? almacenamos la ruta en la BBDD
     ? si guardamos toda la ruta y luego modificamos la ubicacion por lo que sea, hay que modificar todos los registros de la base, pero si solo guardamos el nombre de archivo el resto de la ruta siempre queda en la logica del servidor.
     ? const pathToStore = uploadPath.split('/').splice(8).join('/'); 
     */
     await storePathInDb(fileName, id);
 
-    res.status(200).json({ ok: true, details: 'File upload successfully' });
-  } catch (error) {
-    next(error);
+    res.status(200).json({ ok: true, details: 'Foto subida.' });
+  } catch (err) {
+    next(err);
   }
 }
 

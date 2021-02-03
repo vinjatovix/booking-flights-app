@@ -1,4 +1,5 @@
 'use strict';
+
 const fetch = require('node-fetch');
 const { getToken } = require('./getToken');
 
@@ -10,6 +11,7 @@ const { getToken } = require('./getToken');
  * @return {Object} "Amadeus response"
  */
 async function fetchAmadeus(url, next) {
+  
   const amadeusToken = await getToken(next); //? First we must refresh Amadeus token
 
   const amadeusResponse = await fetch(url, {

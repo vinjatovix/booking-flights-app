@@ -1,11 +1,10 @@
 'use strict';
 
 const bcrypt = require('bcryptjs');
-const { registerSchema } = require('../../repositories/registerSchema');
+const { createUser, getUserByEmail } = require('../../repositories/user/user-repository');
 const jwt = require('jsonwebtoken');
-
+const { registerSchema } = require('../../repositories/schemas/registerSchema');
 const { sendEmail } = require('./sendEmail');
-const userRepository = require('../../repositories/user-repository');
 
 /**
  * Controlador del registro de usuario.
@@ -32,7 +31,7 @@ async function postSignIn(req, res, next) {
     const { username, email, password, bio } = req.body;
 
     //? Buscamos si ya existe ese usuario
-    const [user] = await userRepository.getUserByEmail(email);
+    const [user] = await getUserByEmail(email);
     if (user) {
       const error = new Error();
       error.ok = false;
@@ -42,23 +41,24 @@ async function postSignIn(req, res, next) {
     }
     //? Encriptamos la contraseña y guardamos el usuario en la base
     const passwordHash = await bcrypt.hash(password, 12);
-    const id = (await userRepository.createUser([username, email, passwordHash, bio])).insertId;
+    const id = (await createUser([username, email, passwordHash, bio])).insertId;
 
     //? Generamos el mail de registro
     const mail = {
       email,
       subject: 'FLanders User Sign In',
-      text: `Greetings ${username}:
-      Your mail ${email} has been registered into the Fligh Landers service.`,
-      html: `<H1>Greetings ${username}:</H1>
-      <p>Your mail ${email} has been registered into the Fligh Landers service.</p>
-      <p>Please <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Log In </a> to activate your account.</p>`,
+      text: `Saludos ${username}:
+      Tu email ${email} ha sido registrado en Flight Landers.`,
+      html: `<H1>Saludos ${username}:</H1>
+      <p>Tu email ${email} ha sido registrado en Flight Landers.</p>
+      <p>Por favor <a href='http://${process.env.BENDER_HOST}:${process.env.BENDER_PORT}/login'> Accede </a> Para activar tu cuenta.</p>`,
     };
     sendEmail(mail, next);
     const tokenPayload = {
       id,
       username,
       email,
+      bio,
     };
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '60s' });
     res.status(201).json({ ok: true, token, tokenPayload });

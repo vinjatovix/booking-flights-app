@@ -1,12 +1,10 @@
 'use strict';
 
-const path = require('path');
 const jwt = require('jsonwebtoken');
 const {
   getBookings,
   // getBookingDetail,
   // getFligthData,
-  // getAirport,
   // getCompany,
 } = require('../../repositories/booking/booking-repository');
 const { createBookingData } = require('./createBookingData');
@@ -29,7 +27,7 @@ async function userBookings(req, res, next) {
     if (RC_bookings.length === 0) {
       const error = new Error();
       error.code = 400;
-      error.details = 'User doesnt have active bookings';
+      error.details = 'No existen reservas';
       throw error;
     }
     // Creamos los datos de las reservas
@@ -39,7 +37,6 @@ async function userBookings(req, res, next) {
   } catch (error) {
     if (error.name === 'ValidationError') {
       error.code = 400;
-      error.file = path.basename(__filename);
     }
     next(error);
   }

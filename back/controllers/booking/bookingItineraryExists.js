@@ -1,4 +1,4 @@
-const path = require('path');
+'use strict';
 
 /**
  * Throws error if data is invalid
@@ -8,13 +8,12 @@ const path = require('path');
  * @param {*} next
  * @return {true}
  */
-function bookingItineraryExists(req, i, next) {
-  if (!req.body.itineraries[i] || req.body.itineraries.length === 0) {
-    const error = new Error();
-    error.code = 400;
-    error.details = "You are trying to manage travel and there isn't";
-    error.file = path.basename(__filename);
-    next(error);
+function bookingItineraryExists({ body }, i, next) {
+  if (!body.itineraries[i] || body.itineraries.length === 0) {
+    const err = new Error();
+    err.code = 400;
+    err.details = 'Estás intentando gestionar un viaje y no existe.';
+    next(err);
   }
   return true;
 }
