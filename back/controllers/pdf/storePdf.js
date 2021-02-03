@@ -11,8 +11,8 @@ async function storePdf(pdfData, req, next) {
     const header = setHeader(pdfData);
     const ida = setDirection(pdfData, 'ida');
     const vuelta = setDirection(pdfData, 'vuelta');
+
     const html = fillTemplate(header, ida, vuelta);
-    
     await (await page).setContent(html); //TODO: WTF???
     const filePath = path.join(__dirname, `../../tmp/${req.auth.id}-${Date.now()}.pdf`);
     await (await page).pdf({
@@ -74,7 +74,7 @@ function setHeader(pdfData) {
 function setDirection(pdfData, direccion = 'ida') {
   const d = direccion === 'vuelta' ? 1 : 0;
   if (pdfData.travel.direction[d]) {
-    const seed = pdfData.travel.direction[1];
+    const seed = pdfData.travel.direction[d];
     return `
       <h4>Trayecto ${direccion}</h4>
         <ul>
