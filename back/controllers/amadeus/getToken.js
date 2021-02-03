@@ -2,6 +2,7 @@
 
 const fetch = require('node-fetch');
 const { validateReturn } = require('../utils/validateReturn');
+const { makeTokenOptionsBody } = require('./makeTokenOptionsBody');
 /**
  * Refreshes the Amadeus token
  *
@@ -16,10 +17,7 @@ async function getToken(next) {
     const client_id = process.env.AMADEUS_API_KEY;
     const client_secret = process.env.AMADEUS_SECRET;
 
-    const urlencoded = new URLSearchParams();
-    urlencoded.append('client_id', client_id);
-    urlencoded.append('client_secret', client_secret);
-    urlencoded.append('grant_type', 'client_credentials');
+    const urlencoded = makeTokenOptionsBody(client_id, client_secret);
 
     const tokenOptions = {
       method: 'POST',
@@ -29,11 +27,12 @@ async function getToken(next) {
 
     //? API CONNECTION
     const response = await fetch(newTokenUrl, tokenOptions).then((res) => res.json());
-    validateReturn(response);
+    validateReturn(response, 'amadeus Token', 400);
+
     return response.access_token;
   } catch (error) {
     error.code = error.code || 400;
-    error.details = 'Algo ha ido mal con el token de Amadeus';
+    error.details = error.details || 'Algo ha ido mal con el token de Amadeus';
     next(error);
   }
 }
