@@ -3,7 +3,7 @@
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID);
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 const { storePathInDb } = require('../upload/storePahInDb');
 
 const { registerSchema } = require('../../repositories/schemas/registerSchema');

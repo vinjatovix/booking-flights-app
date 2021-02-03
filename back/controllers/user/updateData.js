@@ -1,7 +1,7 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 const { updateProfileSchema } = require("../../repositories/schemas/updateProfileSchema");
 
 /**

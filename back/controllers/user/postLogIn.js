@@ -3,7 +3,7 @@
 const { generatePayload } = require('./generatePayload');
 const { joiLogin } = require('./joiLogin');
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 const { userStatusManager } = require('./userStatusManager');
 const { validatePassword } = require('./validatePassword');
 const { validateUser } = require('./validateUser');

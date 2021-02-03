@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 const { wait } = require('../utils/wait');
 const { updatePasswordSchema } = require("../../repositories/schemas/updatePasswordSchema");
 

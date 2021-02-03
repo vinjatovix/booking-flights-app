@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const { newAvatarData } = require('./newAvatarData');
 const path = require('path');
 const { storePathInDb } = require('./storePahInDb');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 const { validateImage } = require('./validateImage');
 
 /**

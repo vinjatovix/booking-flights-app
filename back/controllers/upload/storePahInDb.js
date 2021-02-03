@@ -1,6 +1,6 @@
 'use strict';
 
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 
 /**
  * Stores the new path to the file in db

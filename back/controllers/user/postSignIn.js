@@ -5,7 +5,7 @@ const { registerSchema } = require('../../repositories/schemas/registerSchema');
 const jwt = require('jsonwebtoken');
 
 const { sendEmail } = require('./sendEmail');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 
 /**
  * Controlador del registro de usuario.

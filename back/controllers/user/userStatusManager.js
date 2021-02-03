@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 
 /**
  * Manages the user status on login
