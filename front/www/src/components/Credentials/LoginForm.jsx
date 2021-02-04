@@ -10,8 +10,7 @@ export const LoginForm = ({ action, cssClassName, encType, method }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  console.log(email);
-  console.log(password);
+
   const logIn = async (e) => {
     e.preventDefault();
     const res = await fetch(action, {
@@ -24,7 +23,18 @@ export const LoginForm = ({ action, cssClassName, encType, method }) => {
     const json = await res.json();
     console.log(json.token);
 
-    // console.log(json);
+    const authRes = await fetch('http://localhost:8337/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${json.token}`,
+      },
+    });
+    console.log(authRes);
+    const authJSON = await authRes.json();
+
+    console.log(authJSON);
+
     // console.log(json.details[0].message);
     // if (res.status === 418) {
     //   setErrorMessage('Algo va mal con el formulario');

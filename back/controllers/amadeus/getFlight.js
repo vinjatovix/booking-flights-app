@@ -14,11 +14,12 @@ const { validateDates } = require('../utils/validateDates');
  * @param {*} next
  */
 async function getFlight(req, res, next) {
+  console.log(req.query);
   try {
     //? VALIDATION
-    await getFlightSchema.validateAsync(req.body);
-    const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults } = req.body;
-    const nonStop = req.body.nonStop === undefined ? false : req.body.nonStop;
+    await getFlightSchema.validateAsync(req.query);
+    const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults, max, maxPrice } = req.query;
+    const nonStop = req.query.nonStop === undefined ? false : req.query.nonStop;
     airportID(originLocationCode, next);
     airportID(destinationLocationCode, next);
     validateDates(departureDate, returnDate, next);
@@ -32,6 +33,8 @@ async function getFlight(req, res, next) {
       returnDate,
       adults,
       nonStop,
+      max,
+      maxPrice,
     });
     // await wait(500);
     const { data } = await fetchAmadeus(url, next);

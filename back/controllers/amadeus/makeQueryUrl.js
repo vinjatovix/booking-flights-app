@@ -1,18 +1,19 @@
 'use strict';
 
 function makeQueryUrl({
-  req,
   originLocationCode,
   destinationLocationCode,
   departureDate,
   adults,
   returnDate,
   nonStop,
+  max = 200,
+  maxPrice = 999,
 }) {
   const apiUrl = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
-  if (!req.body.returnDate) {
-    return `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+  if (!returnDate) {
+    return `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&adults=${adults}&nonStop=${nonStop}&max=${max}&maxPrice=${maxPrice}`;
   }
-  return `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=250`;
+  return `${apiUrl}?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&nonStop=${nonStop}&max=${max}&maxPrice=${maxPrice}`;
 }
 exports.makeQueryUrl = makeQueryUrl;

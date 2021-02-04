@@ -60,7 +60,7 @@ app.put('/update/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/update/delete', validateAuth, usersController.deleteAccount);
 app.put('/myBookings/delete', validateAuth, bookingController.deleteBooking);
 
-app.post('/search/flights', amadeusController.getFlight);
+app.get('/search/flights', amadeusController.getFlight);
 app.post('/book/flight', validateAuth, bookingController.bookFlight);
 app.post('/myBookings', validateAuth, bookingController.userBookings);
 
