@@ -8,6 +8,9 @@ export const initialState = {
   username: null,
   mail: null,
   id: null,
+  photo: null,
+  bio: null,
+  status: null,
   menu: false,
 };
 
@@ -16,7 +19,10 @@ export const initialState = {
 export const reducer = (state, { type, payload }) => {
   switch (type) {
     case C.AUTH_RESPONSE_SUCCESS:
-      //? lógica
+      if (payload.photo === '0') {
+        payload.photo = '';
+      }
+
       return {
         ...state,
         loading: false,
@@ -24,6 +30,9 @@ export const reducer = (state, { type, payload }) => {
         username: payload.username,
         mail: payload.email,
         id: payload.id,
+        photo: payload.photo,
+        bio: payload.bio,
+        status: payload.status,
       };
     case C.AUTH_RESPONSE_FAILURE:
       //? lógica
@@ -34,6 +43,9 @@ export const reducer = (state, { type, payload }) => {
         username: null,
         mail: null,
         id: null,
+        photo: null,
+        bio: null,
+        status: null,
       };
     case C.CHANGE_MENU_VISIBILITY:
       //? lógica

@@ -21,16 +21,19 @@ export const LoginForm = ({ action, cssClassName, encType, method }) => {
       body: JSON.stringify({ email, password }),
     });
     const json = await res.json();
-    console.log(json.token);
+    console.log(json);
+
+    if (res.status !== 200) {
+    }
 
     const authRes = await fetch('http://localhost:8337/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Basic ${json.token}`,
+        Authorization: json.token,
       },
     });
-    console.log(authRes);
+
     const authJSON = await authRes.json();
 
     console.log(authJSON);
