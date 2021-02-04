@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
 import CloseMenu from '../../assets/svg/cerrar.svg';
 import { changeMenu } from '../../context/Auth.actions';

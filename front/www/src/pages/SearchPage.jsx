@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../components/SearchForm/searchForm.css';
 import { useAuthContext } from '../context/Auth.context';
 import { useFlightContext } from '../context/flight/Flight.context';
 import { SearchForm } from '../components/SearchForm/SearchForm';
+import { ResponseFlight } from '../components/SearchForm/ResponseFlight';
+import { monthName } from '../utils/dateUtils';
 
 const ResponseHeader = ({
   originLocationCode,
@@ -12,6 +14,10 @@ const ResponseHeader = ({
   adults,
   setOrder,
 }) => {
+  const dd = new Date(departureDate);
+  const salida = `${dd.getDate()}${monthName(dd.getMonth())}`;
+  const rd = new Date(returnDate);
+  const llegada = `${rd.getDate()}${monthName(rd.getMonth())}`;
   return (
     <div className="Response-header" style={{ marginTop: '1rem' }}>
       <ul className="Response__airports">
@@ -28,8 +34,8 @@ const ResponseHeader = ({
         <li className="Response-filter__price filter active reverse">$</li>
       </ul>
       <ul className="Response__dates">
-        <li>{departureDate}</li>
-        {returnDate && <li>{returnDate}</li>}
+        <li>{salida}</li>
+        {llegada && <li>{llegada}</li>}
         <li>{adults} px</li>
       </ul>
     </div>
@@ -86,53 +92,9 @@ export const SearchPage = () => {
       )}
 
       <ul className="Response-list">
-        {response?.data?.map((element) => {
-          console.log(element);
-          return (
-            <li key={element.id} className="Flight">
-              <ul className="itinerary">
-                <li className="company">{element.validatingAirlineCodes[0]}</li>
-                <li className="times">
-                  <p>{element.itineraries[0].segments[0].departure.at}</p>
-                  <div className="stops1">{element.itineraries[0].segments.length - 1}</div>
-                  <p>{element.itineraries[0].segments[element.itineraries[0].segments.length - 1].departure.at}</p>
-                </li>
-                <li className="ports">
-                  <p>{originLocationCode}</p>
-                  <div>{element.itineraries[0].duration}</div>
-                  <p>{destinationLocationCode}</p>
-                </li>
-              </ul>
-              <ul className="itinerary">
-                <li className="company">{element.validatingAirlineCodes[0]}</li>
-                <li className="times">
-                  <p>{element.itineraries[1].segments[0].departure.at}</p>
-                  <div className="stops1">{element.itineraries[1].segments.length - 1}</div>
-                  <p>{element.itineraries[1].segments[element.itineraries[0].segments.length - 1].departure.at}</p>
-                </li>
-                <li className="ports">
-                  <p>{destinationLocationCode}</p>
-                  <div>{element.itineraries[1].duration}</div>
-                  <p>{originLocationCode}</p>
-                </li>
-              </ul>
-
-              <ul className="offer">
-                <li>{element.price.total}€</li>
-                {logged && (
-                  <li>
-                    <div
-                      className="heart"
-                      onClick={() => {
-                        console.log('reservar!');
-                      }}
-                    ></div>
-                  </li>
-                )}
-              </ul>
-            </li>
-          );
-        })}
+        {response?.data?.map((element) => (
+          <ResponseFlight key={element.id} auth={logged} {...element} />
+        ))}
       </ul>
     </>
   );

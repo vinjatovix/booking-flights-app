@@ -2,10 +2,10 @@ import * as C from './Flight.constants';
 
 export const initialFlightFormState = {
   oneWay: false,
-  originLocationCode: '',
-  destinationLocationCode: '',
-  departureDate: '',
-  returnDate: '',
+  originLocationCode: 'SCQ',
+  destinationLocationCode: 'FCO',
+  departureDate: '2021-03-01',
+  returnDate: '2021-03-06',
   adults: 1,
   currencyCode: 'EUR',
   nonStop: false,
@@ -40,7 +40,6 @@ export const FlightReducer = (state, { type, payload }) => {
     case C.FLIGHT_SET_RESPONSE:
       return {
         ...state,
-        searching: false,
         response: payload,
       };
 

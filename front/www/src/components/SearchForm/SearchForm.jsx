@@ -35,7 +35,6 @@ export const SearchForm = ({
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
-    console.log(oneWay);
     dispatch(A.switchBoolean({ name: 'searching', value: searching }));
 
     if (oneWay) {
