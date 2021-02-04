@@ -3,6 +3,7 @@ import './credentials.css';
 import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useIsLogged } from '../../hooks/useIsLogged';
 import * as A from '../../context/Auth.actions';
 
 import { mailProps, passwordProps, buttonProps } from './loginProps';
@@ -12,7 +13,8 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [, setToken] = useLocalStorage('', 'auth');
+  const [token, setToken] = useLocalStorage('', 'auth');
+  const [data, refetch] = useIsLogged(token);
 
   const logIn = async (e) => {
     e.preventDefault();
@@ -25,16 +27,8 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
     });
     const json = await res.json();
 
-    const authRes = await fetch('http://localhost:8337/me', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: json.token,
-      },
-    });
-    const authJSON = await authRes.json();
-
     setToken(json.token);
+    console.log(data);
 
     if (res.status !== 200) {
       dispatch(A.authFailure());
@@ -43,12 +37,12 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
     } else {
       dispatch(
         A.authSuccess({
-          username: authJSON.decodedToken.username,
-          mail: authJSON.decodedToken.email,
-          id: authJSON.decodedToken.id,
-          photo: authJSON.decodedToken.photo,
-          bio: authJSON.decodedToken.bio,
-          status: authJSON.decodedToken.status,
+          username: data.decodedToken.username,
+          mail: data.decodedToken.email,
+          id: data.decodedToken.id,
+          photo: data.decodedToken.photo,
+          bio: data.decodedToken.bio,
+          status: data.decodedToken.status,
         })
       );
     }
