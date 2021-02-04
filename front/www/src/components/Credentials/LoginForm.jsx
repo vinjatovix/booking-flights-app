@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import './credentials.css';
 import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import * as A from '../../context/Auth.actions';
 
 import { mailProps, passwordProps, buttonProps } from './loginProps';
 
-export const LoginForm = ({ action, cssClassName, encType, method }) => {
+export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) => {
   //TODO: state para el auth, email, etc... probablemente custom hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [, setToken] = useLocalStorage('', 'auth');
 
   const logIn = async (e) => {
     e.preventDefault();
@@ -21,10 +24,6 @@ export const LoginForm = ({ action, cssClassName, encType, method }) => {
       body: JSON.stringify({ email, password }),
     });
     const json = await res.json();
-    console.log(json);
-
-    if (res.status !== 200) {
-    }
 
     const authRes = await fetch('http://localhost:8337/me', {
       method: 'GET',
@@ -33,28 +32,26 @@ export const LoginForm = ({ action, cssClassName, encType, method }) => {
         Authorization: json.token,
       },
     });
-
     const authJSON = await authRes.json();
 
-    console.log(authJSON);
+    setToken(json.token);
 
-    // console.log(json.details[0].message);
-    // if (res.status === 418) {
-    //   setErrorMessage('Algo va mal con el formulario');
-    // }
-    // if (res.status === 400) {
-    //   if (json?.details[0]?.message) {
-    //     setErrorMessage(json.details[0].message);
-    //   } else {
-    //     setErrorMessage(json.details);
-    //   }
-    //   // setAuth("");
-    //   setTimeout(() => setErrorMessage(''), 3000);
-    // } else {
-    //   console.log({ email, password, event: e, json });
-    //   // setAccessToken(json.accessToken);
-    //   // setAuth(json.accessToken);
-    // }
+    if (res.status !== 200) {
+      dispatch(A.authFailure());
+      setErrorMessage(json.details);
+      setTimeout(() => setErrorMessage(''), 3000);
+    } else {
+      dispatch(
+        A.authSuccess({
+          username: authJSON.decodedToken.username,
+          mail: authJSON.decodedToken.email,
+          id: authJSON.decodedToken.id,
+          photo: authJSON.decodedToken.photo,
+          bio: authJSON.decodedToken.bio,
+          status: authJSON.decodedToken.status,
+        })
+      );
+    }
   };
   return (
     <>

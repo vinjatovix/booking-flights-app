@@ -28,7 +28,6 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }
       setErrorMessage(json.details);
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
-      console.log({ email, password, event: e, json });
       dispatch(
         A.authSuccess({
           username,

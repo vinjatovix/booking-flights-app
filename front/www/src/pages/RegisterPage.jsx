@@ -7,7 +7,6 @@ import { useAuthContext } from '../context/Auth.context';
 export const RegisterPage = (props) => {
   const [{ logged }, dispatch] = useAuthContext();
 
-  console.log(logged);
   if (logged === true) return <Redirect to="/" />;
 
   return (
