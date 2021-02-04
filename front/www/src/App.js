@@ -16,13 +16,15 @@ import { LoginPage } from './pages/LoginPage';
 /* COMPONENTES */
 import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
-import { SearchForm } from './components/SearchForm/SearchForm';
+import { SearchPage } from './pages/SearchPage';
 // import { CredentialsPage } from './pages/CredentialsPage';
 import { Menu } from './components/Menu/Menu';
 import { Footer } from './components/common/Footer';
 
 /* RENDER PROPS */
 import { loginProps } from './loginProps';
+import { FlightProvider } from './context/flight/Flight.context';
+import { FlightReducer, initialFlightFormState } from './context/flight/Flight.reducers';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -79,7 +81,9 @@ const App = () => {
               <AboutPage url="http://localhost:8337/about" />
             </Route>
             <Route path="/">
-              <SearchForm />
+              <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
+                <SearchPage />
+              </FlightProvider>
             </Route>
           </Switch>
         </Main>

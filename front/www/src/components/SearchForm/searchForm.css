@@ -5,7 +5,7 @@ input[type="number"] {
 input[type="number"]#passengers {
     background-image: url("../../assets/svg/user-friends-solid.svg");
 }
-input[type="number"]#escales {
+input[type="button"]#escales {
     background-image: url("../../assets/svg/route-solid.svg");
 }
 input[type="number"]#price {

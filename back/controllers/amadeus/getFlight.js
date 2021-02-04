@@ -18,7 +18,7 @@ async function getFlight(req, res, next) {
   try {
     //? VALIDATION
     await getFlightSchema.validateAsync(req.query);
-    const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults } = req.query;
+    const { originLocationCode, destinationLocationCode, departureDate, returnDate, adults, max, maxPrice } = req.query;
     const nonStop = req.query.nonStop === undefined ? false : req.query.nonStop;
     airportID(originLocationCode, next);
     airportID(destinationLocationCode, next);
@@ -33,6 +33,8 @@ async function getFlight(req, res, next) {
       returnDate,
       adults,
       nonStop,
+      max,
+      maxPrice,
     });
     // await wait(500);
     const { data } = await fetchAmadeus(url, next);

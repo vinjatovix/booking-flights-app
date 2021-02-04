@@ -8,5 +8,7 @@ const getFlightSchema = Joi.object({
   returnDate: Joi.date().iso().allow(''),
   adults: Joi.number().min(1).max(9).required(),
   nonStop: Joi.boolean(),
+  max: Joi.number(),
+  maxPrice: Joi.number(),
 });
 module.exports = { getFlightSchema };
