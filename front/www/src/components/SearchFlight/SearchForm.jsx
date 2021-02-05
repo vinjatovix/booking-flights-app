@@ -24,9 +24,6 @@ export const SearchForm = ({
     max,
     maxPrice
   ) => {
-    console.log('====================================');
-    console.log(returnDate);
-    console.log('====================================');
     if (returnDate === '' || returnDate?.length === 0) {
       return `?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&adults=${adults}&max=${max}&maxPrice=${maxPrice}`;
     }
