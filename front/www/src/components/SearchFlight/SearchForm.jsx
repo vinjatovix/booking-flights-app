@@ -1,127 +1,115 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Article } from '../common/Article';
 import * as A from '../../context/flight/Flight.actions';
+import { PassengerCounter } from './PassengerCounter';
+import { createUrl } from './createUrl';
 
 export const SearchForm = ({
-  oneWay,
   adults,
-  nonStop,
-  originLocationCode,
-  destinationLocationCode,
   departureDate,
-  returnDate,
-  searching,
+  destinationLocationCode,
   dispatch,
+  endPoint,
   max,
   maxPrice,
+  nonStop,
+  oneWay,
+  originLocationCode,
+  returnDate,
+  searching,
 }) => {
-  const makeQueryUrl = (
-    originLocationCode,
-    destinationLocationCode,
-    departureDate,
-    returnDate,
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const url = createUrl({
     adults,
+    departureDate,
+    destinationLocationCode,
+    endPoint,
     max,
-    maxPrice
-  ) => {
-    if (returnDate === '' || returnDate?.length === 0) {
-      return `?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&adults=${adults}&max=${max}&maxPrice=${maxPrice}`;
-    }
-    return `?originLocationCode=${originLocationCode}&destinationLocationCode=${destinationLocationCode}&departureDate=${departureDate}&returnDate=${returnDate}&adults=${adults}&max=${max}&maxPrice=${maxPrice}`;
-  };
+    maxPrice,
+    originLocationCode,
+    returnDate,
+  });
 
   const handlerSubmit = async (e) => {
     e.preventDefault();
-    dispatch(A.switchBoolean({ name: 'searching', value: searching }));
 
     if (oneWay) {
       dispatch(A.setString({ name: 'returnDate', value: '' }));
     }
 
-    const query = makeQueryUrl(
-      originLocationCode,
-      destinationLocationCode,
-      departureDate,
-      returnDate,
-      adults,
-      max,
-      maxPrice
-    );
-
-    const url = `http://localhost:8337/search/flights${query}`;
-
     const res = await fetch(url, {
       method: 'GET',
     });
     const data = await res.json();
-    dispatch(A.saveResponse(data));
+    if (res.status !== 200) {
+      setErrorMessage(data.details);
+      setTimeout(() => setErrorMessage(''), 3000);
+    } else {
+      dispatch(A.switchBoolean({ name: 'searching', value: searching }));
+      dispatch(A.saveResponse(data));
+    }
   };
   useEffect(() => {}, [searching]);
   return (
     <Article title="Buscador" className="">
       <form className="SearchForm" method="GET" encType="multipart/form-data" onSubmit={handlerSubmit}>
         <input
+          className="SearchForm__trip"
           type="button"
           name="trip"
           id="trip"
-          value={oneWay ? 'Solo ida' : 'Ida y Vuelta'}
+          value={oneWay ? 'Solo ida' : 'I/V'}
           onClick={() => dispatch(A.switchBoolean({ name: 'oneWay', value: oneWay }))}
         />
+        <PassengerCounter adults={adults} dispatch={dispatch} />
+
         <input
-          type="number"
-          name="passengers"
-          id="passengers"
-          placeholder="1"
-          onChange={(e) => dispatch(A.setNumber({ name: 'adults', value: e.target.value }))}
-          value={adults}
-        />
-        <input
+          className="SearchForm__nonStop"
           type="button"
           name="escales"
           id="escales"
-          value={nonStop ? 'Sin escalas' : 'Todos'}
+          value={nonStop ? 'Directo' : 'Todos'}
           onClick={(e) => dispatch(A.switchBoolean({ name: 'nonStop', value: nonStop }))}
         />
         <input
+          className="SearchForm__price"
           type="number"
           name="price"
           id="price"
-          placeholder="Precio Tope"
+          placeholder="Max €"
           onChange={(e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value }))}
         />
-        <fieldset className="origin">
-          <input
-            type="text"
-            name="origin"
-            id="origin"
-            placeholder="SCQ - Lavacolla"
-            onChange={(e) =>
-              dispatch(
-                A.setString({
-                  name: 'originLocationCode',
-                  value: e.target.value,
-                })
-              )
-            }
-          />
-        </fieldset>
-        <fieldset className="destination">
-          <input
-            type="text"
-            name="destination"
-            id="destination"
-            placeholder="FCO - Fiumiccino"
-            onChange={(e) =>
-              dispatch(
-                A.setString({
-                  name: 'destinationLocationCode',
-                  value: e.target.value,
-                })
-              )
-            }
-          />
-        </fieldset>
-        <fieldset className="date">
+        <input
+          className="SearchForm__airport"
+          type="text"
+          name="origin"
+          id="origin"
+          placeholder="SCQ - Lavacolla"
+          onChange={(e) =>
+            dispatch(
+              A.setString({
+                name: 'originLocationCode',
+                value: e.target.value,
+              })
+            )
+          }
+        />
+        <input
+          type="text"
+          name="destination"
+          id="destination"
+          placeholder="FCO - Fiumiccino"
+          onChange={(e) =>
+            dispatch(
+              A.setString({
+                name: 'destinationLocationCode',
+                value: e.target.value,
+              })
+            )
+          }
+        />
+        <fieldset className="SearchForm__dates">
           <input
             type="date"
             name="departureDate"
@@ -137,6 +125,11 @@ export const SearchForm = ({
             />
           )}
         </fieldset>
+        <div className="SearchForm__error" style={{ display: 'block', color: 'red', minHeight: '1.5em' }}>
+          {' '}
+          {errorMessage}
+        </div>
+
         <input type="submit" value="Buscar" />
       </form>
     </Article>

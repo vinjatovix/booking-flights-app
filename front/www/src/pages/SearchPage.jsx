@@ -32,6 +32,7 @@ export const SearchPage = () => {
     <>
       {!searching && (
         <SearchForm
+          endPoint="http://localhost:8337/search/flights"
           oneWay={oneWay}
           adults={adults}
           nonStop={nonStop}
