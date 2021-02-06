@@ -17,6 +17,7 @@ export const SearchForm = ({
   originLocationCode,
   returnDate,
   searching,
+  loading,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -38,6 +39,7 @@ export const SearchForm = ({
       dispatch(A.setString({ name: 'returnDate', value: '' }));
     }
 
+    dispatch(A.switchBoolean({ name: 'loading', value: loading }));
     const res = await fetch(url, {
       method: 'GET',
     });

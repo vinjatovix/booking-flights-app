@@ -1,6 +1,6 @@
 import React from 'react';
 import { monthName } from '../../utils/dateUtils';
-
+import * as A from '../../context/flight/Flight.actions';
 export const ResponseHeader = ({
   originLocationCode,
   destinationLocationCode,
@@ -8,6 +8,8 @@ export const ResponseHeader = ({
   returnDate,
   adults,
   setOrder,
+  dispatch,
+  searching,
 }) => {
   const dd = new Date(departureDate);
   const salida = `${dd.getDate()}${monthName(dd.getMonth())}`;
@@ -16,10 +18,15 @@ export const ResponseHeader = ({
   return (
     <div className="Response-header" style={{ marginTop: '1rem' }}>
       <ul className="Response__airports">
+        <li
+          className="pencil-icon"
+          onClick={() => {
+            dispatch(A.switchBoolean({ name: 'searching', value: searching }));
+          }}
+        ></li>
         <li>{originLocationCode}</li>
         <li className="roundTrip-icon"></li>
         <li>{destinationLocationCode}</li>
-        <li className="pencil-icon"></li>
       </ul>
       <ul className="Response__filters">
         <li className="Response-filter__stops filter active sort">P</li>

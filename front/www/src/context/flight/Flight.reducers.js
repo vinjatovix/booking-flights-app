@@ -12,6 +12,7 @@ export const initialFlightFormState = {
   maxPrice: 999,
   max: 10,
   searching: false,
+  loading: false,
   response: {},
 };
 
@@ -40,6 +41,7 @@ export const FlightReducer = (state, { type, payload }) => {
     case C.FLIGHT_SET_RESPONSE:
       return {
         ...state,
+        loading: false,
         response: payload,
       };
 

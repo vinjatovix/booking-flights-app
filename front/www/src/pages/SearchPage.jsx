@@ -5,6 +5,7 @@ import { useFlightContext } from '../context/flight/Flight.context';
 import { SearchForm } from '../components/SearchFlight/SearchForm';
 import { ResponseFlight } from '../components/SearchFlight/ResponseFlight';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader';
+import { Loading } from '../components/common/Loading/Loading';
 
 export const SearchPage = () => {
   const [order, setOrder] = useState('');
@@ -19,6 +20,7 @@ export const SearchPage = () => {
       departureDate,
       returnDate,
       searching,
+      loading,
       max,
       maxPrice,
       response,
@@ -41,17 +43,21 @@ export const SearchPage = () => {
           departureDate={departureDate}
           returnDate={returnDate}
           searching={searching}
+          loading={loading}
           dispatch={dispatch}
           max={max}
           maxPrice={maxPrice}
         />
       )}
+      {loading && <Loading />}
       {searching && (
         <ResponseHeader
+          dispatch={dispatch}
           originLocationCode={originLocationCode}
           destinationLocationCode={destinationLocationCode}
           departureDate={departureDate}
           returnDate={returnDate}
+          searching={searching}
           adults={adults}
           setOrder={setOrder}
         />
