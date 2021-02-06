@@ -1,37 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Input } from '../common/Input';
 import * as A from '../../context/Auth.actions';
 
 import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonProps } from './registerProps';
 import PropTypes from 'prop-types';
+import { useForm } from '../../hooks/useForm';
 
 export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }) => {
-  const [inputs, setInputs] = useState({
+  const [inputs, handleInputChange, setErrorMessage] = useForm({
     username: '',
-    userMail: '',
+    email: '',
     password: '',
     repeatPassword: '',
     bio: '',
     errorMessage: '',
   });
   const { username, email, password, repeatPassword, bio, errorMessage } = inputs;
-
-  useEffect(() => {
-    // console.log('al montarse');
-    return () => {};
-  }, []);
-  useEffect(() => {
-    // console.log('al cambiar');
-    return () => {};
-  }, [inputs]);
-
-  const handleInputChange = ({ target }) => {
-    setInputs({
-      ...inputs,
-      [target.name]: target.value,
-    });
-  };
-  const signIn = async (e) => {
+console.log(email);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(action, {
       method: 'POST',
@@ -43,8 +29,8 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }
     const json = await res.json();
     if (res.status !== 201) {
       dispatch(A.authFailure());
-      // setErrorMessage(json.details);
-      // setTimeout(() => setErrorMessage(''), 3000);
+      setErrorMessage(json.details);
+      setTimeout(() => setErrorMessage(''), 3000);
     } else {
       dispatch(
         A.authSuccess({
@@ -58,7 +44,7 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }
 
   return (
     <>
-      <form className={cssClassName} encType={encType} method={method} onSubmit={signIn}>
+      <form className={cssClassName} encType={encType} method={method} onSubmit={handleSubmit}>
         <Input value={username} onChange={handleInputChange} {...nameProps} />
         <Input value={email} onChange={handleInputChange} {...mailProps} />
         <Input value={password} onChange={handleInputChange} {...passwordProps} />

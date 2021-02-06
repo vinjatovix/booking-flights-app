@@ -8,8 +8,8 @@ export const nameProps = {
 };
 export const mailProps = {
   type: 'email',
-  name: 'userMail',
-  id: 'userMail',
+  name: 'email',
+  id: 'email',
   placeholder: 'Em@il',
   required: 'required',
 };
@@ -17,7 +17,7 @@ export const passwordProps = {
   type: 'password',
   name: 'password',
   id: 'password',
-  placeholder: 'password',
+  placeholder: 'Password',
   required: 'required',
 };
 export const rePasswordProps = {
