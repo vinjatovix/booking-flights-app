@@ -13,8 +13,8 @@ export const useIsLogged = (token) => {
           Authorization: token,
         },
       });
-      const authJSON = await authRes.json();
-      setData(authJSON);
+      const json = await authRes.json();
+      setData(json);
     }
     getRemoteDate();
   }, [token, timestamp]);

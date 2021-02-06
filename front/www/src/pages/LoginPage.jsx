@@ -11,7 +11,7 @@ export const LoginPage = (props) => {
   const token = JSON.parse(window.localStorage.getItem('auth'));
   const [data, refetch] = useIsLogged(token);
 
-  console.log(data.ok);
+  // console.log(data);
   // if (data.ok && data.ok === true) {
   //   <Redirect to="/" />;
   // }
