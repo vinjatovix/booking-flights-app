@@ -4,6 +4,7 @@ export const nameProps = {
   id: 'username',
   placeholder: 'User Name',
   required: 'required',
+  autoComplete: 'off',
 };
 export const mailProps = {
   type: 'email',

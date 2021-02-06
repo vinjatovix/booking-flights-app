@@ -32,12 +32,12 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: json.token,
       },
     });
+    setToken(json.token);
     const authJSON = await authRes.json();
     console.log(authJSON);
-    setToken(json.token);
     // console.log(data);
 
     if (res.status !== 200) {
