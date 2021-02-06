@@ -14,7 +14,8 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [token, setToken] = useLocalStorage('', 'auth');
-  const [data, refetch] = useIsLogged(token);
+  console.log(token);
+  // const [data, refetch] = useIsLogged(console.log(token));
 
   const logIn = async (e) => {
     e.preventDefault();
@@ -27,8 +28,17 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
     });
     const json = await res.json();
 
+    const authRes = await fetch('http://localhost:8337/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+    });
+    const authJSON = await authRes.json();
+    console.log(authJSON);
     setToken(json.token);
-    console.log(data);
+    // console.log(data);
 
     if (res.status !== 200) {
       dispatch(A.authFailure());
@@ -37,12 +47,12 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
     } else {
       dispatch(
         A.authSuccess({
-          username: data.decodedToken.username,
-          mail: data.decodedToken.email,
-          id: data.decodedToken.id,
-          photo: data.decodedToken.photo,
-          bio: data.decodedToken.bio,
-          status: data.decodedToken.status,
+          username: authJSON.decodedToken.username,
+          mail: authJSON.decodedToken.email,
+          id: authJSON.decodedToken.id,
+          photo: authJSON.decodedToken.photo,
+          bio: authJSON.decodedToken.bio,
+          status: authJSON.decodedToken.status,
         })
       );
     }
