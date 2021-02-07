@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './credentials.css';
 import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useIsLogged } from '../../hooks/useIsLogged';
 import * as A from '../../context/Auth.actions';
 
 import { mailProps, passwordProps, buttonProps } from './loginProps';
@@ -19,6 +18,7 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
 
   const logIn = async (e) => {
     e.preventDefault();
+
     const res = await fetch(action, {
       method: 'POST',
       headers: {
@@ -27,18 +27,18 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
       body: JSON.stringify({ email, password }),
     });
     const json = await res.json();
-
+    //PONER EL setToken(json.token) aqui y mandar token a la autorizathion
     const authRes = await fetch('http://localhost:8337/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: token,
+        Authorization: json.token,
       },
     });
+
+    setToken(json.token);
     const authJSON = await authRes.json();
     console.log(authJSON);
-    setToken(json.token);
-    // console.log(data);
 
     if (res.status !== 200) {
       dispatch(A.authFailure());
