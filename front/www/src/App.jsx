@@ -12,6 +12,7 @@ import { useAuthContext } from './context/Auth.context';
 import { AboutPage } from './pages/AboutPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { LoginPage } from './pages/LoginPage';
+import { ProfilePage } from './pages/ProfilePage';
 
 /* COMPONENTES */
 import { Header } from './components/Header/Header';
@@ -79,6 +80,9 @@ const App = () => {
             </Route>
             <Route path="/about">
               <AboutPage url="http://localhost:8337/about" />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
             </Route>
             <Route path="/">
               <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
