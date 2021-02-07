@@ -3,7 +3,7 @@ const { JWT_SECRET } = process.env;
 
 async function verifyToken(req, res, next) {
   try {
-    if (!req.headers.authorization || req.headers.authorization === 'null') {
+    if (!req.headers.authorization || req.headers.authorization === 'null' || req.headers.authorization.length === 0) {
       throw new Error();
     }
     const token = req.headers.authorization;

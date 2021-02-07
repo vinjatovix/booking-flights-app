@@ -6,7 +6,7 @@ import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonP
 import PropTypes from 'prop-types';
 import { useForm } from '../../hooks/useForm';
 
-export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }) => {
+export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, setToken }) => {
   const [inputs, handleInputChange, setErrorMessage] = useForm({
     username: '',
     email: '',
@@ -15,8 +15,9 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }
     bio: '',
     errorMessage: '',
   });
+
   const { username, email, password, repeatPassword, bio, errorMessage } = inputs;
-console.log(email);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(action, {
@@ -32,11 +33,13 @@ console.log(email);
       setErrorMessage(json.details);
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
+      setToken(json.token);
       dispatch(
         A.authSuccess({
-          username,
-          email,
-          id: json.id,
+          username: json.tokenPayload.username,
+          email: json.tokenPayload.email,
+          id: json.tokenPayload.id,
+          bio: json.tokenPayload.bio,
         })
       );
     }

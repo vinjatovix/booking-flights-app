@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export const useRemoteUrl = (url, method) => {
+export const useRemoteUrl = (url, method = 'GET') => {
   const [data, setData] = useState([]);
   const [timestamp, setTimestamp] = useState(new Date());
   useEffect(() => {
