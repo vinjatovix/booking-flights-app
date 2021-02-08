@@ -5,18 +5,18 @@ export const useIsLogged = (token) => {
   const [data, setData] = useState();
   const [timestamp, setTimestamp] = useState(new Date());
   useEffect(() => {
-    async function getRemoteDate() {
-      const authRes = await fetch('http://localhost:8337/me', {
+    async function getRemoteData() {
+      const res = await fetch('http://localhost:8337/me', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           Authorization: token,
         },
       });
-      const json = await authRes.json();
+      const json = await res.json();
       setData(json);
     }
-    getRemoteDate();
+    getRemoteData();
   }, [token, timestamp]);
   const refetch = () => setTimestamp(new Date());
   return [data, refetch];
