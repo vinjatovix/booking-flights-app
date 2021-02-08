@@ -24,6 +24,18 @@ export const Profile = () => {
               <p>Nickname, foto de perfil, bio</p>
             </a>
           </li>
+          <li>
+            <a href="/">
+              <h4>Cambiar la contraseña</h4>
+              <p>Actualízala por una más segura</p>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <h4>Mis reservas</h4>
+              <p>Reservas activas y consumidas</p>
+            </a>
+          </li>
         </ul>
       </main>
     </section>
