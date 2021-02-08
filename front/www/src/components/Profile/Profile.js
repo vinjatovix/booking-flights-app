@@ -18,22 +18,34 @@ export const Profile = () => {
       </header>
       <main>
         <ul className="categorias">
-          <li>
-            <a href="/">
+          <li className="profile-data">
+            <a href="/profile">
               <h4>Cambiar datos de usuario</h4>
               <p>Nickname, foto de perfil, bio</p>
             </a>
           </li>
-          <li>
-            <a href="/">
+          <li className="profile-pass">
+            <a href="/profile">
               <h4>Cambiar la contraseña</h4>
               <p>Actualízala por una más segura</p>
             </a>
           </li>
-          <li>
-            <a href="/">
+          <li className="profile-booking">
+            <a href="/profile">
               <h4>Mis reservas</h4>
-              <p>Reservas activas y consumidas</p>
+              <p>Historial de reservas</p>
+            </a>
+          </li>
+          <li className="profile-tools">
+            <a href="/profile">
+              <h4>Ajustes</h4>
+              <p>Modifica tus preferencias</p>
+            </a>
+          </li>
+          <li className="profile-off">
+            <a href="/profile">
+              <h4>Desactivar cuenta</h4>
+              <p>No recibir más notificaciones</p>
             </a>
           </li>
         </ul>
