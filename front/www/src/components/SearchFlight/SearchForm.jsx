@@ -23,6 +23,7 @@ export const SearchForm = ({
   searching,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
+  useEffect(() => {}, [searching]);
 
   const url = createUrl({
     adults,
@@ -40,6 +41,7 @@ export const SearchForm = ({
     if (oneWay) {
       dispatch(A.setString({ name: 'returnDate', value: '' }));
     }
+    
 
     dispatch(A.switchBoolean({ name: 'loading', value: loading }));
     const res = await fetch(url, {
@@ -54,7 +56,6 @@ export const SearchForm = ({
       dispatch(A.saveResponse(data));
     }
   };
-  useEffect(() => {}, [searching]);
   return (
     <Article title="Buscador" className="">
       <form className="SearchForm" method="GET" encType="multipart/form-data" onSubmit={handlerSubmit}>

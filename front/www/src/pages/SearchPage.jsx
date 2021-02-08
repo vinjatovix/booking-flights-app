@@ -13,7 +13,7 @@ import { Loading } from '../components/common/Loading/Loading';
 /* STYLES */
 import '../components/SearchFlight/searchForm.css';
 
-export const SearchPage = () => {
+export const SearchPage = ({ action }) => {
   const [order, setOrder] = useState('');
 
   const [
@@ -43,7 +43,7 @@ export const SearchPage = () => {
           departureDate={departureDate}
           destinationLocationCode={destinationLocationCode}
           dispatch={dispatch}
-          endPoint="http://localhost:8337/search/flights"
+          endPoint={action}
           loading={loading}
           max={max}
           maxPrice={maxPrice}

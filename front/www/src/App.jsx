@@ -68,7 +68,7 @@ const App = () => {
             </Route>
             <Route path="/">
               <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
-                <SearchPage />
+                <SearchPage action="http://localhost:8337/search/flights" />
               </FlightProvider>
             </Route>
           </Switch>
