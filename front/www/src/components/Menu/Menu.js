@@ -4,7 +4,7 @@ import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu } from '../../context/Auth.actions';
 
-export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
+export const Menu = ({ logged, menu, setToken, dispatch }) => {
   return (
     <nav className="menu">
       <section>
@@ -15,7 +15,7 @@ export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
         <Link
           to="/"
           onClick={() => {
-            dispatch(changeMenu({ menu, logo }));
+            dispatch(changeMenu({ menu }));
           }}
         >
           <li>Buscar</li>
@@ -26,7 +26,7 @@ export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
             <Link
               to="/login"
               onClick={() => {
-                dispatch(changeMenu({ menu, logo }));
+                dispatch(changeMenu({ menu }));
               }}
             >
               <li className="login-button">Login</li>
@@ -35,7 +35,7 @@ export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
             <Link
               to="/register"
               onClick={() => {
-                dispatch(changeMenu({ menu, logo }));
+                dispatch(changeMenu({ menu }));
               }}
             >
               <li className="register-button">Register</li>
@@ -46,7 +46,7 @@ export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
           <Link
             to="/profile"
             onClick={() => {
-              dispatch(changeMenu({ menu, logo }));
+              dispatch(changeMenu({ menu }));
             }}
           >
             <li>Perfil</li>
@@ -56,7 +56,7 @@ export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
         <Link
           to="/about"
           onClick={() => {
-            dispatch(changeMenu({ menu, logo }));
+            dispatch(changeMenu({ menu }));
           }}
         >
           <li className="about-button">About</li>

@@ -18,7 +18,7 @@ const Header = ({ props }) => {
 
   const displayMenu = (e) => {
     e.preventDefault();
-    dispatch(changeMenu({ menu, logo }));
+    dispatch(changeMenu({ menu }));
   };
 
   return (
