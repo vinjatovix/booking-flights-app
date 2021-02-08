@@ -2,7 +2,7 @@ import React from 'react';
 import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 
-export const Menu = () => {
+export const Menu = ({ logged }) => {
   return (
     <nav className="menu">
       <section>
@@ -10,12 +10,16 @@ export const Menu = () => {
       </section>
 
       <ul>
-        <li className="login-button">
-          <a href="/login">Login</a>
-        </li>
-        <li className="register-button">
-          <a href="/register">Register</a>
-        </li>
+        {!logged && (
+          <>
+            <li className="login-button">
+              <a href="/login">Login</a>
+            </li>
+            <li className="register-button">
+              <a href="/register">Register</a>
+            </li>
+          </>
+        )}
         <li className="about-button">
           <a href="/about">About</a>
         </li>
