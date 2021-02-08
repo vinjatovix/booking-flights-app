@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "ctxt"
+    ],
+    "conventionalCommits.scopes": [
+        "searchFlight"
     ]
 }
