@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
-
 /* ****************************
 ! CONTEXTO 
 *******************************/
@@ -32,23 +31,26 @@ const App = () => {
   ? y el segundo el método para manipular estos estados 
   */
   const [{ menu, logged }, dispatch] = useAuthContext();
+
   const [token, setToken] = useLocalStorage(JSON.parse(window.localStorage.getItem('token')) || '', 'token');
 
+  /* 
+  ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
+   */
   const controlProps = {
-    dispatch: dispatch,
-    logged: logged,
-    setToken: setToken,
-    token: token,
+    dispatch,
+    logged,
+    setToken,
+    token,
   };
 
   return (
     <div className="App">
-      {' '}
       {/* //TODO: Intentar eliminar este div, añade un nivel de profundidad innecesario a la jerarquía, el css se le puede aplicar al elemento div root en el html original */}
       <Router>
         <Header props={{ menu, dispatch }} />
         <Main className="app-main">
-          {menu ? <Menu /> : null}
+          {menu ? <Menu {...controlProps} /> : null}
           <Switch>
             {/* //TODO: mapear las rutas con Routes.map() */}
             <Route path="/login">
