@@ -40,6 +40,7 @@ const App = () => {
    */
   const controlProps = {
     dispatch,
+    menu,
     logged,
     setToken,
     token,

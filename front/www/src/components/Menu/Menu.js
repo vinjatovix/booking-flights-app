@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import { authFailure } from '../../context/Auth.actions';
+import { authFailure, changeMenu } from '../../context/Auth.actions';
 
-export const Menu = ({ logged, setToken, dispatch }) => {
+export const Menu = ({ logged, menu, setToken, dispatch }) => {
   return (
     <nav className="menu">
       <section>
@@ -12,40 +12,50 @@ export const Menu = ({ logged, setToken, dispatch }) => {
       </section>
 
       <ul>
-        <li>
-          <Link to="/">Buscar</Link>
-        </li>
+        <Link to="/">
+          <li>Buscar</li>
+        </Link>
+
         {!logged && (
           <>
-            <li className="login-button">
-              <Link to="/login">Login</Link>
-            </li>
-            <li className="register-button">
-              <Link to="/register">Register</Link>
-            </li>
+            <Link to="/login">
+              <li className="login-button">Login</li>
+            </Link>
+
+            <Link to="/register">
+              <li className="register-button">Register</li>
+            </Link>
           </>
         )}
         {logged && (
-          <li>
-            <Link to="/profile">Perfil</Link>
-          </li>
+          <Link to="/profile">
+            <li>Perfil</li>
+          </Link>
         )}
-        <li className="about-button">
-          <Link to="/about">About</Link>
-        </li>
+
+        {console.log(menu)}
+        <Link
+          to="/about"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(changeMenu(menu));
+          }}
+        >
+          <li className="about-button">About</li>
+        </Link>
+        {console.log(menu)}
+
         {logged && (
-          <li>
-            <Link
-              to="/"
-              onClick={(e) => {
-                e.preventDefault();
-                setToken('');
-                dispatch(authFailure());
-              }}
-            >
-              Logout
-            </Link>
-          </li>
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault();
+              setToken('');
+              dispatch(authFailure());
+            }}
+          >
+            <li>Logout</li>
+          </Link>
         )}
       </ul>
     </nav>
