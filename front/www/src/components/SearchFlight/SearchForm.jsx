@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 /* COMPONENTS */
 import { Article } from '../common/Article';
@@ -23,6 +23,12 @@ export const SearchForm = ({
   searching,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
+  const isMounted = useRef(true);
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
   useEffect(() => {}, [searching]);
 
   const url = createUrl({
@@ -41,19 +47,20 @@ export const SearchForm = ({
     if (oneWay) {
       dispatch(A.setString({ name: 'returnDate', value: '' }));
     }
-    
 
     dispatch(A.switchBoolean({ name: 'loading', value: loading }));
     const res = await fetch(url, {
       method: 'GET',
     });
     const data = await res.json();
-    if (res.status !== 200) {
-      setErrorMessage(data.details);
-      setTimeout(() => setErrorMessage(''), 3000);
-    } else {
-      dispatch(A.switchBoolean({ name: 'searching', value: searching }));
-      dispatch(A.saveResponse(data));
+    if (isMounted.current) {
+      if (res.status !== 200) {
+        setErrorMessage(data.details);
+        setTimeout(() => setErrorMessage(''), 3000);
+      } else {
+        dispatch(A.switchBoolean({ name: 'searching', value: searching }));
+        dispatch(A.saveResponse(data));
+      }
     }
   };
   return (
@@ -98,7 +105,7 @@ export const SearchForm = ({
             dispatch(
               A.setString({
                 name: 'originLocationCode',
-                value: e.target.value,
+                value: e.target.value.toUpperCase(),
               })
             )
           }
@@ -112,7 +119,7 @@ export const SearchForm = ({
             dispatch(
               A.setString({
                 name: 'destinationLocationCode',
-                value: e.target.value,
+                value: e.target.value.toUpperCase,
               })
             )
           }
@@ -138,7 +145,7 @@ export const SearchForm = ({
           {errorMessage}
         </div>
 
-        <input type="submit" value="Buscar" />
+        <input id="search" type="submit" value="Buscar" />
       </form>
     </Article>
   );
