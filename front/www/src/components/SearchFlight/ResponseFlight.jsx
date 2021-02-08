@@ -16,7 +16,7 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
         <li className="company"></li>
         <li className="times">
           <p>{timeTrigger(fechaSalida)}</p>
-          <div className="stops1">{itinerary.segments.length - 1}</div>
+          <div className={`stops${itinerary.segments.length - 1}`}></div>
           <p>{timeTrigger(fechaLlegada)}</p>
         </li>
         <li className="ports">
@@ -30,7 +30,7 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
 };
 
 export const ResponseFlight = (props) => {
-  const { itineraries, originLocationCode, destinationLocationCode, price, auth } = props;
+  const { itineraries, originLocationCode, destinationLocationCode, price, auth, id } = props;
   return (
     <li className="Flight">
       <Itinerary
@@ -51,7 +51,7 @@ export const ResponseFlight = (props) => {
             <div
               className="heart"
               onClick={() => {
-                console.log('reservar!');
+                console.log(id);
               }}
             ></div>
           </li>

@@ -4,11 +4,12 @@ export const nameProps = {
   id: 'username',
   placeholder: 'User Name',
   required: 'required',
+  autoComplete: 'off',
 };
 export const mailProps = {
   type: 'email',
-  name: 'userMail',
-  id: 'userMail',
+  name: 'email',
+  id: 'email',
   placeholder: 'Em@il',
   required: 'required',
 };
@@ -16,7 +17,7 @@ export const passwordProps = {
   type: 'password',
   name: 'password',
   id: 'password',
-  placeholder: 'password',
+  placeholder: 'Password',
   required: 'required',
 };
 export const rePasswordProps = {
@@ -35,6 +36,6 @@ export const bioProps = {
 export const buttonProps = {
   id: 'submit-button',
   type: 'submit',
-  value: 'Registro',
-  cursor: 'pointer',
+  value: 'Enviar',
+  style: { cursor: 'pointer' },
 };

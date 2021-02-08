@@ -26,7 +26,7 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
     const airportInfo = await airports.lookupByIataCode(originLocationCode);
 
     //? Si no hay info no podemos continuar
-    validateReturn(airportInfo, 'New Airport Info', 404);
+    validateReturn(airportInfo, 'Aeropuerto', 404);
 
     //? localizará el país y localidad a los que pertenece
     const { name, country, latitude, longitude } = airportInfo;
