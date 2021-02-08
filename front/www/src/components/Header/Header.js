@@ -5,14 +5,14 @@ import { changeMenu } from '../../context/Auth.actions';
 import './header.css';
 
 const Header = ({ props }) => {
-  const { menu, dispatch } = props;
+  const { menu, logo, dispatch } = props;
   const [shape, setShape] = useState(LogoMenu);
 
   const displayMenu = (e) => {
     e.preventDefault();
-    dispatch(changeMenu({ menu }));
+    dispatch(changeMenu({ menu, logo }));
 
-    if (menu === false) {
+    if (logo === false) {
       setShape(CloseMenu);
     } else {
       setShape(LogoMenu);

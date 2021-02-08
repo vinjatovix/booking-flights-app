@@ -4,7 +4,7 @@ import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu } from '../../context/Auth.actions';
 
-export const Menu = ({ logged, menu, setToken, dispatch }) => {
+export const Menu = ({ logged, menu, logo, setToken, dispatch }) => {
   return (
     <nav className="menu">
       <section>
@@ -12,38 +12,55 @@ export const Menu = ({ logged, menu, setToken, dispatch }) => {
       </section>
 
       <ul>
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => {
+            dispatch(changeMenu({ menu, logo }));
+          }}
+        >
           <li>Buscar</li>
         </Link>
 
         {!logged && (
           <>
-            <Link to="/login">
+            <Link
+              to="/login"
+              onClick={() => {
+                dispatch(changeMenu({ menu, logo }));
+              }}
+            >
               <li className="login-button">Login</li>
             </Link>
 
-            <Link to="/register">
+            <Link
+              to="/register"
+              onClick={() => {
+                dispatch(changeMenu({ menu, logo }));
+              }}
+            >
               <li className="register-button">Register</li>
             </Link>
           </>
         )}
         {logged && (
-          <Link to="/profile">
+          <Link
+            to="/profile"
+            onClick={() => {
+              dispatch(changeMenu({ menu, logo }));
+            }}
+          >
             <li>Perfil</li>
           </Link>
         )}
 
-        {console.log(menu)}
         <Link
           to="/about"
-          onClick={(e) => {
-            e.preventDefault();
-            dispatch(changeMenu(menu));
+          onClick={() => {
+            dispatch(changeMenu({ menu, logo }));
           }}
         >
           <li className="about-button">About</li>
         </Link>
-        {console.log(menu)}
 
         {logged && (
           <Link

@@ -12,6 +12,7 @@ export const initialState = {
   bio: null,
   status: null,
   menu: false,
+  logo: false,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */
@@ -52,6 +53,7 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         menu: !payload.menu,
+        logo: !payload.logo,
       };
 
     default:

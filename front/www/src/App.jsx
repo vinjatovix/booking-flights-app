@@ -31,7 +31,7 @@ const App = () => {
   ? del que la primera posición es un objeto con las claves del state, 
   ? y el segundo el método para manipular estos estados 
   */
-  const [{ menu, logged }, dispatch] = useAuthContext();
+  const [{ menu, logo, logged }, dispatch] = useAuthContext();
 
   const [token, setToken] = useLocalStorage(JSON.parse(window.localStorage.getItem('token')) || '', 'token');
 
@@ -41,6 +41,7 @@ const App = () => {
   const controlProps = {
     dispatch,
     menu,
+    logo,
     logged,
     setToken,
     token,
@@ -50,7 +51,7 @@ const App = () => {
     <div className="App">
       {/* //TODO: Intentar eliminar este div, añade un nivel de profundidad innecesario a la jerarquía, el css se le puede aplicar al elemento div root en el html original */}
       <Router>
-        <Header props={{ menu, dispatch }} />
+        <Header props={{ menu, logo, dispatch }} />
         <Main className="app-main">
           {menu ? <Menu {...controlProps} /> : null}
           <Switch>
