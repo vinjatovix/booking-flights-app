@@ -37,7 +37,7 @@ export const ResponseHeader = ({
       </ul>
       <ul className="Response__dates">
         <li>{salida}</li>
-        {llegada && <li>{llegada}</li>}
+        {llegada !== 'NaNEne' && <li>{llegada}</li>}
         <li>{adults} px</li>
       </ul>
     </div>

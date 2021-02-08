@@ -38,12 +38,13 @@ export const ResponseFlight = (props) => {
         originLocationCode={originLocationCode}
         destinationLocationCode={destinationLocationCode}
       />
-      <Itinerary
-        itinerary={itineraries[1]}
-        originLocationCode={originLocationCode}
-        destinationLocationCode={destinationLocationCode}
-      />
-
+      {itineraries[1] && (
+        <Itinerary
+          itinerary={itineraries[1]}
+          originLocationCode={originLocationCode}
+          destinationLocationCode={destinationLocationCode}
+        />
+      )}
       <ul className="offer">
         <li>{price.total}€</li>
         {auth && (

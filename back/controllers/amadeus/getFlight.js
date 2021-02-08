@@ -14,7 +14,6 @@ const { validateDates } = require('../utils/validateDates');
  * @param {*} next
  */
 async function getFlight(req, res, next) {
-  console.log(req.query);
   try {
     //? VALIDATION
     await getFlightSchema.validateAsync(req.query);
