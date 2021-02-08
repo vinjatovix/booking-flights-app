@@ -25,7 +25,7 @@ export const PassengerCounter = ({ adults, dispatch }) => {
         name="passengers"
         id="passengers"
         placeholder="1"
-        onChange={(e) => dispatch(A.setNumber({ name: 'adults', value: passengers }))}
+        onChange={() => dispatch(A.setNumber({ name: 'adults', value: passengers }))}
         value={passengers}
       />
       <input

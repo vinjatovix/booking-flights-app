@@ -9,8 +9,6 @@ export const initialFlightFormState = {
   adults: 1,
   currencyCode: 'EUR',
   nonStop: false,
-  maxPrice: 999,
-  max: 10,
   searching: false,
   loading: false,
   response: {},

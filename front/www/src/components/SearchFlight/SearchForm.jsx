@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+
+/* COMPONENTS */
 import { Article } from '../common/Article';
-import * as A from '../../context/flight/Flight.actions';
 import { PassengerCounter } from './PassengerCounter';
+
+/* ACTIONS */
+import * as A from '../../context/flight/Flight.actions';
 import { createUrl } from './createUrl';
 
 export const SearchForm = ({
@@ -10,14 +14,13 @@ export const SearchForm = ({
   destinationLocationCode,
   dispatch,
   endPoint,
-  max,
+  loading,
   maxPrice,
   nonStop,
   oneWay,
   originLocationCode,
   returnDate,
   searching,
-  loading,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -26,7 +29,6 @@ export const SearchForm = ({
     departureDate,
     destinationLocationCode,
     endPoint,
-    max,
     maxPrice,
     originLocationCode,
     returnDate,
@@ -62,7 +64,10 @@ export const SearchForm = ({
           name="trip"
           id="trip"
           value={oneWay ? 'Solo ida' : 'I/V'}
-          onClick={() => dispatch(A.switchBoolean({ name: 'oneWay', value: oneWay }))}
+          onClick={() => {
+            dispatch(A.switchBoolean({ name: 'oneWay', value: oneWay }));
+            dispatch(A.setString({ name: 'returnDate', value: '' }));
+          }}
         />
         <PassengerCounter adults={adults} dispatch={dispatch} />
 
