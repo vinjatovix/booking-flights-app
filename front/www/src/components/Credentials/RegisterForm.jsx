@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
 import * as A from '../../context/Auth.actions';
+import './credentials.css';
 
-import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonProps } from './registerProps';
-import PropTypes from 'prop-types';
+import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonProps } from './credentialsFormProps';
+import { useForm } from '../../hooks/useForm';
+import { askMeForToken } from '../../utils/askMeForToken';
 
-export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }) => {
-  const [username, serUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const [bio, setBio] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+const formInputs = {
+  username: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
+  bio: '',
+  errorMessage: '',
+};
+export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, setToken, logged, token }) => {
+  const [inputs, handleInputChange, setErrorMessage] = useForm(formInputs);
 
-  const signIn = async (e) => {
+  const { username, email, password, repeatPassword, bio, errorMessage } = inputs;
+  useEffect(() => {
+    askMeForToken(logged, token, dispatch);
+  }, [token, logged, dispatch]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(action, {
       method: 'POST',
@@ -28,24 +39,18 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch }
       setErrorMessage(json.details);
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
-      dispatch(
-        A.authSuccess({
-          username,
-          email,
-          id: json.id,
-        })
-      );
+      setToken(json.token);
     }
   };
 
   return (
     <>
-      <form className={cssClassName} encType={encType} method={method} onSubmit={signIn}>
-        <Input value={username} setValue={serUserName} {...nameProps} />
-        <Input value={email} setValue={setEmail} {...mailProps} />
-        <Input value={password} setValue={setPassword} {...passwordProps} />
-        <Input value={repeatPassword} setValue={setRepeatPassword} {...rePasswordProps} />
-        <Input value={bio} setValue={setBio} {...bioProps} />
+      <form className={cssClassName} encType={encType} method={method} onSubmit={handleSubmit}>
+        <Input value={username} onChange={handleInputChange} {...nameProps} />
+        <Input value={email} onChange={handleInputChange} {...mailProps} />
+        <Input value={password} onChange={handleInputChange} {...passwordProps} />
+        <Input value={repeatPassword} onChange={handleInputChange} {...rePasswordProps} />
+        <Input value={bio} onChange={handleInputChange} {...bioProps} />
         <input {...buttonProps} style={{ cursor: 'pointer' }} />
         {/* <ListDrawer type="inputs" items={inputs}></ListDrawer> */}
       </form>
