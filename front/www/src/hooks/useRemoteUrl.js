@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export const useRemoteUrl = (url, method = 'GET') => {
-  const [data, setData] = useState([]);
+export const useRemoteUrl = (url, method) => {
+  const [data, setData] = useState({ data: null, loading: true, error: null });
   const [timestamp, setTimestamp] = useState(new Date());
   useEffect(() => {
     async function getRemoteData() {
@@ -12,12 +12,13 @@ export const useRemoteUrl = (url, method = 'GET') => {
           'Content-type': 'application/json',
         },
       };
-      const response = await fetch(url, requestOptions);
-      const newData = await response.json();
-      setData(newData);
+      const res = await fetch(url, requestOptions);
+      const json = await res.json();
+      setData({ data: json, error: null, loading: false });
     }
     getRemoteData();
-  }, [url, timestamp, method]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, timestamp]);
   const refetch = () => setTimestamp(new Date());
   return [data, refetch];
 };

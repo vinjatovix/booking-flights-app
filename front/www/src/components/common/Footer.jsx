@@ -2,7 +2,7 @@ import React from 'react';
 import * as A from '../../context/Auth.actions';
 import { ListDrawer } from './ListDrawer/ListDrawer';
 
-export const Footer = ({ dispatch }) => {
+export const Footer = ({ dispatch, setToken }) => {
   return (
     <footer className="app-footer">
       Code-Vix &copy; 2021 FLanders v0.6
@@ -18,6 +18,7 @@ export const Footer = ({ dispatch }) => {
       <div
         onClick={(e) => {
           e.preventDefault();
+          setToken('');
           dispatch(A.authFailure());
         }}
       >

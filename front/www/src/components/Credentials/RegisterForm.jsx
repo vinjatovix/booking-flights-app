@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
 import * as A from '../../context/Auth.actions';
+import './credentials.css';
 
-import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonProps } from './registerProps';
-import PropTypes from 'prop-types';
+import { nameProps, mailProps, passwordProps, rePasswordProps, bioProps, buttonProps } from './credentialsFormProps';
 import { useForm } from '../../hooks/useForm';
+import { askMeForToken } from '../../utils/askMeForToken';
 
-export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, setToken }) => {
-  const [inputs, handleInputChange, setErrorMessage] = useForm({
-    username: '',
-    email: '',
-    password: '',
-    repeatPassword: '',
-    bio: '',
-    errorMessage: '',
-  });
+const formInputs = {
+  username: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
+  bio: '',
+  errorMessage: '',
+};
+export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, setToken, logged, token }) => {
+  const [inputs, handleInputChange, setErrorMessage] = useForm(formInputs);
 
   const { username, email, password, repeatPassword, bio, errorMessage } = inputs;
+  useEffect(() => {
+    askMeForToken(logged, token, dispatch);
+  }, [token, logged, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,14 +40,6 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, 
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
       setToken(json.token);
-      dispatch(
-        A.authSuccess({
-          username: json.tokenPayload.username,
-          email: json.tokenPayload.email,
-          id: json.tokenPayload.id,
-          bio: json.tokenPayload.bio,
-        })
-      );
     }
   };
 

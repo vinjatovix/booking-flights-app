@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
-import './credentials.css';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Input } from '../common/Input';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useIsLogged } from '../../hooks/useIsLogged';
 import * as A from '../../context/Auth.actions';
+import './credentials.css';
 
-import { mailProps, passwordProps, buttonProps } from './loginProps';
+import { mailProps, passwordProps, buttonProps } from './credentialsFormProps';
+import { useForm } from '../../hooks/useForm';
+import { askMeForToken } from '../../utils/askMeForToken';
 
-export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) => {
-  //TODO: state para el auth, email, etc... probablemente custom hook
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [token, setToken] = useLocalStorage('', 'auth');
-  console.log(token);
-  // const [data, refetch] = useIsLogged(console.log(token));
+const formInputs = {
+  email: '',
+  password: '',
+  errorMessage: '',
+};
 
-  const logIn = async (e) => {
+export const LoginForm = ({ action, cssClassName, encType, method, dispatch, setToken, logged, token }) => {
+  const [inputs, handleInputChange, setErrorMessage] = useForm(formInputs);
+  const { email, password, errorMessage } = inputs;
+  useEffect(() => {
+    askMeForToken(logged, token, dispatch);
+  }, [token, logged, dispatch]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(action, {
       method: 'POST',
@@ -28,40 +32,19 @@ export const LoginForm = ({ action, cssClassName, encType, method, dispatch }) =
     });
     const json = await res.json();
 
-    const authRes = await fetch('http://localhost:8337/me', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: json.token,
-      },
-    });
-    setToken(json.token);
-    const authJSON = await authRes.json();
-    console.log(authJSON);
-    // console.log(data);
-
     if (res.status !== 200) {
       dispatch(A.authFailure());
       setErrorMessage(json.details);
       setTimeout(() => setErrorMessage(''), 3000);
     } else {
-      dispatch(
-        A.authSuccess({
-          username: authJSON.decodedToken.username,
-          mail: authJSON.decodedToken.email,
-          id: authJSON.decodedToken.id,
-          photo: authJSON.decodedToken.photo,
-          bio: authJSON.decodedToken.bio,
-          status: authJSON.decodedToken.status,
-        })
-      );
+      setToken(json.token);
     }
   };
   return (
     <>
-      <form action={action} className={cssClassName} encType={encType} method={method} onSubmit={logIn}>
-        <Input value={email} setValue={setEmail} {...mailProps} />
-        <Input value={password} setValue={setPassword} {...passwordProps} />
+      <form action={action} className={cssClassName} encType={encType} method={method} onSubmit={handleSubmit}>
+        <Input value={email} onChange={handleInputChange} {...mailProps} />
+        <Input value={password} onChange={handleInputChange} {...passwordProps} />
         <Input {...buttonProps} />
       </form>
       <div style={{ display: 'block', color: 'red', minHeight: '1.5em' }}> {errorMessage}</div>

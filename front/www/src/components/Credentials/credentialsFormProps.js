@@ -36,6 +36,6 @@ export const bioProps = {
 export const buttonProps = {
   id: 'submit-button',
   type: 'submit',
-  value: 'Registro',
-  cursor: 'pointer',
+  value: 'Enviar',
+  style: { cursor: 'pointer' },
 };
