@@ -74,7 +74,7 @@ const App = () => {
           </Switch>
         </Main>
       </Router>
-      <Footer dispatch={dispatch} setToken={setToken} />
+      <Footer>Code-Vix &copy; 2021 FLanders v0.6</Footer>
     </div>
   );
 };
