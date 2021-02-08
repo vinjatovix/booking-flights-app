@@ -34,9 +34,6 @@ export const SearchPage = () => {
     dispatch,
   ] = useFlightContext();
   const [{ logged }] = useAuthContext([]);
-  console.log('====================================');
-  console.log('retorno', returnDate);
-  console.log('====================================');
   useEffect(() => {}, [order]);
   return (
     <>
