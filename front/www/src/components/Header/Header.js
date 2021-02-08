@@ -5,7 +5,7 @@ import { changeMenu } from '../../context/Auth.actions';
 import './header.css';
 
 const Header = ({ props }) => {
-  const { menu, logo, dispatch } = props;
+  const { menu, dispatch } = props;
   const [shape, setShape] = useState(LogoMenu);
 
   useEffect(() => {
