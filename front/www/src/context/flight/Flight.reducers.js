@@ -4,14 +4,14 @@ import * as C from './Flight.constants';
 export const initialFlightFormState = {
   adults: 1,
   currencyCode: 'EUR',
-  departureDate: '2021-03-01',
-  destinationLocationCode: 'FCO',
+  departureDate: '2021-04-01',
+  destinationLocationCode: '',
   loading: false,
   nonStop: false,
   oneWay: false,
-  originLocationCode: 'SCQ',
+  originLocationCode: '',
   response: {},
-  returnDate: '2021-03-06',
+  returnDate: '2021-04-06',
   searching: false,
 };
 
