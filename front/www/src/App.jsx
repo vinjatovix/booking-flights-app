@@ -31,10 +31,9 @@ const App = () => {
   ? del que la primera posición es un objeto con las claves del state, 
   ? y el segundo el método para manipular estos estados 
   */
-  const [{ menu, logged, username, bio, photo }, dispatch] = useAuthContext();
+  const [{ menu, logged, username, bio, photo, profile }, dispatch] = useAuthContext();
 
   const [token, setToken] = useLocalStorage(JSON.parse(window.localStorage.getItem('token')) || '', 'token');
-
   /* 
   ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
    */
@@ -45,9 +44,12 @@ const App = () => {
     username,
     bio,
     photo,
+    profile,
     setToken,
     token,
   };
+
+  console.log(profile);
 
   return (
     <div className="App">

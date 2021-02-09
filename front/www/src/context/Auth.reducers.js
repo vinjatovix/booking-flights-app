@@ -12,6 +12,13 @@ export const initialState = {
   bio: null,
   status: null,
   menu: false,
+  profile: {
+    user_profile: false,
+    profile_data: false,
+    profile_pass: false,
+    profile_bookings: false,
+    profile_tools: false,
+  },
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */
@@ -52,6 +59,17 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         menu: !payload.menu,
+      };
+    case C.CHANGE_PROFILE_MENU:
+      return {
+        ...state,
+        profile: {
+          user_profile: !payload.user_profile,
+          profile_data: !payload.profile_data,
+          profile_pass: !payload.profile_pass,
+          profile_bookings: !payload.profile_bookings,
+          profile_tools: !payload.profile_tools,
+        },
       };
 
     default:

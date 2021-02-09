@@ -19,3 +19,8 @@ export const changeMenu = (payload) => ({
   type: C.CHANGE_MENU_VISIBILITY,
   payload,
 });
+
+export const changeProfileMenu = (payload) => ({
+  type: C.CHANGE_PROFILE_MENU,
+  payload,
+});

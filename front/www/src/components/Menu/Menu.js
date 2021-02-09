@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import { authFailure, changeMenu } from '../../context/Auth.actions';
+import { authFailure, changeMenu, changeProfileMenu } from '../../context/Auth.actions';
 
-export const Menu = ({ logged, menu, setToken, dispatch }) => {
+export const Menu = ({ logged, menu, setToken, dispatch, profile }) => {
+  const { user_profile } = profile;
+  console.log(profile);
   return (
     <nav className="menu">
       <section>
@@ -47,6 +49,7 @@ export const Menu = ({ logged, menu, setToken, dispatch }) => {
             to="/profile"
             onClick={() => {
               dispatch(changeMenu({ menu }));
+              dispatch(changeProfileMenu(user_profile));
             }}
           >
             <li>Perfil</li>
