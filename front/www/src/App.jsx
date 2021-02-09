@@ -31,7 +31,7 @@ const App = () => {
   ? del que la primera posición es un objeto con las claves del state, 
   ? y el segundo el método para manipular estos estados 
   */
-  const [{ menu, logged }, dispatch] = useAuthContext();
+  const [{ menu, logged, username, bio, photo }, dispatch] = useAuthContext();
 
   const [token, setToken] = useLocalStorage(JSON.parse(window.localStorage.getItem('token')) || '', 'token');
 
@@ -42,9 +42,14 @@ const App = () => {
     dispatch,
     menu,
     logged,
+    username,
+    bio,
+    photo,
     setToken,
     token,
   };
+
+  console.log(username, bio);
 
   return (
     <div className="App">
@@ -65,7 +70,7 @@ const App = () => {
               <AboutPage url="http://localhost:8337/about" />
             </Route>
             <Route path="/profile">
-              <ProfilePage />
+              <ProfilePage {...controlProps} />
             </Route>
             <Route path="/">
               <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
