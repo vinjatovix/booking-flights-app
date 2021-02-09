@@ -49,8 +49,6 @@ const App = () => {
     token,
   };
 
-  console.log(username, bio);
-
   return (
     <div className="App">
       {/* //TODO: Intentar eliminar este div, añade un nivel de profundidad innecesario a la jerarquía, el css se le puede aplicar al elemento div root en el html original */}
