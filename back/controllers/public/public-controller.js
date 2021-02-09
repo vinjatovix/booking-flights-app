@@ -189,6 +189,11 @@ function showAbout(req, res) {
         url: 'https://www.flaticon.com/authors/freepik',
         linkText: 'Freepik',
       },
+      {
+        name: 'wind',
+        url: 'https://www.flaticon.com/authors/those-icons',
+        linkText: 'Those icons',
+      },
     ],
     formers: [
       'Berto Yáñez - HTML/CSS',
