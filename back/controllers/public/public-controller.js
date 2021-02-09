@@ -99,6 +99,11 @@ function showAbout(req, res) {
         linkText: 'Webalys',
       },
       {
+        name: 'configuraciones',
+        url: 'https://www.flaticon.com/authors/freepik',
+        linkText: 'Freepik',
+      },
+      {
         name: 'email',
         url: 'https://www.flaticon.com/authors/srip',
         linkText: 'Srip',
@@ -127,6 +132,11 @@ function showAbout(req, res) {
         name: 'houglass-half-solid',
         url: 'https://www.flaticon.com/authors/kmg-design',
         linkText: 'Kmg design',
+      },
+      {
+        name: 'informacion',
+        url: 'https://www.flaticon.com/authors/freepik',
+        linkText: 'Freepik',
       },
 
       {
@@ -160,6 +170,11 @@ function showAbout(req, res) {
         linkText: 'Smashicons',
       },
       {
+        name: 'reserva',
+        url: 'https://www.flaticon.com/authors/freepik',
+        linkText: 'Freepik',
+      },
+      {
         name: 'route',
         url: 'https://www.flaticon.com/authors/freepik',
         linkText: 'Freepik',
@@ -173,6 +188,11 @@ function showAbout(req, res) {
         name: 'tag-solid',
         url: 'https://www.flaticon.com/authors/google',
         linkText: 'Google',
+      },
+      {
+        name: 'turn-off',
+        url: 'https://www.flaticon.com/authors/smashicons',
+        linkText: 'Smashicons',
       },
       {
         name: 'user-solid',
