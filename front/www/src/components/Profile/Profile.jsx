@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './profile.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
+import { switchBoolean } from '../../context/Auth.actions';
 
-export const Profile = ({ username, bio, photo }) => {
+export const Profile = ({ photo, username, bio, dispatch }) => {
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
@@ -17,38 +19,45 @@ export const Profile = ({ username, bio, photo }) => {
           <p>{bio}</p>
         </div>
       </header>
+      {/* TODO: Lograr hacer los dispatch en cada LINK  */}
       <main>
         <ul className="categorias">
-          <li className="profile-data">
-            <a href="/profile">
+          <Link
+            to="/profile"
+            name="profile_data"
+            onClick={(e) => {
+              console.log(e);
+            }}
+          >
+            <li className="profile-data">
               <h4>Cambiar datos de usuario</h4>
               <p>Nickname, foto de perfil, bio</p>
-            </a>
-          </li>
-          <li className="profile-pass">
-            <a href="/profile">
+            </li>
+          </Link>
+          <Link to="/profile">
+            <li className="profile-pass">
               <h4>Cambiar la contraseña</h4>
               <p>Actualízala por una más segura</p>
-            </a>
-          </li>
-          <li className="profile-booking">
-            <a href="/profile">
+            </li>
+          </Link>
+          <Link to="/profile">
+            <li className="profile-booking">
               <h4>Mis reservas</h4>
               <p>Historial de reservas</p>
-            </a>
-          </li>
-          <li className="profile-tools">
-            <a href="/profile">
+            </li>
+          </Link>
+          <Link to="/profile">
+            <li className="profile-tools">
               <h4>Ajustes</h4>
               <p>Modifica tus preferencias</p>
-            </a>
-          </li>
-          <li className="profile-off">
-            <a href="/profile">
+            </li>
+          </Link>
+          <Link to="/profile">
+            <li className="profile-off">
               <h4>Desactivar cuenta</h4>
               <p>No recibir más notificaciones</p>
-            </a>
-          </li>
+            </li>
+          </Link>
         </ul>
       </main>
     </section>

@@ -45,11 +45,11 @@
   filter: opacity(0.5);
 }
 
-.categorias li a h4 {
+.categorias a li h4 {
   font-size: 16px;
 }
 
-.categorias li a p {
+.categorias a li p {
   font-size: 14px;
   color: rgb(70, 67, 67);
 }

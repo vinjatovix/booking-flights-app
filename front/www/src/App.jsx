@@ -31,12 +31,22 @@ const App = () => {
   ? del que la primera posición es un objeto con las claves del state, 
   ? y el segundo el método para manipular estos estados 
   */
-  const [{ menu, logged, username, bio, photo, profile }, dispatch] = useAuthContext();
+  const [
+    { menu, logged, username, bio, photo, user_profile, profile_data, profile_pass, profile_bookings, profile_tools },
+    dispatch,
+  ] = useAuthContext();
 
   const [token, setToken] = useLocalStorage(JSON.parse(window.localStorage.getItem('token')) || '', 'token');
   /* 
   ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
    */
+  const profileProps = {
+    profile_data,
+    profile_pass,
+    profile_bookings,
+    profile_tools,
+  };
+
   const controlProps = {
     dispatch,
     menu,
@@ -44,12 +54,11 @@ const App = () => {
     username,
     bio,
     photo,
-    profile,
     setToken,
     token,
   };
 
-  console.log(profile);
+  console.log(user_profile);
 
   return (
     <div className="App">
@@ -70,7 +79,7 @@ const App = () => {
               <AboutPage url="http://localhost:8337/about" />
             </Route>
             <Route path="/profile">
-              <ProfilePage {...controlProps} />
+              <ProfilePage control={controlProps} profile={profileProps} />
             </Route>
             <Route path="/">
               <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>

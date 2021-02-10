@@ -20,7 +20,7 @@ export const changeMenu = (payload) => ({
   payload,
 });
 
-export const changeProfileMenu = (payload) => ({
-  type: C.CHANGE_PROFILE_MENU,
+export const switchBoolean = (payload) => ({
+  type: C.SWITCH_BOOLEAN,
   payload,
 });
