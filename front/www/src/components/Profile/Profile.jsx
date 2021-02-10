@@ -4,7 +4,9 @@ import './profile.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { switchBoolean } from '../../context/Auth.actions';
 
-export const Profile = ({ photo, username, bio, dispatch }) => {
+export const Profile = ({ photo, username, bio, dispatch, profile_data }) => {
+  console.log(profile_data);
+
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
@@ -24,9 +26,9 @@ export const Profile = ({ photo, username, bio, dispatch }) => {
         <ul className="categorias">
           <Link
             to="/profile"
-            name="profile_data"
             onClick={(e) => {
-              console.log(e);
+              e.preventDefault();
+              dispatch(switchBoolean({ name: 'profile_data', value: profile_data }));
             }}
           >
             <li className="profile-data">
