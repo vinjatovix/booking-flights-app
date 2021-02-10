@@ -3,6 +3,7 @@
         "ctxt"
     ],
     "conventionalCommits.scopes": [
-        "searchFlight"
+        "searchFlight",
+        "auth"
     ]
 }

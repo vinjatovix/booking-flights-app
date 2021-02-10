@@ -20,9 +20,6 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, 
   const [inputs, handleInputChange, setErrorMessage] = useForm(formInputs);
 
   const { username, email, password, repeatPassword, bio, errorMessage } = inputs;
-  useEffect(() => {
-    askMeForToken(logged, token, dispatch);
-  }, [token, logged, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -17,9 +17,6 @@ const formInputs = {
 export const LoginForm = ({ action, cssClassName, encType, method, dispatch, setToken, logged, token }) => {
   const [inputs, handleInputChange, setErrorMessage] = useForm(formInputs);
   const { email, password, errorMessage } = inputs;
-  useEffect(() => {
-    askMeForToken(logged, token, dispatch);
-  }, [token, logged, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

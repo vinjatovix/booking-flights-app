@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
@@ -24,6 +24,7 @@ import { Footer } from './components/common/Footer';
 import { FlightReducer, initialFlightFormState } from './context/flight/Flight.reducers';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { PublicRoute } from './components/common/PublicRoute';
+import { askMeForToken } from './utils/askMeForToken';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -46,6 +47,10 @@ const App = () => {
     setToken,
     token,
   };
+
+  useEffect(() => {
+    askMeForToken(logged, token, dispatch);
+  }, [token, logged, dispatch]);
 
   return (
     <div className="App">

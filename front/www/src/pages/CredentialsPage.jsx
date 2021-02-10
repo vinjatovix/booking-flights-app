@@ -11,7 +11,7 @@ export const CredentialsPage = (props) => {
 
   return (
     <>
-      {/* {logged && <Redirect to="/" />} */}
+      {logged && <Redirect to="/" />}
       <section>
         <Article title={props.title}>
           {title === 'Log In' && <LoginForm {...props} dispatch={dispatch} setToken={setToken} />}
