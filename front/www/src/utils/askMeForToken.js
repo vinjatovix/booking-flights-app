@@ -1,4 +1,5 @@
 import * as A from '../context/Auth.actions';
+import { fetchBender } from '../http/api';
 
 export function askMeForToken(logged, token, dispatch) {
   if (logged || token !== '') {
@@ -6,15 +7,10 @@ export function askMeForToken(logged, token, dispatch) {
     //? normalmente se hace a una ruta /me en caso de que sea correcto se despacha.
     try {
       const getRemoteData = async (token) => {
-        const res = await fetch('http://localhost:8337/me', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: token,
-          },
-        });
-        const json = await res.json();
-        if (json.ok) {
+        const json = await fetchBender('/me', { method: 'GET', token: token });
+        if (!json.ok) {
+          dispatch(A.authFailure());
+        } else {
           const { decodedToken } = json;
           dispatch(
             //? dispatch es el método que contiene las acciones.
@@ -29,9 +25,7 @@ export function askMeForToken(logged, token, dispatch) {
               status: decodedToken.status,
             })
           );
-        } else {
-          dispatch(A.authFailure());
-        }
+        } 
       };
       getRemoteData(token);
     } catch (error) {

@@ -26,20 +26,25 @@ export const RegisterForm = ({ action, cssClassName, encType, method, dispatch, 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password, repeatPassword, bio }),
-    });
-    const json = await res.json();
-    if (res.status !== 201) {
-      dispatch(A.authFailure());
-      setErrorMessage(json.details);
+    try {
+      const res = await fetch(action, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password, repeatPassword, bio }),
+      });
+      const json = await res.json();
+      if (res.status !== 201) {
+        dispatch(A.authFailure());
+        setErrorMessage(json.details);
+        setTimeout(() => setErrorMessage(''), 3000);
+      } else {
+        setToken(json.token);
+      }
+    } catch (e) {
+      setErrorMessage(e);
       setTimeout(() => setErrorMessage(''), 3000);
-    } else {
-      setToken(json.token);
     }
   };
 

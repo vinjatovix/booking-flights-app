@@ -23,6 +23,7 @@ import { Footer } from './components/common/Footer';
 /* HOOKS */
 import { FlightReducer, initialFlightFormState } from './context/flight/Flight.reducers';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { PublicRoute } from './components/common/PublicRoute';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -48,15 +49,15 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* //TODO: Intentar eliminar este div, añade un nivel de profundidad innecesario a la jerarquía, el css se le puede aplicar al elemento div root en el html original */}
       <Router>
         <Header props={{ menu, dispatch }} />
         <Main className="app-main">
           {menu ? <Menu {...controlProps} /> : null}
           <Switch>
-            {/* //TODO: mapear las rutas con Routes.map() */}
             <Route path="/login">
-              <CredentialsPage title="Log In" action="http://localhost:8337/login" method="POST" {...controlProps} />
+              <PublicRoute>
+                <CredentialsPage title="Log In" action="http://localhost:8337/login" method="POST" {...controlProps} />
+              </PublicRoute>
             </Route>
             <Route path="/register">
               <CredentialsPage title="Sign In" action="http://localhost:8337/signin" method="POST" {...controlProps} />
