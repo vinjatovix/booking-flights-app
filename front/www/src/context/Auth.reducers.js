@@ -12,6 +12,10 @@ export const initialState = {
   bio: null,
   status: null,
   menu: false,
+  profile_data: false,
+  profile_pass: false,
+  profile_bookings: false,
+  profile_tools: false,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */
@@ -52,6 +56,11 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         menu: !payload.menu,
+      };
+    case C.SWITCH_BOOLEAN:
+      return {
+        ...state,
+        [`${payload.name}`]: !payload.value,
       };
 
     default:

@@ -19,3 +19,8 @@ export const changeMenu = (payload) => ({
   type: C.CHANGE_MENU_VISIBILITY,
   payload,
 });
+
+export const switchBoolean = (payload) => ({
+  type: C.SWITCH_BOOLEAN,
+  payload,
+});

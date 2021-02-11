@@ -1,19 +1,15 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
 import CloseMenu from '../../assets/svg/cerrar.svg';
 import { changeMenu } from '../../context/Auth.actions';
 import './header.css';
 
-const Header = ({ props }) => {
+const Header = React.memo((props) => {
   const { menu, dispatch } = props;
   const [shape, setShape] = useState(LogoMenu);
 
   useEffect(() => {
-    if (menu === true) {
-      setShape(CloseMenu);
-    } else {
-      setShape(LogoMenu);
-    }
+    menu ? setShape(CloseMenu) : setShape(LogoMenu);
   }, [menu]);
 
   const displayMenu = (e) => {
@@ -27,6 +23,6 @@ const Header = ({ props }) => {
       <img className="burguer" src={shape} alt="Botón de menú" onClick={displayMenu} />
     </header>
   );
-};
+});
 
 export { Header };

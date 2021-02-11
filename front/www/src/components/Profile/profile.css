@@ -1,6 +1,5 @@
 .profile-main {
   background-color: white;
-  height: 80vh;
 }
 
 .profile-main header {
@@ -18,6 +17,7 @@
 
 .profile-main header div {
   margin: 1.75rem 1rem 0.5rem 0;
+  padding-top: 0.75rem;
 }
 
 .profile-main header div h3 {
@@ -30,19 +30,46 @@
   font-style: italic;
 }
 
+.categorias {
+  padding: 1rem 0;
+}
+
 .categorias li {
   padding: 1rem 0.5rem 1rem 5rem;
-  background-image: url('../../assets/svg/user-solid.svg');
   background-size: 1.25rem;
   background-position: 1.5rem;
   background-repeat: no-repeat;
 }
 
-.categorias li a h4 {
+.categorias li:active {
+  filter: opacity(0.5);
+}
+
+.categorias a li h4 {
   font-size: 16px;
 }
 
-.categorias li a p {
+.categorias a li p {
   font-size: 14px;
   color: rgb(70, 67, 67);
+}
+
+.profile-data {
+  background-image: url('../../assets/svg/informacion.svg');
+}
+
+.profile-pass {
+  background-image: url('../../assets/svg/password.svg');
+}
+
+.profile-booking {
+  background-image: url('../../assets/svg/reserva.svg');
+}
+
+.profile-tools {
+  background-image: url('../../assets/svg/configuraciones.svg');
+}
+
+.profile-off {
+  background-image: url('../../assets/svg/turn-off.svg');
 }

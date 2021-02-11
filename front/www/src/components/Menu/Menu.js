@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import { authFailure, changeMenu } from '../../context/Auth.actions';
+import { authFailure, changeMenu, switchBoolean } from '../../context/Auth.actions';
 
-export const Menu = ({ logged, menu, setToken, dispatch }) => {
+export const Menu = ({ menu, logged, dispatch, setToken }) => {
   return (
     <nav className="menu">
       <section>
@@ -45,8 +45,10 @@ export const Menu = ({ logged, menu, setToken, dispatch }) => {
         {logged && (
           <Link
             to="/profile"
-            onClick={() => {
+            name="user_profile"
+            onClick={({ target }) => {
               dispatch(changeMenu({ menu }));
+              dispatch(switchBoolean({ name: target.parentNode.name, value: target.parentNode.value }));
             }}
           >
             <li>Perfil</li>

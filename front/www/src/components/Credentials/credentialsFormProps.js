@@ -1,4 +1,5 @@
-export const nameProps = {
+
+export const userNameProps = {
   type: 'text',
   name: 'username',
   id: 'username',
@@ -35,6 +36,7 @@ export const bioProps = {
 };
 export const buttonProps = {
   id: 'submit-button',
+  name: 'submit',
   type: 'submit',
   value: 'Enviar',
   style: { cursor: 'pointer' },
