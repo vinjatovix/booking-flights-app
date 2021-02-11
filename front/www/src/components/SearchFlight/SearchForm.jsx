@@ -17,6 +17,7 @@ const seed = airports.map((element, i) => ({ id: i, name: element.Loca_nombre, v
 
 export const SearchForm = React.memo(
   ({
+    title,
     adults,
     departureDate,
     destinationLocationCode,
@@ -78,7 +79,7 @@ export const SearchForm = React.memo(
       }
     };
     return (
-      <Article title="Buscador" className="">
+      <Article title={title} className="">
         <form className="SearchForm" method="GET" encType="multipart/form-data" onSubmit={handlerSubmit}>
           <input
             className="SearchForm__trip"

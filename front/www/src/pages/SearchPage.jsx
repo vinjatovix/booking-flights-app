@@ -20,7 +20,7 @@ import { airports } from '../utils/airports.json';
 const seedWords = airports.map((element, i) => ({ id: i, ...element }));
 console.log(seedWords);
 
-export const SearchPage = ({ action }) => {
+export const SearchPage = ({ action, title }) => {
   const [order, setOrder] = useState('');
 
   const [
@@ -60,6 +60,7 @@ export const SearchPage = ({ action }) => {
           originLocationCode={originLocationCode}
           returnDate={returnDate}
           searching={searching}
+          title={title}
         />
       )}
       {loading && <Loading />}
