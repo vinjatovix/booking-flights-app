@@ -19,11 +19,13 @@ import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
 import { Menu } from './components/Menu/Menu';
 import { Footer } from './components/common/Footer';
+import { aboutProps, searchProps } from './pageProps';
 
 /* HOOKS */
 import { FlightReducer, initialFlightFormState } from './context/flight/Flight.reducers';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { PublicRoute } from './components/common/PublicRoute';
+import { PrivateRoute } from './components/common/PrivateRoute';
 import { askMeForToken } from './utils/askMeForToken';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
@@ -35,8 +37,11 @@ const App = () => {
   */
   const [{ menu, logged }, dispatch] = useAuthContext();
 
-  const [token, setToken] = useLocalStorage(JSON.parse(window.localStorage.getItem('token')) || '', 'token');
+  const [token, setToken] = useLocalStorage(JSON.parse(localStorage.getItem('token')) || '', 'token');
 
+  useEffect(() => {
+    askMeForToken(logged, token, dispatch);
+  }, [token, logged, dispatch]);
   /* 
   ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
    */
@@ -48,34 +53,35 @@ const App = () => {
     token,
   };
 
-  useEffect(() => {
-    askMeForToken(logged, token, dispatch);
-  }, [token, logged, dispatch]);
-
   return (
     <div className="App">
       <Router>
-        <Header props={{ menu, dispatch }} />
+        <Header {...controlProps} />
         <Main className="app-main">
           {menu ? <Menu {...controlProps} /> : null}
           <Switch>
             <Route path="/login">
               <PublicRoute>
-                <CredentialsPage title="Log In" action="http://localhost:8337/login" method="POST" {...controlProps} />
+                <CredentialsPage title="Log In" {...controlProps} />
               </PublicRoute>
             </Route>
             <Route path="/register">
-              <CredentialsPage title="Sign In" action="http://localhost:8337/signin" method="POST" {...controlProps} />
+              <PublicRoute>
+                <CredentialsPage title="Sign In" {...controlProps} />
+              </PublicRoute>
             </Route>
             <Route path="/about">
-              <AboutPage url="http://localhost:8337/about" />
+              <AboutPage {...aboutProps} />
             </Route>
+
             <Route path="/profile">
-              <ProfilePage />
+              <PrivateRoute>
+                <ProfilePage />
+              </PrivateRoute>
             </Route>
             <Route path="/">
               <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
-                <SearchPage action="http://localhost:8337/search/flights" {...controlProps} />
+                <SearchPage {...searchProps} {...controlProps} />
               </FlightProvider>
             </Route>
           </Switch>

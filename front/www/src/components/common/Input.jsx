@@ -12,6 +12,7 @@ export const Input = React.memo(({ id, name, placeholder, required, type, value,
       type={type}
       value={value}
       onChange={(e) => setValue(e.target.value)}
+      onClick={() => setValue('')}
       {...item}
     />
   );

@@ -1,63 +1,47 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Input } from '../common/Input';
-import * as A from '../../context/Auth.actions';
-import './credentials.css';
+import React from 'react';
 
-import { mailProps, passwordProps, buttonProps } from './credentialsFormProps';
+/* Components & Hooks */
 import { useForm } from '../../hooks/useForm';
-import { askMeForToken } from '../../utils/askMeForToken';
 
-const formInputs = {
-  email: '',
-  password: '',
-  errorMessage: '',
-};
+/* props and methods */
+import { mailProps, passwordProps, buttonProps } from './credentialsFormProps';
+import { benderLogin } from '../../http/api';
 
-export const LoginForm = ({ action, cssClassName, encType, method, dispatch, setToken, logged, token }) => {
-  const [inputs, handleInputChange, setErrorMessage] = useForm(formInputs);
-  const { email, password, errorMessage } = inputs;
+/* Styles */
+import './credentials.css';
+import { FormDrawer } from '../common/FormDrawer';
+
+/* Component */
+export const LoginForm = (props) => {
+  const { setToken, dispatch } = props;
+  const [{ email, password, errorMessage }, handleInputChange, setErrorMessage, resetInput] = useForm({
+    email: '',
+    password: '',
+    errorMessage: '',
+  });
+
+  const items = [
+    { ...mailProps, value: email },
+    {
+      ...passwordProps,
+      value: password,
+    },
+    { ...buttonProps },
+  ];
+  const req = { email, password };
+  const actions = { setErrorMessage, setToken, dispatch };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const res = await fetch(action, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const json = await res.json();
-
-    if (res.status !== 200) {
-      dispatch(A.authFailure());
-      setErrorMessage(json.details);
-      setTimeout(() => setErrorMessage(''), 3000);
-    } else {
-      setToken(json.token);
-    }
+    await benderLogin(req, actions);
   };
   return (
-    <>
-      <form action={action} className={cssClassName} encType={encType} method={method} onSubmit={handleSubmit}>
-        <Input value={email} onChange={handleInputChange} {...mailProps} />
-        <Input value={password} onChange={handleInputChange} {...passwordProps} />
-        <Input {...buttonProps} />
-      </form>
-      <div style={{ display: 'block', color: 'red', minHeight: '1.5em' }}> {errorMessage}</div>
-    </>
+    <FormDrawer
+      items={items}
+      handleSubmit={handleSubmit}
+      handleInputChange={handleInputChange}
+      reset={resetInput}
+      errorMessage={errorMessage}
+    />
   );
-};
-
-LoginForm.propTypes = {
-  action: PropTypes.string,
-  cssClassName: PropTypes.string,
-  encType: PropTypes.string,
-  inputs: PropTypes.array,
-  method: PropTypes.string,
-};
-LoginForm.defaultProps = {
-  encType: 'multipart/form-data',
-  cssClassName: 'credentialsForm',
 };
