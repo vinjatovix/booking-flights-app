@@ -73,3 +73,25 @@
 .profile-off {
   background-image: url('../../assets/svg/turn-off.svg');
 }
+
+/* PROFILE DATA */
+
+.profile-data-main {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-data-main img[alt='foto-de-usuario'] {
+  width: 150px;
+  margin: 1rem;
+  border: 1px solid black;
+}
+
+.profile-data-main img[alt='boton-atras'] {
+  position: absolute;
+  width: 17px;
+  top: 90px;
+  left: 30px;
+}
