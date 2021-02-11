@@ -36,7 +36,19 @@ const App = () => {
   ? y el segundo el método para manipular estos estados 
   */
   const [
-    { menu, logged, username, bio, photo, user_profile, profile_data, profile_pass, profile_bookings, profile_tools },
+    {
+      menu,
+      logged,
+      username,
+      email,
+      bio,
+      photo,
+      user_profile,
+      profile_data,
+      profile_pass,
+      profile_bookings,
+      profile_tools,
+    },
     dispatch,
   ] = useAuthContext();
 
@@ -60,6 +72,7 @@ const App = () => {
     menu,
     logged,
     username,
+    email,
     bio,
     photo,
     setToken,
