@@ -8,7 +8,7 @@ export const CredentialsPage = (props) => {
   const { title } = props;
 
   return (
-    <Article title={title}>
+    <Article className="radius" title={title}>
       {title === 'Log In' && <LoginForm {...props} />}
       {title === 'Sign In' && <RegisterForm {...props} />}
     </Article>

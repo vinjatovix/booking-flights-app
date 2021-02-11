@@ -12,6 +12,7 @@ import { useAutocomplete } from '../../hooks/useAutocomplete';
 
 import { airports } from '../../utils/airports.json';
 import { AirportSelector } from './AirportSelector';
+import { ErrorMessage } from '../common/ErrorMessage';
 
 const seed = airports.map((element, i) => ({ id: i, name: element.Loca_nombre, value: element.Aero_iata }));
 
@@ -136,6 +137,8 @@ export const SearchForm = React.memo(
 
           <input id="search" type="submit" value="Buscar" />
         </form>
+        <ErrorMessage children={errorMessage} />
+
       </Article>
     );
   }
