@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useFlightContext } from '../context/flight/Flight.context';
 import { useAuthContext } from '../context/Auth.context';
 
+import * as A from '../context/flight/Flight.actions';
+
 /* COMPONENTS */
 import { SearchForm } from '../components/SearchFlight/SearchForm';
 import { ResponseFlight } from '../components/SearchFlight/ResponseFlight';
@@ -12,8 +14,13 @@ import { Loading } from '../components/common/Loading/Loading';
 
 /* STYLES */
 import '../components/SearchFlight/searchForm.css';
+import { Article } from '../components/common/Article';
 
-export const SearchPage = () => {
+import { airports } from '../utils/airports.json';
+const seedWords = airports.map((element, i) => ({ id: i, ...element }));
+console.log(seedWords);
+
+export const SearchPage = ({ action, title }) => {
   const [order, setOrder] = useState('');
 
   const [
@@ -33,8 +40,9 @@ export const SearchPage = () => {
     },
     dispatch,
   ] = useFlightContext();
+
   const [{ logged }] = useAuthContext([]);
-  useEffect(() => {}, [order]);
+  useEffect(() => {}, [order, response]);
   return (
     <>
       {!searching && (
@@ -43,7 +51,7 @@ export const SearchPage = () => {
           departureDate={departureDate}
           destinationLocationCode={destinationLocationCode}
           dispatch={dispatch}
-          endPoint="http://localhost:8337/search/flights"
+          endPoint={action}
           loading={loading}
           max={max}
           maxPrice={maxPrice}
@@ -52,10 +60,11 @@ export const SearchPage = () => {
           originLocationCode={originLocationCode}
           returnDate={returnDate}
           searching={searching}
+          title={title}
         />
       )}
       {loading && <Loading />}
-      {searching && (
+      {response.adults && (
         <ResponseHeader
           dispatch={dispatch}
           originLocationCode={originLocationCode}
@@ -69,9 +78,23 @@ export const SearchPage = () => {
       )}
 
       <ul className="Response-list">
-        {response?.data?.map((element) => (
-          <ResponseFlight key={element.id} id={element.id} auth={logged} {...element} />
-        ))}
+        {typeof response?.data === 'string' && searching && (
+          <Article className="Response-empty" title="oh...">
+            {response.data}
+            <input
+              type="submit"
+              id="reset"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(A.switchBoolean({ name: 'searching', value: searching }));
+              }}
+            ></input>
+          </Article>
+        )}
+        {response?.adults &&
+          response?.data?.map((element) => (
+            <ResponseFlight key={element.id} id={element.id} auth={logged} {...element} />
+          ))}
       </ul>
     </>
   );

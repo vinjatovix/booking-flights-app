@@ -1,17 +1,18 @@
 import * as C from './Flight.constants';
 
+
 export const initialFlightFormState = {
-  oneWay: false,
-  originLocationCode: 'SCQ',
-  destinationLocationCode: 'FCO',
-  departureDate: '2021-03-01',
-  returnDate: '2021-03-06',
   adults: 1,
   currencyCode: 'EUR',
-  nonStop: false,
-  searching: false,
+  departureDate: '2021-04-01',
+  destinationLocationCode: '',
   loading: false,
+  nonStop: false,
+  oneWay: false,
+  originLocationCode: '',
   response: {},
+  returnDate: '2021-04-06',
+  searching: false,
 };
 
 export const FlightReducer = (state, { type, payload }) => {

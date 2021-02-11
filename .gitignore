@@ -15,8 +15,6 @@ bender-dev.environment.json
 .env.production.local
 
 *.log
-front/www/.eslintcache
-.eslintcache
 
 
 # dependencies
@@ -35,4 +33,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 front/www/.eslintcache
-*eslintcache*
