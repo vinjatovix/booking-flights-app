@@ -101,7 +101,6 @@ const App = () => {
             <Route path="/about">
               <AboutPage {...aboutProps} />
             </Route>
-
             <Route path="/profile">
               <PrivateRoute>
                 <ProfilePage control={controlProps} profile={profileProps} />

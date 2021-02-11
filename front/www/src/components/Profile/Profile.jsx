@@ -4,9 +4,7 @@ import './profile.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { switchBoolean } from '../../context/Auth.actions';
 
-export const Profile = ({ photo, username, bio, dispatch, profile_data }) => {
-  console.log(profile_data);
-
+export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass }) => {
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
@@ -25,7 +23,6 @@ export const Profile = ({ photo, username, bio, dispatch, profile_data }) => {
       <main>
         <ul className="categorias">
           <Link
-            to="/profile"
             onClick={(e) => {
               e.preventDefault();
               dispatch(switchBoolean({ name: 'profile_data', value: profile_data }));
@@ -36,7 +33,12 @@ export const Profile = ({ photo, username, bio, dispatch, profile_data }) => {
               <p>Nickname, foto de perfil, bio</p>
             </li>
           </Link>
-          <Link to="/profile">
+          <Link
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(switchBoolean({ name: 'profile_pass', value: profile_pass }));
+            }}
+          >
             <li className="profile-pass">
               <h4>Cambiar la contraseña</h4>
               <p>Actualízala por una más segura</p>
