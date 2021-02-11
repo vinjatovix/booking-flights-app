@@ -155,3 +155,24 @@ img[alt='boton-de-editar'] {
   background-size: 1.25rem;
   background-position: 1.25rem center;
 }
+
+/* PROFILE PASS */
+
+.profile-pass-main {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-pass-main img[alt='boton-atras'] {
+  position: absolute;
+  width: 17px;
+  top: 90px;
+  left: 30px;
+}
+
+.profile-pass-main h4 {
+  margin: 4rem 0 1rem 0;
+  font-size: 24px;
+}
