@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import * as A from '../../context/flight/Flight.actions';
 import { useCounter } from '../../hooks/useCounter';
+import { Input } from '../common/Input';
 
-export const PassengerCounter = ({ adults, dispatch }) => {
+export const PassengerCounter = React.memo(({ adults, dispatch }) => {
   const { state: passengers, increment, decrement } = useCounter(adults);
 
   useEffect(() => {
@@ -11,15 +12,16 @@ export const PassengerCounter = ({ adults, dispatch }) => {
 
   return (
     <fieldset className="SearchForm__passengers">
-      <input
+      <Input
         className="SearchForm__passengers-trigger"
         type="button"
+        id="minus"
         value="-"
         onClick={() => {
           decrement();
         }}
       />
-      <input
+      <Input
         className="SearchForm__passengers-value "
         type="number"
         name="passengers"
@@ -28,9 +30,10 @@ export const PassengerCounter = ({ adults, dispatch }) => {
         onChange={() => dispatch(A.setNumber({ name: 'adults', value: passengers }))}
         value={passengers}
       />
-      <input
+      <Input
         className="SearchForm__passengers-trigger"
         type="button"
+        id="plus"
         value="+"
         onClick={() => {
           increment();
@@ -38,4 +41,4 @@ export const PassengerCounter = ({ adults, dispatch }) => {
       />
     </fieldset>
   );
-};
+});

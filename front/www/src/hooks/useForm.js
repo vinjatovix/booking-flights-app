@@ -3,6 +3,13 @@ import { useState } from 'react';
 export const useForm = (initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
+  const handleInputChange = ({ target }) => {
+    setValues({
+      ...values,
+      [target.name]: target.value,
+    });
+  };
+
   const setErrorMessage = (string) => {
     setValues({
       ...values,
@@ -10,11 +17,11 @@ export const useForm = (initialState = {}) => {
     });
   };
 
-  const handleInputChange = ({ target }) => {
+  const resetInput = ({ target }) => {
     setValues({
       ...values,
-      [target.name]: target.value,
+      [target.name]: '',
     });
   };
-  return [values, handleInputChange, setErrorMessage];
+  return [values, handleInputChange, setErrorMessage, resetInput];
 };

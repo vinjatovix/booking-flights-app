@@ -15,6 +15,7 @@ function identifyError(err) {
       '"username" length must be at least 5 characters long',
       'Longitud mínima de usuario 5'
     );
+    err.details = err.details.replace('"email" must be a valid email', 'El mail no es válido');
     err.details = err.details.replace('"email" is not allowed to be empty', 'El email no puede estar vacío.');
     err.details = err.details.replace('"password" is not allowed to be empty', 'La contraseña no puede estar vacía.');
     err.details = err.details.replace(
@@ -60,7 +61,7 @@ function identifyError(err) {
   }
 
   //? UNKNOWN ERRORS
-  err.ok = err.ok || false;
+  err.ok = false;
   err.code = err.code || 500;
   err.details = err.details || 'Error desconocido...';
 }
