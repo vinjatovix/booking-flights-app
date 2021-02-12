@@ -1,51 +1,105 @@
 .SearchForm {
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
   grid-template-areas:
-    'tipo escalas'
-    'pasajeros precio'
-    'origen origen'
-    'destino destino'
-    'dates dates'
-    'error error'
-    'buscar buscar';
+    "tipo escalas"
+    "pasajeros precio"
+    "origen origen"
+    "destino destino"
+    "dates dates"
+    "error error"
+    "buscar buscar";
   justify-content: center;
 }
-
-.SearchForm__airport {
-  display: flex;
-  flex-direction: column;
+.SearchForm >*{
+  width: 40vw;
+  max-width: 325px;
+}
+.SearchForm__trip {
+  background-image: url("../../assets/svg/repeat.svg");
+  background-position: 0.6rem;
+  grid-area: tipo;
 }
 
-
-.SearchForm > * {
+.SearchForm__nonStop {
+  background-image: url("../../assets/svg/route-solid.svg");
+  background-position: 0.6rem;
+  grid-area: escalas;
 }
-
 .SearchForm__passengers {
   display: flex;
   gap: 0;
   grid-area: pasajeros;
 }
-
-.SearchForm__trip {
-  background-image: url('../../assets/svg/repeat.svg');
-  grid-area: tipo;
-}
-
-.SearchForm__nonStop {
-  grid-area: escalas;
-  background-image: url('../../assets/svg/route-solid.svg');
-}
 .SearchForm__passengers-trigger {
   width: 20%;
 }
 .SearchForm__passengers-value {
+  background-image: url("../../assets/svg/user-friends-solid.svg");
   width: 60%;
-  background-image: url('../../assets/svg/user-friends-solid.svg');
 }
 .SearchForm__price {
+  background-image: url("../../assets/svg/funnel-dollar-solid.svg");
+  background-position: 0.6rem;
   grid-area: precio;
-  background-image: url('../../assets/svg/funnel-dollar-solid.svg');
+}
+.SearchForm__airport {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  max-width: 680px;
+}
+#originLocationCode input,
+#destinationLocationCode input {
+  background-position: 1rem;
+  width: 100%;
+}
+#originLocationCode {
+  grid-area: origen;
+}
+#destinationLocationCode {
+  grid-area: destino;
+}
+#originLocationCode input {
+  background-image: url("../../assets/svg/plane-departure-solid.min.svg");
+}
+#destinationLocationCode input {
+  background-image: url("../../assets/svg/plane-arrival-solid.svg");
+}
+.SearchForm__dates {
+  grid-area: dates;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  
+  
+}
+#departureDate {
+  max-width: 325px;
+  width: 40vw;
+  width: 39.5vw;
+  grid-area: salida;
+}
+
+#returnDate {
+  max-width: 325px;
+  width: 40vw;
+  width: 39.5vw;
+  grid-area: retorno;
+}
+.SearchForm [type="submit"] {
+  border: 4px groove;
+  border-color: rgba(163, 147, 147, 0.411);
+  box-shadow: 3px 2px 7px rgba(5, 5, 5, 0.542);
+  display: block;
+  font-weight: bold;
+  grid-area: buscar;
+  margin: 1rem;
+  max-width: 320px;
+  padding: 1rem;
+  text-decoration: none;
+  text-shadow: 2px 2px 3px rgb(0, 0, 0);
+  text-align: center;
 }
 
 .SearchForm__error {
@@ -55,62 +109,13 @@
   min-height: 1.5rem;
 }
 
-input[type='submit'] {
-  grid-area: buscar;
-}
-
-input[value='Buscar'] {
-  color: #fff;
-  background-color: #3f6abe;
-}
-
-.SearchForm__dates {
-  grid-area: dates;
-  width: 8vw;
-  display: flex;
-  flex-direction: row;
-}
-#departureDate {
-  width: 39.5vw;
-  grid-area: salida;
-}
-
-#returnDate {
-  width: 39.5vw;
-  grid-area: retorno;
-}
-
-#origin input,
-#destination input {
-  width: 82vw;
-}
-#origin {
-  grid-area: origen;
-}
-#destination {
-  grid-area: destino;
-  display: flex;
-  flex-direction: column;
-}
-#origin input {
-  background-image: url('../../assets/svg/plane-departure-solid.min.svg');
-}
-#destination input {
-  background-image: url('../../assets/svg/plane-arrival-solid.svg');
-}
-
-input[value='Buscar'] {
-  color: #fff;
-  background-color: #3f6abe;
-}
-
 .Response-header {
   padding: 0.2rem;
   margin-bottom: 1rem;
   background-color: rgba(255, 255, 255, 0.829);
   display: grid;
   grid-template-columns: 3fr 2fr;
-  grid-template-areas: 'air filter' 'date filter';
+  grid-template-areas: "air filter" "date filter";
 }
 .Response__airports {
   grid-area: air;
@@ -137,13 +142,13 @@ input[value='Buscar'] {
 }
 
 .Response-filter__stops {
-  background-image: url('../../assets/svg/route-solid.svg');
+  background-image: url("../../assets/svg/route-solid.svg");
 }
 .Response-filter__duration {
-  background-image: url('../../assets/svg/stopwatch-solid.svg');
+  background-image: url("../../assets/svg/stopwatch-solid.svg");
 }
 .Response-filter__price {
-  background-image: url('../../assets/svg/funnel-dollar-solid.svg');
+  background-image: url("../../assets/svg/funnel-dollar-solid.svg");
 }
 
 .filter {
@@ -165,14 +170,14 @@ input[value='Buscar'] {
   border-top: 3px dashed black;
 }
 .roundTrip-icon {
-  background-image: url('../../assets/svg/exchange-alt-solid.svg');
+  background-image: url("../../assets/svg/exchange-alt-solid.svg");
   width: 20%;
   background-repeat: no-repeat;
   background-size: 1.3rem;
   background-position: center center;
 }
 .pencil-icon {
-  background-image: url('../../assets/svg/pen-solid.svg');
+  background-image: url("../../assets/svg/pen-solid.svg");
   background-repeat: no-repeat;
   width: 20%;
   background-size: 1.3rem;
@@ -180,7 +185,7 @@ input[value='Buscar'] {
 }
 
 .Response-empty {
-  background-image: url('../../assets/svg/wind.svg');
+  background-image: url("../../assets/svg/wind.svg");
   background-repeat: no-repeat;
   background-size: 2.5rem;
   background-position: 55vw 1vh;
@@ -198,7 +203,7 @@ input[value='Buscar'] {
   background-color: rgba(255, 255, 255, 0.829);
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-areas: 'itinerary offer' 'itinerary offer';
+  grid-template-areas: "itinerary offer" "itinerary offer";
   align-items: center;
 }
 
@@ -230,7 +235,7 @@ input[value='Buscar'] {
   font-size: 0.8rem;
 }
 .heart {
-  background-image: url('../../assets/svg/heart-regular.svg');
+  background-image: url("../../assets/svg/heart-regular.svg");
   background-repeat: no-repeat;
   width: 2rem;
   height: 2rem;
@@ -239,11 +244,11 @@ input[value='Buscar'] {
   width: 3rem;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url('../../assets/svg/stop1.svg');
+  background-image: url("../../assets/svg/stop1.svg");
 }
 .stops2 {
   width: 3rem;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url('../../assets/svg/stop2.svg');
+  background-image: url("../../assets/svg/stop2.svg");
 }

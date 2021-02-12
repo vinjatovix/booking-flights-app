@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu, switchBoolean } from '../../context/Auth.actions';
 
+import './menu.css';
+
 export const Menu = ({ menu, logged, dispatch, setToken }) => {
   return (
-    <nav className="menu">
-      <section>
-        <img src={ProfilePhoto} alt="foto-de-usuario" />
-      </section>
+    <nav className="app-menu radius">
+      <header className="app-menu__header">
+        <img src={ProfilePhoto} alt="foto de usuario" />
+      </header>
 
-      <ul>
+      <ul className="app-menu__list">
         <Link
           to="/"
           onClick={() => {
             dispatch(changeMenu({ menu }));
           }}
         >
-          <li>Buscar</li>
+          <li className="app-menu__list-item search-button radius">Buscar</li>
         </Link>
 
         {!logged && (
@@ -29,7 +30,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
                 dispatch(changeMenu({ menu }));
               }}
             >
-              <li className="login-button">Login</li>
+              <li className=" app-menu__list-item login-button radius">Login</li>
             </Link>
 
             <Link
@@ -38,7 +39,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
                 dispatch(changeMenu({ menu }));
               }}
             >
-              <li className="register-button">Register</li>
+              <li className="app-menu__list-item register-button radius">Register</li>
             </Link>
           </>
         )}
@@ -51,7 +52,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               dispatch(switchBoolean({ name: target.parentNode.name, value: target.parentNode.value }));
             }}
           >
-            <li>Perfil</li>
+            <li className="app-menu__list-item profile-button radius">Perfil</li>
           </Link>
         )}
 
@@ -61,7 +62,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
             dispatch(changeMenu({ menu }));
           }}
         >
-          <li className="about-button">About</li>
+          <li className="app-menu__list-item about-button radius">About</li>
         </Link>
 
         {logged && (
@@ -71,9 +72,10 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               e.preventDefault();
               setToken('');
               dispatch(authFailure());
+              dispatch(changeMenu({ menu }));
             }}
           >
-            <li>Logout</li>
+            <li className="app-menu__list-item logout-button radius">Logout</li>
           </Link>
         )}
       </ul>

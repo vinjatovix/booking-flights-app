@@ -1,36 +1,28 @@
 import React from 'react';
-import styles from './about.module.css';
 import { Article } from '../common/Article';
 import { ListDrawer } from '../common/ListDrawer/ListDrawer';
-import { ArticleWrapper } from '../common/ArticleWrapper';
 import PropTypes from 'prop-types';
 
+import './about.css';
 export const About = ({ logo = '', info, formers, stack, tools, links, credits, thanks }) => {
+  const css = 'About radius';
   return (
-    <>
-      <ArticleWrapper>
-        <Article className={styles.about} title="About">
-          {logo && <img className="about-logo" src={logo} alt="logo" />}
-          <ListDrawer type="p" title="Info" items={info}></ListDrawer>
-          <ListDrawer type="links" title="Enlaces" cssClassName="aboutLinks" items={links} />
-        </Article>
-      </ArticleWrapper>
-
-      <ArticleWrapper>
-        <Article className="about" title="Tecnologías">
-          <ListDrawer title="Pila" items={stack} />
-          <ListDrawer title="Herramientas" items={tools} />
-        </Article>
-      </ArticleWrapper>
-
-      <ArticleWrapper>
-        <Article className="about" title="Créditos">
-          <ListDrawer title="Formadores" items={formers} />
-          <ListDrawer title="Agradecimientos" items={thanks} />
-          <ListDrawer type="links" title="svg Icons" items={credits} />
-        </Article>
-      </ArticleWrapper>
-    </>
+    <div className="About__wrapper">
+      <Article className={css} title="About">
+        {logo && <img className="About-logo radius" src={logo} alt="logo" />}
+        <ListDrawer type="p" title="Info" items={info}></ListDrawer>
+        <ListDrawer type="links" title="Enlaces" cssClassName="aboutLinks" items={links} />
+      </Article>
+      <Article className={css} title="Tecnologías">
+        <ListDrawer title="Pila" items={stack} />
+        <ListDrawer title="Herramientas" items={tools} />
+      </Article>
+      <Article className={css} title="Créditos">
+        <ListDrawer title="Formadores" items={formers} />
+        <ListDrawer title="Agradecimientos" items={thanks} />
+        <ListDrawer type="links" title="svg Icons" items={credits} />
+      </Article>
+    </div>
   );
 };
 About.propTypes = {

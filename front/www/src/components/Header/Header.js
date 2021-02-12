@@ -19,7 +19,7 @@ const Header = React.memo((props) => {
 
   return (
     <header className="app-header">
-      <h1>FL</h1>
+      <h1>FL<small> 0.6</small></h1>
       <img className="burguer" src={shape} alt="Botón de menú" onClick={displayMenu} />
     </header>
   );

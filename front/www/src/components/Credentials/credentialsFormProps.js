@@ -36,6 +36,7 @@ export const bioProps = {
 };
 export const buttonProps = {
   id: 'submit-button',
+  className: "button",
   name: 'submit',
   type: 'submit',
   value: 'Enviar',
