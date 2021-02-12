@@ -5,6 +5,7 @@ import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg
 import { switchBoolean } from '../../context/Auth.actions';
 
 export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings }) => {
+  console.log(profile_bookings);
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
@@ -44,16 +45,17 @@ export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_
               <p>Actualízala por una más segura</p>
             </li>
           </Link>
-          <li
-            className="profile-booking"
+          <Link
             onClick={(e) => {
               e.preventDefault();
               dispatch(switchBoolean({ name: 'profile_bookings', value: profile_bookings }));
             }}
           >
-            <h4>Mis reservas</h4>
-            <p>Historial de reservas</p>
-          </li>
+            <li className="profile-booking">
+              <h4>Mis reservas</h4>
+              <p>Historial de reservas</p>
+            </li>
+          </Link>
 
           <Link to="/profile">
             <li className="profile-tools">

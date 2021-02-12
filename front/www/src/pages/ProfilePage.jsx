@@ -27,7 +27,7 @@ export const ProfilePage = ({ control, profile }) => {
         </ProfileContainer>
       )}
 
-      {profile_data === false && profile_pass === false && <Profile {...profile} {...control} />}
+      {(profile_data || profile_pass || profile_bookings) !== true && <Profile {...profile} {...control} />}
     </>
   );
 };
