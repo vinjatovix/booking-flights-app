@@ -10,9 +10,6 @@ html {
   box-sizing: border-box;
 }
 
-main {
-  display: block;
-}
 
 img {
   border-style: none;
@@ -47,7 +44,7 @@ a {
 }
 
 h2 {
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 li {

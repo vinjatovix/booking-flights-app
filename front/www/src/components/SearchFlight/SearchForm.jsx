@@ -13,6 +13,7 @@ import { useAutocomplete } from '../../hooks/useAutocomplete';
 import { airports } from '../../utils/airports.json';
 import { AirportSelector } from './AirportSelector';
 import { ErrorMessage } from '../common/ErrorMessage';
+import { Input } from '../common/Input';
 
 const seed = airports.map((element, i) => ({ id: i, name: element.Loca_nombre, value: element.Aero_iata }));
 
@@ -31,6 +32,7 @@ export const SearchForm = React.memo(
     originLocationCode,
     returnDate,
     searching,
+    menu,
   }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [a1, setA1] = useState(originLocationCode);
@@ -79,24 +81,22 @@ export const SearchForm = React.memo(
         }
       }
     };
+    const css = menu ? 'radius blur' : 'radius focus';
+
     return (
-      <Article title={title} className="">
+      <Article title={title} className={css}>
         <form className="SearchForm" method="GET" encType="multipart/form-data" onSubmit={handlerSubmit}>
           <input
-            className="SearchForm__trip"
+            className="SearchForm__trip radius"
             type="button"
             name="trip"
             id="trip"
             value={oneWay ? 'Solo ida' : 'I/V'}
-            onClick={() => {
-              dispatch(A.switchBoolean({ name: 'oneWay', value: oneWay }));
-              dispatch(A.setString({ name: 'returnDate', value: '' }));
-            }}
+            onClick={resetReturnDate(dispatch, oneWay)}
           />
           <PassengerCounter adults={adults} dispatch={dispatch} />
-
           <input
-            className="SearchForm__nonStop"
+            className="SearchForm__nonStop radius"
             type="button"
             name="escales"
             id="escales"
@@ -104,26 +104,45 @@ export const SearchForm = React.memo(
             onClick={() => dispatch(A.switchBoolean({ name: 'nonStop', value: nonStop }))}
           />
           <input
-            className="SearchForm__price"
+            className="SearchForm__price radius"
             type="number"
             name="price"
             id="price"
             placeholder="Max €"
+            onClick={(e) => e.preventDefault()}
             onChange={(e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value }))}
           />
 
-          <AirportSelector name="origin" value={a1} handler={setA1} seed={airports1} dispatcher={dispatch} />
-          <AirportSelector name="destination" value={a2} handler={setA2} seed={airports2} dispatcher={dispatch} />
+          <AirportSelector
+            placeholder="Compostela"
+            name="originLocationCode"
+            value={a1}
+            handler={setA1}
+            seed={airports1}
+            dispatcher={dispatch}
+          />
+
+          <AirportSelector
+            placeholder="London"
+            name="destinationLocationCode"
+            value={a2}
+            handler={setA2}
+            seed={airports2}
+            dispatcher={dispatch}
+          />
 
           <fieldset className="SearchForm__dates">
             <input
+              className="radius"
               type="date"
               name="departureDate"
               id="departureDate"
               onChange={(e) => dispatch(A.setString({ name: 'departureDate', value: e.target.value }))}
+              required="required"
             />
             {!oneWay && (
               <input
+                className="radius"
                 type="date"
                 name="returnDate"
                 id="returnDate"
@@ -131,15 +150,16 @@ export const SearchForm = React.memo(
               />
             )}
           </fieldset>
-          <div className="SearchForm__error" style={{ display: 'block', color: 'red', minHeight: '1.5em' }}>
-            {errorMessage}
-          </div>
-
-          <input id="search" type="submit" value="Buscar" />
+        {!searching &&  <Input className="button radius" id="submit-button" type="submit" value="Buscar" />}
         </form>
         <ErrorMessage children={errorMessage} />
-
       </Article>
     );
   }
 );
+function resetReturnDate(dispatch, oneWay) {
+  return () => {
+    dispatch(A.switchBoolean({ name: 'oneWay', value: oneWay }));
+    dispatch(A.setString({ name: 'returnDate', value: '' }));
+  };
+}

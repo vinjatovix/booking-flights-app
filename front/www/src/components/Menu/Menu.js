@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './menu.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu, switchBoolean } from '../../context/Auth.actions';
 
+import './menu.css';
+
 export const Menu = ({ menu, logged, dispatch, setToken }) => {
   return (
-    <nav className="menu">
+    <nav className="menu radius">
       <section>
         <img src={ProfilePhoto} alt="foto-de-usuario" />
       </section>
@@ -18,7 +19,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
             dispatch(changeMenu({ menu }));
           }}
         >
-          <li>Buscar</li>
+          <li className="radius">Buscar</li>
         </Link>
 
         {!logged && (
@@ -29,7 +30,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
                 dispatch(changeMenu({ menu }));
               }}
             >
-              <li className="login-button">Login</li>
+              <li className="login-button radius">Login</li>
             </Link>
 
             <Link
@@ -38,7 +39,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
                 dispatch(changeMenu({ menu }));
               }}
             >
-              <li className="register-button">Register</li>
+              <li className="register-button radius">Register</li>
             </Link>
           </>
         )}
@@ -51,7 +52,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               dispatch(switchBoolean({ name: target.parentNode.name, value: target.parentNode.value }));
             }}
           >
-            <li>Perfil</li>
+            <li className="radius">Perfil</li>
           </Link>
         )}
 
@@ -61,7 +62,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
             dispatch(changeMenu({ menu }));
           }}
         >
-          <li className="about-button">About</li>
+          <li className="about-button radius">About</li>
         </Link>
 
         {logged && (
@@ -73,7 +74,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               dispatch(authFailure());
             }}
           >
-            <li>Logout</li>
+            <li className="radius">Logout</li>
           </Link>
         )}
       </ul>

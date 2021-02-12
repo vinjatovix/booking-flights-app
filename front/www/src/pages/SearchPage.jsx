@@ -20,7 +20,7 @@ import { airports } from '../utils/airports.json';
 const seedWords = airports.map((element, i) => ({ id: i, ...element }));
 console.log(seedWords);
 
-export const SearchPage = ({ action, title }) => {
+export const SearchPage = ({ action, title, menu }) => {
   const [order, setOrder] = useState('');
 
   const [
@@ -42,11 +42,13 @@ export const SearchPage = ({ action, title }) => {
   ] = useFlightContext();
 
   const [{ logged }] = useAuthContext([]);
-  useEffect(() => {}, [order, response]);
+  useEffect(() => {}, [order, response, menu]);
+
   return (
     <>
       {!searching && (
         <SearchForm
+          menu={menu}
           adults={adults}
           departureDate={departureDate}
           destinationLocationCode={destinationLocationCode}

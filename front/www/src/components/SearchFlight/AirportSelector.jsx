@@ -2,17 +2,20 @@ import React from 'react';
 import { v4 as uuid } from 'uuid';
 import * as A from '../../context/flight/Flight.actions';
 
-export const AirportSelector = ({ name, value, handler, seed, dispatcher }) => {
+export const AirportSelector = ({ name, value, handler, seed, dispatcher, placeholder }) => {
   return (
     <fieldset className="SearchForm__airport" id={name}>
       <input
+        className="radius"
         type="text"
         name={name}
-        placeholder="SCQ - Lavacolla"
+        placeholder={placeholder}
         autoComplete="off"
         value={value}
         onChange={(e) => handler(e.target.value.toUpperCase())}
-        onClick={() => handler('')} />
+        onClick={() => handler('')}
+        required="required"
+      />
       {value && (
         <ul className="SearchForm__suggestion">
           {seed.map((val) => (
@@ -23,7 +26,7 @@ export const AirportSelector = ({ name, value, handler, seed, dispatcher }) => {
                 handler(val.name);
                 dispatcher(
                   A.setString({
-                    name: `${name}LocationCode`,
+                    name: `${name}`,
                     value: `${val.value.toUpperCase()}`,
                   })
                 );
