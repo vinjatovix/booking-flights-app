@@ -94,6 +94,11 @@ function showAbout(req, res) {
         linkText: 'Freepik',
       },
       {
+        name: 'camara',
+        url: 'https://www.flaticon.com/authors/goodware',
+        linkText: 'Good Ware',
+      },
+      {
         name: 'cloud-computing',
         url: 'https://www.flaticon.com/authors/webalys',
         linkText: 'Webalys',
