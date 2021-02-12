@@ -81,9 +81,10 @@ export const SearchPage = ({ action, title, menu }) => {
 
       <ul className="Response-list">
         {typeof response?.data === 'string' && searching && (
-          <Article className="Response-empty" title="oh...">
+          <Article className="Response-empty radius" title="oh...">
             {response.data}
             <input
+              className="radius"
               type="submit"
               id="reset"
               onClick={(e) => {

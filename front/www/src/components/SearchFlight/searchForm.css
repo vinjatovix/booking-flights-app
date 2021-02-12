@@ -70,6 +70,9 @@
   grid-area: dates;
   display: flex;
   flex-direction: row;
+  gap: 1.5rem;
+  
+  
 }
 #departureDate {
   max-width: 325px;

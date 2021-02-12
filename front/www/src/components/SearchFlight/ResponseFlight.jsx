@@ -32,7 +32,7 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
 export const ResponseFlight = (props) => {
   const { itineraries, originLocationCode, destinationLocationCode, price, auth, id } = props;
   return (
-    <li className="Flight">
+    <li className="Flight radius">
       <Itinerary
         itinerary={itineraries[0]}
         originLocationCode={originLocationCode}
