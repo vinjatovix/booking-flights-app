@@ -1,11 +1,10 @@
 import React from 'react';
 
 /* Components & Hooks */
-import { FormDrawer } from '../common/FormDrawer';
+import { FormDrawer } from './FormDrawer';
 import {
   mailProps,
   passwordProps,
-  buttonProps,
   userNameProps,
   rePasswordProps,
   bioProps,
@@ -41,7 +40,6 @@ export const RegisterForm = (props) => {
     { ...passwordProps, value: password },
     { ...rePasswordProps, value: repeatPassword },
     { ...bioProps, value: bio },
-    { ...buttonProps },
   ];
 
   const req = { username, email, password, repeatPassword, bio };

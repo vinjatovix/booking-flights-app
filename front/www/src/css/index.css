@@ -20,94 +20,92 @@
   font-style: normal;
 }
 
+:root {
+  --basecolor: #fff;
+  --inputcolor: #dbd8d8;
+  --input-border-color: #a3939369;
+  --input-box-shadow: 3px 2px 7px #0505055b;
+  --inset-box-shadow: inset 3px 2px 7px #0505055b;
+  --button-text-shadow: 2px 2px 3px #000000;
+  --blue: #3f6abe;
+  --yellow: #f9e24c;
+  --inactive-color: #808080;
+}
 * {
   font-family: 'Atkinson', sans-serif;
 }
-body{
+body {
   max-width: 100vw;
 }
 
-.App {
-  display: grid;
-  justify-content: space-between;
-  height: 100%;
-  grid-template-areas: 'header' 'main' 'footer';
-}
 
-/* MAIN  */
-.app-main {
-  width: 100vw;
-  padding: 1rem;
-  background-attachment: fixed;
-  background-color: #fff;
-  background-image: url('../assets/img/bgi.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  grid-area: 'main';
-  min-height: 80vh;
-  margin-top: 10vh;
-}
 
+/*! BASIC TITLES */
+
+h1 small {
+  color: var(--inactive-color);
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 2rem;
+}
+h5 {
+  padding: 0 0.2rem;
+  text-align: left;
+}
 img {
   max-width: 100%;
 }
 
+/*! BASIC FORM */
 form {
-  padding: 0.5rem;
   display: grid;
-  justify-items: center;
-  gap: 1rem;
-}
-
-fieldset {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
+  justify-items: center;
+  padding: 0.5rem;
 }
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'] {
-  width: 73vw;
+input:invalid {
+  border: 2px solid crimson;
 }
 
 option,
 input {
-  background-color: #ccc;
+  background-color: var(--inputcolor);
   border: none;
   padding: 0.5rem;
   text-align: center;
-  width: 40vw;
   background-repeat: no-repeat;
   background-size: 1.5rem;
-  background-position: 0.2rem center;
+  background-position: 0.6rem center;
+  box-shadow: var(--inset-box-shadow);
 }
 
 button,
 input[type='submit'] {
-  font-size: 1.5rem;
-  padding: 1rem;
-  margin: 0 auto;
-}
-
-.menu-oculto {
-  display: none;
-}
-
-.menu {
-  display: inherit;
-}
-
-button {
-  text-align: center;
   width: 40vw;
-  font-size: 1rem;
+  border: 4px groove;
+  border-color: var(--input-border-color);
+  box-shadow: var(--input-box-shadow);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem;
+  max-width: 320px;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: var(--button-text-shadow);
 }
-input[value='Registro'],
+input[type='submit'] {
+  background-color: var(--blue);
+  color: var(--yellow);
+}
+
+/* button.update {
+  background-color: var(--yellow);
+}
 button.update {
-  background-color: #f9e24c;
+  background-color: #3f6abe;
 }
 button.cancel {
   background-color: #41b812;
@@ -118,7 +116,7 @@ button.deactivate {
 button.delete {
   background-color: red;
   color: white;
-}
+} */
 
 /* RESULTS */
 .response header {
@@ -163,32 +161,72 @@ button.delete {
   background-repeat: no-repeat;
   background-position: center bottom;
 }
-h3 {
-  font-size: 2rem;
-}
-h5 {
-  padding: 0 0.2rem;
-  text-align: left;
-}
+
 .response article {
   margin-bottom: 0.5rem;
 }
 
-.app-footer {
-  height: 10vh;
+
+
+
+/*!! IVI format */
+.radius {
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 5rem;
+}
+.focus {
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 200ms;
+  transform: scale(1);
+}
+
+.blur {
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 450ms;
+  filter: blur(1.5px);
+  transform: scale(0.8);
+}
+
+/* APP STRUCTURE */
+
+.App {
+  align-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-areas: 'header' 'main' 'footer';
+  height: 100%;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+/* APP  */
+.app-main {
+  align-items: center;
+  background-attachment: fixed;
+  background-color: var(--basecolor);
+  background-image: url('../assets/img/bgi.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-area: main;
+  min-height: 95vh;
+  justify-content: center;
+  padding: 3rem;
+  position: absolute;
   width: 100vw;
-  grid-area: 'footer';
-  background-color: #ececec;
-  color: #3f6abe;
-  text-align: center;
+}
+
+.app-footer {
+  background-color: var(--basecolor);
+  color: var(--blue);
+  grid-area: footer;
+  height: 5vh;
   padding: 1rem;
+  text-align: center;
+  width: 100vw;
 }
 .app-footer ul {
   display: flex;
   justify-content: space-evenly;
 }
-
-/* .app-footer:hover ul {
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-} */

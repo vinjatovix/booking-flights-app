@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { InputList } from './ListDrawer/InputList';
-import { ErrorMessage } from './ErrorMessage';
+import { InputList } from '../common/ListDrawer/InputList';
+import { ErrorMessage } from '../common/ErrorMessage';
+
+import './formDrawer.css';
+import { buttonProps } from './credentialsFormProps';
+import { Input } from '../common/Input';
 
 export const FormDrawer = React.memo((props) => {
   const { cssClassName, handleSubmit, errorMessage } = props;
@@ -9,6 +13,7 @@ export const FormDrawer = React.memo((props) => {
     <>
       <form className={cssClassName} onSubmit={handleSubmit}>
         <InputList {...props} />
+        <Input {...buttonProps} />
       </form>
       <ErrorMessage children={errorMessage} />
     </>
@@ -18,5 +23,5 @@ FormDrawer.propTypes = {
   cssClassName: PropTypes.string,
 };
 FormDrawer.defaultProps = {
-  cssClassName: 'credentialsForm',
+  cssClassName: 'Form',
 };
