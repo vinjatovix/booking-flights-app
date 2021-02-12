@@ -7,19 +7,19 @@ import './menu.css';
 
 export const Menu = ({ menu, logged, dispatch, setToken }) => {
   return (
-    <nav className="menu radius">
-      <section>
-        <img src={ProfilePhoto} alt="foto-de-usuario" />
-      </section>
+    <nav className="app-menu radius">
+      <header className="app-menu__header">
+        <img src={ProfilePhoto} alt="foto de usuario" />
+      </header>
 
-      <ul>
+      <ul className="app-menu__list">
         <Link
           to="/"
           onClick={() => {
             dispatch(changeMenu({ menu }));
           }}
         >
-          <li className="radius">Buscar</li>
+          <li className="app-menu__list-item search-button radius">Buscar</li>
         </Link>
 
         {!logged && (
@@ -30,7 +30,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
                 dispatch(changeMenu({ menu }));
               }}
             >
-              <li className="login-button radius">Login</li>
+              <li className=" app-menu__list-item login-button radius">Login</li>
             </Link>
 
             <Link
@@ -39,7 +39,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
                 dispatch(changeMenu({ menu }));
               }}
             >
-              <li className="register-button radius">Register</li>
+              <li className="app-menu__list-item register-button radius">Register</li>
             </Link>
           </>
         )}
@@ -52,7 +52,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               dispatch(switchBoolean({ name: target.parentNode.name, value: target.parentNode.value }));
             }}
           >
-            <li className="radius">Perfil</li>
+            <li className="app-menu__list-item profile-button radius">Perfil</li>
           </Link>
         )}
 
@@ -62,7 +62,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
             dispatch(changeMenu({ menu }));
           }}
         >
-          <li className="about-button radius">About</li>
+          <li className="app-menu__list-item about-button radius">About</li>
         </Link>
 
         {logged && (
@@ -72,9 +72,10 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               e.preventDefault();
               setToken('');
               dispatch(authFailure());
+              dispatch(changeMenu({ menu }));
             }}
           >
-            <li className="radius">Logout</li>
+            <li className="app-menu__list-item logout-button radius">Logout</li>
           </Link>
         )}
       </ul>

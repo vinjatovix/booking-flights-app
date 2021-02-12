@@ -1,15 +1,27 @@
-.menu {
+.app-menu {
+  position: fixed 0 center;
   display: flex;
-  position: fixed;
-  z-index: 1000;
-  grid-area: menu;
+  background-color: rgba(255, 255, 255, 0.911);
   flex-direction: column;
   align-items: center;
   padding: 1rem 0;
+  max-width: 700px;
+  -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  animation: open 0.5s ease 0s;
+  animation-fill-mode: backwards;
+  position: fixed;
+  left: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+/* .menu {
   width: 100%;
   max-width: 700px;
-  background-color: rgba(255, 255, 255, 0.911);
-  /* 
+  background-color: rgba(255, 255, 255, 0.911); */
+/* 
   justify-content: center;
   /* 
   -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
@@ -18,25 +30,25 @@
   animation: open 0.5s ease 0s;
   animation-fill-mode: backwards;
   width: 70%; */
-}
+/* } */
 
-/* .menu section {
+.app-menu__header {
   width: 100%;
   border-bottom: 1px solid black;
 }
 
-.menu section img {
+.app-menu__header img {
   height: 70px;
   width: 70px;
   margin: 0 0 0.75rem 1.5rem;
 }
 
-.menu ul {
+.app-menu__list {
   padding-top: 1rem;
   width: 70%;
 }
 
-.menu ul li {
+.app-menu__list-item {
   margin: 1rem;
   padding: 0.5rem 1rem;
   text-align: center;
@@ -48,11 +60,14 @@
   box-shadow: inset 3px 2px 7px rgba(120, 146, 180, 0.664);
 }
 
-.menu ul li:active {
+.app-menu__list-item:active {
   background-color: rgb(109, 114, 114);
   color: white;
 }
 
+.search-button {
+  background-image: url("../../assets/svg/magnifier.svg");
+}
 .login-button {
   background-image: url("../../assets/svg/login.svg");
 }
@@ -60,10 +75,17 @@
 .register-button {
   background-image: url("../../assets/svg/register.svg");
 }
+.profile-button {
+  background-image: url("../../assets/svg/user-solid.svg");
+}
 
 .about-button {
   background-image: url("../../assets/svg/about.svg");
 }
+.logout-button {
+  background-image: url("../../assets/svg/long-arrow-alt-right-solid.svg");
+}
+/* 
 
 @keyframes open {
   from {

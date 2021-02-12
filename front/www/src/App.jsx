@@ -66,14 +66,11 @@ const App = () => {
     token,
   };
 
-  console.log(user_profile);
-
   return (
     <div className="App">
       <Router>
         <Header {...controlProps} />
-        <Main className="app-main">
-          {menu ? <Menu {...controlProps} /> : null}
+        <Main className="app-main" {...controlProps}>
           <Switch>
             <Route path="/login">
               <PublicRoute>
@@ -101,8 +98,8 @@ const App = () => {
             </Route>
           </Switch>
         </Main>
+        <Footer className="app-footer">Code-Vix &copy; 2021 FLanders v0.6</Footer>
       </Router>
-      <Footer>Code-Vix &copy; 2021 FLanders v0.6</Footer>
     </div>
   );
 };

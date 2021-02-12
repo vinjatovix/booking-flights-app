@@ -138,6 +138,11 @@ function showAbout(req, res) {
         url: 'https://www.flaticon.com/authors/freepik',
         linkText: 'Freepik',
       },
+      {
+        name: 'magnifier',
+        url: 'https://www.flaticon.com/authors/freepik',
+        linkText: 'Freepik',
+      },
 
       {
         name: 'passport',
