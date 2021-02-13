@@ -50,6 +50,7 @@ async function createBookingData(bookings) {
     }
 
     data.details = {
+      id: booking.RC_ID,
       plazas: booking.RC_adults,
       precio: booking.RC_total,
       total: (booking.RC_total * booking.RC_adults).toFixed(2),
