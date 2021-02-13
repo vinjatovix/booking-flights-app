@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
+
 .profile-main {
   background-color: white;
   width: 90vw;
@@ -180,11 +182,73 @@ img[alt='boton-de-editar'] {
 
 .flight-offer {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .flight-offer li {
   border: 1px solid black;
-  height: 100px;
+  display: flex;
+  height: 80px;
   flex-grow: 1;
-  margin: 0 0.5rem;
+  margin: 0.5rem 0.5rem;
+  background-color: #c4dfe6;
+}
+
+.flight-offer li section {
+  align-content: center;
+  border: 1px solid black;
+}
+
+.booking-info {
+  flex-grow: 15;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url('../../assets/svg/long-arrow-alt-right-solid.svg');
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  background-position-x: 6.25rem;
+  background-position-y: 1.15rem;
+}
+
+.booking-info p {
+  max-width: min-content;
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.booking-info div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p.booking-iata {
+  padding: 1.25rem 0.5rem 0 0.5rem;
+}
+
+p.booking-price {
+  font-size: 16px;
+}
+p.booking-id {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.booking-date {
+  flex-grow: 0.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #66a5ad;
+}
+
+.booking-date p {
+  max-width: min-content;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
 }
