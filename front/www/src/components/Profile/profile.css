@@ -177,3 +177,14 @@ img[alt='boton-de-editar'] {
 }
 
 /* PROFILE BOOKINGS */
+
+.flight-offer {
+  display: flex;
+}
+
+.flight-offer li {
+  border: 1px solid black;
+  height: 100px;
+  flex-grow: 1;
+  margin: 0 0.5rem;
+}
