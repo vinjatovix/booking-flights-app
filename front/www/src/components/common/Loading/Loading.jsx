@@ -2,9 +2,7 @@ import React from 'react';
 import './loading.css';
 
 export const Loading = () => {
-  return <div className="Loading">
-      <div className="Loading__item">
-          
-      </div>
-  </div>;
+  return (
+      <div className="Loading__item"></div>
+  );
 };

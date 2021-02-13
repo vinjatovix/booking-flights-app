@@ -741,7 +741,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/search/flights?originLocationCode=SCQ&destinationLocationCode=FCO&departureDate=2021-02-28&returnDate=2021-03-01&adults=1",
+							"raw": "{{url}}/search/flights?adults=1&originLocationCode=SCQ&destinationLocationCode=FCO&departureDate=2021-03-01&returnDate=&maxPrice=9999&nonStop=false",
 							"host": [
 								"{{url}}"
 							],
@@ -750,6 +750,10 @@
 								"flights"
 							],
 							"query": [
+								{
+									"key": "adults",
+									"value": "1"
+								},
 								{
 									"key": "originLocationCode",
 									"value": "SCQ"
@@ -760,15 +764,19 @@
 								},
 								{
 									"key": "departureDate",
-									"value": "2021-02-28"
-								},
-								{
-									"key": "returnDate",
 									"value": "2021-03-01"
 								},
 								{
-									"key": "adults",
-									"value": "1"
+									"key": "returnDate",
+									"value": ""
+								},
+								{
+									"key": "maxPrice",
+									"value": "9999"
+								},
+								{
+									"key": "nonStop",
+									"value": "false"
 								}
 							]
 						},
@@ -882,7 +890,7 @@
 									"",
 									"pm.test(\"Solo ida\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.data[0].itineraries.length).to.eql(1);",
+									"    pm.expect(jsonData.data[0].itineraries.length).to.eql(2);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -940,7 +948,7 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/search/flights?originLocationCode=SCQ&destinationLocationCode=FCO&departureDate=2021-02-28&returnDate=2021-03-01&adults=1",
+							"raw": "{{url}}/search/flights?adults=1&originLocationCode=SCQ&destinationLocationCode=FCO&departureDate=2021-03-01&returnDate=2021-03-06&nonStop=false&maxPrice=9999",
 							"host": [
 								"{{url}}"
 							],
@@ -949,6 +957,10 @@
 								"flights"
 							],
 							"query": [
+								{
+									"key": "adults",
+									"value": "1"
+								},
 								{
 									"key": "originLocationCode",
 									"value": "SCQ"
@@ -959,15 +971,19 @@
 								},
 								{
 									"key": "departureDate",
-									"value": "2021-02-28"
-								},
-								{
-									"key": "returnDate",
 									"value": "2021-03-01"
 								},
 								{
-									"key": "adults",
-									"value": "1"
+									"key": "returnDate",
+									"value": "2021-03-06"
+								},
+								{
+									"key": "nonStop",
+									"value": "false"
+								},
+								{
+									"key": "maxPrice",
+									"value": "9999"
 								}
 							]
 						},
@@ -1070,6 +1086,19 @@
 				},
 				{
 					"name": "/me",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
