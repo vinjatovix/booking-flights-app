@@ -36,19 +36,7 @@ const App = () => {
   ? y el segundo el método para manipular estos estados 
   */
   const [
-    {
-      menu,
-      logged,
-      username,
-      email,
-      bio,
-      photo,
-      user_profile,
-      profile_data,
-      profile_pass,
-      profile_bookings,
-      profile_tools,
-    },
+    { menu, logged, username, email, bio, photo, profile_data, profile_pass, profile_bookings, profile_tools },
     dispatch,
   ] = useAuthContext();
 
