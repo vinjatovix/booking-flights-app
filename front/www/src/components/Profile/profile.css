@@ -252,3 +252,7 @@ p.booking-id {
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
 }
+
+.booking-info.arrow {
+  background-position-x: 7rem;
+}

@@ -5,6 +5,9 @@ import '../profile.css';
 export const ProfileBookings = ({ dispatch, profile_bookings }) => {
   const [bookings, setBookings] = useState([]);
   const token = JSON.parse(localStorage.getItem('token'));
+  const css = {
+    backgroundPositionX: '7.25rem',
+  };
 
   useEffect(() => {
     async function getBookings() {
@@ -17,10 +20,10 @@ export const ProfileBookings = ({ dispatch, profile_bookings }) => {
       });
       const json = await res.json();
       setBookings(json);
-      console.log(bookings);
     }
     getBookings();
   }, []);
+
   return (
     <>
       <h4>Mis reservas</h4>
@@ -33,7 +36,7 @@ export const ProfileBookings = ({ dispatch, profile_bookings }) => {
                 <p>ENE</p>
                 <p>2020</p>
               </section>
-              <section className="booking-info">
+              <section className="booking-info" style={!item.vuelo_Vuelta ? css : null}>
                 <p className="booking-iata">MAD</p>
                 <div>
                   <p className="booking-id">ID:234563</p>
@@ -41,7 +44,7 @@ export const ProfileBookings = ({ dispatch, profile_bookings }) => {
                 </div>
                 <p className="booking-iata">SCQ</p>
               </section>
-              {bookings.length > 2 ? (
+              {item.vuelo_Vuelta ? (
                 <section className="booking-date">
                   <p>6</p>
                   <p>AGO</p>
