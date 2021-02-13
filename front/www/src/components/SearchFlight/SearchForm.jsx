@@ -15,6 +15,9 @@ import { AirportSelector } from './AirportSelector';
 import { ErrorMessage } from '../common/ErrorMessage';
 import { Input } from '../common/Input';
 
+import './searchForm.css';
+import { Loading } from '../common/Loading/Loading';
+
 const seed = airports.map((element, i) => ({ id: i, name: element.Loca_nombre, value: element.Aero_iata }));
 
 export const SearchForm = React.memo(
@@ -39,6 +42,7 @@ export const SearchForm = React.memo(
     const [a2, setA2] = useState(destinationLocationCode);
     const [airports1] = useAutocomplete(a1, seed);
     const [airports2] = useAutocomplete(a2, seed);
+    const [css, setCss] = useState('radius focus');
 
     const isMounted = useRef(true);
     useEffect(() => {
@@ -47,7 +51,13 @@ export const SearchForm = React.memo(
       };
     }, []);
     useEffect(() => {}, [searching, originLocationCode]);
-
+    useEffect(() => {
+      loading ? setCss(css + ' Loading') : setCss(css.replace('Loading', ''));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loading]);
+    useEffect(() => {
+      menu ? setCss('radius blur') : setCss('radius focus');
+    }, [menu]);
     const url = createUrl({
       adults,
       departureDate,
@@ -73,6 +83,8 @@ export const SearchForm = React.memo(
       const data = await res.json();
       if (isMounted.current) {
         if (res.status !== 200) {
+          dispatch(A.switchBoolean({ name: 'loading', value: !loading }));
+
           setErrorMessage(data.details);
           setTimeout(() => setErrorMessage(''), 3000);
         } else {
@@ -81,7 +93,6 @@ export const SearchForm = React.memo(
         }
       }
     };
-    const css = menu ? 'radius blur' : 'radius focus';
 
     return (
       <Article title={title} className={css}>
@@ -150,7 +161,9 @@ export const SearchForm = React.memo(
               />
             )}
           </fieldset>
-        {!searching &&  <Input className="button radius" id="submit-button" type="submit" value="Buscar" />}
+          {!searching && !loading ? (
+            <Input className="button radius" id="submit-button" type="submit" value="Buscar" />
+          ): <Loading/>}
         </form>
         <ErrorMessage children={errorMessage} />
       </Article>

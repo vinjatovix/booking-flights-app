@@ -24,6 +24,7 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
 
     //? Si no hay info en la base MySQL buscará info en la librería
     const airportInfo = await airports.lookupByIataCode(originLocationCode);
+    console.log(airportInfo);
 
     //? Si no hay info no podemos continuar
     validateReturn(airportInfo, 'Aeropuerto', 404);

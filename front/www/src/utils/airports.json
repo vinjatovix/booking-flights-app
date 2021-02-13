@@ -46,11 +46,6 @@
       "Aero_iata": "ABV"
     },
     {
-      "Loca_nombre": "Abu Rudeis",
-      "Pais_nombre": "Egypt",
-      "Aero_iata": "AUE"
-    },
-    {
       "Loca_nombre": "Abu Simbel",
       "Pais_nombre": "Egypt",
       "Aero_iata": "ABS"
@@ -85,11 +80,7 @@
       "Pais_nombre": "Yemen",
       "Aero_iata": "ADE"
     },
-    {
-      "Loca_nombre": "Adiyaman",
-      "Pais_nombre": "Turkey",
-      "Aero_iata": "ADF"
-    },
+    
     {
       "Loca_nombre": "Adler/Sochi",
       "Pais_nombre": "Russia",
@@ -104,11 +95,6 @@
       "Loca_nombre": "Agadir",
       "Pais_nombre": "Morocco",
       "Aero_iata": "AGA"
-    },
-    {
-      "Loca_nombre": "Agana (Hagåtña)",
-      "Pais_nombre": "Guam",
-      "Aero_iata": "SUM"
     },
     {
       "Loca_nombre": "Aggeneys",
@@ -130,11 +116,7 @@
       "Pais_nombre": "India",
       "Aero_iata": "AMD"
     },
-    {
-      "Loca_nombre": "Aiyura",
-      "Pais_nombre": "Papua New Guinea",
-      "Aero_iata": "AYU"
-    },
+
     {
       "Loca_nombre": "Ajaccio",
       "Pais_nombre": "France",

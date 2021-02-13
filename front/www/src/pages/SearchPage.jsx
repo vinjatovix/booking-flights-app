@@ -13,7 +13,6 @@ import { ResponseHeader } from '../components/SearchFlight/ResponseHeader';
 import { Loading } from '../components/common/Loading/Loading';
 
 /* STYLES */
-import '../components/SearchFlight/searchForm.css';
 import { Article } from '../components/common/Article';
 
 import { airports } from '../utils/airports.json';
@@ -65,7 +64,7 @@ export const SearchPage = ({ action, title, menu }) => {
           title={title}
         />
       )}
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
       {response.adults && (
         <ResponseHeader
           dispatch={dispatch}

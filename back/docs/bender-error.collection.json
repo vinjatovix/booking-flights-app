@@ -19,15 +19,15 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
 											"});",
 											"pm.test(\"Your test name\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.ok).to.eql(true);",
 											"});",
 											"var jsonData = pm.response.json();",
-											"pm.environment.set(\"email\", jsonData.user.email);",
+											"pm.environment.set(\"email\", jsonData.tokenPayload.email);",
 											""
 										],
 										"type": "text/javascript"
@@ -175,7 +175,7 @@
 											"});",
 											"pm.test(\"That mail is already in use\", function () {",
 											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.details).to.eql(\"That mail is already in use\");",
+											"    pm.expect(jsonData.details).to.eql(\"Ese mail ya está en uso\");",
 											"});",
 											""
 										],
@@ -487,7 +487,7 @@
 											"    pm.expect(jsonData.ok).to.eql(false);",
 											"});",
 											"pm.test(\"Body matches string\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"i'm a teapot\");",
+											"    pm.expect(pm.response.text()).to.include(\"raro\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -672,9 +672,6 @@
 										"exec": [
 											"pm.test(\"Error 401\", function () {",
 											"    pm.response.to.have.status(401);",
-											"});",
-											"pm.test(\"Es la pagina correcta\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Invalid credentials, please try again\");",
 											"});",
 											""
 										],
@@ -903,13 +900,7 @@
 											"pm.test(\"Status code is 418\", function () {",
 											"    pm.response.to.have.status(418);",
 											"});",
-											"pm.test(\"ok False\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.ok).to.eql(false);",
-											"});",
-											"pm.test(\"Body matches string\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"i'm a teapot\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -969,10 +960,7 @@
 											"pm.test(\"Status code is 401\", function () {",
 											"    pm.response.to.have.status(401);",
 											"});",
-											"pm.test(\"Incorrect password\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.details).to.eql(\"Incorrect password. Password not updated.\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
