@@ -80,7 +80,6 @@
       "Pais_nombre": "Yemen",
       "Aero_iata": "ADE"
     },
-    
     {
       "Loca_nombre": "Adler/Sochi",
       "Pais_nombre": "Russia",
@@ -116,7 +115,6 @@
       "Pais_nombre": "India",
       "Aero_iata": "AMD"
     },
-
     {
       "Loca_nombre": "Ajaccio",
       "Pais_nombre": "France",
@@ -6873,11 +6871,6 @@
       "Aero_iata": "PBM"
     },
     {
-      "Loca_nombre": "Paris",
-      "Pais_nombre": "France",
-      "Aero_iata": "PAR"
-    },
-    {
       "Loca_nombre": "Paris - Charles de Gaulle",
       "Pais_nombre": "France",
       "Aero_iata": "CDG"
@@ -9826,11 +9819,6 @@
       "Loca_nombre": "Yichang",
       "Pais_nombre": "Hubei, PR China",
       "Aero_iata": "YIH"
-    },
-    {
-      "Loca_nombre": "Yokohama",
-      "Pais_nombre": "Japan",
-      "Aero_iata": "YOK"
     },
     {
       "Loca_nombre": "Yuma (AZ)",
