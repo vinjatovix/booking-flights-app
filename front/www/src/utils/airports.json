@@ -80,7 +80,6 @@
       "Pais_nombre": "Yemen",
       "Aero_iata": "ADE"
     },
-    
     {
       "Loca_nombre": "Adler/Sochi",
       "Pais_nombre": "Russia",
@@ -116,7 +115,6 @@
       "Pais_nombre": "India",
       "Aero_iata": "AMD"
     },
-
     {
       "Loca_nombre": "Ajaccio",
       "Pais_nombre": "France",
@@ -201,11 +199,6 @@
       "Loca_nombre": "Alexander Bay - Kortdoorn",
       "Pais_nombre": "South Africa",
       "Aero_iata": "ALJ"
-    },
-    {
-      "Loca_nombre": "Alexandria - Borg el Arab Airport",
-      "Pais_nombre": "Egypt",
-      "Aero_iata": "HBH"
     },
     {
       "Loca_nombre": "Alexandria - El Nhouza Airport",
@@ -1263,11 +1256,6 @@
       "Aero_iata": "BUD"
     },
     {
-      "Loca_nombre": "Buenos Aires",
-      "Pais_nombre": "Argentina",
-      "Aero_iata": "BUE"
-    },
-    {
       "Loca_nombre": "Buenos Aires, Ezeiza International Airport",
       "Pais_nombre": "Argentina",
       "Aero_iata": "EZE"
@@ -2108,11 +2096,6 @@
       "Aero_iata": "DTW"
     },
     {
-      "Loca_nombre": "Detroit (MI) , Metropolitan Area",
-      "Pais_nombre": "USA",
-      "Aero_iata": "DTT"
-    },
-    {
       "Loca_nombre": "Devils Lake (ND)",
       "Pais_nombre": "USA",
       "Aero_iata": "DVL"
@@ -2146,11 +2129,6 @@
       "Loca_nombre": "Dinard",
       "Pais_nombre": "France",
       "Aero_iata": "DNR"
-    },
-    {
-      "Loca_nombre": "Disneyland Paris",
-      "Pais_nombre": "France",
-      "Aero_iata": "DLP"
     },
     {
       "Loca_nombre": "Djerba",
@@ -2366,11 +2344,6 @@
       "Loca_nombre": "Ellisras",
       "Pais_nombre": "South Africa",
       "Aero_iata": "ELL"
-    },
-    {
-      "Loca_nombre": "El Minya",
-      "Pais_nombre": "Egypt",
-      "Aero_iata": "EMY"
     },
     {
       "Loca_nombre": "Elmira (NY)",
@@ -4698,7 +4671,7 @@
       "Aero_iata": "XLB"
     },
     {
-      "Loca_nombre": "La Coruna",
+      "Loca_nombre": "La Coruña",
       "Pais_nombre": "Spain",
       "Aero_iata": "LCG"
     },
@@ -5933,11 +5906,6 @@
       "Aero_iata": "MBJ"
     },
     {
-      "Loca_nombre": "Montenegro",
-      "Pais_nombre": "Brazil",
-      "Aero_iata": "QGF"
-    },
-    {
       "Loca_nombre": "Monterey (CA)",
       "Pais_nombre": "USA",
       "Aero_iata": "MRY"
@@ -6871,11 +6839,6 @@
       "Loca_nombre": "Paramaribo - Zanderij International",
       "Pais_nombre": "Suriname",
       "Aero_iata": "PBM"
-    },
-    {
-      "Loca_nombre": "Paris",
-      "Pais_nombre": "France",
-      "Aero_iata": "PAR"
     },
     {
       "Loca_nombre": "Paris - Charles de Gaulle",
@@ -9826,11 +9789,6 @@
       "Loca_nombre": "Yichang",
       "Pais_nombre": "Hubei, PR China",
       "Aero_iata": "YIH"
-    },
-    {
-      "Loca_nombre": "Yokohama",
-      "Pais_nombre": "Japan",
-      "Aero_iata": "YOK"
     },
     {
       "Loca_nombre": "Yuma (AZ)",

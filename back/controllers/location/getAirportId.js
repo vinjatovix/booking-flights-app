@@ -24,14 +24,13 @@ async function getAirportId(isOriginInDb, originLocationCode, next) {
 
     //? Si no hay info en la base MySQL buscará info en la librería
     const airportInfo = await airports.lookupByIataCode(originLocationCode);
-    console.log(airportInfo);
 
     //? Si no hay info no podemos continuar
-    validateReturn(airportInfo, 'Aeropuerto', 404);
+    validateReturn(airportInfo, originLocationCode, 404);
 
     //? localizará el país y localidad a los que pertenece
     const { name, country, latitude, longitude } = airportInfo;
-    const paisId = await getPaisId(country);
+    const paisId = await getPaisId(country.trim());
     const locaId = await getLocaId(airportInfo, paisId, next);
 
     //? Y guardará esa información en la base de datos

@@ -1,9 +1,5 @@
 'use strict';
 const { createCity, getCityByName } = require('../../repositories/location/location-repository');
-const fetch = require('node-fetch');
-const { makeInfoCityUrl } = require('../GeoDB/geoDB-controller');
-const { validateReturn } = require('../utils/utils-controller');
-const { wait } = require('../utils/utils-controller');
 
 /**
  * Search on MySQL DB for Loca_ID, if not exists creates a new city in DB
@@ -13,31 +9,19 @@ const { wait } = require('../utils/utils-controller');
  * @param {*} next "Error control middleware"
  * @return {Number} "City id in DB"
  */
-async function getLocaId(airport, paisId, next) {
+async function getLocaId({ city, latitude, longitude }, paisId, next) {
   try {
     //? Buscamos la ciudad en la base
-    const [cityStoredInDB] = await getCityByName(airport.city);
+    const [cityStoredInDB] = await getCityByName(city);
     if (cityStoredInDB !== undefined && cityStoredInDB.Loca_ID > 0) {
       return cityStoredInDB.Loca_ID;
     }
 
-    //? Si no existe buscamos información sobre ella en internet
-    await wait(1500); //! Margen de seguridad para las peticiones !!!!!!!!
-    const cityInfoDealer = makeInfoCityUrl(airport);
-    const fetchOptions = {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-key': process.env.CITIES_API_KEY,
-        'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
-      },
-    };
+    //? si no existe la creamos
+    latitude = latitude > 0 ? +latitude.toFixed(4) : -latitude.toFixed(4);
+    longitude = longitude > 0 ? +longitude.toFixed(4) : -longitude.toFixed(4);
 
-    const { data: geoDbCityInfo } = await fetch(cityInfoDealer, fetchOptions).then((loot) => loot.json());
-    validateReturn(geoDbCityInfo, 'City information', 404); //? Si no encontramos información sobre la ciudad no podemos continuar.
-
-    //? Si obtenemos información creamos la ciudad en la Base MySQL
-    const newCity = geoDbCityInfo[0];
-    const newCityData = [newCity.name, paisId, newCity.latitude, newCity.longitude];
+    const newCityData = [city, paisId, latitude, longitude];
     return await createCity(newCityData, next);
   } catch (err) {
     if (err.message === "Cannot read property '0' of undefined") {

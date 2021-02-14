@@ -3,7 +3,7 @@ import * as A from '../context/Auth.actions';
 const apiUrl = 'http://localhost:8337';
 
 const requestMethods = { post: 'POST', get: 'GET' };
-const endpoint = { login: '/login', signin: '/signin', about: '/about', me: '/me' };
+const endpoint = { login: '/login', signin: '/signin', about: '/about', me: '/me', book: '/book/flight' };
 
 export const fetchForm = async (action, { body, method, token = '' }) => {
   const headers = new Headers();
@@ -51,6 +51,27 @@ export async function benderSignin(req, { setErrorMessage, setToken, dispatch })
   } catch (err) {
     dispatch(A.authFailure());
     setErrorMessage(err.details);
+    setTimeout(() => setErrorMessage(''), 3000);
+  }
+}
+export async function makeBooking(req, { token, errorMessage, setErrorMessage, dispatch }) {
+  try {
+    console.log(token);
+    const res = await fetchBender(`${apiUrl}${endpoint.book}`, {
+      method: requestMethods.post,
+      body: { ...req },
+    });
+    console.log(res);
+
+    if (!res.ok) {
+      throw res;
+    }
+    // setToken(res.token);
+  } catch (err) {
+    console.log(err);
+    // dispatch(A.authFailure());
+    setErrorMessage(err.details);
+    console.log(errorMessage);
     setTimeout(() => setErrorMessage(''), 3000);
   }
 }
