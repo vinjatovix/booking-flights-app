@@ -27,15 +27,13 @@ export const ProfileBookings = ({ dispatch, profile_bookings }) => {
 
   return (
     <>
-      <h4>Mis reservas</h4>
+      <h3 className="profile-title">Mis reservas</h3>
       <ul className="flight-offer">
         {bookings.map((item) => {
           const date = formatDate(item);
           const iata = getIata(item);
-          console.log(iata);
-          console.log(item);
           return (
-            <li>
+            <li key={`RC_ID:${item.details.id}`}>
               <section className="booking-date">
                 <p>{date[0]}</p>
                 <p>{monthName(+date[1] - 1).toUpperCase()}</p>

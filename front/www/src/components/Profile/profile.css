@@ -180,6 +180,11 @@ img[alt='boton-de-editar'] {
 
 /* PROFILE BOOKINGS */
 
+.profile-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 .flight-offer {
   display: flex;
   flex-direction: column;

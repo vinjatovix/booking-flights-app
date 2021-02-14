@@ -30,6 +30,7 @@ export const monthName = (number) => {
   }
 };
 
+// TODO: Revisar para reducir a menos líneas con New Date
 export const formatDate = (string) => {
   const date = [];
   date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[2]);
