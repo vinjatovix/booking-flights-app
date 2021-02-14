@@ -11,6 +11,11 @@ export const formatDate = (date) => {
   return `${DD}-${MM}-${YYYY} ${h}:${m}:${s}`;
 };
 
+export const formatHeaderDate = (date) => {
+  const seed = new Date(date);
+  return `${seed.getDate()}${monthName(seed.getMonth())}`;
+};
+
 export const monthName = (number) => {
   switch (number) {
     case 0:
@@ -37,7 +42,6 @@ export const monthName = (number) => {
       return 'Nov';
     case 11:
       return 'Dic';
-
     default:
       return 'Ene';
   }
