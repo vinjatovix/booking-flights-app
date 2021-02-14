@@ -16,6 +16,7 @@ export const initialState = {
   profile_pass: false,
   profile_bookings: false,
   profile_tools: false,
+  modal: false,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */
