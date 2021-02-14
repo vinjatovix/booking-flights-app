@@ -201,11 +201,6 @@
       "Aero_iata": "ALJ"
     },
     {
-      "Loca_nombre": "Alexandria - Borg el Arab Airport",
-      "Pais_nombre": "Egypt",
-      "Aero_iata": "HBH"
-    },
-    {
       "Loca_nombre": "Alexandria - El Nhouza Airport",
       "Pais_nombre": "Egypt",
       "Aero_iata": "ALY"
@@ -1261,11 +1256,6 @@
       "Aero_iata": "BUD"
     },
     {
-      "Loca_nombre": "Buenos Aires",
-      "Pais_nombre": "Argentina",
-      "Aero_iata": "BUE"
-    },
-    {
       "Loca_nombre": "Buenos Aires, Ezeiza International Airport",
       "Pais_nombre": "Argentina",
       "Aero_iata": "EZE"
@@ -2106,11 +2096,6 @@
       "Aero_iata": "DTW"
     },
     {
-      "Loca_nombre": "Detroit (MI) , Metropolitan Area",
-      "Pais_nombre": "USA",
-      "Aero_iata": "DTT"
-    },
-    {
       "Loca_nombre": "Devils Lake (ND)",
       "Pais_nombre": "USA",
       "Aero_iata": "DVL"
@@ -2144,11 +2129,6 @@
       "Loca_nombre": "Dinard",
       "Pais_nombre": "France",
       "Aero_iata": "DNR"
-    },
-    {
-      "Loca_nombre": "Disneyland Paris",
-      "Pais_nombre": "France",
-      "Aero_iata": "DLP"
     },
     {
       "Loca_nombre": "Djerba",
@@ -2364,11 +2344,6 @@
       "Loca_nombre": "Ellisras",
       "Pais_nombre": "South Africa",
       "Aero_iata": "ELL"
-    },
-    {
-      "Loca_nombre": "El Minya",
-      "Pais_nombre": "Egypt",
-      "Aero_iata": "EMY"
     },
     {
       "Loca_nombre": "Elmira (NY)",
@@ -5929,11 +5904,6 @@
       "Loca_nombre": "Montego Bay - Sangster International",
       "Pais_nombre": "Jamaica",
       "Aero_iata": "MBJ"
-    },
-    {
-      "Loca_nombre": "Montenegro",
-      "Pais_nombre": "Brazil",
-      "Aero_iata": "QGF"
     },
     {
       "Loca_nombre": "Monterey (CA)",

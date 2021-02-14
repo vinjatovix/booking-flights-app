@@ -24,3 +24,7 @@ export const saveResponse = (payload) => ({
   type: C.FLIGHT_SET_RESPONSE,
   payload,
 });
+export const makeBooking = (payload) => ({
+  type: C.BOOKING_MAKE_BOOK,
+  payload,
+});

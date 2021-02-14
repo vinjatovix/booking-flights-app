@@ -1,6 +1,23 @@
-import React from 'react';
-import { monthName } from '../../utils/dateUtils';
-import * as A from '../../context/flight/Flight.actions';
+import React, { Children } from 'react';
+import { monthName } from '../../../utils/dateUtils';
+import * as A from '../../../context/flight/Flight.actions';
+
+import './responseHeader.css';
+
+export const FilterButton = ({ setOrder, className, children }) => {
+  return (
+    <li
+      className={className}
+      onClick={() => {
+        console.log('duracion');
+        setOrder('duration');
+      }}
+    >
+      {children}
+    </li>
+  );
+};
+
 export const ResponseHeader = React.memo(
   ({
     originLocationCode,
@@ -30,11 +47,9 @@ export const ResponseHeader = React.memo(
           <li>{destinationLocationCode}</li>
         </ul>
         <ul className="Response__filters">
-          <li className="Response-filter__stops filter active sort">P</li>
-          <li className="Response-filter__duration filter">
-            <button onClick={() => setOrder('duration')}>ord</button>
-          </li>
-          <li className="Response-filter__price filter active reverse">$</li>
+          <FilterButton className="Response-filter__stops filter active sort" />
+          <FilterButton className="Response-filter__duration filter" />
+          <FilterButton className="Response-filter__price filter active reverse" />
         </ul>
         <ul className="Response__dates">
           <li>{salida}</li>

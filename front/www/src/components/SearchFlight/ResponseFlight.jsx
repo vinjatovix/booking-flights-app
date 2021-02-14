@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuthContext } from '../../context/Auth.context';
+import { fetchBender, makeBooking } from '../../http/api';
 import { monthName } from '../../utils/dateUtils';
 
 const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) => {
@@ -30,7 +32,22 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
 };
 
 export const ResponseFlight = (props) => {
-  const { itineraries, originLocationCode, destinationLocationCode, price, auth, id } = props;
+  const { itineraries, originLocationCode, destinationLocationCode, price, logged, id } = props;
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleBooking = () => {
+    const token = localStorage.getItem('token');
+    // makeBooking(props, { token: token, errorMessage, setErrorMessage });
+    const makeBook = async () => {
+      const res = await fetchBender(`http://localhost:8337/book/flight`, {
+        token: JSON.parse(token),
+        method: 'POST',
+        body: { ...props },
+      });
+      console.log(res);
+    };
+    makeBook();
+  };
   return (
     <li className="Flight radius">
       <Itinerary
@@ -47,12 +64,12 @@ export const ResponseFlight = (props) => {
       )}
       <ul className="offer">
         <li>{price.total}€</li>
-        {auth && (
+        {logged && (
           <li>
             <div
               className="heart"
               onClick={() => {
-                console.log(id);
+                handleBooking(id);
               }}
             ></div>
           </li>

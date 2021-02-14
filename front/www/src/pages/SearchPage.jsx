@@ -9,8 +9,8 @@ import * as A from '../context/flight/Flight.actions';
 /* COMPONENTS */
 import { SearchForm } from '../components/SearchFlight/SearchForm';
 import { ResponseFlight } from '../components/SearchFlight/ResponseFlight';
-import { ResponseHeader } from '../components/SearchFlight/ResponseHeader';
-import { Loading } from '../components/common/Loading/Loading';
+import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
+// import { Loading } from '../components/common/Loading/Loading';
 
 /* STYLES */
 import { Article } from '../components/common/Article';
@@ -95,7 +95,7 @@ export const SearchPage = ({ action, title, menu }) => {
         )}
         {response?.adults &&
           response?.data?.map((element) => (
-            <ResponseFlight key={element.id} id={element.id} auth={logged} {...element} />
+            <ResponseFlight key={element.id} id={element.id} logged={logged} adults={adults} {...element} />
           ))}
       </ul>
     </>
