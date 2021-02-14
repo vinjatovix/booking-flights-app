@@ -201,7 +201,7 @@ img[alt='boton-de-editar'] {
 }
 
 .booking-info {
-  flex-grow: 15;
+  flex-grow: 6;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -231,7 +231,7 @@ p.booking-iata {
 }
 
 p.booking-price {
-  font-size: 16px;
+  font-size: 14px;
 }
 p.booking-id {
   font-size: 12px;

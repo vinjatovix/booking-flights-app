@@ -1,16 +1,3 @@
-export const padNumber = (number) => `${number}`.padStart(2, '0');
-
-export const formatDate = (date) => {
-  console.log('date', date);
-  const s = padNumber(date.getSeconds());
-  const m = padNumber(date.getMinutes());
-  const h = padNumber(date.getHours());
-  const YYYY = date.getFullYear();
-  const MM = date.getMonth() + 1;
-  const DD = padNumber(date.getDate());
-  return `${DD}-${MM}-${YYYY} ${h}:${m}:${s}`;
-};
-
 export const monthName = (number) => {
   switch (number) {
     case 0:
@@ -41,4 +28,18 @@ export const monthName = (number) => {
     default:
       return 'Ene';
   }
+};
+
+export const formatDate = (string) => {
+  const date = [];
+  date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[2]);
+  date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[1]);
+  date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[0]);
+
+  if (string.vuelo_Vuelta) {
+    date.push(string.vuelo_Vuelta.salida.split('T')[0].split('-')[2]);
+    date.push(string.vuelo_Vuelta.salida.split('T')[0].split('-')[1]);
+    date.push(string.vuelo_Vuelta.salida.split('T')[0].split('-')[0]);
+  }
+  return date;
 };
