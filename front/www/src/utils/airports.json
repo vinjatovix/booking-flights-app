@@ -3226,11 +3226,6 @@
       "Aero_iata": "HLN"
     },
     {
-      "Loca_nombre": "Helsingborg",
-      "Pais_nombre": "Sweden",
-      "Aero_iata": "JHE"
-    },
-    {
       "Loca_nombre": "Helsinki - Vantaa",
       "Pais_nombre": "Finland",
       "Aero_iata": "HEL"
@@ -3299,11 +3294,6 @@
       "Loca_nombre": "Holguin",
       "Pais_nombre": "Cuba",
       "Aero_iata": "HOG"
-    },
-    {
-      "Loca_nombre": "Home Hill",
-      "Pais_nombre": "Australia",
-      "Aero_iata": "HMH"
     },
     {
       "Loca_nombre": "Homer (AK)",
@@ -4509,11 +4499,6 @@
       "Loca_nombre": "Kodiak (AK)",
       "Pais_nombre": "USA",
       "Aero_iata": "ADQ"
-    },
-    {
-      "Loca_nombre": "Kohat",
-      "Pais_nombre": "Pakistan",
-      "Aero_iata": "OHT"
     },
     {
       "Loca_nombre": "Kokkola/Pietarsaari",
