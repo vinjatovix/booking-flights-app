@@ -521,7 +521,7 @@
       "Aero_iata": "ATL"
     },
     {
-      "Loca_nombre": "Atlantic Loca_nombre (NJ) - Atlantic Loca_nombre International",
+      "Loca_nombre": "Atlantic City (NJ) - Atlantic City International",
       "Pais_nombre": "USA",
       "Aero_iata": "ACY"
     },
@@ -811,7 +811,7 @@
       "Aero_iata": "BEL"
     },
     {
-      "Loca_nombre": "Belfast - George Best Belfast Loca_nombre Airport",
+      "Loca_nombre": "Belfast - George Best Belfast City Airport",
       "Pais_nombre": "United Kingdom",
       "Aero_iata": "BHD"
     },
@@ -831,7 +831,7 @@
       "Aero_iata": "BEG"
     },
     {
-      "Loca_nombre": "Belize Loca_nombre - Philip S.W.Goldson International",
+      "Loca_nombre": "Belize City - Philip S.W.Goldson International",
       "Pais_nombre": "Belize",
       "Aero_iata": "BZE"
     },
@@ -1286,7 +1286,7 @@
       "Aero_iata": "BUQ"
     },
     {
-      "Loca_nombre": "Bullhead Loca_nombre (NV)",
+      "Loca_nombre": "Bullhead City (NV)",
       "Pais_nombre": "USA",
       "Aero_iata": "BHC"
     },
@@ -1436,7 +1436,7 @@
       "Aero_iata": "CRF"
     },
     {
-      "Loca_nombre": "Carson Loca_nombre (NV)",
+      "Loca_nombre": "Carson City (NV)",
       "Pais_nombre": "USA",
       "Aero_iata": "CSN"
     },
@@ -1496,12 +1496,12 @@
       "Aero_iata": "CBU"
     },
     {
-      "Loca_nombre": "Cebu Loca_nombre - Mactan-Cebu International",
+      "Loca_nombre": "Cebu City - Mactan-Cebu International",
       "Pais_nombre": "Philippines",
       "Aero_iata": "CEB"
     },
     {
-      "Loca_nombre": "Cedar Loca_nombre (UT)",
+      "Loca_nombre": "Cedar City (UT)",
       "Pais_nombre": "USA",
       "Aero_iata": "CDC"
     },
@@ -1606,7 +1606,7 @@
       "Aero_iata": "CNX"
     },
     {
-      "Loca_nombre": "Chiba Loca_nombre",
+      "Loca_nombre": "Chiba City ",
       "Pais_nombre": "Japan",
       "Aero_iata": "QCB"
     },
@@ -1926,7 +1926,7 @@
       "Aero_iata": "CGA"
     },
     {
-      "Loca_nombre": "Crescent Loca_nombre (CA)",
+      "Loca_nombre": "Crescent City (CA)",
       "Pais_nombre": "USA",
       "Aero_iata": "CEC"
     },
@@ -2636,7 +2636,7 @@
       "Aero_iata": "HHN"
     },
     {
-      "Loca_nombre": "Franklin/Oil Loca_nombre (PA)",
+      "Loca_nombre": "Franklin/Oil City (PA)",
       "Pais_nombre": "USA",
       "Aero_iata": "FKL"
     },
@@ -2731,7 +2731,7 @@
       "Aero_iata": "GOU"
     },
     {
-      "Loca_nombre": "Gaza Loca_nombre - Gaza International Airport",
+      "Loca_nombre": "Gaza City - Gaza International Airport",
       "Pais_nombre": "Palestinian Territory",
       "Aero_iata": "GZA"
     },
@@ -3016,7 +3016,7 @@
       "Aero_iata": "GRU"
     },
     {
-      "Loca_nombre": "Guatemala Loca_nombre - La Aurora International Airport",
+      "Loca_nombre": "Guatemala City - La Aurora International Airport",
       "Pais_nombre": "Guatemala",
       "Aero_iata": "GUA"
     },
@@ -3276,7 +3276,7 @@
       "Aero_iata": "HIJ"
     },
     {
-      "Loca_nombre": "Ho Chi Minh Loca_nombre (Saigon) - Tan Son Nhat International",
+      "Loca_nombre": "Ho Chi Minh City (Saigon) - Tan Son Nhat International",
       "Pais_nombre": "Viet Nam",
       "Aero_iata": "SGN"
     },
@@ -3806,7 +3806,7 @@
       "Aero_iata": "JED"
     },
     {
-      "Loca_nombre": "Jefferson Loca_nombre (MO) - Jefferson Memorial",
+      "Loca_nombre": "Jefferson City (MO) - Jefferson Memorial",
       "Pais_nombre": "USA",
       "Aero_iata": "JEF"
     },
@@ -3966,7 +3966,7 @@
       "Aero_iata": "JNB"
     },
     {
-      "Loca_nombre": "Johnson Loca_nombre (NY) - Binghamton/Endicott/Johnson",
+      "Loca_nombre": "Johnson City (NY) - Binghamton/Endicott/Johnson",
       "Pais_nombre": "USA",
       "Aero_iata": "BGM"
     },
@@ -4171,7 +4171,7 @@
       "Aero_iata": "KNU"
     },
     {
-      "Loca_nombre": "Kansas Loca_nombre (MO) - Kansas Loca_nombre International Airport",
+      "Loca_nombre": "Kansas City (MO) - Kansas City International Airport",
       "Pais_nombre": "USA",
       "Aero_iata": "MCI"
     },
@@ -4706,7 +4706,7 @@
       "Aero_iata": "LCH"
     },
     {
-      "Loca_nombre": "Lake Havasu Loca_nombre (AZ)",
+      "Loca_nombre": "Lake Havasu City (AZ)",
       "Pais_nombre": "USA",
       "Aero_iata": "HII"
     },
@@ -4736,7 +4736,7 @@
       "Aero_iata": "LMP"
     },
     {
-      "Loca_nombre": "Lanai Loca_nombre (HI)",
+      "Loca_nombre": "Lanai City (HI)",
       "Pais_nombre": "USA",
       "Aero_iata": "LNY"
     },
@@ -5026,7 +5026,7 @@
       "Aero_iata": "LON"
     },
     {
-      "Loca_nombre": "London - Loca_nombre Airport",
+      "Loca_nombre": "London - City Airport",
       "Pais_nombre": "United Kingdom",
       "Aero_iata": "LCY"
     },
@@ -5109,11 +5109,6 @@
       "Loca_nombre": "Los Mochis",
       "Pais_nombre": "Mexico",
       "Aero_iata": "LMM"
-    },
-    {
-      "Loca_nombre": "Los Rodeos",
-      "Pais_nombre": "Teneriffa/Spain",
-      "Aero_iata": "TFN"
     },
     {
       "Loca_nombre": "Losinj - Losinj Arpt",
@@ -5506,7 +5501,7 @@
       "Aero_iata": "MSU"
     },
     {
-      "Loca_nombre": "Mason Loca_nombre IA",
+      "Loca_nombre": "Mason City IA",
       "Pais_nombre": "USA",
       "Aero_iata": "MCW"
     },
@@ -5666,22 +5661,22 @@
       "Aero_iata": "MXL"
     },
     {
-      "Loca_nombre": "Mexico Loca_nombre - Mexico Loca_nombre International Airport",
+      "Loca_nombre": "Mexico City - Mexico City International Airport",
       "Pais_nombre": "Mexico",
       "Aero_iata": "MEX"
     },
     {
-      "Loca_nombre": "Mexico Loca_nombre - Atizapan",
+      "Loca_nombre": "Mexico City - Atizapan",
       "Pais_nombre": "Mexico",
       "Aero_iata": "AZP"
     },
     {
-      "Loca_nombre": "Mexico Loca_nombre - Juarez International",
+      "Loca_nombre": "Mexico City - Juarez International",
       "Pais_nombre": "Mexico",
       "Aero_iata": "MEX"
     },
     {
-      "Loca_nombre": "Mexico Loca_nombre - Santa Lucia",
+      "Loca_nombre": "Mexico City - Santa Lucia",
       "Pais_nombre": "Mexico",
       "Aero_iata": "NLU"
     },
@@ -5746,7 +5741,7 @@
       "Aero_iata": "MQL"
     },
     {
-      "Loca_nombre": "Miles Loca_nombre (MT)",
+      "Loca_nombre": "Miles City (MT)",
       "Pais_nombre": "USA",
       "Aero_iata": "MLS"
     },
@@ -6556,7 +6551,7 @@
       "Aero_iata": "OKA"
     },
     {
-      "Loca_nombre": "Oklahoma Loca_nombre (OK) - Will Rogers World",
+      "Loca_nombre": "Oklahoma City (OK) - Will Rogers World",
       "Pais_nombre": "USA",
       "Aero_iata": "OKC"
     },
@@ -6676,11 +6671,6 @@
       "Aero_iata": "YOW"
     },
     {
-      "Loca_nombre": "Ouadda",
-      "Pais_nombre": "Central African Republic",
-      "Aero_iata": "ODA"
-    },
-    {
       "Loca_nombre": "Ouarzazate",
       "Pais_nombre": "Morocco",
       "Aero_iata": "OZZ"
@@ -6786,12 +6776,12 @@
       "Aero_iata": "PSP"
     },
     {
-      "Loca_nombre": "Panama Loca_nombre - Tocumen International",
+      "Loca_nombre": "Panama City - Tocumen International",
       "Pais_nombre": "Panama",
       "Aero_iata": "PTY"
     },
     {
-      "Loca_nombre": "Panama Loca_nombre (FL)",
+      "Loca_nombre": "Panama City (FL)",
       "Pais_nombre": "USA",
       "Aero_iata": "PFN"
     },
@@ -6971,7 +6961,7 @@
       "Aero_iata": "PTG"
     },
     {
-      "Loca_nombre": "Pilanesberg/Sun Loca_nombre",
+      "Loca_nombre": "Pilanesberg/Sun City ",
       "Pais_nombre": "South Africa",
       "Aero_iata": "NTY"
     },
@@ -7366,7 +7356,7 @@
       "Aero_iata": "RGN"
     },
     {
-      "Loca_nombre": "Rapid Loca_nombre (SD)",
+      "Loca_nombre": "Rapid City (SD)",
       "Pais_nombre": "USA",
       "Aero_iata": "RAP"
     },
@@ -7651,7 +7641,7 @@
       "Aero_iata": "SDS"
     },
     {
-      "Loca_nombre": "Saginaw/Bay Loca_nombre/Midland (MI)",
+      "Loca_nombre": "Saginaw/Bay City /Midland (MI)",
       "Pais_nombre": "USA",
       "Aero_iata": "MBS"
     },
@@ -7661,7 +7651,7 @@
       "Aero_iata": "SDT"
     },
     {
-      "Loca_nombre": "Saigon (Ho Chi Minh Loca_nombre)",
+      "Loca_nombre": "Saigon (Ho Chi Minh City )",
       "Pais_nombre": "Viet Nam",
       "Aero_iata": "SGN"
     },
@@ -7731,7 +7721,7 @@
       "Aero_iata": "SLA"
     },
     {
-      "Loca_nombre": "Salt Lake Loca_nombre (UT)",
+      "Loca_nombre": "Salt Lake City (UT)",
       "Pais_nombre": "USA",
       "Aero_iata": "SLC"
     },
@@ -8121,7 +8111,7 @@
       "Aero_iata": "SSH"
     },
     {
-      "Loca_nombre": "Sheffield, Loca_nombre Airport",
+      "Loca_nombre": "Sheffield, City Airport",
       "Pais_nombre": "United Kingdom",
       "Aero_iata": "SZD"
     },
@@ -8206,7 +8196,7 @@
       "Aero_iata": "SIX"
     },
     {
-      "Loca_nombre": "Sioux Loca_nombre IA",
+      "Loca_nombre": "Sioux City IA",
       "Pais_nombre": "USA",
       "Aero_iata": "SUX"
     },
@@ -8876,7 +8866,7 @@
       "Aero_iata": "TWB"
     },
     {
-      "Loca_nombre": "Toronto - Billy Bishop Toronto Loca_nombre Airport",
+      "Loca_nombre": "Toronto - Billy Bishop Toronto City Airport",
       "Pais_nombre": "Canada",
       "Aero_iata": "YTZ"
     },
@@ -8926,7 +8916,7 @@
       "Aero_iata": "TPS"
     },
     {
-      "Loca_nombre": "Traverse Loca_nombre (MI)",
+      "Loca_nombre": "Traverse City (MI)",
       "Pais_nombre": "USA",
       "Aero_iata": "TVC"
     },
@@ -9186,7 +9176,7 @@
       "Aero_iata": "UPP"
     },
     {
-      "Loca_nombre": "Uranium Loca_nombre",
+      "Loca_nombre": "Uranium City ",
       "Pais_nombre": "Canada",
       "Aero_iata": "YBE"
     },

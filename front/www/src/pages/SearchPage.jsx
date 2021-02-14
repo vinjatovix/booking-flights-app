@@ -7,21 +7,13 @@ import { useAuthContext } from '../context/Auth.context';
 import * as A from '../context/flight/Flight.actions';
 
 /* COMPONENTS */
+import { Article } from '../components/common/Article';
 import { SearchForm } from '../components/SearchFlight/SearchForm';
 import { ResponseFlight } from '../components/SearchFlight/ResponseFlight';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
-// import { Loading } from '../components/common/Loading/Loading';
-
-/* STYLES */
-import { Article } from '../components/common/Article';
-
-import { airports } from '../utils/airports.json';
-const seedWords = airports.map((element, i) => ({ id: i, ...element }));
-console.log(seedWords);
 
 export const SearchPage = ({ action, title, menu }) => {
-  const [order, setOrder] = useState('');
-
+  const [{ logged }] = useAuthContext([]);
   const [
     {
       adults,
@@ -39,44 +31,43 @@ export const SearchPage = ({ action, title, menu }) => {
     },
     dispatch,
   ] = useFlightContext();
-
-  const [{ logged }] = useAuthContext([]);
+  const [order, setOrder] = useState('');
   useEffect(() => {}, [order, response, menu]);
+
+  const searchFormProps = {
+    menu: menu,
+    adults: adults,
+    departureDate: departureDate,
+    destinationLocationCode: destinationLocationCode,
+    dispatch: dispatch,
+    endPoint: action,
+    loading: loading,
+    max: max,
+    maxPrice: maxPrice,
+    nonStop: nonStop,
+    oneWay: oneWay,
+    originLocationCode: originLocationCode,
+    returnDate: returnDate,
+    searching: searching,
+    title: title,
+  };
+
+  const headerProps = {
+    dispatch: dispatch,
+    originLocationCode: originLocationCode,
+    destinationLocationCode: destinationLocationCode,
+    departureDate: departureDate,
+    returnDate: returnDate,
+    searching: searching,
+    adults: adults,
+    setOrder: setOrder,
+    response: response,
+  };
 
   return (
     <>
-      {!searching && (
-        <SearchForm
-          menu={menu}
-          adults={adults}
-          departureDate={departureDate}
-          destinationLocationCode={destinationLocationCode}
-          dispatch={dispatch}
-          endPoint={action}
-          loading={loading}
-          max={max}
-          maxPrice={maxPrice}
-          nonStop={nonStop}
-          oneWay={oneWay}
-          originLocationCode={originLocationCode}
-          returnDate={returnDate}
-          searching={searching}
-          title={title}
-        />
-      )}
-      {/* {loading && <Loading />} */}
-      {response.adults && (
-        <ResponseHeader
-          dispatch={dispatch}
-          originLocationCode={originLocationCode}
-          destinationLocationCode={destinationLocationCode}
-          departureDate={departureDate}
-          returnDate={returnDate}
-          searching={searching}
-          adults={adults}
-          setOrder={setOrder}
-        />
-      )}
+      {!searching && <SearchForm {...searchFormProps} />}
+      {response.adults && <ResponseHeader {...headerProps} />}
 
       <ul className="Response-list">
         {typeof response?.data === 'string' && searching && (
