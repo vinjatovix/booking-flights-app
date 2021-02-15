@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
@@ -59,6 +59,8 @@ const App = () => {
 
   const [token, setToken] = useLocalStorage(JSON.parse(localStorage.getItem('token')) || '', 'token');
 
+  const [showModal, setShowModal] = useState(true)
+
   useEffect(() => {
     askMeForToken(logged, token, dispatch);
   }, [token, logged, dispatch]);
@@ -94,9 +96,9 @@ const App = () => {
       <Router>
         <Header {...controlProps} />
         <Main className={`app-main ${css}`} {...controlProps}>
-          <CustomModal isActive={false} title="Latte and Code" handleClose={() => {}}>
+          {showModal && <CustomModal title="Latte and Code" handleClose={() => setShowModal(false)}>
             <div>useModal custom hook</div>
-          </CustomModal>
+          </CustomModal>}
           <Switch>
             <Route path="/login">
               <PublicRoute>

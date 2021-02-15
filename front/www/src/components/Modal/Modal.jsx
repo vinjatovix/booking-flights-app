@@ -1,27 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Modal, ModalBackground, ModalContent, ModalClose, Title } from 'bloomer';
 import './modal.css';
 
-export const CustomModal = ({ isActive, children, title, handleClose }) => {
-  console.log(isActive);
+export const CustomModal = ({ children, title, handleClose }) => {
   return (
-    <Modal>
-      <ModalBackground onClick={handleClose} />
-      <ModalContent style={{ backgroundColor: 'white', padding: '2rem', maxWidth: '90vw' }}>
-        <Title className="modal-title" isSize={6}>
-          {title}
-        </Title>
-        {children}
-      </ModalContent>
-      <ModalClose onClick={handleClose} />
-    </Modal>
+    <div className="modal-wrapper" onClick={handleClose}>
+      <div className="modal">
+        <button onClick={handleClose}>X</button>
+        <h1>{title}</h1>
+        <div className="modal-content">{children}</div>
+      </div>
+    </div>
   );
-};
-
-CustomModal.propTypes = {
-  children: PropTypes.element.isRequired,
-  title: PropTypes.string.isRequired,
-  isActive: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired,
 };
