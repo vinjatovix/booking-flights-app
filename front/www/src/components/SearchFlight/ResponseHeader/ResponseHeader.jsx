@@ -20,6 +20,7 @@ export const ResponseHeader = React.memo((props) => {
     children,
   } = props;
 
+  // console.log('props', props);
   const salida = formatHeaderDate(departureDate);
   const llegada = formatHeaderDate(returnDate);
 

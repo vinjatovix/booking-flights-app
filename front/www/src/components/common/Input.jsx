@@ -1,29 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-export const Input = React.memo(({ id, name, placeholder, required, type, value, setValue, ...item }) => {
-  return (
-    <input
-      id={id}
-      key={id}
-      name={name}
-      placeholder={placeholder}
-      required={required}
-      type={type}
-      value={value}
-      {...item}
-    />
-  );
+export const Input = React.memo((item) => {
+  const { r, id, name, ...extra } = item;
+  return <input key={id} name={name} ref={r} {...extra} />;
 });
-Input.propTypes = {
-  id: PropTypes.string.isRequired,
-  item: PropTypes.object,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  required: PropTypes.string,
-};
-Input.defaultProps = {
-  type: 'text',
-  placeholder: 'placeholder',
-  required: null,
-};

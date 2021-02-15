@@ -12,7 +12,7 @@ import { SearchForm } from '../components/SearchFlight/SearchForm';
 import { ResponseFlight } from '../components/SearchFlight/ResponseFlight';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
 
-export const SearchPage = ({ action, title, menu }) => {
+export const SearchPage = ({ endPoint, title, menu }) => {
   const [{ logged }] = useAuthContext([]);
   const [
     {
@@ -40,7 +40,7 @@ export const SearchPage = ({ action, title, menu }) => {
     departureDate: departureDate,
     destinationLocationCode: destinationLocationCode,
     dispatch: dispatch,
-    endPoint: action,
+    endPoint: endPoint,
     loading: loading,
     max: max,
     maxPrice: maxPrice,

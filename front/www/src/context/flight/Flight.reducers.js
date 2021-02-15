@@ -1,6 +1,5 @@
 import * as C from './Flight.constants';
 
-
 export const initialFlightFormState = {
   adults: 1,
   currencyCode: 'EUR',
@@ -32,10 +31,12 @@ export const FlightReducer = (state, { type, payload }) => {
         ...state,
         [`${payload.name}`]: `${payload.value}`,
       };
-    case C.SET_SEARCH_STATUS:
+    case C.FLIGHT_SET_QUESTION:
       return {
         ...state,
-        searching: true,
+        ...payload,
+        nonStop: payload.nonStop === 'Directo',
+        loading: true,
       };
     case C.FLIGHT_SET_RESPONSE:
       return {

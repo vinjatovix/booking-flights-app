@@ -11,7 +11,7 @@
     "buscar buscar";
   justify-content: center;
 }
-.SearchForm >*{
+.SearchForm > * {
   width: 40vw;
   max-width: 325px;
 }
@@ -49,6 +49,12 @@
   width: 85vw;
   max-width: 680px;
 }
+.SearchForm__suggestion {
+  padding: 0.8rem;
+  
+  max-width: 10vw;
+}
+
 #originLocationCode input,
 #destinationLocationCode input {
   background-position: 1rem;
@@ -71,8 +77,6 @@
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
-  
-  
 }
 #departureDate {
   max-width: 325px;

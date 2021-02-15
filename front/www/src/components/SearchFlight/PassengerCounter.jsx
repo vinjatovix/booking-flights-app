@@ -3,7 +3,7 @@ import * as A from '../../context/flight/Flight.actions';
 import { useCounter } from '../../hooks/useCounter';
 import { Input } from '../common/Input';
 
-export const PassengerCounter = React.memo(({ adults, dispatch }) => {
+export const PassengerCounter = React.memo(({ adults, dispatch, r }) => {
   const { state: passengers, increment, decrement } = useCounter(adults);
 
   useEffect(() => {
@@ -23,10 +23,11 @@ export const PassengerCounter = React.memo(({ adults, dispatch }) => {
         }}
       />
       <Input
+        r={r}
         className="SearchForm__passengers-value"
         style={{ borderRadius: 0 }}
         type="number"
-        name="passengers"
+        name="adults"
         id="passengers"
         placeholder="1"
         onChange={() => dispatch(A.setNumber({ name: 'adults', value: passengers }))}

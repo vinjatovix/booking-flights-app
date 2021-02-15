@@ -10,7 +10,7 @@ export const path = {
 
 export const searchProps = {
   title: 'Buscador',
-  action: path.flights,
+  endPoint: path.flights,
 };
 export const aboutProps = {
   action: path.about,
