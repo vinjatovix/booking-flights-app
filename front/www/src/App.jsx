@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
@@ -17,7 +17,6 @@ import { SearchPage } from './pages/SearchPage';
 /* COMPONENTES */
 import { Header } from './components/Header/Header';
 import { Main } from './components/common/Main';
-import { Menu } from './components/Menu/Menu';
 import { Footer } from './components/common/Footer';
 import { aboutProps, searchProps } from './pageProps';
 import { CustomModal } from './components/Modal/Modal';
@@ -51,15 +50,13 @@ const App = () => {
       profile_pass,
       profile_bookings,
       profile_tools,
-      css,
       modal,
+      modal_data,
     },
     dispatch,
   ] = useAuthContext();
 
   const [token, setToken] = useLocalStorage(JSON.parse(localStorage.getItem('token')) || '', 'token');
-
-  const [showModal, setShowModal] = useState(true)
 
   useEffect(() => {
     askMeForToken(logged, token, dispatch);
@@ -67,11 +64,6 @@ const App = () => {
   /* 
   ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
    */
-
-  useEffect(() => {
-    modal === true ? dispatch(A.changeCss({ css: 'blur' })) : dispatch(A.changeCss({ css: 'focus' }));
-  }, [modal]);
-
   const profileProps = {
     profile_data,
     profile_pass,
@@ -89,16 +81,20 @@ const App = () => {
     photo,
     setToken,
     token,
+    modal,
   };
+  console.log(modal);
 
   return (
     <div className="App">
       <Router>
         <Header {...controlProps} />
-        <Main className={`app-main ${css}`} {...controlProps}>
-          {showModal && <CustomModal title="Latte and Code" handleClose={() => setShowModal(false)}>
-            <div>useModal custom hook</div>
-          </CustomModal>}
+        <Main className="app-main" {...controlProps}>
+          {modal && (
+            <CustomModal handleClose={() => dispatch(A.switchBoolean({ name: 'modal', value: modal }))}>
+              {modal_data}
+            </CustomModal>
+          )}
           <Switch>
             <Route path="/login">
               <PublicRoute>

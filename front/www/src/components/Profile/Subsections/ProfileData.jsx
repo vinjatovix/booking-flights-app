@@ -3,9 +3,9 @@ import '../profile.css';
 import ProfilePhoto from '../../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import * as A from '../../../context/Auth.actions';
 import edit from '../../../assets/svg/pen-solid.svg';
-import { CustomModal } from '../../Modal/Modal';
 
-export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email }) => {
+export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email, modal }) => {
+  console.log(modal);
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
@@ -22,7 +22,13 @@ export const ProfileData = ({ profile_data, photo, dispatch, username, bio, emai
             <h5>Nickname</h5>
             <h4>{username}</h4>
           </div>
-          <img src={edit} alt="boton-de-editar" />
+          <img
+            src={edit}
+            alt="boton-de-editar"
+            onClick={() => {
+              dispatch(A.switchBoolean({ name: 'modal', value: modal }));
+            }}
+          />
         </li>
         <li className="profile-bio">
           <div>

@@ -25,7 +25,7 @@ export const switchBoolean = (payload) => ({
   payload,
 });
 
-export const changeCss = (payload) => ({
-  type: C.CHANGE_CSS,
+export const changeModalData = (payload) => ({
+  type: C.CHANGE_MODAL_DATA,
   payload,
 });
