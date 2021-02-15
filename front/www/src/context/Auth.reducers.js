@@ -17,6 +17,7 @@ export const initialState = {
   profile_bookings: false,
   profile_tools: false,
   modal: false,
+  css: null,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */
@@ -62,6 +63,11 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         [`${payload.name}`]: !payload.value,
+      };
+    case C.CHANGE_CSS:
+      return {
+        ...state,
+        css: payload.css,
       };
 
     default:

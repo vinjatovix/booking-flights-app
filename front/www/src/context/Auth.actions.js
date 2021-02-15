@@ -24,3 +24,8 @@ export const switchBoolean = (payload) => ({
   type: C.SWITCH_BOOLEAN,
   payload,
 });
+
+export const changeCss = (payload) => ({
+  type: C.CHANGE_CSS,
+  payload,
+});

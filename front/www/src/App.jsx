@@ -20,6 +20,7 @@ import { Main } from './components/common/Main';
 import { Menu } from './components/Menu/Menu';
 import { Footer } from './components/common/Footer';
 import { aboutProps, searchProps } from './pageProps';
+import { CustomModal } from './components/Modal/Modal';
 
 /* HOOKS */
 import { FlightReducer, initialFlightFormState } from './context/flight/Flight.reducers';
@@ -27,6 +28,9 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { PublicRoute } from './components/common/PublicRoute';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { askMeForToken } from './utils/askMeForToken';
+
+/* ACTIONS*/
+import * as A from './context/Auth.actions';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -36,7 +40,20 @@ const App = () => {
   ? y el segundo el método para manipular estos estados 
   */
   const [
-    { menu, logged, username, email, bio, photo, profile_data, profile_pass, profile_bookings, profile_tools },
+    {
+      menu,
+      logged,
+      username,
+      email,
+      bio,
+      photo,
+      profile_data,
+      profile_pass,
+      profile_bookings,
+      profile_tools,
+      css,
+      modal,
+    },
     dispatch,
   ] = useAuthContext();
 
@@ -48,6 +65,11 @@ const App = () => {
   /* 
   ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
    */
+
+  useEffect(() => {
+    modal === true ? dispatch(A.changeCss({ css: 'blur' })) : dispatch(A.changeCss({ css: 'focus' }));
+  }, [modal]);
+
   const profileProps = {
     profile_data,
     profile_pass,
@@ -71,7 +93,10 @@ const App = () => {
     <div className="App">
       <Router>
         <Header {...controlProps} />
-        <Main className="app-main" {...controlProps}>
+        <Main className={`app-main ${css}`} {...controlProps}>
+          <CustomModal isActive={false} title="Latte and Code" handleClose={() => {}}>
+            <div>useModal custom hook</div>
+          </CustomModal>
           <Switch>
             <Route path="/login">
               <PublicRoute>
