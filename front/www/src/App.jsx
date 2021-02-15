@@ -83,18 +83,13 @@ const App = () => {
     token,
     modal,
   };
-  console.log(modal);
 
   return (
     <div className="App">
       <Router>
         <Header {...controlProps} />
         <Main className="app-main" {...controlProps}>
-          {modal && (
-            <CustomModal handleClose={() => dispatch(A.switchBoolean({ name: 'modal', value: modal }))}>
-              {modal_data}
-            </CustomModal>
-          )}
+          {modal && <CustomModal>{modal_data}</CustomModal>}
           <Switch>
             <Route path="/login">
               <PublicRoute>

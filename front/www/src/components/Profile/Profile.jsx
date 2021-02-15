@@ -5,12 +5,11 @@ import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg
 import { switchBoolean } from '../../context/Auth.actions';
 
 export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings }) => {
-  console.log(photo);
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
   } else logo = photo;
-  console.log(logo);
+
   return (
     <section className="profile-main">
       <header>

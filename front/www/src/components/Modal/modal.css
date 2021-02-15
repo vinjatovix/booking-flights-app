@@ -1,18 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
 
 .modal-wrapper {
-    position: fixed;
-    top:0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,.5);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
-    display: grid;
-    place-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: grid;
+  place-content: center;
 }
 
 .modal {
-    background: white;;
-    padding: 2rem;
+  background: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal button {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  width: 100px;
+  margin: 0;
+  padding: 0.25rem;
+  font-size: 14px;
+  font-family: 'atkinson';
+  text-shadow: none;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#update-nickname {
+  margin: 1rem 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button-close {
+  background-color: rgb(255, 10, 10);
+}
+
+.button-submit {
+  background-color: rgb(22, 209, 22);
 }
