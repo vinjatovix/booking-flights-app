@@ -13,7 +13,6 @@ import { PassengerCounter } from './PassengerCounter';
 import * as A from '../../context/flight/Flight.actions';
 import { createUrl } from './createUrl';
 
-
 import './searchForm.css';
 import { useForm } from 'react-hook-form';
 import { resetReturnDate } from './resetReturnDate';
@@ -129,11 +128,11 @@ export const SearchForm = ({
     r: register,
     className: 'SearchForm__price radius',
     type: 'number',
-    name: 'price',
+    name: 'maxPrice',
     id: 'price',
     placeholder: 'Max €',
     value: maxPrice,
-    onChange: (e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value })),
+    handler: (e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value })),
   };
   const originAirportProps = {
     r: register,
