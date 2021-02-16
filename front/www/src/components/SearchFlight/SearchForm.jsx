@@ -131,7 +131,7 @@ export const SearchForm = ({
     name: 'maxPrice',
     id: 'price',
     placeholder: 'Max €',
-    value: maxPrice,
+    // value: +maxPrice,
     handler: (e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value })),
   };
   const originAirportProps = {
