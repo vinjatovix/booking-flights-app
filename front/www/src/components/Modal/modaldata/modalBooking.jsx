@@ -4,8 +4,10 @@ import Linea from '../../../assets/svg/linea.svg';
 import Avion from '../../../assets/svg/avion.svg';
 
 export const GetBooking = ({ props }) => {
-  const { dispatch, modal, item } = props;
+  const { dispatch, modal, item, iata, date } = props;
   console.log(item);
+  console.log(iata);
+  console.log(date);
   return (
     <>
       <header className="modal-booking-header">
@@ -14,17 +16,17 @@ export const GetBooking = ({ props }) => {
           <small>0.6</small>
         </section>
         <section className="booking-header-2">
-          <h5>ID: 9823758</h5>
+          <h5>{`ID: ${item.details.id}`}</h5>
         </section>
       </header>
       <section className="booking-towns">
         <div className="booking-towns-1">
-          <h5>Barcelona</h5>
-          <h1>BCN</h1>
+          <h5>{iata[2]}</h5>
+          <h1>{iata[0]}</h1>
         </div>
         <div className="booking-towns-2">
           <h5>Múnich</h5>
-          <h1>MUC</h1>
+          <h1>{iata[1]}</h1>
         </div>
       </section>
       <main className="modal-booking-main">

@@ -40,7 +40,7 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
               onClick={() => {
                 dispatch(
                   A.changeModalData({
-                    modal_data: <GetBooking props={{ dispatch, modal, item }} />,
+                    modal_data: <GetBooking props={{ dispatch, modal, item, iata, date }} />,
                   })
                 );
                 dispatch(A.switchBoolean({ name: 'modal', value: modal }));
