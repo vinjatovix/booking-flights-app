@@ -32,7 +32,6 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
       <h3 className="profile-title">Mis reservas</h3>
       <ul className="flight-offer">
         {bookings.map((item) => {
-          console.log(item);
           const date = formatDate(item);
           const iata = getIata(item);
           return (
