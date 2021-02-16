@@ -1,7 +1,7 @@
 .app-header {
   align-items: center;
   background-color: #fff;
-  background-image: url("../../assets/svg/plane-arrival-solid.svg");
+  background-image: url('../../assets/svg/plane-arrival-solid.svg');
   background-position: 0.5rem center;
   background-repeat: no-repeat;
   background-size: 2rem;
@@ -22,4 +22,5 @@
   padding: 0.25rem;
   height: 2rem;
   margin: 0 1rem;
+  fill: red;
 }
