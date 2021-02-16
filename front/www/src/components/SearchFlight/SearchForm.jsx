@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 /* COMPONENTS */
+import { AirportSelector } from './AirportSelector';
 import { Article } from '../common/Article';
+import { Dates } from './ResponseHeader/SearchForm/Dates';
+import { ErrorMessage } from '../common/ErrorMessage';
+import { Input } from '../common/Input';
+import { Loading } from '../common/Loading/Loading';
 import { PassengerCounter } from './PassengerCounter';
 
 /* ACTIONS */
 import * as A from '../../context/flight/Flight.actions';
 import { createUrl } from './createUrl';
 
-import { AirportSelector } from './AirportSelector';
-import { ErrorMessage } from '../common/ErrorMessage';
-import { Input } from '../common/Input';
 
 import './searchForm.css';
-import { Loading } from '../common/Loading/Loading';
 import { useForm } from 'react-hook-form';
 import { resetReturnDate } from './resetReturnDate';
 
@@ -67,8 +68,8 @@ export const SearchForm = ({
       nonStop,
       oneWay,
     } = data;
+
     if (oneWay === 'Solo ida') {
-      console.log(oneWay, 'en el if');
       dispatch(A.setString({ name: 'returnDate', value: null }));
     }
     dispatch(A.setFlightQuestion(data));
@@ -101,6 +102,62 @@ export const SearchForm = ({
     }
   };
 
+  const tripProps = {
+    r: register,
+    className: 'SearchForm__trip radius',
+    type: 'button',
+    name: 'oneWay',
+    id: 'trip',
+    value: tripValue,
+    onClick: resetReturnDate(dispatch, oneWay),
+  };
+  const passengerProps = {
+    r: register,
+    dispatch: dispatch,
+    adults: adults,
+  };
+  const nonStopProps = {
+    r: register,
+    className: 'SearchForm__nonStop radius',
+    type: 'button',
+    name: 'nonStop',
+    id: 'escales',
+    value: stopsValue,
+    onClick: () => dispatch(A.switchBoolean({ name: 'nonStop', value: nonStop })),
+  };
+  const priceProps = {
+    r: register,
+    className: 'SearchForm__price radius',
+    type: 'number',
+    name: 'price',
+    id: 'price',
+    placeholder: 'Max €',
+    value: maxPrice,
+    onChange: (e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value })),
+  };
+  const originAirportProps = {
+    r: register,
+    placeholder: 'Compostela',
+    name: 'originLocationCode',
+    value: originLocationCode,
+    dispatch: dispatch,
+  };
+  const destinationAirportProps = {
+    r: register,
+    placeholder: 'London',
+    name: 'destinationLocationCode',
+    value: destinationLocationCode,
+    dispatch: dispatch,
+  };
+  const datesProps = {
+    r: register,
+    className: 'SearchForm__dates',
+    departureDate: departureDate,
+    returnDate: returnDate,
+    dispatch: dispatch,
+    oneWay: oneWay,
+  };
+
   return (
     <Article title={title} className={css}>
       <form
@@ -110,76 +167,16 @@ export const SearchForm = ({
         encType="multipart/form-data"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Input
-          r={register}
-          className="SearchForm__trip radius"
-          type="button"
-          name="oneWay"
-          id="trip"
-          value={tripValue}
-          onClick={resetReturnDate(dispatch, oneWay)}
-        />
-        <PassengerCounter r={register} adults={adults} dispatch={dispatch} />
-        <Input
-          r={register}
-          className="SearchForm__nonStop radius"
-          type="button"
-          name="nonStop"
-          id="escales"
-          value={stopsValue}
-          onClick={() => dispatch(A.switchBoolean({ name: 'nonStop', value: nonStop }))}
-        />
-        <Input
-          r={register}
-          className="SearchForm__price radius"
-          type="number"
-          name="price"
-          id="price"
-          placeholder="Max €"
-          onClick={(e) => e.preventDefault()}
-          onChange={(e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value }))}
-        />
+        <Input {...tripProps} />
+        <PassengerCounter {...passengerProps} />
+        <Input {...nonStopProps} />
+        <Input {...priceProps} />
+        <AirportSelector {...originAirportProps} />
+        <AirportSelector {...destinationAirportProps} />
+        <Dates {...datesProps} />
 
-        <AirportSelector
-          placeholder="Compostela"
-          name="originLocationCode"
-          value={originLocationCode}
-          dispatch={dispatch}
-          r={register}
-        />
-
-        <AirportSelector
-          placeholder="London"
-          name="destinationLocationCode"
-          value={destinationLocationCode}
-          dispatch={dispatch}
-          r={register}
-        />
-
-        <fieldset className="SearchForm__dates">
-          <Input
-            r={register}
-            className="SearchForm__dates-departure radius"
-            type="date"
-            name="departureDate"
-            id="departureDate"
-            value={departureDate}
-            onChange={(e) => dispatch(A.setString({ name: 'departureDate', value: e.target.value }))}
-            required="required"
-          />
-          {!oneWay && (
-            <Input
-              r={register}
-              className="SearchForm__dates-return radius"
-              type="date"
-              name="returnDate"
-              id="returnDate"
-              onChange={(e) => dispatch(A.setString({ name: 'returnDate', value: e.target.value }))}
-            />
-          )}
-        </fieldset>
         {!searching && !loading ? (
-          <Input className="button radius" id="submit-button" type="submit" value="Buscar" />
+          <Input className="radius" id="submit-button" type="submit" value="Buscar" />
         ) : (
           <Loading />
         )}
