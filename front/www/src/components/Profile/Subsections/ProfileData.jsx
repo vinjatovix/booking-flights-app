@@ -3,7 +3,7 @@ import '../profile.css';
 import ProfilePhoto from '../../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import * as A from '../../../context/Auth.actions';
 import edit from '../../../assets/svg/pen-solid.svg';
-import { UpdateNickname, UpdateBio, UpdatePhoto } from '../../Modal/modalContainerData';
+import { UpdateNickname, UpdateBio, UpdatePhoto } from '../../Modal/modaldata/modalContainerData';
 
 export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email, modal }) => {
   let logo = '';
