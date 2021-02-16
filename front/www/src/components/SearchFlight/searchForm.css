@@ -49,12 +49,6 @@
   width: 85vw;
   max-width: 680px;
 }
-.SearchForm__suggestion {
-  padding: 0.8rem;
-
-  max-width: 10vw;
-}
-
 #originLocationCode input,
 #destinationLocationCode input {
   background-position: 1rem;
@@ -78,17 +72,16 @@
   flex-direction: row;
   gap: 1.5rem;
 }
-.SearchForm__dates-departure {
+.SearchForm__dates > * {
   max-width: 325px;
   width: 40vw;
   width: 39.5vw;
+}
+.SearchForm__dates-departure {
   grid-area: salida;
 }
 
 .SearchForm__dates-return {
-  max-width: 325px;
-  width: 40vw;
-  width: 39.5vw;
   grid-area: retorno;
 }
 .SearchForm [type="submit"] {
@@ -99,7 +92,8 @@
   font-weight: bold;
   grid-area: buscar;
   margin: 1rem;
-  max-width: 320px;
+  max-width: 150px;
+  min-width: 120px;
   padding: 1rem;
   text-decoration: none;
   text-shadow: 2px 2px 3px rgb(0, 0, 0);

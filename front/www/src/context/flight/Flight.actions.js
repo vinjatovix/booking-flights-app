@@ -17,7 +17,6 @@ export const setString = (payload) => ({
   payload,
 });
 export const setFlightQuestion = (payload) => {
-  console.log('payload', payload);
   return {
     type: C.FLIGHT_SET_QUESTION,
     payload,

@@ -1,7 +1,6 @@
 export const padNumber = (number) => `${number}`.padStart(2, '0');
 
 export const formatDate = (date) => {
-  console.log('date', date);
   const s = padNumber(date.getSeconds());
   const m = padNumber(date.getMinutes());
   const h = padNumber(date.getHours());

@@ -1,0 +1,66 @@
+.Response-empty {
+    background-image: url("../../../assets/svg/wind.svg");
+    background-repeat: no-repeat;
+    background-size: 2.5rem;
+    background-position: 55vw 1vh;
+}
+.Response-list {
+    display: grid;
+    gap: 0.5rem;
+}
+.hide {
+    display: none;
+}
+.Flight {
+    border: 2px groove rgba(40, 68, 161, 0.418);
+    box-shadow: inset -3px -2px 10px rgba(69, 76, 117, 0.418), inset 2px 2px 10px rgba(62, 62, 88, 0.336);
+    padding: 1rem 0.4rem;
+    background-color: rgba(255, 255, 255, 0.863);
+    display: grid;
+    grid-template-columns: 3.5fr 1fr;
+    grid-template-areas: "itinerary offer" "itinerary offer";
+    align-items: center;
+}
+
+.Itinerary__offer-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    grid-area: offer;
+    font-size: 1.5rem;
+}
+
+.Itinerary {
+    gap: 0.2rem;
+    display: flex;
+    flex-direction: column;
+}
+.Itinerary > * {
+    justify-content: center;
+    display: flex;
+    gap: 1rem;
+}
+.Itinerary__airports {
+    font-size: 13px;
+}
+
+.Itinerary__booking-trigger {
+    background-image: url("../../../assets/svg/heart-regular.svg");
+    background-repeat: no-repeat;
+
+    width: 2rem;
+    height: 2rem;
+}
+.stops1 {
+    width: 3rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../../../assets/svg/stop1.svg");
+}
+.stops2 {
+    width: 3rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../../../assets/svg/stop2.svg");
+}
