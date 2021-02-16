@@ -22,7 +22,7 @@ export const setFlightQuestion = (payload) => {
     payload,
   };
 };
-export const saveResponse = (payload) => ({
+export const setResponse = (payload) => ({
   type: C.FLIGHT_SET_RESPONSE,
   payload,
 });

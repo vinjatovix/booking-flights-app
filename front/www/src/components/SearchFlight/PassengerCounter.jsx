@@ -5,6 +5,7 @@ import { Input } from '../common/Input';
 
 export const PassengerCounter = React.memo(({ adults, dispatch, r }) => {
   const { state: passengers, increment, decrement } = useCounter(adults);
+  console.log('RENDER PASAJEROS');
 
   useEffect(() => {
     dispatch(A.setNumber({ name: 'adults', value: passengers }));
