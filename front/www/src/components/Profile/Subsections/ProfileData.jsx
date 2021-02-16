@@ -3,7 +3,7 @@ import '../profile.css';
 import ProfilePhoto from '../../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import * as A from '../../../context/Auth.actions';
 import edit from '../../../assets/svg/pen-solid.svg';
-import { UpdateNickname } from '../../Modal/modalContainerData';
+import { UpdateNickname, UpdateBio } from '../../Modal/modalContainerData';
 
 export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email, modal }) => {
   let logo = '';
@@ -40,7 +40,18 @@ export const ProfileData = ({ profile_data, photo, dispatch, username, bio, emai
             <h5>Biografía</h5>
             <h4>{bio}</h4>
           </div>
-          <img src={edit} alt="boton-de-editar" />
+          <img
+            src={edit}
+            alt="boton-de-editar"
+            onClick={() => {
+              dispatch(
+                A.changeModalData({
+                  modal_data: <UpdateBio props={{ dispatch, modal }} />,
+                })
+              );
+              dispatch(A.switchBoolean({ name: 'modal', value: modal }));
+            }}
+          />
         </li>
         <li className="profile-email">
           <div>
