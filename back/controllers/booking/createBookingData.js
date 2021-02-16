@@ -2,7 +2,7 @@
 
 const { getBookingDetail, getFligthData, getCompany } = require('../../repositories/booking/booking-repository');
 
-const { getAirport } = require('../../repositories/location/location-repository');
+const { getAirport, getTown } = require('../../repositories/location/location-repository');
 /**
  * Crea objetos con las distintas reservas del usuario
  *
@@ -21,11 +21,16 @@ async function createBookingData(bookings) {
     const airport2 = await getAirport(fligthData[0].Vue_destinoID);
     //Recuperamos el nombre de las compañías
     const company = await getCompany(fligthData[0].Vue_companyID);
+    const originTown = await getTown(airport1[0].Aero_LocaID);
+    const destinationTown = await getTown(airport2[0].Aero_LocaID);
+
     const data = {
       vuelo_Ida: {
         origen: airport1[0].Aero_nombre,
         destino: airport2[0].Aero_nombre,
         salida: fligthData[0].Vue_horaSalida,
+        locaOrigen: originTown[0].Loca_nombre,
+        locaDesti: destinationTown[0].Loca_nombre,
         llegada: fligthData[0].Vue_horaLlegada,
         escalas: fligthData[0].Vue_paradas,
         compañía: company[0].Cmp_nombre,
@@ -38,9 +43,14 @@ async function createBookingData(bookings) {
       const airport1 = await getAirport(fligthData[0].Vue_origenID);
       const airport2 = await getAirport(fligthData[0].Vue_destinoID);
       const company = await getCompany(fligthData[0].Vue_companyID);
+      const originTown = await getTown(airport1[0].Aero_LocaID);
+      const destinationTown = await getTown(airport2[0].Aero_LocaID);
+
       data.vuelo_Vuelta = {
         origen: airport1[0].Aero_nombre,
         destino: airport2[0].Aero_nombre,
+        locaOrigen: originTown[0].Loca_nombre,
+        locaDesti: destinationTown[0].Loca_nombre,
         salida: fligthData[0].Vue_horaSalida,
         llegada: fligthData[0].Vue_horaLlegada,
         escalas: fligthData[0].Vue_paradas,

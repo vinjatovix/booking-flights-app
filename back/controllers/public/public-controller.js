@@ -79,6 +79,11 @@ function showAbout(req, res) {
         linkText: 'Freepik',
       },
       {
+        name: 'avion',
+        url: 'https://www.flaticon.com/authors/freepik',
+        linkText: 'Freepik',
+      },
+      {
         name: 'bars-solid',
         url: 'https://www.flaticon.com/authors/google',
         linkText: 'Google',
@@ -140,6 +145,11 @@ function showAbout(req, res) {
       },
       {
         name: 'informacion',
+        url: 'https://www.flaticon.com/authors/freepik',
+        linkText: 'Freepik',
+      },
+      {
+        name: 'linea',
         url: 'https://www.flaticon.com/authors/freepik',
         linkText: 'Freepik',
       },

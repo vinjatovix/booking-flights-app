@@ -10,6 +10,7 @@ const { getCityByName } = require('./getCityByName');
 const { getCountryIdByCode } = require('./getCountryIdByCode');
 const { getCountryByCode } = require('./getCountryByCode');
 const { getCountryByName } = require('./getCountryByName');
+const { getTown } = require('./getTown');
 
 module.exports = {
   createAirline,
@@ -22,4 +23,5 @@ module.exports = {
   getCountryIdByCode,
   getCountryByCode,
   getCountryByName,
+  getTown,
 };
