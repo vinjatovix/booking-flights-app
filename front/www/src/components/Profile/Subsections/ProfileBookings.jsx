@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { formatDate, monthName } from '../../../utils/dateUtils';
 import { getIata } from '../../../utils/getIata';
+import { GetBooking } from '../../Modal/modaldata/modalBooking';
+import * as A from '../../../context/Auth.actions';
 import '../profile.css';
 
-export const ProfileBookings = ({ dispatch, profile_bookings }) => {
+export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
   const [bookings, setBookings] = useState([]);
   const token = JSON.parse(localStorage.getItem('token'));
   const css = {
@@ -30,10 +32,21 @@ export const ProfileBookings = ({ dispatch, profile_bookings }) => {
       <h3 className="profile-title">Mis reservas</h3>
       <ul className="flight-offer">
         {bookings.map((item) => {
+          console.log(item);
           const date = formatDate(item);
           const iata = getIata(item);
           return (
-            <li key={`RC_ID:${item.details.id}`}>
+            <li
+              key={`RC_ID:${item.details.id}`}
+              onClick={() => {
+                dispatch(
+                  A.changeModalData({
+                    modal_data: <GetBooking props={{ dispatch, modal, item }} />,
+                  })
+                );
+                dispatch(A.switchBoolean({ name: 'modal', value: modal }));
+              }}
+            >
               <section className="booking-date">
                 <p>{date[0]}</p>
                 <p>{monthName(+date[1] - 1).toUpperCase()}</p>
