@@ -178,6 +178,17 @@ img[alt='boton-de-editar'] {
   margin-bottom: 1rem;
 }
 
+.button-edit-pass {
+  background-color: black;
+  color: white;
+  border-radius: 2rem;
+  font-size: 16px;
+  font-weight: 200;
+  text-shadow: none;
+  padding: 0.25rem 0.5rem;
+  width: 100px;
+}
+
 /* PROFILE BOOKINGS */
 
 .profile-title {

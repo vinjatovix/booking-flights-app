@@ -12,6 +12,9 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
         <input type="text" id="profile-new-pass" placeholder="Al menos 8 caracteres"></input>
         <label for="profile-rep-new-pass">Confirma la contraseña</label>
         <input type="text" id="profile-rep-new-pass" placeholder="Al menos 8 caracteres"></input>
+        <button className="button-edit-pass" type="submit">
+          Guardar
+        </button>
       </form>
     </>
   );
