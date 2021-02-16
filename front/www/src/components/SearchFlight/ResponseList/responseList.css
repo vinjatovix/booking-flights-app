@@ -7,14 +7,15 @@
 .Response-list {
     display: grid;
     gap: 0.5rem;
+    width: 90vw;
 }
 .hide {
     display: none;
 }
 .Flight {
     border: 2px groove rgba(40, 68, 161, 0.418);
-    box-shadow: inset -3px -2px 10px rgba(69, 76, 117, 0.418), inset 2px 2px 10px rgba(62, 62, 88, 0.336);
-    padding: 1rem 0.4rem;
+    /* box-shadow: inset -3px -2px 10px rgba(69, 76, 117, 0.418), inset 2px 2px 10px rgba(62, 62, 88, 0.336); */
+    padding: 1rem 0.8rem;
     background-color: rgba(255, 255, 255, 0.863);
     display: grid;
     grid-template-columns: 3.5fr 1fr;
@@ -28,7 +29,7 @@
     align-items: center;
     flex-direction: column;
     grid-area: offer;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .Itinerary {
