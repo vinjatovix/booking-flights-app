@@ -1,4 +1,5 @@
 .Response-header {
+  align-self: flex-start;
   border-radius: 0.4rem;
   max-width: 90vw;
   padding: 0.2rem;
@@ -74,71 +75,6 @@
   background-position: center center;
 }
 
-.Response-empty {
-  background-image: url("../../../assets/svg/wind.svg");
-  background-repeat: no-repeat;
-  background-size: 2.5rem;
-  background-position: 55vw 1vh;
-}
-.Response-list {
-  display: grid;
-  gap: 0.5rem;
-}
 .hide {
   display: none;
-}
-.Flight {
-  padding: 1rem 0.7rem;
-  background-color: rgba(255, 255, 255, 0.829);
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "itinerary offer" "itinerary offer";
-  align-items: center;
-  box-shadow: 3px 3px 30px rgba(35, 44, 44, 0.452);
-}
-
-.Flight > * {
-}
-.offer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  grid-area: offer;
-  font-size: 1.5rem;
-}
-
-.itinerary {
-  gap: 0.2rem;
-  display: flex;
-  flex-direction: column;
-}
-.itinerary > * {
-  justify-content: center;
-  display: flex;
-  gap: 1rem;
-}
-.ports {
-  font-size: 12px;
-}
-.company {
-  font-size: 0.8rem;
-}
-.heart {
-  background-image: url("../../../assets/svg/heart-regular.svg");
-  background-repeat: no-repeat;
-  width: 2rem;
-  height: 2rem;
-}
-.stops1 {
-  width: 3rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url("../../../assets/svg/stop1.svg");
-}
-.stops2 {
-  width: 3rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url("../../../assets/svg/stop2.svg");
 }

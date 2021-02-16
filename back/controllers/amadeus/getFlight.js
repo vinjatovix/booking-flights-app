@@ -7,7 +7,7 @@ const { makeQueryUrl } = require('./makeQueryUrl');
 const { validateDates } = require('../utils/validateDates');
 // const { wait } = require('../utils/wait');
 /**
- * This is the fisrt function to search flighs on amadeus
+ * This is the first function to search on amadeus
  *
  * @param {FormData} req
  * @param {Object} res

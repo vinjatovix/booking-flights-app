@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 
@@ -27,9 +27,6 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { PublicRoute } from './components/common/PublicRoute';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { askMeForToken } from './utils/askMeForToken';
-
-/* ACTIONS*/
-import * as A from './context/Auth.actions';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -86,38 +83,40 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
-        <Header {...controlProps} />
-        <Main className="app-main" {...controlProps}>
-          {modal && <CustomModal>{modal_data}</CustomModal>}
-          <Switch>
-            <Route path="/login">
-              <PublicRoute>
-                <CredentialsPage title="Log In" {...controlProps} />
-              </PublicRoute>
-            </Route>
-            <Route path="/register">
-              <PublicRoute>
-                <CredentialsPage title="Sign In" {...controlProps} />
-              </PublicRoute>
-            </Route>
-            <Route path="/about">
-              <AboutPage {...aboutProps} />
-            </Route>
-            <Route path="/profile">
-              <PrivateRoute>
-                <ProfilePage control={controlProps} profile={profileProps} />
-              </PrivateRoute>
-            </Route>
-            <Route path="/">
-              <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
+      <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
+        <Router>
+          <Header {...controlProps} />
+          <Main className="app-main" {...controlProps}>
+            {modal && <CustomModal>{modal_data}</CustomModal>}
+
+            <Switch>
+              <Route path="/login">
+                <PublicRoute>
+                  <CredentialsPage title="Log In" {...controlProps} />
+                </PublicRoute>
+              </Route>
+              <Route path="/register">
+                <PublicRoute>
+                  <CredentialsPage title="Sign In" {...controlProps} />
+                </PublicRoute>
+              </Route>
+              <Route path="/about">
+                <AboutPage {...aboutProps} />
+              </Route>
+
+              <Route path="/profile">
+                <PrivateRoute>
+                  <ProfilePage control={controlProps} profile={profileProps} />
+                </PrivateRoute>
+              </Route>
+              <Route path="/">
                 <SearchPage {...searchProps} {...controlProps} />
-              </FlightProvider>
-            </Route>
-          </Switch>
-        </Main>
-        <Footer className="app-footer">Code-Vix &copy; 2021 FLanders v0.6</Footer>
-      </Router>
+              </Route>
+            </Switch>
+          </Main>
+          <Footer className="app-footer">Code-Vix &copy; 2021 FLanders v0.6</Footer>
+        </Router>
+      </FlightProvider>
     </div>
   );
 };

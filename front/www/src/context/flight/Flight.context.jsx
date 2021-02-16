@@ -4,10 +4,9 @@ import React, { createContext, useContext, useReducer } from 'react';
 export const FlightContext = createContext();
 
 /* Proveedor */
-export const FlightProvider = ({ reducer, initialState, children }) => (
+export const FlightProvider = React.memo(({ reducer, initialState, children }) => (
   <FlightContext.Provider value={useReducer(reducer, initialState)}>{children}</FlightContext.Provider>
-);
-
+));
 /* Cuando invocamos este hook se puede desestructurar un array con esta firma
 const [{datoState1,datoStateX}, dispatch]= useAuthContext() 
 EJ en App */

@@ -1,17 +1,14 @@
+import { departureDate } from '../../utils/dateUtils';
 import * as C from './Flight.constants';
-
 
 export const initialFlightFormState = {
   adults: 1,
   currencyCode: 'EUR',
-  departureDate: '2021-04-01',
-  destinationLocationCode: '',
+  departureDate: departureDate(),
   loading: false,
-  nonStop: false,
-  oneWay: false,
-  originLocationCode: '',
+  originLocationCode: localStorage.getItem('favAP') || '',
   response: {},
-  returnDate: '2021-04-06',
+  returnDate: '',
   searching: false,
 };
 
@@ -32,10 +29,13 @@ export const FlightReducer = (state, { type, payload }) => {
         ...state,
         [`${payload.name}`]: `${payload.value}`,
       };
-    case C.SET_SEARCH_STATUS:
+    case C.FLIGHT_SET_QUESTION:
+      console.log(payload);
       return {
         ...state,
-        searching: true,
+        originLocationCode: payload.originLocationCode,
+        destinationLocationCode: payload.destinationLocationCode,
+        loading: true,
       };
     case C.FLIGHT_SET_RESPONSE:
       return {

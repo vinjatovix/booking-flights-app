@@ -1,42 +1,36 @@
 import React from 'react';
-import { v4 as uuid } from 'uuid';
-import * as A from '../../context/flight/Flight.actions';
+// import { v4 as uuid } from 'uuid';
+// import * as A from '../../context/flight/Flight.actions';
+// import { useAutocomplete } from '../../hooks/useAutocomplete';
 
-export const AirportSelector = ({ name, value, handler, seed, dispatcher, placeholder }) => {
+import { airports } from '../../utils/airports.json';
+import { Input } from '../common/Input';
+
+const seed = airports.map((element, i) => ({ id: i, name: element.Loca_nombre, value: element.Aero_iata }));
+
+export const AirportSelector = React.memo(({ name, value, handler, dispatch, placeholder, r }) => {
+  const inputProps = {
+    r: r,
+    defaultValue: value,
+    list: 'air',
+    className: 'radius',
+    name: name,
+    placeholder: placeholder,
+    autoComplete: 'off',
+    required: 'required',
+  };
+
   return (
     <fieldset className="SearchForm__airport" id={name}>
-      <input
-        className="radius"
-        type="text"
-        name={name}
-        placeholder={placeholder}
-        autoComplete="off"
-        value={value}
-        onChange={(e) => handler(e.target.value.toUpperCase())}
-        onClick={() => handler('')}
-        required="required"
-      />
-      {value && (
-        <ul className="SearchForm__suggestion">
-          {seed.map((val) => (
-            <li
-              key={uuid()}
-              code={val.value.toUpperCase()}
-              onClick={() => {
-                handler(val.name);
-                dispatcher(
-                  A.setString({
-                    name: `${name}`,
-                    value: `${val.value.toUpperCase()}`,
-                  })
-                );
-              }}
-            >
-              {val.value} - {val.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <label>
+        {name.includes('origin') ? 'Origen' : 'Destino'}
+        <Input list="air" {...inputProps} onFocus={(e) => (e.target.value = '')} />
+      </label>
+      <datalist id="air">
+        {seed.map((e) => (
+          <option key={e.value} value={e.value}>{`${e.value} - ${e.name}`}</option>
+        ))}
+      </datalist>
     </fieldset>
   );
-};
+});

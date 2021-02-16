@@ -4,6 +4,7 @@
     ],
     "conventionalCommits.scopes": [
         "searchFlight",
-        "auth"
+        "auth",
+        "test"
     ]
 }

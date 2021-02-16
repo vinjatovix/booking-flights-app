@@ -14,8 +14,8 @@ import {
 import { benderSignin } from '../../http/api';
 
 /* Styles */
-import './credentials.css';
 import { useForm } from '../../hooks/useForm';
+import './credentials.css';
 
 /* Component */
 export const RegisterForm = (props) => {

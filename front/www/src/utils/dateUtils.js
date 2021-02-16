@@ -1,5 +1,28 @@
 export const padNumber = (number) => `${number}`.padStart(2, '0');
 
+// export const formatDate = (date) => {
+//   const s = padNumber(date.getSeconds());
+//   const m = padNumber(date.getMinutes());
+//   const h = padNumber(date.getHours());
+//   const YYYY = date.getFullYear();
+//   const MM = date.getMonth() + 1;
+//   const DD = padNumber(date.getDate());
+//   return `${DD}-${MM}-${YYYY} ${h}:${m}:${s}`;
+// };
+
+export const ResponseFlightDateFormatter = (date) => {
+  const minutes = date.getMinutes().toString();
+  return `${date.getDate()}/${monthName(date.getMonth())} ${date.getHours()}:${minutes.padStart(2, '0')}`;
+};
+
+export const departureDate = () => {
+  const seed = new Date();
+  const month = padNumber(seed.getMonth() + 1);
+  const day = padNumber(seed.getDate());
+
+  return `${seed.getFullYear()}-${month}-${day}`;
+};
+
 export const formatHeaderDate = (date) => {
   const seed = new Date(date);
   return `${seed.getDate()}${monthName(seed.getMonth())}`;

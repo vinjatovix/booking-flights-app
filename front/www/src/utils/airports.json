@@ -211,11 +211,6 @@
       "Aero_iata": "ESF"
     },
     {
-      "Loca_nombre": "Alfujairah (Fujairah)",
-      "Pais_nombre": "United Arab Emirates",
-      "Aero_iata": "FJR"
-    },
-    {
       "Loca_nombre": "Alghero Sassari",
       "Pais_nombre": "Italy",
       "Aero_iata": "AHO"
@@ -620,11 +615,7 @@
       "Pais_nombre": "Australia",
       "Aero_iata": "BNK"
     },
-    {
-      "Loca_nombre": "Baltimore (MD) - Washington International Airport",
-      "Pais_nombre": "USA",
-      "Aero_iata": "BWI"
-    },
+
     {
       "Loca_nombre": "Bamaga",
       "Pais_nombre": "Australia",
@@ -635,11 +626,7 @@
       "Pais_nombre": "Mali",
       "Aero_iata": "BKO"
     },
-    {
-      "Loca_nombre": "Bambari",
-      "Pais_nombre": "Central African Republic",
-      "Aero_iata": "BBY"
-    },
+
     {
       "Loca_nombre": "Bandar Seri Begawan - Brunei International Airport",
       "Pais_nombre": "Brunei",
@@ -750,11 +737,7 @@
       "Pais_nombre": "Guadeloupe",
       "Aero_iata": "PTP"
     },
-    {
-      "Loca_nombre": "Basseterre - Robert L. Bradshaw International Airport",
-      "Pais_nombre": "Saint Kitts and Nevis",
-      "Aero_iata": "SKB"
-    },
+  
     {
       "Loca_nombre": "Bastia",
       "Pais_nombre": "France",
@@ -875,11 +858,7 @@
       "Pais_nombre": "Central African Republic",
       "Aero_iata": "BBT"
     },
-    {
-      "Loca_nombre": "Bergamo/Milan - Orio Al Serio",
-      "Pais_nombre": "Italy",
-      "Aero_iata": "BGY"
-    },
+   
     {
       "Loca_nombre": "Bergen",
       "Pais_nombre": "Norway",
@@ -1165,11 +1144,7 @@
       "Pais_nombre": "Germany",
       "Aero_iata": "BRE"
     },
-    {
-      "Loca_nombre": "Brescia, Montichiari",
-      "Pais_nombre": "Italy",
-      "Aero_iata": "VBS"
-    },
+
     {
       "Loca_nombre": "Brest",
       "Pais_nombre": "France",
@@ -1590,11 +1565,7 @@
       "Pais_nombre": "Sichuan, PR China",
       "Aero_iata": "CTU"
     },
-    {
-      "Loca_nombre": "Chennai (Madras)",
-      "Pais_nombre": "India",
-      "Aero_iata": "MAA"
-    },
+ 
     {
       "Loca_nombre": "Cheyenne (WY) - Cheyenne Regional Airport",
       "Pais_nombre": "USA",
@@ -1800,11 +1771,7 @@
       "Pais_nombre": "Australia",
       "Aero_iata": "KCE"
     },
-    {
-      "Loca_nombre": "Cologne - Cologne Airport (Flughafen Köln/Bonn)",
-      "Pais_nombre": "Germany",
-      "Aero_iata": "CGN"
-    },
+  
     {
       "Loca_nombre": "Colombo - Bandaranaike International Airport",
       "Pais_nombre": "Sri Lanka",
@@ -2075,11 +2042,7 @@
       "Pais_nombre": "Australia",
       "Aero_iata": "DRB"
     },
-    {
-      "Loca_nombre": "Derry (Londonderry)",
-      "Pais_nombre": "United Kingdom",
-      "Aero_iata": "LDY"
-    },
+  
     {
       "Loca_nombre": "Des Moines (IA) - Des Moines International Airport",
       "Pais_nombre": "USA",
@@ -2150,11 +2113,7 @@
       "Pais_nombre": "Qatar",
       "Aero_iata": "DOH"
     },
-    {
-      "Loca_nombre": "Doncaster/Sheffield, Robin Hood International Airport",
-      "Pais_nombre": "United Kingdom",
-      "Aero_iata": "DSA"
-    },
+
     {
       "Loca_nombre": "Donegal (Carrickfin)",
       "Pais_nombre": "Ireland",
@@ -2610,11 +2569,7 @@
       "Pais_nombre": "USA",
       "Aero_iata": "FWA"
     },
-    {
-      "Loca_nombre": "Fort Worth (TX) - Dallas/Fort Worth International Airport",
-      "Pais_nombre": "USA",
-      "Aero_iata": "DFW"
-    },
+
     {
       "Loca_nombre": "Foula (Shetland)",
       "Pais_nombre": "United Kingdom",
@@ -2644,11 +2599,6 @@
       "Loca_nombre": "Fredericton",
       "Pais_nombre": "Canada",
       "Aero_iata": "YFC"
-    },
-    {
-      "Loca_nombre": "Freeport - Grand Bahama International Airport",
-      "Pais_nombre": "Bahamas",
-      "Aero_iata": "FPO"
     },
     {
       "Loca_nombre": "Freetown - Freetown-Lungi International Airport",
@@ -3010,11 +2960,7 @@
       "Pais_nombre": "Guangdong, PR China",
       "Aero_iata": "CAN"
     },
-    {
-      "Loca_nombre": "Sao Paulo - Guarulhos International",
-      "Pais_nombre": "Brazil",
-      "Aero_iata": "GRU"
-    },
+ 
     {
       "Loca_nombre": "Guatemala City - La Aurora International Airport",
       "Pais_nombre": "Guatemala",
@@ -3079,11 +3025,6 @@
       "Loca_nombre": "Hachijo Jima",
       "Pais_nombre": "Japan",
       "Aero_iata": "HAC"
-    },
-    {
-      "Loca_nombre": "Hagåtña - Guam International Airport",
-      "Pais_nombre": "Guam",
-      "Aero_iata": "GUM"
     },
     {
       "Loca_nombre": "Haifa",
@@ -3275,11 +3216,7 @@
       "Pais_nombre": "Japan",
       "Aero_iata": "HIJ"
     },
-    {
-      "Loca_nombre": "Ho Chi Minh City (Saigon) - Tan Son Nhat International",
-      "Pais_nombre": "Viet Nam",
-      "Aero_iata": "SGN"
-    },
+ 
     {
       "Loca_nombre": "Hobart",
       "Pais_nombre": "Australia",
@@ -3440,16 +3377,8 @@
       "Pais_nombre": "USA",
       "Aero_iata": "IPL"
     },
-    {
-      "Loca_nombre": "Incercargill",
-      "Pais_nombre": "New Zealand",
-      "Aero_iata": "IVC"
-    },
-    {
-      "Loca_nombre": "Incheon, Incheon International Airport",
-      "Pais_nombre": "Korea South",
-      "Aero_iata": "ICN"
-    },
+ 
+ 
     {
       "Loca_nombre": "Indianapolis (IN) International",
       "Pais_nombre": "USA",
@@ -3565,11 +3494,7 @@
       "Pais_nombre": "Turkey",
       "Aero_iata": "ADB"
     },
-    {
-      "Loca_nombre": "Jackson Hole (WY)",
-      "Pais_nombre": "USA",
-      "Aero_iata": "JAC"
-    },
+ 
     {
       "Loca_nombre": "Jackson (MI) - Reynolds Municipal",
       "Pais_nombre": "USA",
@@ -4320,11 +4245,7 @@
       "Pais_nombre": "Saudi Arabia",
       "Aero_iata": "AHB"
     },
-    {
-      "Loca_nombre": "Kharga - New Valley",
-      "Pais_nombre": "Egypt",
-      "Aero_iata": "UVL"
-    },
+ 
     {
       "Loca_nombre": "Kharkov",
       "Pais_nombre": "Ukraine",
@@ -4425,11 +4346,7 @@
       "Pais_nombre": "Iraq",
       "Aero_iata": "KIK"
     },
-    {
-      "Loca_nombre": "Kirkwall (Orkney)",
-      "Pais_nombre": "United Kingdom",
-      "Aero_iata": "KOI"
-    },
+  
     {
       "Loca_nombre": "Kiruna",
       "Pais_nombre": "Sweden",
@@ -4505,11 +4422,7 @@
       "Pais_nombre": "Finland",
       "Aero_iata": "KOK"
     },
-    {
-      "Loca_nombre": "Kolkata (Calcutta) - Netaji Subhas Chandra",
-      "Pais_nombre": "India",
-      "Aero_iata": "CCU"
-    },
+   
     {
       "Loca_nombre": "Komatsu",
       "Pais_nombre": "Japan",
@@ -5046,11 +4959,6 @@
       "Aero_iata": "LTN"
     },
     {
-      "Loca_nombre": "London - Stansted",
-      "Pais_nombre": "United Kingdom",
-      "Aero_iata": "STN"
-    },
-    {
       "Loca_nombre": "Londonderry - Eglinton",
       "Pais_nombre": "United Kingdom",
       "Aero_iata": "LDY"
@@ -5250,11 +5158,7 @@
       "Pais_nombre": "Philippines",
       "Aero_iata": "NOP"
     },
-    {
-      "Loca_nombre": "Madinah, Mohammad Bin Abdulaziz",
-      "Pais_nombre": "Saudi Arabia",
-      "Aero_iata": "MED"
-    },
+   
     {
       "Loca_nombre": "Madison (WI)",
       "Pais_nombre": "USA",
@@ -5405,11 +5309,7 @@
       "Pais_nombre": "Niger",
       "Aero_iata": "MFQ"
     },
-    {
-      "Loca_nombre": "Maras",
-      "Pais_nombre": "Turkey",
-      "Aero_iata": "KCM"
-    },
+  
     {
       "Loca_nombre": "Marathon (FL)",
       "Pais_nombre": "USA",
@@ -5660,11 +5560,7 @@
       "Pais_nombre": "Mexico",
       "Aero_iata": "MXL"
     },
-    {
-      "Loca_nombre": "Mexico City - Mexico City International Airport",
-      "Pais_nombre": "Mexico",
-      "Aero_iata": "MEX"
-    },
+ 
     {
       "Loca_nombre": "Mexico City - Atizapan",
       "Pais_nombre": "Mexico",
@@ -6235,21 +6131,13 @@
       "Pais_nombre": "USA",
       "Aero_iata": "BNA"
     },
-    {
-      "Loca_nombre": "Nassau",
-      "Pais_nombre": "Bahamas",
-      "Aero_iata": "NAS"
-    },
+ 
     {
       "Loca_nombre": "Natal - Augusto Severo International Airport",
       "Pais_nombre": "Brazil",
       "Aero_iata": "NAT"
     },
-    {
-      "Loca_nombre": "Nausori",
-      "Pais_nombre": "Fiji/Suva",
-      "Aero_iata": "SUV"
-    },
+
     {
       "Loca_nombre": "Nawab Shah",
       "Pais_nombre": "Pakistan",
@@ -6590,21 +6478,13 @@
       "Pais_nombre": "Australia",
       "Aero_iata": "OAG"
     },
-    {
-      "Loca_nombre": "Orange County (Santa Ana) (CA)",
-      "Pais_nombre": "USA",
-      "Aero_iata": "SNA"
-    },
+  
     {
       "Loca_nombre": "Oranjemund",
       "Pais_nombre": "Namibia",
       "Aero_iata": "OMD"
     },
-    {
-      "Loca_nombre": "Oranjestad - Reina Beatrix International",
-      "Pais_nombre": "Aruba",
-      "Aero_iata": "AUA"
-    },
+  
     {
       "Loca_nombre": "Orkney - Kirkwall",
       "Pais_nombre": "United Kingdom",
@@ -7000,11 +6880,7 @@
       "Pais_nombre": "Micronesia",
       "Aero_iata": "PNI"
     },
-    {
-      "Loca_nombre": "Pointe a Pitre",
-      "Pais_nombre": "Guadeloupe",
-      "Aero_iata": "PTP"
-    },
+ 
     {
       "Loca_nombre": "Pointe Noire",
       "Pais_nombre": "Congo (ROC)",
@@ -7410,11 +7286,7 @@
       "Pais_nombre": "Canada",
       "Aero_iata": "YQR"
     },
-    {
-      "Loca_nombre": "Reina Sofia",
-      "Pais_nombre": "Teneriffa/Spain",
-      "Aero_iata": "TFS"
-    },
+ 
     {
       "Loca_nombre": "Rennes",
       "Pais_nombre": "France",
@@ -7710,11 +7582,7 @@
       "Pais_nombre": "USA",
       "Aero_iata": "SBY"
     },
-    {
-      "Loca_nombre": "Saloniki",
-      "Pais_nombre": "Greece",
-      "Aero_iata": "SKG"
-    },
+
     {
       "Loca_nombre": "Salta, Gen Belgrano",
       "Pais_nombre": "Argentina",
@@ -7780,11 +7648,7 @@
       "Pais_nombre": "USA",
       "Aero_iata": "SFO"
     },
-    {
-      "Loca_nombre": "San Jose Cabo",
-      "Pais_nombre": "Mexico",
-      "Aero_iata": "SJD"
-    },
+ 
     {
       "Loca_nombre": "San Jose",
       "Pais_nombre": "Costa Rica",
@@ -7985,11 +7849,7 @@
       "Pais_nombre": "Hokkaido, Japan",
       "Aero_iata": "OKD"
     },
-    {
-      "Loca_nombre": "Sapporo - New Chitose Airport",
-      "Pais_nombre": "Japan",
-      "Aero_iata": "CTS"
-    },
+ 
     {
       "Loca_nombre": "Sarajevo",
       "Pais_nombre": "Bosnia and Herzegovina",
@@ -8020,11 +7880,7 @@
       "Pais_nombre": "Finland",
       "Aero_iata": "SVL"
     },
-    {
-      "Loca_nombre": "Scarborough - Crown Point International",
-      "Pais_nombre": "Trinidad and Tobago",
-      "Aero_iata": "TAB"
-    },
+
     {
       "Loca_nombre": "Scone",
       "Pais_nombre": "Australia",
@@ -8385,11 +8241,7 @@
       "Pais_nombre": "Saint Lucia",
       "Aero_iata": "UVF"
     },
-    {
-      "Loca_nombre": "St. Lucia Vigle",
-      "Pais_nombre": "Saint Lucia",
-      "Aero_iata": "SLU"
-    },
+ 
     {
       "Loca_nombre": "St. Marteen",
       "Pais_nombre": "Netherlands Antilles",
@@ -8415,11 +8267,7 @@
       "Pais_nombre": "Virgin Islands (U.S.)",
       "Aero_iata": "STT"
     },
-    {
-      "Loca_nombre": "St. Vincent",
-      "Pais_nombre": "Saint Vincent and the Grenadines",
-      "Aero_iata": "SVD"
-    },
+ 
     {
       "Loca_nombre": "Stansted (London)",
       "Pais_nombre": "United Kingdom",
@@ -9635,11 +9483,7 @@
       "Pais_nombre": "USA",
       "Aero_iata": "ILM"
     },
-    {
-      "Loca_nombre": "Wilna (Vilnius)",
-      "Pais_nombre": "Lithuania",
-      "Aero_iata": "VNO"
-    },
+
     {
       "Loca_nombre": "Wiluna",
       "Pais_nombre": "Australia",
@@ -9744,11 +9588,6 @@
       "Loca_nombre": "Yanbu",
       "Pais_nombre": "Saudi Arabia",
       "Aero_iata": "YNB"
-    },
-    {
-      "Loca_nombre": "Yangon (Rangoon) - Mingaladon",
-      "Pais_nombre": "Myanmar",
-      "Aero_iata": "RGN"
     },
     {
       "Loca_nombre": "Yaounde",

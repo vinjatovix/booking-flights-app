@@ -11,7 +11,7 @@
     "buscar buscar";
   justify-content: center;
 }
-.SearchForm >*{
+.SearchForm > * {
   width: 40vw;
   max-width: 325px;
 }
@@ -71,20 +71,17 @@
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
-  
-  
 }
-#departureDate {
+.SearchForm__dates > * {
   max-width: 325px;
   width: 40vw;
   width: 39.5vw;
+}
+.SearchForm__dates-departure {
   grid-area: salida;
 }
 
-#returnDate {
-  max-width: 325px;
-  width: 40vw;
-  width: 39.5vw;
+.SearchForm__dates-return {
   grid-area: retorno;
 }
 .SearchForm [type="submit"] {
@@ -95,7 +92,8 @@
   font-weight: bold;
   grid-area: buscar;
   margin: 1rem;
-  max-width: 320px;
+  max-width: 150px;
+  min-width: 120px;
   padding: 1rem;
   text-decoration: none;
   text-shadow: 2px 2px 3px rgb(0, 0, 0);

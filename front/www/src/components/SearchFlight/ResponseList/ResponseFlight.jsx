@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../../context/Auth.context';
-import { fetchBender, makeBooking } from '../../http/api';
-import { monthName } from '../../utils/dateUtils';
+import { useAuthContext } from '../../../context/Auth.context';
+import { fetchBender, makeBooking } from '../../../http/api';
+import { monthName } from '../../../utils/dateUtils';
 
 const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) => {
   const fechaSalida = new Date(itinerary.segments[0].departure.at);
@@ -13,15 +13,14 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
   };
   return (
     <>
-      <ul className="itinerary">
-        <li>{itinerary.segments[0].carrierCode}</li>
-        <li className="company"></li>
-        <li className="times">
+      <ul className="Itinerary">
+        <li >{itinerary.segments[0].carrierCode}</li>
+        <li >
           <p>{timeTrigger(fechaSalida)}</p>
           <div className={`stops${itinerary.segments.length - 1}`}></div>
           <p>{timeTrigger(fechaLlegada)}</p>
         </li>
-        <li className="ports">
+        <li className="Itinerary__airports">
           <p>{originLocationCode}</p>
           <div>{itinerary.duration.replace('PT', '').toLowerCase()}</div>
           <p>{destinationLocationCode}</p>
@@ -44,7 +43,6 @@ export const ResponseFlight = (props) => {
         method: 'POST',
         body: { ...props },
       });
-      console.log(res);
     };
     makeBook();
   };
@@ -62,12 +60,12 @@ export const ResponseFlight = (props) => {
           destinationLocationCode={destinationLocationCode}
         />
       )}
-      <ul className="offer">
+      <ul className="Itinerary__offer-price">
         <li>{price.total}€</li>
         {logged && (
           <li>
             <div
-              className="heart"
+              className="Itinerary__booking-trigger"
               onClick={() => {
                 handleBooking(id);
               }}

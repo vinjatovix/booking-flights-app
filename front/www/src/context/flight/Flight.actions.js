@@ -16,10 +16,12 @@ export const setString = (payload) => ({
   type: C.SET_STRING,
   payload,
 });
-export const setStatus = (payload) => ({
-  type: C.SET_SEARCH_STATUS,
-  payload,
-});
+export const setFlightQuestion = (payload) => {
+  return {
+    type: C.FLIGHT_SET_QUESTION,
+    payload,
+  };
+};
 export const saveResponse = (payload) => ({
   type: C.FLIGHT_SET_RESPONSE,
   payload,
