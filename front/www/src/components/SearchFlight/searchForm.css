@@ -51,7 +51,7 @@
 }
 .SearchForm__suggestion {
   padding: 0.8rem;
-  
+
   max-width: 10vw;
 }
 
@@ -78,14 +78,14 @@
   flex-direction: row;
   gap: 1.5rem;
 }
-#departureDate {
+.SearchForm__dates-departure {
   max-width: 325px;
   width: 40vw;
   width: 39.5vw;
   grid-area: salida;
 }
 
-#returnDate {
+.SearchForm__dates-return {
   max-width: 325px;
   width: 40vw;
   width: 39.5vw;

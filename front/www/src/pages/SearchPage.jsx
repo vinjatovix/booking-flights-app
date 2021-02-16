@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 /* CONTEXT */
 import { useFlightContext } from '../context/flight/Flight.context';
-import { useAuthContext } from '../context/Auth.context';
-
-import * as A from '../context/flight/Flight.actions';
 
 /* COMPONENTS */
-import { Article } from '../components/common/Article';
 import { SearchForm } from '../components/SearchFlight/SearchForm';
-import { ResponseFlight } from '../components/SearchFlight/ResponseFlight';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
+import { ResponseList } from '../components/SearchFlight/ResponseList';
 
-export const SearchPage = ({ endPoint, title, menu }) => {
-  const [{ logged }] = useAuthContext([]);
+export const SearchPage = ({ endPoint, title, menu, logged }) => {
   const [
     {
       adults,
@@ -35,60 +30,47 @@ export const SearchPage = ({ endPoint, title, menu }) => {
   useEffect(() => {}, [order, response, menu]);
 
   const searchFormProps = {
-    menu: menu,
-    adults: adults,
-    departureDate: departureDate,
-    destinationLocationCode: destinationLocationCode,
-    dispatch: dispatch,
-    endPoint: endPoint,
-    loading: loading,
-    max: max,
-    maxPrice: maxPrice,
-    nonStop: nonStop,
-    oneWay: oneWay,
-    originLocationCode: originLocationCode,
-    returnDate: returnDate,
-    searching: searching,
-    title: title,
+    adults,
+    departureDate,
+    destinationLocationCode,
+    dispatch,
+    endPoint,
+    loading,
+    max,
+    maxPrice,
+    menu,
+    nonStop,
+    oneWay,
+    originLocationCode,
+    returnDate,
+    searching,
+    title,
   };
 
   const headerProps = {
-    dispatch: dispatch,
-    originLocationCode: originLocationCode,
-    destinationLocationCode: destinationLocationCode,
-    departureDate: departureDate,
-    returnDate: returnDate,
-    searching: searching,
-    adults: adults,
-    setOrder: setOrder,
-    response: response,
+    adults,
+    departureDate,
+    destinationLocationCode,
+    dispatch,
+    response,
+    returnDate,
+    searching,
+    setOrder,
+    originLocationCode,
+  };
+  const responseListProps = {
+    adults,
+    dispatch,
+    logged,
+    response,
+    searching,
   };
 
   return (
     <>
       {!searching && <SearchForm {...searchFormProps} />}
       {response.adults && <ResponseHeader {...headerProps} />}
-
-      <ul className="Response-list">
-        {typeof response?.data === 'string' && searching && (
-          <Article className="Response-empty radius" title="oh...">
-            {response.data}
-            <input
-              className="radius"
-              type="submit"
-              id="reset"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(A.switchBoolean({ name: 'searching', value: searching }));
-              }}
-            ></input>
-          </Article>
-        )}
-        {response?.adults &&
-          response?.data?.map((element) => (
-            <ResponseFlight key={element.id} id={element.id} logged={logged} adults={adults} {...element} />
-          ))}
-      </ul>
+      <ResponseList {...responseListProps} />
     </>
   );
 };

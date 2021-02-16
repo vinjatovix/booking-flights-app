@@ -56,6 +56,7 @@ export const SearchForm = ({
   const stopsValue = nonStop ? 'Directo' : 'Todos';
 
   const onSubmit = async (data) => {
+    dispatch(A.saveResponse({}));
     const {
       adults,
       departureDate,
@@ -67,20 +68,22 @@ export const SearchForm = ({
       oneWay,
     } = data;
     if (oneWay === 'Solo ida') {
-      dispatch(A.setString({ name: 'returnDate', value: '' }));
+      console.log(oneWay, 'en el if');
+      dispatch(A.setString({ name: 'returnDate', value: null }));
     }
     dispatch(A.setFlightQuestion(data));
     const url = createUrl({
-      adults,
+      adults: adults || 1,
       departureDate,
       destinationLocationCode,
       endPoint: endPoint,
-      maxPrice,
+      maxPrice: maxPrice || 9999,
       originLocationCode,
-      returnDate: oneWay === 'Solo Ida' ? '' : returnDate,
+      returnDate: returnDate || '',
       nonStop: nonStop === 'Directo',
     });
-    dispatch(A.switchBoolean({ name: 'loading', value: loading }));
+    // dispatch(A.switchBoolean({ name: 'loading', value: loading }));
+
     const res = await fetch(url, {
       method: 'GET',
     });
@@ -107,8 +110,8 @@ export const SearchForm = ({
         encType="multipart/form-data"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <input
-          ref={register}
+        <Input
+          r={register}
           className="SearchForm__trip radius"
           type="button"
           name="oneWay"
@@ -117,8 +120,8 @@ export const SearchForm = ({
           onClick={resetReturnDate(dispatch, oneWay)}
         />
         <PassengerCounter r={register} adults={adults} dispatch={dispatch} />
-        <input
-          ref={register}
+        <Input
+          r={register}
           className="SearchForm__nonStop radius"
           type="button"
           name="nonStop"
@@ -126,8 +129,8 @@ export const SearchForm = ({
           value={stopsValue}
           onClick={() => dispatch(A.switchBoolean({ name: 'nonStop', value: nonStop }))}
         />
-        <input
-          ref={register}
+        <Input
+          r={register}
           className="SearchForm__price radius"
           type="number"
           name="price"
@@ -137,24 +140,37 @@ export const SearchForm = ({
           onChange={(e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value }))}
         />
 
-        <AirportSelector placeholder="Compostela" name="originLocationCode" dispatch={dispatch} r={register} />
+        <AirportSelector
+          placeholder="Compostela"
+          name="originLocationCode"
+          value={originLocationCode}
+          dispatch={dispatch}
+          r={register}
+        />
 
-        <AirportSelector placeholder="London" name="destinationLocationCode" dispatch={dispatch} r={register} />
+        <AirportSelector
+          placeholder="London"
+          name="destinationLocationCode"
+          value={destinationLocationCode}
+          dispatch={dispatch}
+          r={register}
+        />
 
         <fieldset className="SearchForm__dates">
-          <input
-            ref={register}
-            className="radius"
+          <Input
+            r={register}
+            className="SearchForm__dates-departure radius"
             type="date"
             name="departureDate"
             id="departureDate"
+            value={departureDate}
             onChange={(e) => dispatch(A.setString({ name: 'departureDate', value: e.target.value }))}
             required="required"
           />
           {!oneWay && (
-            <input
-              ref={register}
-              className="radius"
+            <Input
+              r={register}
+              className="SearchForm__dates-return radius"
               type="date"
               name="returnDate"
               id="returnDate"

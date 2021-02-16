@@ -17,8 +17,6 @@ export const AirportSelector = React.memo(({ name, value, handler, dispatch, pla
     name: name,
     placeholder: placeholder,
     autoComplete: 'off',
-    // onChange: () => console.log('kk'),
-    // onClick: () => handler(''),
     required: 'required',
   };
 
@@ -26,7 +24,7 @@ export const AirportSelector = React.memo(({ name, value, handler, dispatch, pla
     <fieldset className="SearchForm__airport" id={name}>
       <label>
         {name.includes('origin') ? 'Origen' : 'Destino'}
-        <Input list="air" {...inputProps} />
+        <Input list="air" {...inputProps} onFocus={(e) => (e.target.value = '')} />
       </label>
       <datalist id="air">
         {seed.map((e) => (

@@ -11,6 +11,14 @@ export const formatDate = (date) => {
   return `${DD}-${MM}-${YYYY} ${h}:${m}:${s}`;
 };
 
+export const departureDate = () => {
+  const seed = new Date();
+  const month = padNumber(seed.getMonth() + 1);
+  const day = padNumber(seed.getDate());
+
+  return `${seed.getFullYear()}-${month}-${day}`;
+};
+
 export const formatHeaderDate = (date) => {
   const seed = new Date(date);
   return `${seed.getDate()}${monthName(seed.getMonth())}`;

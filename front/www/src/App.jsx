@@ -68,38 +68,38 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
-        <Header {...controlProps} />
-        <Main className="app-main" {...controlProps}>
-          <Switch>
-            <Route path="/login">
-              <PublicRoute>
-                <CredentialsPage title="Log In" {...controlProps} />
-              </PublicRoute>
-            </Route>
-            <Route path="/register">
-              <PublicRoute>
-                <CredentialsPage title="Sign In" {...controlProps} />
-              </PublicRoute>
-            </Route>
-            <Route path="/about">
-              <AboutPage {...aboutProps} />
-            </Route>
+      <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
+        <Router>
+          <Header {...controlProps} />
+          <Main className="app-main" {...controlProps}>
+            <Switch>
+              <Route path="/login">
+                <PublicRoute>
+                  <CredentialsPage title="Log In" {...controlProps} />
+                </PublicRoute>
+              </Route>
+              <Route path="/register">
+                <PublicRoute>
+                  <CredentialsPage title="Sign In" {...controlProps} />
+                </PublicRoute>
+              </Route>
+              <Route path="/about">
+                <AboutPage {...aboutProps} />
+              </Route>
 
-            <Route path="/profile">
-              <PrivateRoute>
-                <ProfilePage control={controlProps} profile={profileProps} />
-              </PrivateRoute>
-            </Route>
-            <Route path="/">
-              <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
+              <Route path="/profile">
+                <PrivateRoute>
+                  <ProfilePage control={controlProps} profile={profileProps} />
+                </PrivateRoute>
+              </Route>
+              <Route path="/">
                 <SearchPage {...searchProps} {...controlProps} />
-              </FlightProvider>
-            </Route>
-          </Switch>
-        </Main>
-        <Footer className="app-footer">Code-Vix &copy; 2021 FLanders v0.6</Footer>
-      </Router>
+              </Route>
+            </Switch>
+          </Main>
+          <Footer className="app-footer">Code-Vix &copy; 2021 FLanders v0.6</Footer>
+        </Router>
+      </FlightProvider>
     </div>
   );
 };
