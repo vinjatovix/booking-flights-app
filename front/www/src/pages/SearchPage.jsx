@@ -6,7 +6,7 @@ import { useFlightContext } from '../context/flight/Flight.context';
 /* COMPONENTS */
 import { SearchForm } from '../components/SearchFlight/SearchForm';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
-import { ResponseList } from '../components/SearchFlight/ResponseList';
+import { ResponseList } from '../components/SearchFlight/ResponseList/ResponseList';
 
 export const SearchPage = ({ endPoint, title, menu, logged }) => {
   const [

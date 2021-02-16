@@ -11,6 +11,11 @@ export const formatDate = (date) => {
   return `${DD}-${MM}-${YYYY} ${h}:${m}:${s}`;
 };
 
+export const ResponseFlightDateFormatter = (date) => {
+  const minutes = date.getMinutes().toString();
+  return `${date.getDate()}/${monthName(date.getMonth())} ${date.getHours()}:${minutes.padStart(2, '0')}`;
+};
+
 export const departureDate = () => {
   const seed = new Date();
   const month = padNumber(seed.getMonth() + 1);

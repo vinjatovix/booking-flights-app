@@ -120,54 +120,6 @@ button.delete {
   color: white;
 } */
 
-/* RESULTS */
-.response header {
-  padding: 0.2rem;
-  display: flex;
-  justify-content: space-between;
-}
-.response p {
-  font-size: 1.5rem;
-}
-.round-trip-icon {
-  width: 1rem;
-  background-image: url("../assets/svg/exchange-alt-solid.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.editQuery {
-  margin-left: 0.5rem;
-  width: 1.3rem;
-  background-image: url("../assets/svg/pen-solid.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-}
-.route {
-  margin-left: 0.5rem;
-  width: 1.3rem;
-  background-image: url("../assets/svg/route-solid.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-}
-.duration {
-  margin-left: 0.5rem;
-  width: 1.3rem;
-  background-image: url("../assets/svg/stopwatch-solid.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-}
-.price {
-  margin-left: 0.5rem;
-  width: 1.6rem;
-  background-image: url("../assets/svg/funnel-dollar-solid.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-}
-
-.response article {
-  margin-bottom: 0.5rem;
-}
-
 /*!! IVI format */
 .radius {
   border-top-left-radius: 5rem;
@@ -200,7 +152,7 @@ button.delete {
 
 /* APP  */
 .app-main {
-  align-items: center;
+  align-items: start;
   background-attachment: fixed;
   background-color: var(--basecolor);
   background-image: url("../assets/img/bgi.jpg");
