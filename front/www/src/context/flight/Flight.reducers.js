@@ -9,6 +9,7 @@ export const initialFlightFormState = {
   originLocationCode: localStorage.getItem('favAP') || '',
   response: {},
   returnDate: '',
+  maxPrice: '',
   searching: false,
 };
 
