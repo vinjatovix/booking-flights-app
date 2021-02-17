@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { setOrder } from '../../../context/flight/Flight.actions';
 
 export const FilterButton = ({ orderMethod, className, children, response = [], dispatch }) => {
   const { adults, data } = response;
+  const [on, setOn] = useState(false);
+
+  const action = on ? data.sort(orderMethod) : data.sort(orderMethod).reverse();
   return (
     <li
       className={className}
       onClick={() => {
-        console.log(data.sort(orderMethod));
-        // console.log(data.itineraries[0].duration);
-        console.log(data[0].itineraries[0].duration.replace('PT','').replace('M','').split('H'));
-        dispatch(setOrder({ adults: adults, data: data.sort(setOrder) }));
+        setOn(!on);
+        dispatch(setOrder({ adults: adults, data: action }));
       }}
     >
       {children}

@@ -31,7 +31,9 @@
   justify-content: space-evenly;
   grid-area: filter;
 }
-
+.Response__filters > * {
+  border: 1px solid black;
+}
 .Response-filter__stops {
   background-image: url("../../../assets/svg/route-solid.svg");
 }
