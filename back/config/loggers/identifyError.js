@@ -22,6 +22,10 @@ function identifyError(err) {
       '"adults" must be less than or equal to 9',
       'Los adultos no pueden ser más de 9.'
     );
+    err.details = err.details.replace(
+      '"repeatNewPassword" must be [ref:newPassword]',
+      'Las contraseñas nuevas no coinciden'
+    );
   }
 
   //? DATABASE ERRORS

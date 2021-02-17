@@ -28,9 +28,10 @@ async function postUpdatePass({ headers, body }, res, next) {
     const token = headers.authorization;
     const decoded = jwt.decode(token);
     const [user] = await getUserByEmail(decoded.email);
-    const { password, newPassword } = body;
+    const { password, newPassword, repeatNewPassword } = body;
     const valid = await bcrypt.compare(password, user.Usr_password);
 
+    console.log(newPassword, repeatNewPassword);
     if (!valid) {
       const err = new Error();
       err.code = 401;
@@ -44,7 +45,6 @@ async function postUpdatePass({ headers, body }, res, next) {
 
     res.send({ ok: true, details: 'Contraseña actualizada' });
   } catch (err) {
-    err.details = err.message;
     next(err);
   }
 }
