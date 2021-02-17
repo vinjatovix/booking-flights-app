@@ -2,13 +2,7 @@ import React from 'react';
 
 /* Components & Hooks */
 import { FormDrawer } from './FormDrawer';
-import {
-  mailProps,
-  passwordProps,
-  userNameProps,
-  rePasswordProps,
-  bioProps,
-} from './credentialsFormProps';
+import { mailProps, passwordProps, userNameProps, rePasswordProps, bioProps } from './credentialsFormProps';
 
 /* props and methods */
 import { benderSignin } from '../../http/api';
@@ -56,6 +50,9 @@ export const RegisterForm = (props) => {
       handleInputChange={handleInputChange}
       reset={resetInput}
       errorMessage={errorMessage}
+      setErrorMessage={setErrorMessage}
+      setToken={setToken}
+      dispatch={dispatch}
     />
   );
 };

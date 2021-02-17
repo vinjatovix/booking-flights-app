@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "searchFlight"
+        "searchFlight",
+        "auth"
     ]
 }

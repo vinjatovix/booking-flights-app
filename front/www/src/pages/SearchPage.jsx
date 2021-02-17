@@ -26,6 +26,7 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
       returnDate,
       searching,
       booking,
+      bookingCache,
     },
     dispatch,
   ] = useFlightContext();
@@ -67,18 +68,12 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     searching,
   };
 
-  const bookingProps = {};
-
   return (
     <>
       {!searching && <SearchForm {...searchFormProps} />}
       {response.adults && <ResponseHeader {...headerProps} />}
       <ResponseList {...responseListProps} />
-      {booking && (
-        <CustomModal>
-          <Booking />
-        </CustomModal>
-      )}
+      {booking && <CustomModal>{bookingCache && <Booking />}</CustomModal>}
     </>
   );
 };

@@ -4,7 +4,14 @@ import * as F from '../context/flight/Flight.actions';
 const apiUrl = 'http://localhost:8337';
 
 const requestMethods = { post: 'POST', get: 'GET' };
-const endpoint = { login: '/login', signin: '/signin', about: '/about', me: '/me', book: '/book/flight' };
+const endpoint = {
+  login: '/login',
+  signin: '/signin',
+  about: '/about',
+  google: '/google',
+  me: '/me',
+  book: '/book/flight',
+};
 
 export const fetchForm = async (action, { body, method, token = '' }) => {
   const headers = new Headers();
@@ -16,7 +23,9 @@ export const fetchForm = async (action, { body, method, token = '' }) => {
 export const fetchBender = async (action, { body, method, token = '' }) => {
   const headers = new Headers({ 'Content-Type': 'application/json' });
   headers.append('Authorization', token);
+
   const res = await fetch(`${action}`, { method: method, headers: headers, body: JSON.stringify(body) });
+
   const json = res.json();
   return json;
 };
@@ -32,6 +41,24 @@ export async function benderLogin(req, { setErrorMessage, setToken, dispatch }) 
       throw res;
     }
     setToken(res.token);
+  } catch (err) {
+    dispatch(A.authFailure());
+    setErrorMessage(err.details);
+    setTimeout(() => setErrorMessage(''), 3000);
+  }
+}
+export async function googleLogin(req, { setErrorMessage, setToken, dispatch }) {
+  try {
+    const res = await fetchBender(`${apiUrl}${endpoint.google}`, {
+      method: requestMethods.post,
+      body: { idtoken: req },
+    });
+
+    if (!res.ok) {
+      throw res;
+    }
+    setToken(res.token);
+    dispatch(A.switchBoolean({ name: 'google', value: false }));
   } catch (err) {
     dispatch(A.authFailure());
     setErrorMessage(err.details);
