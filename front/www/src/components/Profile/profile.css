@@ -77,6 +77,14 @@
   background-image: url('../../assets/svg/turn-off.svg');
 }
 
+.update-error {
+  color: red;
+}
+
+.update-success {
+  color: rgb(35, 170, 35);
+}
+
 /* PROFILE DATA */
 
 div.profile-main {
