@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { formatDate, monthName, formatHour } from '../../../utils/dateUtils';
 import { getIata } from '../../../utils/getIata';
+import { getDuration } from '../../../utils/getDuration';
 import { GetBooking } from '../../Modal/modaldata/modalBooking';
 import * as A from '../../../context/auth/Auth.actions';
 import '../profile.css';
@@ -35,14 +36,14 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
           const date = formatDate(item);
           const iata = getIata(item);
           const timetable = formatHour(item);
-
+          const duration = getDuration(item);
           return (
             <li
               key={`RC_ID:${item.details.id}`}
               onClick={() => {
                 dispatch(
                   A.changeModalData({
-                    modal_data: <GetBooking props={{ dispatch, modal, item, iata, date, timetable }} />,
+                    modal_data: <GetBooking props={{ dispatch, modal, item, iata, date, timetable, duration }} />,
                   })
                 );
                 dispatch(A.switchBoolean({ name: 'modal', value: modal }));

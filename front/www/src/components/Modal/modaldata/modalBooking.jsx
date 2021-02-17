@@ -4,11 +4,7 @@ import Linea from '../../../assets/svg/linea.svg';
 import Avion from '../../../assets/svg/avion.svg';
 
 export const GetBooking = ({ props }) => {
-  const { dispatch, modal, item, iata, date, timetable } = props;
-  console.log(item);
-  console.log(iata);
-  console.log(date);
-  console.log(timetable);
+  const { dispatch, modal, item, iata, date, timetable, duration } = props;
   return (
     <>
       <header className="modal-booking-header">
@@ -52,21 +48,23 @@ export const GetBooking = ({ props }) => {
               <h4>{`${timetable[1]}H`}</h4>
             </div>
           </section>
-          <section className="modal-booking-flight-data">
-            <div>
-              <h5>SALIDA</h5>
-              <h4>{`${date[6]}/${date[7]}/${date[8]}`}</h4>
-              <h4>{`${timetable[2]}H`}</h4>
-            </div>
-            <div>
-              <h5>{item.vuelo_Vuelta.compañia}</h5>
-            </div>
-            <div>
-              <h5>LLEGADA</h5>
-              <h4>{`${date[9]}/${date[10]}/${date[11]}`}</h4>
-              <h4>{`${timetable[3]}H`}</h4>
-            </div>
-          </section>
+          {item.vuelo_Vuelta ? (
+            <section className="modal-booking-flight-data">
+              <div>
+                <h5>SALIDA</h5>
+                <h4>{`${date[6]}/${date[7]}/${date[8]}`}</h4>
+                <h4>{`${timetable[2]}H`}</h4>
+              </div>
+              <div>
+                <h5>{item.vuelo_Vuelta.compañia}</h5>
+              </div>
+              <div>
+                <h5>LLEGADA</h5>
+                <h4>{`${date[9]}/${date[10]}/${date[11]}`}</h4>
+                <h4>{`${timetable[3]}H`}</h4>
+              </div>
+            </section>
+          ) : null}
         </div>
       </main>
       <section className="modal-booking-aditional-data">
@@ -76,7 +74,11 @@ export const GetBooking = ({ props }) => {
         </div>
         <div>
           <h5>ESCALAS</h5>
-          <h4>0</h4>
+          {item.vuelo_Vuelta ? (
+            <h4>{`I: ${item.vuelo_Ida.escalas}/V: ${item.vuelo_Vuelta.escalas}`}</h4>
+          ) : (
+            <h4>{item.vuelo_Ida.escalas}</h4>
+          )}
         </div>
         <div>
           <h5>PRECIO</h5>
@@ -84,7 +86,11 @@ export const GetBooking = ({ props }) => {
         </div>
       </section>
       <footer className="modal-booking-footer">
-        <h5>Tu vuelo tiene una duración de 2H y 35M</h5>
+        {item.vuelo_Vuelta ? (
+          <h5>{`El vuelo de ida tiene una duración de ${duration[0]}H y ${duration[1]}M y el de vuelta ${duration[2]}H y ${duration[3]}M`}</h5>
+        ) : (
+          <h5>{`Tu vuelo tiene una duración de ${duration[0]}H y ${duration[1]}M`}</h5>
+        )}
         <div>
           <h5>TOTAL</h5>
           <h4>{`${item.details.total}€`}</h4>
