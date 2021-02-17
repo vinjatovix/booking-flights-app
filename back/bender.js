@@ -53,7 +53,7 @@ app.get('/me', usersController.verifyToken);
 app.get('/update', validateAuth, usersController.getUpdateData);
 app.get('/update/pass', validateAuth, usersController.getUpdatePass);
 
-app.put('/update', validateAuth, usersController.postUpdateData);
+app.put('/update/data', validateAuth, usersController.postUpdateData);
 app.put('/update/pass', validateAuth, usersController.postUpdatePass);
 
 app.put('/update/upload', validateAuth, uploadController.uploadAvatar);
