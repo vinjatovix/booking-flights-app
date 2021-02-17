@@ -19,7 +19,6 @@ function getUpdateData(req, res) {
     .send(
       '<form method="post" action="/signin" enctype="multipart/form-data">' +
         `<p>Username: <input type="text" name="username" id="username" value=${decoded.username} placeholder="Username" required /></p>` +
-        `<p>Avatar: <input type="file" name="avatar" value=${decoded.photo} /></p>` +
         `<p>Bio: <input type="text" name="bio" id="bio" value='${decoded.bio}' placeholder="Short bio"  /></p>` +
         '<p><input type="submit" value="Send" /></p>' +
         '</form>'
@@ -38,13 +37,13 @@ async function postUpdateData(req, res, next) {
   try {
     await updateProfileSchema.validateAsync(req.body);
 
-    const { username, bio, photo } = req.body;
+    const { username, bio } = req.body;
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
 
-    await updateData([username, bio, photo, decoded.id]);
+    await updateData([username, bio, decoded.id]);
 
-    res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio, photo } });
+    res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio } });
   } catch (err) {
     next(err);
   }
