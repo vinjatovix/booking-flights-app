@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuthContext } from '../../../context/auth/Auth.context';
-import { fetchBender, makeBooking } from '../../../http/api';
+import { makeBooking } from '../../../context/flight/Flight.actions';
+import { fetchBender } from '../../../http/api';
 import { monthName } from '../../../utils/dateUtils';
 
 const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) => {
@@ -14,8 +15,8 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
   return (
     <>
       <ul className="Itinerary">
-        <li >{itinerary.segments[0].carrierCode}</li>
-        <li >
+        <li>{itinerary.segments[0].carrierCode}</li>
+        <li>
           <p>{timeTrigger(fechaSalida)}</p>
           <div className={`stops${itinerary.segments.length - 1}`}></div>
           <p>{timeTrigger(fechaLlegada)}</p>
@@ -31,18 +32,23 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
 };
 
 export const ResponseFlight = (props) => {
-  const { itineraries, originLocationCode, destinationLocationCode, price, logged, id } = props;
+  const { itineraries, originLocationCode, destinationLocationCode, price, logged, id, dispatch } = props;
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleBooking = () => {
     const token = localStorage.getItem('token');
     // makeBooking(props, { token: token, errorMessage, setErrorMessage });
     const makeBook = async () => {
-      const res = await fetchBender(`http://localhost:8337/book/flight`, {
-        token: JSON.parse(token),
-        method: 'POST',
-        body: { ...props },
-      });
+      try {
+        const res = await fetchBender(`http://localhost:8337/book/flight`, {
+          token: JSON.parse(token),
+          method: 'POST',
+          body: { ...props },
+        });
+        dispatch(makeBooking(res.bookingCache));
+      } catch (err) {
+        console.log(err);
+      }
     };
     makeBook();
   };

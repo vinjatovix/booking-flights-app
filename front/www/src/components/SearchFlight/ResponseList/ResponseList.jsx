@@ -24,7 +24,14 @@ export const ResponseList = React.memo(({ data, logged, response, searching, adu
       )}
       {response?.adults &&
         response?.data?.map((element) => (
-          <ResponseFlight key={element.id} id={element.id} logged={logged} adults={adults} {...element} />
+          <ResponseFlight
+            key={element.id}
+            id={element.id}
+            logged={logged}
+            adults={adults}
+            dispatch={dispatch}
+            {...element}
+          />
         ))}
     </ul>
   );
