@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import { authFailure, changeMenu, switchBoolean } from '../../context/Auth.actions';
+import { authFailure, changeMenu, switchBoolean } from '../../context/auth/Auth.actions';
 
 import './menu.css';
 

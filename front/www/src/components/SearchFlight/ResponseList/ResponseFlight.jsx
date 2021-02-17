@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../../../context/Auth.context';
+import { useAuthContext } from '../../../context/auth/Auth.context';
 import { fetchBender, makeBooking } from '../../../http/api';
 import { monthName } from '../../../utils/dateUtils';
 

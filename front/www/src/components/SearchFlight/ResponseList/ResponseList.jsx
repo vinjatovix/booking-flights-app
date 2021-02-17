@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Article } from '../../common/Article';
 import { ResponseFlight } from './ResponseFlight';
 import * as A from '../../../context/flight/Flight.actions';
 import './responseList.css';
 
 export const ResponseList = React.memo(({ data, logged, response, searching, adults, dispatch }) => {
+  useEffect(() => {}, [response]);
   return (
     <ul className="Response-list">
       {typeof response?.data === 'string' && searching && (

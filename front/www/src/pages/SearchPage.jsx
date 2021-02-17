@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useFlightContext } from '../context/flight/Flight.context';
 
 /* COMPONENTS */
-import { SearchForm } from '../components/SearchFlight/SearchForm';
+import { SearchForm } from '../components/SearchFlight/SearchForm/SearchForm';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
 import { ResponseList } from '../components/SearchFlight/ResponseList/ResponseList';
 
@@ -23,11 +23,11 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
       response,
       returnDate,
       searching,
+      bookDone,
     },
     dispatch,
   ] = useFlightContext();
-  const [order, setOrder] = useState('');
-  useEffect(() => {}, [order, response, menu]);
+  useEffect(() => {}, [response, menu]);
 
   const searchFormProps = {
     adults,
@@ -55,7 +55,6 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     response,
     returnDate,
     searching,
-    setOrder,
     originLocationCode,
   };
   const responseListProps = {
@@ -71,6 +70,7 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
       {!searching && <SearchForm {...searchFormProps} />}
       {response.adults && <ResponseHeader {...headerProps} />}
       <ResponseList {...responseListProps} />
+      {bookDone}
     </>
   );
 };

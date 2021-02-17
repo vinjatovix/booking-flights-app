@@ -11,6 +11,7 @@ export const initialFlightFormState = {
   returnDate: '',
   maxPrice: '',
   searching: false,
+  bookDone: false,
 };
 
 export const FlightReducer = (state, { type, payload }) => {
@@ -39,6 +40,18 @@ export const FlightReducer = (state, { type, payload }) => {
         loading: true,
       };
     case C.FLIGHT_SET_RESPONSE:
+      return {
+        ...state,
+        loading: false,
+        response: payload,
+      };   
+       case C.FLIGHT_SET_ORDER:
+      return {
+        ...state,
+        loading: false,
+        response: payload,
+      };
+    case C.FLIGHT_SET_ORDER:
       return {
         ...state,
         loading: false,

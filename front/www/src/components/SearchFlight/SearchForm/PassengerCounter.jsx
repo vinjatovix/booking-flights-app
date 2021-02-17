@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
-import * as A from '../../context/flight/Flight.actions';
-import { useCounter } from '../../hooks/useCounter';
-import { Input } from '../common/Input';
+import * as A from '../../../context/flight/Flight.actions';
+import { useCounter } from '../../../hooks/useCounter';
+import { Input } from '../../common/Input';
 
 export const PassengerCounter = React.memo(({ adults, dispatch, r }) => {
   const { state: passengers, increment, decrement } = useCounter(adults);
+  console.log('RENDER PASAJEROS');
 
   useEffect(() => {
     dispatch(A.setNumber({ name: 'adults', value: passengers }));

@@ -1,4 +1,5 @@
-import * as A from '../context/Auth.actions';
+import * as A from '../context/auth/Auth.actions';
+import * as F from '../context/flight/Flight.actions';
 
 const apiUrl = 'http://localhost:8337';
 
@@ -56,11 +57,11 @@ export async function benderSignin(req, { setErrorMessage, setToken, dispatch })
 }
 export async function makeBooking(req, { token, errorMessage, setErrorMessage, dispatch }) {
   try {
-    console.log(token);
     const res = await fetchBender(`${apiUrl}${endpoint.book}`, {
       method: requestMethods.post,
       body: { ...req },
     });
+    //TODO: mostrar reserva en pantalla.
     console.log(res);
 
     if (!res.ok) {
@@ -68,10 +69,51 @@ export async function makeBooking(req, { token, errorMessage, setErrorMessage, d
     }
     // setToken(res.token);
   } catch (err) {
-    console.log(err);
     // dispatch(A.authFailure());
     setErrorMessage(err.details);
-    console.log(errorMessage);
     setTimeout(() => setErrorMessage(''), 3000);
   }
 }
+
+//TODO: limpiar esta funcionalidad
+// export const searchFlight = async (
+//   {
+//     adults,
+//     destinationLocationCode,
+//     departureDate,
+//     endPoint,
+//     maxPrice,
+//     loading,
+//     nonStop,
+//     originLocationCode,
+//     returnDate,
+//     searching,
+//   },
+//   { dispatch, isMounted }
+// ) => {
+//   const url = createUrl({
+//     adults: adults || 1,
+//     departureDate,
+//     destinationLocationCode,
+//     endPoint: endPoint,
+//     maxPrice: maxPrice || 9999,
+//     nonStop: nonStop === 'Directo',
+//     originLocationCode,
+//     returnDate: returnDate || '',
+//   });
+//   const res = await fetch(url, {
+//     method: 'GET',
+//   });
+
+//   if (!res.ok) {
+//     throw res;
+//   }
+//   const loot = await res.json();
+//   if (isMounted.current) {
+//     if (res.status !== 200) {
+//       dispatch(A.switchBoolean({ name: 'loading', value: !loading }));
+//       throw loot.details;
+//     }
+//     dispatch(F.setResponse(loot));
+//   }
+// };
