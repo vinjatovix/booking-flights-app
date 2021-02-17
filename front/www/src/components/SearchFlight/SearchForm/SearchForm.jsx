@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 /* COMPONENTS */
 import { AirportSelector } from './AirportSelector';
@@ -55,10 +55,13 @@ export const SearchForm = ({
   const tripValue = oneWay ? 'Solo ida' : 'I/V';
   const stopsValue = nonStop ? 'Directo' : 'Todos';
 
+  // const onSubmit = async (data) => {
+  //   await makeSearch({ dispatch, data, endPoint, isMounted, loading, setErrorMessage, searching });
+  // };
   const onSubmit = async (data) => {
     await makeSearch({ dispatch, data, endPoint, isMounted, loading, setErrorMessage, searching });
   };
-
+  
   const tripProps = {
     r: register,
     className: 'SearchForm__trip radius',
