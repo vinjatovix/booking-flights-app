@@ -3,6 +3,8 @@
 const jwt = require('jsonwebtoken');
 const { updateData } = require('../../repositories/user/user-repository');
 const { updateProfileSchema } = require('../../repositories/schemas/updateProfileSchema');
+const { getUserByEmail } = require('../../repositories/user/getUserByEmail');
+const { generatePayload } = require('./generatePayload');
 
 /**
  *? Ruta hacia la update page.
@@ -28,7 +30,7 @@ function getUpdateData(req, res) {
 /**
  *? Actualizador de los datos del usuario. Validamos el contenido del body con Joi.
  *Recuperamos la info del usuario a través del payload de su token y recopilamos la info nueva del body.
- * Hacemos una consulta actualizando la DB con los nuevos valores.
+ * Hacemos una consulta actualizando la DB con los nuevos valores y generamos un nuevo token que el frontend leerá para actualizar sus datos a través de él.
  *
  * @param {*} req
  * @param {*} res
@@ -42,8 +44,12 @@ async function postUpdateData(req, res, next) {
     const decoded = jwt.decode(token);
 
     await updateData([username, bio, decoded.id]);
+    const [user] = await getUserByEmail(decoded.email);
+    const tokenPayload = generatePayload(user);
 
-    res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio } });
+    const newToken = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
+
+    res.send({ ok: true, detail: 'Perfil actualizado', newToken: newToken, user: { username, bio } });
   } catch (err) {
     next(err);
   }
