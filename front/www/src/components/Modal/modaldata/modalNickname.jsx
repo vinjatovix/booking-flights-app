@@ -10,8 +10,6 @@ export const UpdateNickname = ({ props }) => {
 
   const token = JSON.parse(localStorage.getItem('token'));
   const body = { username: value, bio: bio };
-  console.log(value);
-  console.log(bio);
 
   return (
     <>
@@ -50,7 +48,6 @@ export const UpdateNickname = ({ props }) => {
                 dispatch(A.setString({ name: 'username', value: value }));
                 setDatos(json.newToken);
                 dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
-                console.log(json);
               }
             }}
           >
