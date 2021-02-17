@@ -1,5 +1,5 @@
 import React from 'react';
-import * as A from '../../../context/Auth.actions';
+import * as A from '../../../context/auth/Auth.actions';
 
 export const UpdatePhoto = ({ props }) => {
   const { dispatch, modal } = props;

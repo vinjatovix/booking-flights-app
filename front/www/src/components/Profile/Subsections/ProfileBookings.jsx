@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { formatDate, monthName } from '../../../utils/dateUtils';
 import { getIata } from '../../../utils/getIata';
 import { GetBooking } from '../../Modal/modaldata/modalBooking';
-import * as A from '../../../context/Auth.actions';
+import * as A from '../../../context/auth/Auth.actions';
 import '../profile.css';
 
 export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {

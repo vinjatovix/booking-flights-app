@@ -1,7 +1,7 @@
 import React from 'react';
 import '../profile.css';
 import leftArrow from '../../../assets/svg/angle-left-solid.svg';
-import { switchBoolean } from '../../../context/Auth.actions';
+import { switchBoolean } from '../../../context/auth/Auth.actions';
 
 export const ProfileContainer = ({ props, children }) => {
   return (

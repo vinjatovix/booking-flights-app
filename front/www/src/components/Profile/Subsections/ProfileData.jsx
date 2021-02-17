@@ -1,7 +1,7 @@
 import React from 'react';
 import '../profile.css';
 import ProfilePhoto from '../../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import * as A from '../../../context/Auth.actions';
+import * as A from '../../../context/auth/Auth.actions';
 import edit from '../../../assets/svg/pen-solid.svg';
 import { UpdateNickname, UpdateBio, UpdatePhoto } from '../../Modal/modaldata/modalContainerData';
 
