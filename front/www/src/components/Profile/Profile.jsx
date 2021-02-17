@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './profile.css';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import { switchBoolean } from '../../context/Auth.actions';
+import { switchBoolean } from '../../context/auth/Auth.actions';
 
 export const Profile = ({ photo, username, bio, dispatch, profile_data }) => {
   console.log(profile_data);

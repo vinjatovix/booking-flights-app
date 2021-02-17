@@ -2,20 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 
 /* COMPONENTS */
 import { AirportSelector } from './AirportSelector';
-import { Article } from '../common/Article';
-import { Dates } from './ResponseHeader/SearchForm/Dates';
-import { ErrorMessage } from '../common/ErrorMessage';
-import { Input } from '../common/Input';
-import { Loading } from '../common/Loading/Loading';
+import { Article } from '../../common/Article';
+import { Dates } from '../ResponseHeader/SearchForm/Dates';
+import { ErrorMessage } from '../../common/ErrorMessage';
+import { Input } from '../../common/Input';
+import { Loading } from '../../common/Loading/Loading';
 import { PassengerCounter } from './PassengerCounter';
 
 /* ACTIONS */
-import * as A from '../../context/flight/Flight.actions';
-import { createUrl } from './createUrl';
+import * as A from '../../../context/flight/Flight.actions';
 
 import './searchForm.css';
 import { useForm } from 'react-hook-form';
 import { resetReturnDate } from './resetReturnDate';
+import { makeSearch } from './makeSearch';
 
 export const SearchForm = ({
   title,
@@ -56,49 +56,7 @@ export const SearchForm = ({
   const stopsValue = nonStop ? 'Directo' : 'Todos';
 
   const onSubmit = async (data) => {
-    dispatch(A.saveResponse({}));
-    const {
-      adults,
-      departureDate,
-      destinationLocationCode,
-      originLocationCode,
-      maxPrice,
-      returnDate,
-      nonStop,
-      oneWay,
-    } = data;
-
-    if (oneWay === 'Solo ida') {
-      dispatch(A.setString({ name: 'returnDate', value: null }));
-    }
-    dispatch(A.setFlightQuestion(data));
-    const url = createUrl({
-      adults: adults || 1,
-      departureDate,
-      destinationLocationCode,
-      endPoint: endPoint,
-      maxPrice: maxPrice || 9999,
-      originLocationCode,
-      returnDate: returnDate || '',
-      nonStop: nonStop === 'Directo',
-    });
-    // dispatch(A.switchBoolean({ name: 'loading', value: loading }));
-
-    const res = await fetch(url, {
-      method: 'GET',
-    });
-    const loot = await res.json();
-    if (isMounted.current) {
-      if (res.status !== 200) {
-        dispatch(A.switchBoolean({ name: 'loading', value: !loading }));
-
-        setErrorMessage(loot.details);
-        setTimeout(() => setErrorMessage(''), 3000);
-      } else {
-        dispatch(A.switchBoolean({ name: 'searching', value: searching }));
-        dispatch(A.saveResponse(loot));
-      }
-    }
+    await makeSearch({ dispatch, data, endPoint, isMounted, loading, setErrorMessage, searching });
   };
 
   const tripProps = {

@@ -5,7 +5,7 @@ import './css/index.css';
 /* ****************************
 ! CONTEXTO 
 *******************************/
-import { useAuthContext } from './context/Auth.context';
+import { useAuthContext } from './context/auth/Auth.context';
 import { FlightProvider } from './context/flight/Flight.context';
 
 /* PÁGiNAS */

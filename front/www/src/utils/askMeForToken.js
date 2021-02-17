@@ -1,4 +1,4 @@
-import * as A from '../context/Auth.actions';
+import * as A from '../context/auth/Auth.actions';
 import { fetchBender } from '../http/api';
 import { path } from '../pageProps';
 

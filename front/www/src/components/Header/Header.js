@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LogoMenu from '../../assets/svg/bars-solid.svg';
 import CloseMenu from '../../assets/svg/cerrar.svg';
-import { changeMenu } from '../../context/Auth.actions';
+import { changeMenu } from '../../context/auth/Auth.actions';
 import './header.css';
 
 const Header = React.memo((props) => {
