@@ -1,5 +1,5 @@
 import React from 'react';
-import * as A from '../../../context/Auth.actions';
+import * as A from '../../../context/auth/Auth.actions';
 import Linea from '../../../assets/svg/linea.svg';
 import Avion from '../../../assets/svg/avion.svg';
 
