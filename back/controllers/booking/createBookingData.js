@@ -33,8 +33,8 @@ async function createBookingData(bookings) {
         locaDesti: destinationTown[0].Loca_nombre,
         llegada: fligthData[0].Vue_horaLlegada,
         escalas: fligthData[0].Vue_paradas,
-        compañía: company[0].Cmp_nombre,
-        duración: fligthData[0].Vue_duracion,
+        compañia: company[0].Cmp_nombre,
+        duracion: fligthData[0].Vue_duracion,
       },
     };
 
@@ -54,8 +54,8 @@ async function createBookingData(bookings) {
         salida: fligthData[0].Vue_horaSalida,
         llegada: fligthData[0].Vue_horaLlegada,
         escalas: fligthData[0].Vue_paradas,
-        compañía: company[0].Cmp_nombre,
-        duración: fligthData[0].Vue_duracion,
+        compañia: company[0].Cmp_nombre,
+        duracion: fligthData[0].Vue_duracion,
       };
     }
 
