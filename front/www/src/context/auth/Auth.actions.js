@@ -29,3 +29,8 @@ export const changeModalData = (payload) => ({
   type: C.CHANGE_MODAL_DATA,
   payload,
 });
+
+export const setString = (payload) => ({
+  type: C.SET_STRING,
+  payload,
+});

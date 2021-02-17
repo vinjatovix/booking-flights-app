@@ -70,6 +70,12 @@ export const reducer = (state, { type, payload }) => {
         modal_data: payload.modal_data,
       };
 
+    case C.SET_STRING:
+      return {
+        ...state,
+        [`${payload.name}`]: `${payload.value}`,
+      };
+
     default:
       return state;
   }

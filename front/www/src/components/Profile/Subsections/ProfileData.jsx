@@ -38,7 +38,7 @@ export const ProfileData = ({ profile_data, photo, dispatch, username, bio, emai
             onClick={() => {
               dispatch(
                 A.changeModalData({
-                  modal_data: <UpdateNickname props={{ dispatch, modal }} />,
+                  modal_data: <UpdateNickname props={{ dispatch, modal, bio }} />,
                 })
               );
               dispatch(A.switchBoolean({ name: 'modal', value: modal }));

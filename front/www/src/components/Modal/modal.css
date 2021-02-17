@@ -36,6 +36,10 @@
   text-shadow: none;
 }
 
+.update-error {
+  color: red;
+}
+
 form label {
   font-weight: bold;
   font-size: 20px;
