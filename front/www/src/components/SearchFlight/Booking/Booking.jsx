@@ -18,9 +18,9 @@ export const Booking = () => {
     Vue_paradas,
   } = details.ida[0];
 
-  useEffect(() => {
-    console.log('cambio');
-  }, [booking]);
+  // useEffect(() => {
+  //   console.log('cambio');
+  // }, [booking]);
   //   const { Vue_destino, Vue_horaLlegada } = details.ida[details.ida.length];
   return (
     <>

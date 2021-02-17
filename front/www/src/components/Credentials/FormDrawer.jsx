@@ -6,6 +6,7 @@ import { ErrorMessage } from '../common/ErrorMessage';
 import './formDrawer.css';
 import { buttonProps } from './credentialsFormProps';
 import { Input } from '../common/Input';
+import { GoogleButton } from './GoogleButton';
 
 export const FormDrawer = React.memo((props) => {
   const { cssClassName, handleSubmit, errorMessage } = props;
@@ -14,6 +15,7 @@ export const FormDrawer = React.memo((props) => {
       <form className={cssClassName} onSubmit={handleSubmit}>
         <InputList {...props} />
         <Input {...buttonProps} />
+        <GoogleButton {...props} />
       </form>
       <ErrorMessage children={errorMessage} />
     </>

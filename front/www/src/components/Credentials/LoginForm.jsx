@@ -34,7 +34,7 @@ export const LoginForm = (props) => {
     e.preventDefault();
     await benderLogin(req, actions);
   };
-  
+
   return (
     <FormDrawer
       items={items}
@@ -42,6 +42,7 @@ export const LoginForm = (props) => {
       handleInputChange={handleInputChange}
       reset={resetInput}
       errorMessage={errorMessage}
+      {...actions}
     />
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthContext } from '../../../context/auth/Auth.context';
-import { makeBooking } from '../../../context/flight/Flight.actions';
+import { makeBooking, switchBoolean } from '../../../context/flight/Flight.actions';
 import { fetchBender } from '../../../http/api';
 import { monthName } from '../../../utils/dateUtils';
 
@@ -40,6 +40,7 @@ export const ResponseFlight = (props) => {
     // makeBooking(props, { token: token, errorMessage, setErrorMessage });
     const makeBook = async () => {
       try {
+        dispatch(switchBoolean({ name: 'booking', value: false }));
         const res = await fetchBender(`http://localhost:8337/book/flight`, {
           token: JSON.parse(token),
           method: 'POST',
