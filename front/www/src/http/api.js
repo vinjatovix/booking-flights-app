@@ -58,6 +58,7 @@ export async function googleLogin(req, { setErrorMessage, setToken, dispatch }) 
       throw res;
     }
     setToken(res.token);
+    dispatch(A.switchBoolean({ name: 'google', value: false }));
   } catch (err) {
     dispatch(A.authFailure());
     setErrorMessage(err.details);

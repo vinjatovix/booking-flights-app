@@ -19,11 +19,10 @@ export const GoogleButton = ({ setErrorMessage, setToken, dispatch }) => {
     <div>
       <GoogleLogin
         clientId={clientId}
-        buttonText="Login"
+        buttonText="Google Access"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
         isSignedIn={true}
       />
     </div>

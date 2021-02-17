@@ -49,6 +49,7 @@ const App = () => {
       profile_tools,
       modal,
       modal_data,
+      google,
     },
     dispatch,
   ] = useAuthContext();
@@ -72,6 +73,7 @@ const App = () => {
     dispatch,
     menu,
     logged,
+    google,
     username,
     email,
     bio,

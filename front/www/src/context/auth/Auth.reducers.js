@@ -18,6 +18,7 @@ export const initialState = {
   profile_tools: false,
   modal: false,
   modal_data: null,
+  google: false,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */

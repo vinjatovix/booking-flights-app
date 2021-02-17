@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu, switchBoolean } from '../../context/auth/Auth.actions';
+import { GoogleLogout } from 'react-google-login';
 
 import './menu.css';
+import { Logout } from './Logout';
 
-export const Menu = ({ menu, logged, dispatch, setToken }) => {
+export const Menu = ({ menu, logged, dispatch, setToken, google }) => {
   return (
     <nav className="app-menu radius">
       <header className="app-menu__header">
@@ -75,7 +77,7 @@ export const Menu = ({ menu, logged, dispatch, setToken }) => {
               dispatch(changeMenu({ menu }));
             }}
           >
-            <li className="app-menu__list-item logout-button radius">Logout</li>
+            {google ? <Logout /> : <li className="app-menu__list-item logout-button radius">Logout</li>}
           </Link>
         )}
       </ul>
