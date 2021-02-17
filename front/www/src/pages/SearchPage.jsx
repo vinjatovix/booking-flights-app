@@ -26,8 +26,7 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     },
     dispatch,
   ] = useFlightContext();
-  const [order, setOrder] = useState('');
-  useEffect(() => {}, [order, response, menu]);
+  useEffect(() => {}, [response, menu]);
 
   const searchFormProps = {
     adults,
@@ -55,7 +54,6 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     response,
     returnDate,
     searching,
-    setOrder,
     originLocationCode,
   };
   const responseListProps = {
