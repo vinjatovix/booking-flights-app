@@ -6,8 +6,5 @@ export const getIata = (response) => {
 
   const protoIataDestino = response.vuelo_Ida.destino.split('(');
   iata.push(protoIataDestino[1].substring(0, protoIataDestino[1].length - 1));
-
-  iata.push(response.vuelo_Ida.origen);
-  iata.push(response.vuelo_Ida.destino);
   return iata;
 };

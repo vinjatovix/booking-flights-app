@@ -159,17 +159,22 @@ form label {
   font-size: 12px;
   font-weight: 100;
   margin-bottom: 0.25rem;
+  height: 20px;
 }
 
 .booking-towns div {
   min-width: 50%;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1.25rem;
 }
 
 .booking-towns-2 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.booking-towns-2 h5 {
+  text-align: end;
 }
 
 .modal-booking-main {
@@ -193,7 +198,7 @@ form label {
 }
 
 .modal-booking-flight-data {
-  padding: 0 0.75rem 1rem 0.75rem;
+  padding: 0 0.75rem 0.5rem 0.75rem;
   display: flex;
   justify-content: space-between;
 }

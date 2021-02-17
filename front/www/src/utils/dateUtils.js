@@ -65,11 +65,40 @@ export const formatDate = (string) => {
   date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[2]);
   date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[1]);
   date.push(string.vuelo_Ida.salida.split('T')[0].split('-')[0]);
+  date.push(string.vuelo_Ida.llegada.split('T')[0].split('-')[2]);
+  date.push(string.vuelo_Ida.llegada.split('T')[0].split('-')[1]);
+  date.push(string.vuelo_Ida.llegada.split('T')[0].split('-')[0]);
 
   if (string.vuelo_Vuelta) {
     date.push(string.vuelo_Vuelta.salida.split('T')[0].split('-')[2]);
     date.push(string.vuelo_Vuelta.salida.split('T')[0].split('-')[1]);
     date.push(string.vuelo_Vuelta.salida.split('T')[0].split('-')[0]);
+    date.push(string.vuelo_Vuelta.llegada.split('T')[0].split('-')[2]);
+    date.push(string.vuelo_Vuelta.llegada.split('T')[0].split('-')[1]);
+    date.push(string.vuelo_Vuelta.llegada.split('T')[0].split('-')[0]);
   }
   return date;
+};
+
+export const formatHour = (item) => {
+  const timetable = [];
+
+  timetable.push(
+    `${item.vuelo_Ida.salida.split('T')[1].split(':')[0]}:${item.vuelo_Ida.salida.split('T')[1].split(':')[1]}`
+  );
+  timetable.push(
+    `${item.vuelo_Ida.llegada.split('T')[1].split(':')[0]}:${item.vuelo_Ida.llegada.split('T')[1].split(':')[1]}`
+  );
+
+  if (item.vuelo_Vuelta) {
+    timetable.push(
+      `${item.vuelo_Vuelta.salida.split('T')[1].split(':')[0]}:${item.vuelo_Vuelta.salida.split('T')[1].split(':')[1]}`
+    );
+    timetable.push(
+      `${item.vuelo_Vuelta.llegada.split('T')[1].split(':')[0]}:${
+        item.vuelo_Vuelta.llegada.split('T')[1].split(':')[1]
+      }`
+    );
+  }
+  return timetable;
 };

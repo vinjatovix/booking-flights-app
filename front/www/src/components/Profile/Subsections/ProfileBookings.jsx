@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { formatDate, monthName } from '../../../utils/dateUtils';
+import { formatDate, monthName, formatHour } from '../../../utils/dateUtils';
 import { getIata } from '../../../utils/getIata';
 import { GetBooking } from '../../Modal/modaldata/modalBooking';
 import * as A from '../../../context/auth/Auth.actions';
@@ -34,13 +34,15 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
         {bookings.map((item) => {
           const date = formatDate(item);
           const iata = getIata(item);
+          const timetable = formatHour(item);
+
           return (
             <li
               key={`RC_ID:${item.details.id}`}
               onClick={() => {
                 dispatch(
                   A.changeModalData({
-                    modal_data: <GetBooking props={{ dispatch, modal, item, iata, date }} />,
+                    modal_data: <GetBooking props={{ dispatch, modal, item, iata, date, timetable }} />,
                   })
                 );
                 dispatch(A.switchBoolean({ name: 'modal', value: modal }));
@@ -61,9 +63,9 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
               </section>
               {item.vuelo_Vuelta ? (
                 <section className="booking-date">
-                  <p>{date[3]}</p>
+                  <p>{date[6]}</p>
                   <p>{monthName(+date[4] - 1).toUpperCase()}</p>
-                  <p>{date[5]}</p>
+                  <p>{date[8]}</p>
                 </section>
               ) : null}
             </li>
