@@ -44,6 +44,12 @@ export const FlightReducer = (state, { type, payload }) => {
         ...state,
         loading: false,
         response: payload,
+      };   
+       case C.FLIGHT_SET_ORDER:
+      return {
+        ...state,
+        loading: false,
+        response: payload,
       };
     case C.FLIGHT_SET_ORDER:
       return {
