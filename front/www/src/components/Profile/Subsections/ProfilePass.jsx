@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ErrorMessage } from '../../../components/common/ErrorMessage';
 import '../profile.css';
 
 export const ProfilePass = ({ dispatch, profile_pass }) => {
@@ -29,7 +30,7 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
         <input
           type="password"
           id="profile-new-pass"
-          placeholder="Al menos 8 caracteres"
+          placeholder="Al menos 6 caracteres"
           value={newPass}
           onChange={({ target }) => {
             setNewPass(target.value);
@@ -39,39 +40,29 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
         <input
           type="password"
           id="profile-rep-new-pass"
-          placeholder="Al menos 8 caracteres"
+          placeholder="Al menos 6 caracteres"
           value={repNewPass}
           onChange={({ target }) => {
             setRepNewPass(target.value);
           }}
         ></input>
-        {emptyString === true && <h4 className="update-error">Los campos no pueden estar vacíos</h4>}
+        <ErrorMessage />
         {changedPass === true && <h4 className="update-success">Contraseña actualizada</h4>}
         <button
           className="button-edit-pass"
           type="submit"
           onClick={async (e) => {
             e.preventDefault();
-            if (oldPass === '' || newPass === '' || repNewPass === '') {
-              setEmptyString(true);
-            } else {
-              setEmptyString(false);
-              const res = await fetch('http://localhost:8337/update/pass', {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: token,
-                },
-                body: JSON.stringify(body),
-              });
-              const json = await res.json();
-              if (json.code === 401) {
-              } else {
-                setChangedPass(true);
-              }
-
-              console.log(json);
-            }
+            const res = await fetch('http://localhost:8337/update/pass', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: token,
+              },
+              body: JSON.stringify(body),
+            });
+            const json = await res.json();
+            console.log(json);
           }}
         >
           Guardar
