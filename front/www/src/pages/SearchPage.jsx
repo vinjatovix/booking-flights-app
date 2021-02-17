@@ -7,6 +7,8 @@ import { useFlightContext } from '../context/flight/Flight.context';
 import { SearchForm } from '../components/SearchFlight/SearchForm/SearchForm';
 import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
 import { ResponseList } from '../components/SearchFlight/ResponseList/ResponseList';
+import { CustomModal } from '../components/Modal/Modal';
+import { Booking } from '../components/SearchFlight/Booking/Booking';
 
 export const SearchPage = ({ endPoint, title, menu, logged }) => {
   const [
@@ -23,11 +25,11 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
       response,
       returnDate,
       searching,
-      bookDone,
+      booking,
     },
     dispatch,
   ] = useFlightContext();
-  useEffect(() => {}, [response, menu]);
+  useEffect(() => {}, [response, menu, booking]);
 
   const searchFormProps = {
     adults,
@@ -65,12 +67,18 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     searching,
   };
 
+  const bookingProps = {};
+
   return (
     <>
       {!searching && <SearchForm {...searchFormProps} />}
       {response.adults && <ResponseHeader {...headerProps} />}
       <ResponseList {...responseListProps} />
-      {bookDone}
+      {booking && (
+        <CustomModal>
+          <Booking />
+        </CustomModal>
+      )}
     </>
   );
 };
