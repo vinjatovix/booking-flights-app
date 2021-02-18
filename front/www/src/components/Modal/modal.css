@@ -283,3 +283,19 @@ form label {
   margin-bottom: 0.25rem;
   border-bottom: 1px solid black;
 }
+
+h4.delete-account {
+  text-align: center;
+  font-size: 24px;
+}
+
+h5.delete-account {
+  text-align: center;
+  font-weight: 100;
+  font-size: 12px;
+  margin: 0.75rem 0;
+}
+
+button.delete-account {
+  margin: 0 0.5rem;
+}
