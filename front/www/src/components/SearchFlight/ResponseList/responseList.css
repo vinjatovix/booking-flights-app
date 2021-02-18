@@ -1,5 +1,6 @@
-:root {
-    --animation-time: 2s;
+
+.Response{
+    max-width: 700px;
 }
 
 .Response-empty {
@@ -12,6 +13,7 @@
     display: grid;
     gap: 0.5rem;
     width: 90vw;
+    max-width: 700px;
 }
 .hide {
     display: none;

@@ -3,6 +3,7 @@
 .profile-main {
   background-color: white;
   width: 90vw;
+  max-width: 700px;
 }
 
 .profile-main header {

@@ -9,6 +9,7 @@ import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/Respon
 import { ResponseList } from '../components/SearchFlight/ResponseList/ResponseList';
 import { CustomModal } from '../components/Modal/Modal';
 import { Booking } from '../components/SearchFlight/Booking/Booking';
+import { Response } from '../components/SearchFlight/Response';
 
 export const SearchPage = ({ endPoint, title, menu, logged }) => {
   const [
@@ -50,7 +51,7 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     title,
   };
 
-  const headerProps = {
+  const responseProps = {
     adults,
     departureDate,
     destinationLocationCode,
@@ -60,19 +61,12 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     searching,
     originLocationCode,
   };
-  const responseListProps = {
-    adults,
-    dispatch,
-    logged,
-    response,
-    searching,
-  };
+
 
   return (
     <>
       {!searching && <SearchForm {...searchFormProps} />}
-      {response.adults && <ResponseHeader {...headerProps} />}
-      <ResponseList {...responseListProps} />
+      <Response {...responseProps} />
       {booking && <CustomModal>{bookingCache && <Booking />}</CustomModal>}
     </>
   );

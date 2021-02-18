@@ -21,6 +21,7 @@
 }
 
 :root {
+  --animation-time: 2s;
   --basecolor: #fff;
   --inputcolor: #dbd8d8;
   --input-border-color: #a3939369;
