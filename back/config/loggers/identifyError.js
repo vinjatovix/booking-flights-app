@@ -26,6 +26,10 @@ function identifyError(err) {
       '"repeatNewPassword" must be [ref:newPassword]',
       'Las contraseñas nuevas no coinciden'
     );
+    err.details = err.details.replace(
+      '"newPassword" length must be at least 6 characters long',
+      'La longitud mínima de la contraseña es de 6 caracteres'
+    );
   }
 
   //? DATABASE ERRORS
