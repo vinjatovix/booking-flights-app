@@ -12,6 +12,9 @@ export const initialFlightFormState = {
   maxPrice: '',
   searching: false,
   booking: false,
+  durationButtonState: false,
+  stopsButtonState: false,
+  priceButtonState: true,
 };
 
 export const FlightReducer = (state, { type, payload }) => {
@@ -50,6 +53,14 @@ export const FlightReducer = (state, { type, payload }) => {
         ...state,
         loading: false,
         response: payload,
+      };
+    case C.FLIGHT_SET_FILTER_ON:
+      return {
+        ...state,
+        durationButtonState: false,
+        stopsButtonState: false,
+        priceButtonState: false,
+        [`${payload.name}`]: payload.value,
       };
     case C.BOOKING_MAKE_BOOK:
       return {

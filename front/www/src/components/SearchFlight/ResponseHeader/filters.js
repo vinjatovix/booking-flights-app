@@ -8,6 +8,6 @@ export const byPrice = (a, b) => (+a.price.grandTotal < +b.price.grandTotal ? 1 
 export const byDuration = (a, b) => {
   const durA = formatDuration(a.itineraries[0].duration);
   const durB = formatDuration(b.itineraries[0].duration);
-  console.log(durA - durB);
+  // console.log(durA - durB);
   return +durA - +durB;
 };

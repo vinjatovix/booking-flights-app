@@ -12,6 +12,7 @@ export const ResponseList = React.memo(({ data, logged, response, searching, adu
         <Article className="Response-empty radius" title="oh...">
           {response.data}
           <input
+            value="Volver"
             className="radius"
             type="submit"
             id="reset"

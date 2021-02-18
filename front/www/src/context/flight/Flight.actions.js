@@ -1,12 +1,10 @@
 import * as C from './Flight.constants';
 
-
 /* BASICS */
 export const switchBoolean = (payload) => ({
   type: C.INVERT_BOOLEAN,
   payload,
 });
-
 
 export const setNumber = (payload) => ({
   type: C.SET_NUMBER,
@@ -19,8 +17,6 @@ export const setString = (payload) => ({
 });
 
 /*  */
-
-
 
 export const setFlightQuestion = (payload) => {
   return {
@@ -36,6 +32,10 @@ export const setResponse = (payload) => ({
 
 export const setOrder = (payload) => ({
   type: C.FLIGHT_SET_ORDER,
+  payload,
+});
+export const setFilterOn = (payload) => ({
+  type: C.FLIGHT_SET_FILTER_ON,
   payload,
 });
 

@@ -31,9 +31,6 @@
   justify-content: space-evenly;
   grid-area: filter;
 }
-.Response__filters > * {
-  border: 1px solid black;
-}
 .Response-filter__stops {
   background-image: url("../../../assets/svg/route-solid.svg");
 }
@@ -45,6 +42,7 @@
 }
 
 .filter {
+  border-radius: 4px;
   background-repeat: no-repeat;
   background-size: 1.8rem;
   background-position: center center;
@@ -54,7 +52,17 @@
 }
 .active {
   display: block;
-  background-color: #f8e24c;
+  box-shadow: inset 0px 0px 10px black, inset -2px 0px 20px #bdc91acc;
+  background-color: #b6b90694;
+  animation: blink 2s infinite cubic-bezier(0.075, 0.82, 0.8, 0.5);
+}
+@keyframes blink {
+  0% {
+    background-color: #b6b90694;
+  }
+  50% {
+    background-color: #d4772a91;
+  }
 }
 .sort {
   border-bottom: 3px dashed black;

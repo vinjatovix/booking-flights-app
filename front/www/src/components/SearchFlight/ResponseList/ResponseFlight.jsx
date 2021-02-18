@@ -68,6 +68,7 @@ export const ResponseFlight = (props) => {
         />
       )}
       <ul className="Itinerary__offer-price">
+        <li>Nº:{id}</li>
         <li>{price.total}€</li>
         {logged && (
           <li>

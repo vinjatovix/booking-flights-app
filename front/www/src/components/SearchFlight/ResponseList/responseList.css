@@ -1,3 +1,7 @@
+:root {
+    --animation-time: 2s;
+}
+
 .Response-empty {
     background-image: url("../../../assets/svg/wind.svg");
     background-repeat: no-repeat;
@@ -52,6 +56,8 @@
 
     width: 2rem;
     height: 2rem;
+    animation: glow 2s infinite var(--animation-time) linear;
+
 }
 .stops1 {
     width: 3rem;
