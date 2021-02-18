@@ -53,6 +53,7 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
 
   const responseProps = {
     adults,
+    logged,
     departureDate,
     destinationLocationCode,
     dispatch,
