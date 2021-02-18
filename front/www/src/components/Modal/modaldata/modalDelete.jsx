@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import * as A from '../../../context/auth/Auth.actions';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
@@ -31,7 +31,7 @@ export const DeleteAccount = ({ props }) => {
                 },
               });
               const json = await res.json();
-              //   setToken('');
+              setToken('');
               dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
               setRedirect(true);
               console.log(json);
