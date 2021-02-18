@@ -34,3 +34,8 @@ export const setString = (payload) => ({
   type: C.SET_STRING,
   payload,
 });
+
+export const closeProfiles = (payload) => ({
+  type: C.CLOSE_PROFILES,
+  payload,
+});

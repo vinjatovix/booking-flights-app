@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ErrorMessage } from '../../../components/common/ErrorMessage';
 import '../profile.css';
 
@@ -11,6 +11,13 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
 
   const token = JSON.parse(localStorage.getItem('token'));
   const body = { password: oldPass, newPassword: newPass, repeatNewPassword: repNewPass };
+
+  // useEffect(() => {
+  //   const errorInterval = setInterval(() => {
+  //     setErrorMessage('');
+  //   }, 8000);
+  //   return ()=> clearInterval(errorInterval)
+  // }, [errorMessage]);
 
   return (
     <>
@@ -46,7 +53,7 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
             setRepNewPass(target.value);
           }}
         ></input>
-        <ErrorMessage />
+        <ErrorMessage>{errorMessage}</ErrorMessage>
         {changedPass === true && <h4 className="update-success">Contraseña actualizada</h4>}
         <button
           className="button-edit-pass"
@@ -62,6 +69,21 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
               body: JSON.stringify(body),
             });
             const json = await res.json();
+            if (json.ok === false) {
+              setErrorMessage(json.details);
+              setTimeout(() => {
+                setErrorMessage(false);
+              }, 5000);
+            } else {
+              setChangedPass(true);
+              setOldPass('');
+              setNewPass('');
+              setRepNewPass('');
+              setTimeout(() => {
+                setChangedPass(false);
+              }, 5000);
+            }
+            console.log(json);
           }}
         >
           Guardar

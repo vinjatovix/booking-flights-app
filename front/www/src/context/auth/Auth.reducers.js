@@ -77,6 +77,15 @@ export const reducer = (state, { type, payload }) => {
         [`${payload.name}`]: `${payload.value}`,
       };
 
+    case C.CLOSE_PROFILES:
+      return {
+        ...state,
+        profile_data: false,
+        profile_pass: false,
+        profile_bookings: false,
+        profile_tools: false,
+      };
+
     default:
       return state;
   }

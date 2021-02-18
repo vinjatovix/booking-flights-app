@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
-import { authFailure, changeMenu, switchBoolean } from '../../context/auth/Auth.actions';
+import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../context/auth/Auth.actions';
 import { GoogleLogout } from 'react-google-login';
 
 import './menu.css';
@@ -19,6 +19,7 @@ export const Menu = ({ menu, logged, dispatch, setToken, google }) => {
           to="/"
           onClick={() => {
             dispatch(changeMenu({ menu }));
+            dispatch(closeProfiles());
           }}
         >
           <li className="app-menu__list-item search-button radius">Buscar</li>
@@ -52,6 +53,7 @@ export const Menu = ({ menu, logged, dispatch, setToken, google }) => {
             onClick={({ target }) => {
               dispatch(changeMenu({ menu }));
               dispatch(switchBoolean({ name: target.parentNode.name, value: target.parentNode.value }));
+              dispatch(closeProfiles());
             }}
           >
             <li className="app-menu__list-item profile-button radius">Perfil</li>
@@ -62,6 +64,7 @@ export const Menu = ({ menu, logged, dispatch, setToken, google }) => {
           to="/about"
           onClick={() => {
             dispatch(changeMenu({ menu }));
+            dispatch(closeProfiles());
           }}
         >
           <li className="app-menu__list-item about-button radius">About</li>
