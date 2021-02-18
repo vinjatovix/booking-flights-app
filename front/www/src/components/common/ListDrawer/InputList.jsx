@@ -7,7 +7,7 @@ export const InputList = React.memo(({ items, handleInputChange, reset }) => {
   return (
     <>
       {items.map((item) => {
-        return <Input key={item.name} onChange={handleInputChange} onClick={reset} {...item} />;
+        return <Input name={item.name} key={item.name} onChange={handleInputChange} onClick={reset} {...item} />;
       })}
     </>
   );
