@@ -1282,12 +1282,13 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/update",
+									"raw": "{{url}}/update/data",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"update"
+										"update",
+										"data"
 									]
 								},
 								"description": "# Tries to update an empty username."
@@ -1428,12 +1429,13 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/update",
+									"raw": "{{url}}/update/data",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
-										"update"
+										"update",
+										"data"
 									]
 								},
 								"description": "# Tries to update an incomplete form."
@@ -1930,7 +1932,7 @@
 											"    pm.response.to.have.status(401);",
 											"});",
 											"pm.test(\"NO token\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Access denied. Please, log in with valid credentials.\");",
+											"    pm.expect(pm.response.text()).to.include(\"Acceso denegado, proporciona credenciales válidas por favor\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2153,36 +2155,37 @@
 											"pm.test(\"Bad Request\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Validation error\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"_original\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
 										{
 											"key": "originLocationCode",
-											"value": "",
+											"value": "SCQ",
 											"type": "text"
 										},
 										{
 											"key": "destinationLocationCode",
-											"value": "",
+											"value": "BCN",
 											"type": "text"
 										},
 										{
 											"key": "departureDate",
-											"value": "",
+											"value": "2021-03-28",
 											"type": "text"
 										},
 										{
@@ -2192,7 +2195,7 @@
 										},
 										{
 											"key": "adults",
-											"value": "",
+											"value": "2",
 											"type": "text"
 										},
 										{
@@ -2322,23 +2325,23 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 404\", function () {",
-											"    pm.response.to.have.status(404);",
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"not found\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.details).to.eql(\"Error fetching New Airport Info. Not Found\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
@@ -2492,20 +2495,20 @@
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"invalid date\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.details).to.eql(\"Choose an available date\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
@@ -2659,20 +2662,20 @@
 											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
-											"pm.test(\"Return date cannot be earlier than the date of origin\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.expect(jsonData.details).to.eql(\"Choose an available date. Return date cannot be earlier than the date of origin\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
@@ -2834,11 +2837,14 @@
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "noauth"
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "urlencoded",
@@ -2993,9 +2999,7 @@
 											"    pm.response.to.have.status(404);",
 											"});",
 											"",
-											"pm.test(\"Not found\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Error fetching New Airport Info. Not Found\");",
-											"});"
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -3113,7 +3117,7 @@
 											"});",
 											"",
 											"pm.test(\"Service unavaible\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Error fetching Airline Info. Not Found\");",
+											"    pm.expect(pm.response.text()).to.include(\"Airline Info\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3232,7 +3236,7 @@
 											"});",
 											"",
 											"pm.test(\"Invalid data\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Adults must be between 1 or 9\");",
+											"    pm.expect(pm.response.text()).to.include(\"1 y 9\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3351,7 +3355,7 @@
 											"});",
 											"",
 											"pm.test(\"Invalid data\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Adults must be between 1 or 9\");",
+											"    pm.expect(pm.response.text()).to.include(\"1 y 9\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3470,7 +3474,7 @@
 											"});",
 											"",
 											"pm.test(\"Invalid data\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Not valid itinerary\");",
+											"    pm.expect(pm.response.text()).to.include(\"inválido\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -3589,7 +3593,7 @@
 											"});",
 											"",
 											"pm.test(\"Invalid Data\", function () {",
-											"    pm.expect(pm.response.text()).to.include(\"Not valid itinerary\");",
+											"    pm.expect(pm.response.text()).to.include(\"inválido\");",
 											"});"
 										],
 										"type": "text/javascript"
