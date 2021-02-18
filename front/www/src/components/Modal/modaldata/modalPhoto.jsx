@@ -40,11 +40,12 @@ export const UpdatePhoto = ({ props }) => {
             id="photo"
             class="inputfile"
             data-multiple-caption="{count} archivos seleccionados"
-            multiple
-            value={value}
-            onChange={({ target }) => {
-              setValue(target.value);
-            }}
+            formenctype="multipart/form-data"
+            // value={value}
+            // onChange={({ target }) => {
+            //   console.log(target);
+            //   // setValue(target);
+            // }}
           />
           <label for="photo">
             <figure>
@@ -58,15 +59,19 @@ export const UpdatePhoto = ({ props }) => {
         <div className="button-container">
           <button
             type="submit"
+            formenctype="multipart/form-data"
             className="button-submit"
             onClick={async (e) => {
               e.preventDefault();
+              const input = document.getElementsByClassName('inputfile');
+              // console.log(input[0].files[0]);
+              setValue(input[0].files[0]);
               const res = await fetch('http://localhost:8337/update/upload', {
                 method: 'PUT',
                 headers: {
                   Authorization: token,
                 },
-                body: JSON.stringify(body),
+                body: body,
               });
               const json = await res.json();
               console.log(json);

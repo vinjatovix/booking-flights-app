@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './profile.css';
+import * as A from '../../context/auth/Auth.actions';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
+import { DeleteAccount } from '../Modal/modaldata/modalDelete';
 import { switchBoolean } from '../../context/auth/Auth.actions';
 
-export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings }) => {
+export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings, modal }) => {
   let logo = '';
   if (photo === '') {
     logo = ProfilePhoto;
@@ -62,7 +64,16 @@ export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_
               <p>Modifica tus preferencias</p>
             </li>
           </Link>
-          <Link to="/profile">
+          <Link
+            onClick={() => {
+              dispatch(
+                A.changeModalData({
+                  modal_data: <DeleteAccount props={{ dispatch, modal }} />,
+                })
+              );
+              dispatch(A.switchBoolean({ name: 'modal', value: modal }));
+            }}
+          >
             <li className="profile-off">
               <h4>Desactivar cuenta</h4>
               <p>No recibir más notificaciones</p>
