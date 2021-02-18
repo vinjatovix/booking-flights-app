@@ -3,7 +3,6 @@ import { Input } from '../../../common/Input';
 import * as A from '../../../../context/flight/Flight.actions.js';
 
 export const Dates = React.memo(({ r, departureDate, returnDate, dispatch, oneWay }) => {
-  console.log('RENDER DATES');
   const commonDateProps = {
     r: r,
     type: 'date',

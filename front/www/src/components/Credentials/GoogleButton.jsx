@@ -6,14 +6,10 @@ const clientId = '1067297095827-goodtp6cekt9q88favpfjqh3m4jgtipo.apps.googleuser
 
 export const GoogleButton = ({ setErrorMessage, setToken, dispatch }) => {
   const onSuccess = async (res) => {
-    console.log('[Login Success currentUser:]', res.profileObj);
-    console.log(res);
-    const { name, email, picture } = res.profileObj;
     await googleLogin(res.tokenId, { setErrorMessage, setToken, dispatch });
   };
 
   const onFailure = (res) => {
-    console.log('[Login Failed :]', res);
   };
   return (
     <div>

@@ -62,7 +62,6 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
               body: JSON.stringify(body),
             });
             const json = await res.json();
-            console.log(json);
           }}
         >
           Guardar

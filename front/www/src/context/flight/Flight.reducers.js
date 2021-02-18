@@ -35,7 +35,6 @@ export const FlightReducer = (state, { type, payload }) => {
         [`${payload.name}`]: `${payload.value}`,
       };
     case C.FLIGHT_SET_QUESTION:
-      console.log(payload);
       return {
         ...state,
         originLocationCode: payload.originLocationCode,

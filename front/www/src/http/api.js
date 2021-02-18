@@ -89,7 +89,6 @@ export async function makeBooking(req, { token, errorMessage, setErrorMessage, d
       body: { ...req },
     });
     //TODO: mostrar reserva en pantalla.
-    console.log(res);
 
     if (!res.ok) {
       throw res;

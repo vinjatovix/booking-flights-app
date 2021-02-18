@@ -53,7 +53,6 @@ export const ResponseHeader = (props) => {
   const salida = formatHeaderDate(departureDate);
   const llegada = formatHeaderDate(returnDate);
 
-  console.log(filter.cssStops);
   return (
     <div className="Response-header">
       {children}

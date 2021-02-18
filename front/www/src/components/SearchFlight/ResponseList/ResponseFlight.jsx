@@ -33,7 +33,7 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
 
 export const ResponseFlight = (props) => {
   const { itineraries, originLocationCode, destinationLocationCode, price, logged, id, dispatch } = props;
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage,setErrorMessage] = useState('');
 
   const handleBooking = () => {
     const token = localStorage.getItem('token');
@@ -48,7 +48,7 @@ export const ResponseFlight = (props) => {
         });
         dispatch(makeBooking(res.bookingCache));
       } catch (err) {
-        console.log(err);
+        setErrorMessage(err);
       }
     };
     makeBook();
