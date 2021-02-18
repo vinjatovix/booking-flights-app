@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as A from '../../../context/auth/Auth.actions';
 
 export const UpdatePhoto = ({ props }) => {
   const { dispatch, modal } = props;
+  const [value, setValue] = useState('');
+  const token = JSON.parse(localStorage.getItem('token'));
+  const body = { archivo: value };
+  console.log(value);
 
-  (function (document, window, index) {
-    let inputs = document.querySelectorAll('.inputfile');
-    Array.prototype.forEach.call(inputs, function (input) {
-      let label = input.nextElementSibling,
-        labelVal = label.innerHTML;
+  useEffect(() => {
+    const handlerPhoto = (document, window, index) => {
+      let inputs = document.querySelectorAll('.inputfile');
+      Array.prototype.forEach.call(inputs, function (input) {
+        let label = input.nextElementSibling,
+          labelVal = label.innerHTML;
 
-      input.addEventListener('change', function (e) {
-        let fileName = '';
-        if (this.files && this.files.length > 1)
-          fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
-        else fileName = e.target.value.split('\\').pop();
+        input.addEventListener('change', function (e) {
+          let fileName = '';
+          console.log(fileName);
+          if (this.files && this.files.length > 1)
+            fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+          else fileName = e.target.value.split('\\').pop();
 
-        if (fileName) label.querySelector('span').innerHTML = fileName;
-        else label.innerHTML = labelVal;
+          if (fileName) label.querySelector('span').innerHTML = fileName;
+          else label.innerHTML = labelVal;
+        });
       });
-    });
-  })(document, window, 0);
+    };
+    handlerPhoto(document, window, 0);
+  }, [value]);
+
   return (
     <>
       <div className="modal-container">
@@ -32,6 +41,10 @@ export const UpdatePhoto = ({ props }) => {
             class="inputfile"
             data-multiple-caption="{count} archivos seleccionados"
             multiple
+            value={value}
+            onChange={({ target }) => {
+              setValue(target.value);
+            }}
           />
           <label for="photo">
             <figure>
@@ -43,7 +56,24 @@ export const UpdatePhoto = ({ props }) => {
           </label>
         </div>
         <div className="button-container">
-          <button className="button-submit">Subir</button>
+          <button
+            type="submit"
+            className="button-submit"
+            onClick={async (e) => {
+              e.preventDefault();
+              const res = await fetch('http://localhost:8337/update/upload', {
+                method: 'PUT',
+                headers: {
+                  Authorization: token,
+                },
+                body: JSON.stringify(body),
+              });
+              const json = await res.json();
+              console.log(json);
+            }}
+          >
+            Subir
+          </button>
           <button
             className="button-close"
             onClick={() => {
