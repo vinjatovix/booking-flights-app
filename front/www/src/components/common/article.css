@@ -1,15 +1,27 @@
 article {
-    background-color: rgba(255, 255, 255, 0.829);
-    width: 90vw;
-    max-width: 700px;
-    padding: 0 1rem 1rem;
-    text-align: center;
+  background-color: rgba(255, 255, 255, 0.829);
+  width: 90vw;
+  max-width: 700px;
+  padding: 0 1rem 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
 article h2 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 article h3 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  article {
+    margin-top: 1rem;
+  }
+}
+@media (min-width: 800px) {
+  article {
+    margin-top: 1.5rem;
+  }
 }

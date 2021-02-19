@@ -13,17 +13,17 @@
 }
 .SearchForm > * {
   width: 40vw;
-  max-width: 325px;
+  max-width: 285px;
 }
 .SearchForm__trip {
   background-image: url('../../../assets/svg/repeat.svg');
-  background-position: 0.6rem;
+  background-position: 1rem;
   grid-area: tipo;
 }
 
 .SearchForm__nonStop {
   background-image: url('../../../assets/svg/route-solid.svg');
-  background-position: 0.6rem;
+  background-position: 0.8rem;
   grid-area: escalas;
 }
 .SearchForm__passengers {
@@ -40,18 +40,18 @@
 }
 .SearchForm__price {
   background-image: url('../../../assets/svg/funnel-dollar-solid.svg');
-  background-position: 0.6rem;
+  background-position: 1rem;
   grid-area: precio;
 }
 .SearchForm__airport {
   display: flex;
   flex-direction: column;
   width: 85vw;
-  max-width: 680px;
+  max-width: 585px;
 }
 #originLocationCode input,
 #destinationLocationCode input {
-  background-position: 1rem;
+  background-position: 1.2rem;
   width: 100%;
 }
 #originLocationCode {
@@ -73,9 +73,8 @@
   gap: 1.5rem;
 }
 .SearchForm__dates > * {
-  max-width: 325px;
+  max-width: 280px;
   width: 40vw;
-  width: 39.5vw;
 }
 .SearchForm__dates-departure {
   grid-area: salida;
@@ -105,4 +104,15 @@
   display: block;
   color: red;
   min-height: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .SearchForm > *,
+  .SeachForm__dates > *,
+  .SearchForm__airport {
+    font-size: 20px;
+  }
+  .SearchForm__dates > * {
+    margin: 1rem 0;
+  }
 }
