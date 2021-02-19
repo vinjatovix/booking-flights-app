@@ -15,7 +15,8 @@
 }
 
 .app-header h1 {
-  margin-left: 2.5rem;
+  margin-left: 2.75rem;
+  padding-top: 0.25rem;
 }
 
 .burguer {
@@ -23,4 +24,41 @@
   height: 2rem;
   margin: 0 1rem;
   fill: red;
+}
+
+@media (min-width: 600px) {
+  .app-header {
+    height: 3rem;
+    background-size: 2.5rem;
+  }
+  .app-header h1 {
+    margin-left: 3.5rem;
+    padding-top: 0.25rem;
+    font-size: 38px;
+  }
+  .app-header small {
+    font-size: 26px;
+  }
+  .burguer {
+    height: 2.25rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .app-header {
+    height: 3.5rem;
+    background-size: 3rem;
+    background-position: 0.75rem center;
+  }
+
+  .app-header h1 {
+    margin-left: 4rem;
+    font-size: 42px;
+  }
+  .app-header small {
+    font-size: 30px;
+  }
+  .burguer {
+    height: 2.5rem;
+  }
 }

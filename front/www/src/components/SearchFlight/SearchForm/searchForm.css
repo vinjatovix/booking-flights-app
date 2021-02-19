@@ -2,13 +2,13 @@
   display: grid;
   gap: 1rem;
   grid-template-areas:
-    "tipo escalas"
-    "pasajeros precio"
-    "origen origen"
-    "destino destino"
-    "dates dates"
-    "error error"
-    "buscar buscar";
+    'tipo escalas'
+    'pasajeros precio'
+    'origen origen'
+    'destino destino'
+    'dates dates'
+    'error error'
+    'buscar buscar';
   justify-content: center;
 }
 .SearchForm > * {
@@ -16,13 +16,13 @@
   max-width: 325px;
 }
 .SearchForm__trip {
-  background-image: url("../../../assets/svg/repeat.svg");
+  background-image: url('../../../assets/svg/repeat.svg');
   background-position: 0.6rem;
   grid-area: tipo;
 }
 
 .SearchForm__nonStop {
-  background-image: url("../../../assets/svg/route-solid.svg");
+  background-image: url('../../../assets/svg/route-solid.svg');
   background-position: 0.6rem;
   grid-area: escalas;
 }
@@ -35,11 +35,11 @@
   width: 20%;
 }
 .SearchForm__passengers-value {
-  background-image: url("../../../assets/svg/user-friends-solid.svg");
+  background-image: url('../../../assets/svg/user-friends-solid.svg');
   width: 60%;
 }
 .SearchForm__price {
-  background-image: url("../../../assets/svg/funnel-dollar-solid.svg");
+  background-image: url('../../../assets/svg/funnel-dollar-solid.svg');
   background-position: 0.6rem;
   grid-area: precio;
 }
@@ -61,10 +61,10 @@
   grid-area: destino;
 }
 #originLocationCode input {
-  background-image: url("../../../assets/svg/plane-departure-solid.min.svg");
+  background-image: url('../../../assets/svg/plane-departure-solid.min.svg');
 }
 #destinationLocationCode input {
-  background-image: url("../../../assets/svg/plane-arrival-solid.svg");
+  background-image: url('../../../assets/svg/plane-arrival-solid.svg');
 }
 .SearchForm__dates {
   grid-area: dates;
@@ -84,7 +84,7 @@
 .SearchForm__dates-return {
   grid-area: retorno;
 }
-.SearchForm [type="submit"] {
+.SearchForm [type='submit'] {
   border: 4px groove;
   border-color: rgba(163, 147, 147, 0.411);
   box-shadow: 3px 2px 7px rgba(5, 5, 5, 0.542);
