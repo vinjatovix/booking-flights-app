@@ -5,7 +5,6 @@ import { DeleteAccount } from '../Modal/modaldata/modalDelete';
 import { switchBoolean } from '../../context/auth/Auth.actions';
 
 export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings, modal }) => {
-  console.log('foto', photo);
 
   return (
     <section className="profile-main">
