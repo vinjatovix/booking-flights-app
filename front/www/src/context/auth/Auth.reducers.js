@@ -70,6 +70,11 @@ export const reducer = (state, { type, payload }) => {
         ...state,
         modal_data: payload.modal_data,
       };
+    case C.SET_AVATAR:
+      return {
+        ...state,
+        photo: payload,
+      };
 
     case C.SET_STRING:
       return {

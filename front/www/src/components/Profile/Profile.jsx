@@ -1,20 +1,16 @@
 import React from 'react';
 import './profile.css';
 import * as A from '../../context/auth/Auth.actions';
-import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { DeleteAccount } from '../Modal/modaldata/modalDelete';
 import { switchBoolean } from '../../context/auth/Auth.actions';
 
 export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings, modal }) => {
-  let logo = '';
-  if (photo === '') {
-    logo = ProfilePhoto;
-  } else logo = photo;
+  console.log('foto', photo);
 
   return (
     <section className="profile-main">
       <header>
-        <img src={logo} alt="foto-de-usuario" />
+        <img src={photo} alt="foto-de-usuario" />
         <div>
           <h3>{username}</h3>
           <p>{bio}</p>

@@ -20,6 +20,10 @@
   animation: open 0.5s ease 0s;
   animation-fill-mode: backwards;
 }
+.app-menu__avatar{
+  width: 180px;
+  border-radius: 40%;
+}
 
 .app-menu__header {
   width: 100%;

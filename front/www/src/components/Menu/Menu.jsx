@@ -6,7 +6,7 @@ import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../con
 import './menu.css';
 import { Logout } from './Logout';
 
-export const Menu = ({ menu, logged, dispatch, setToken, google }) => {
+export const Menu = ({ menu, logged, dispatch, setToken, google, photo }) => {
   return (
     <div className="menu-wrapper">
       <nav className="app-menu radius">

@@ -17,7 +17,7 @@ async function validateImage({ files }) {
     error.details = 'No se ha detectado ningun archivo';
     throw error;
   }
-  const archivo = files.archivo;
+  const archivo = files.photo;
 
   if (archivo.size > 5000000) {
     const error = new Error();
@@ -31,7 +31,6 @@ async function validateImage({ files }) {
     error.details = 'El archivo está vacío o corrupto';
     throw error;
   }
-
   //? Preparamos el chunk a comparar
   const fileBuffer = await createFileChunk(archivo);
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
