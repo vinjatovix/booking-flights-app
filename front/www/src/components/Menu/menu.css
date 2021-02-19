@@ -19,8 +19,9 @@
   box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
   animation: open 0.5s ease 0s;
   animation-fill-mode: backwards;
+  margin: 0 auto;
 }
-.app-menu__avatar{
+.app-menu__avatar {
   width: 180px;
   border-radius: 40%;
 }
@@ -103,4 +104,13 @@
 } */
 
 @media (min-width: 400px) {
+  .app-menu__header img {
+    margin-left: 4rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .app-menu {
+    margin-top: 5rem;
+  }
 }
