@@ -22,7 +22,7 @@ function showAbout(req, res) {
       {
         id: 2,
         text:
-          'Se trata de una aplicación de búsqueda y reserva de vuelos que conecta más de 6000 aeropuertos en todo el mundo. Opera consumiendo datos de la API de Amadeus, uno de los proveedores de información aérea más importante del mundo.',
+          'Se trata de una aplicación de búsqueda y reserva de vuelos que conecta más de 2000 aeropuertos en todo el mundo. Opera consumiendo datos de la API de Amadeus, uno de los proveedores de información aérea más importante del mundo.',
       },
       {
         id: 3,

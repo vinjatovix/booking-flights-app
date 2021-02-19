@@ -99,7 +99,7 @@ const App = () => {
               </Route>
               <Route path="/register">
                 <PublicRoute>
-                  <CredentialsPage title="Sign In" {...controlProps} />
+                  <CredentialsPage title="Sign Up" {...controlProps} />
                 </PublicRoute>
               </Route>
               <Route path="/about">

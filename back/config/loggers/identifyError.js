@@ -35,7 +35,7 @@ function identifyError(err) {
   //? DATABASE ERRORS
   if (err.code === 'EAI_AGAIN') {
     err.code = 400;
-    err.details = `${process.env.DATABASE_HOST} is'n a known host.`;
+    err.details = `${process.env.DATABASE_HOST} isn't a known host.`;
   }
   if (err.code === 'ECONNREFUSED') {
     err.code = 400;
@@ -50,7 +50,7 @@ function identifyError(err) {
     err.details = 'Acceso denegado';
   }
 
-  //? AMADEUS REQUES ERRORS
+  //? AMADEUS REQUEST ERRORS
   if (err.code === 'BADADULTS') {
     err.code = 400;
     err.details = 'El número de adultos debe de ser entre 1 y 9';
@@ -65,7 +65,7 @@ function identifyError(err) {
   }
   if (err.code === 'BADITINERARY') {
     err.code = 400;
-    err.details = 'Los datos de intinerario no son válidos';
+    err.details = 'Los datos de itinerario no son válidos';
   }
 
   //? UNKNOWN ERRORS
