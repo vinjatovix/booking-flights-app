@@ -5,29 +5,28 @@ import { ProfilePass } from '../components/Profile/Subsections/ProfilePass';
 import { ProfileContainer } from '../components/Profile/Subsections/ProfileContainer';
 import { ProfileBookings } from '../components/Profile/Subsections/ProfileBookings';
 
-export const ProfilePage = ({ control, profile }) => {
-  const { profile_data, profile_pass, profile_bookings } = profile;
-  const { dispatch } = control;
+export const ProfilePage = (props) => {
+  const { profile_data, profile_pass, profile_bookings, dispatch } = props;
   return (
     <>
-      {profile_data === true && (
+    {!(profile_data || profile_pass || profile_bookings) && <Profile {...props} />}
+      {profile_data && (
         <ProfileContainer props={[{ profile_data: profile_data }, dispatch]}>
-          {<ProfileData {...profile} {...control} />}
+          {<ProfileData {...props} />}
         </ProfileContainer>
       )}
-      {profile_pass === true && (
+      {profile_pass && (
         <ProfileContainer props={[{ profile_pass: profile_pass }, dispatch]}>
-          {<ProfilePass {...profile} {...control} />}
+          {<ProfilePass {...props} />}
         </ProfileContainer>
       )}
 
-      {profile_bookings === true && (
+      {profile_bookings && (
         <ProfileContainer props={[{ profile_bookings: profile_bookings }, dispatch]}>
-          {<ProfileBookings {...profile} {...control} />}
+          {<ProfileBookings {...props} />}
         </ProfileContainer>
       )}
 
-      {(profile_data || profile_pass || profile_bookings) !== true && <Profile {...profile} {...control} />}
     </>
   );
 };

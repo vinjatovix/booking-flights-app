@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import * as A from '../../../context/auth/Auth.actions';
 import { useForm } from 'react-hook-form';
+import { uploadPhoto } from './uploadPhoto';
 
-export async function newEntry(data, token) {
-  const headers = new Headers();
-  headers.append('Authorization', token);
-  const body = new FormData();
-
-  body.append('photo', data.photo[0]);
-
-  return await fetch('http://localhost:8337/update/upload', { method: 'PUT', headers, body });
-}
-
-export const UpdatePhoto = ({ props }) => {
+export const UpdatePhoto = ({ props, photo, token, setToken }) => {
   const { register, handleSubmit } = useForm();
 
   const { dispatch, modal } = props;
   const [value, setValue] = useState('Seleccionar archivo');
-  const token = JSON.parse(localStorage.getItem('token'));
 
   useEffect(() => {
     const handlerPhoto = (document) => {
@@ -36,9 +26,12 @@ export const UpdatePhoto = ({ props }) => {
     handlerPhoto(document);
   }, [value]);
 
-
-  const onSubmit = (data) => {
-    newEntry(data, token);
+  const onSubmit = async (data) => {
+    const res = await uploadPhoto(data, token);
+    const json = await res.json();
+    console.log(json);
+    setToken(json.token);
+    dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
   };
 
   return (

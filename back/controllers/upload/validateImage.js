@@ -34,7 +34,6 @@ async function validateImage({ files }) {
   //? Preparamos el chunk a comparar
   const fileBuffer = await createFileChunk(archivo);
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
-  console.log(fileBuffer, 'VALIDATIONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN');
   if (!validateExtension(fileBuffer, validExtensions)) {
     await deleteFile(archivo.tempFilePath);
     const err = new Error();

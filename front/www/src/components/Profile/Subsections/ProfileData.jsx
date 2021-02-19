@@ -5,11 +5,11 @@ import * as A from '../../../context/auth/Auth.actions';
 import edit from '../../../assets/svg/pen-solid.svg';
 import { UpdateNickname, UpdateBio, UpdatePhoto } from '../../Modal/modaldata/modalContainerData';
 
-export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email, modal }) => {
-  let logo = '';
-  if (photo === '') {
-    logo = ProfilePhoto;
-  } else logo = photo;
+export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email, modal, token, setToken }) => {
+  const logo = photo === '' ? ProfilePhoto : photo;
+
+  console.log('logo', logo);
+
   return (
     <>
       <picture>
@@ -19,7 +19,7 @@ export const ProfileData = ({ profile_data, photo, dispatch, username, bio, emai
           onClick={() => {
             dispatch(
               A.changeModalData({
-                modal_data: <UpdatePhoto props={{ dispatch, modal }} />,
+                modal_data: <UpdatePhoto props={{ dispatch, modal }} photo={logo} token={token} setToken={setToken} />,
               })
             );
             dispatch(A.switchBoolean({ name: 'modal', value: modal }));

@@ -30,6 +30,10 @@ export const changeModalData = (payload) => ({
   payload,
 });
 
+export const setAvatar = (payload) => ({
+  type: C.SET_AVATAR,
+  payload,
+});
 export const setString = (payload) => ({
   type: C.SET_STRING,
   payload,

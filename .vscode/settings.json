@@ -5,6 +5,7 @@
     "conventionalCommits.scopes": [
         "searchFlight",
         "auth",
-        "test"
+        "test",
+        "profile"
     ]
 }

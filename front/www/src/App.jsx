@@ -7,6 +7,7 @@ import './css/index.css';
 *******************************/
 import { useAuthContext } from './context/auth/Auth.context';
 import { FlightProvider } from './context/flight/Flight.context';
+import * as A from './context/auth/Auth.actions';
 
 /* PÁGiNAS */
 import { CredentialsPage } from './pages/CredentialsPage';
@@ -27,6 +28,8 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import { PublicRoute } from './components/common/PublicRoute';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { askMeForToken } from './utils/askMeForToken';
+
+import ProfilePhoto from './assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -59,17 +62,42 @@ const App = () => {
   useEffect(() => {
     askMeForToken(logged, token, dispatch);
   }, [token, logged, dispatch]);
+
+  useEffect(() => {
+    if (!photo) {
+      dispatch(A.setAvatar(ProfilePhoto));
+    } else {
+      if (!photo.includes('googleusercontent')) {
+        const getAvatar = async () => {
+          const res = await fetch(`http://localhost:8337/user/image?user=${photo}`, {
+            method: 'GET',
+            headers: {
+              'Content-type': 'application/json',
+              Authorization: token,
+            },
+          });
+
+          if (res.status === 200) {
+            const img = await res.blob();
+            const localUrl = await URL.createObjectURL(img);
+            dispatch(A.setAvatar(localUrl));
+          } else {
+            console.log('kaka');
+          }
+        };
+        getAvatar();
+      }
+    }
+  }, [photo, dispatch, token]);
   /* 
   ? Estas propiedades se envían a las paginas que necesitan tratar con la autorización
    */
-  const profileProps = {
+
+  const controlProps = {
     profile_data,
     profile_pass,
     profile_bookings,
     profile_tools,
-  };
-
-  const controlProps = {
     dispatch,
     menu,
     logged,
@@ -108,7 +136,7 @@ const App = () => {
 
               <Route path="/profile">
                 <PrivateRoute>
-                  <ProfilePage control={controlProps} profile={profileProps} />
+                  <ProfilePage {...controlProps} />
                 </PrivateRoute>
               </Route>
               <Route path="/">
