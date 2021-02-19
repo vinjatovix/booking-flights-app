@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ErrorMessage } from '../../../components/common/ErrorMessage';
 import '../profile.css';
 
@@ -11,13 +11,6 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
 
   const token = JSON.parse(localStorage.getItem('token'));
   const body = { password: oldPass, newPassword: newPass, repeatNewPassword: repNewPass };
-
-  // useEffect(() => {
-  //   const errorInterval = setInterval(() => {
-  //     setErrorMessage('');
-  //   }, 8000);
-  //   return ()=> clearInterval(errorInterval)
-  // }, [errorMessage]);
 
   return (
     <>

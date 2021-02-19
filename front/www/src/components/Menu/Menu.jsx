@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../context/auth/Auth.actions';
-import { GoogleLogout } from 'react-google-login';
 
 import './menu.css';
 import { Logout } from './Logout';

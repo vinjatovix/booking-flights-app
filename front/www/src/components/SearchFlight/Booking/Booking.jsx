@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useFlightContext } from '../../../context/flight/Flight.context';
 import Avion from '../../../assets/svg/avion.svg';
 import Linea from '../../../assets/svg/linea.svg';
@@ -7,7 +7,7 @@ import { setResponse, switchBoolean } from '../../../context/flight/Flight.actio
 export const Booking = () => {
   const [{ bookingCache, booking }, dispatch] = useFlightContext();
   const { header, details } = bookingCache;
-  const { RC_base, RC_total, RC_adults, RC_ID } = header;
+  const { RC_ID } = header;
   const {
     Vue_origen,
     Vue_company,

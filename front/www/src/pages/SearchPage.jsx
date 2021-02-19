@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 /* CONTEXT */
 import { useFlightContext } from '../context/flight/Flight.context';
 
 /* COMPONENTS */
 import { SearchForm } from '../components/SearchFlight/SearchForm/SearchForm';
-import { ResponseHeader } from '../components/SearchFlight/ResponseHeader/ResponseHeader';
-import { ResponseList } from '../components/SearchFlight/ResponseList/ResponseList';
 import { CustomModal } from '../components/Modal/Modal';
 import { Booking } from '../components/SearchFlight/Booking/Booking';
 import { Response } from '../components/SearchFlight/Response';
@@ -62,7 +60,6 @@ export const SearchPage = ({ endPoint, title, menu, logged }) => {
     searching,
     originLocationCode,
   };
-
 
   return (
     <>

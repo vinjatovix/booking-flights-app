@@ -19,6 +19,3 @@ export const ProfileContainer = ({ props, children }) => {
     </div>
   );
 };
-
-// <img src={logo} alt="foto-de-usuario" />;
-//<div className="photo-button"></div>;

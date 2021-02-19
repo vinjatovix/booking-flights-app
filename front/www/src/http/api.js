@@ -1,5 +1,4 @@
 import * as A from '../context/auth/Auth.actions';
-import * as F from '../context/flight/Flight.actions';
 
 const apiUrl = 'http://localhost:8337';
 

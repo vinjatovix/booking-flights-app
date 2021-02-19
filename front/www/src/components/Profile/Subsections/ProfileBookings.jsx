@@ -13,7 +13,6 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
   const css = {
     backgroundPositionX: '7.25rem',
   };
-  console.log(bookings);
 
   useEffect(() => {
     async function getBookings() {
@@ -28,7 +27,7 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
       setBookings(json);
     }
     getBookings();
-  }, []);
+  }, [token]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 /* COMPONENTS */
 import { AirportSelector } from './AirportSelector';
@@ -61,7 +61,7 @@ export const SearchForm = ({
   const onSubmit = async (data) => {
     await makeSearch({ dispatch, data, endPoint, isMounted, loading, setErrorMessage, searching });
   };
-  
+
   const tripProps = {
     r: register,
     className: 'SearchForm__trip radius',
