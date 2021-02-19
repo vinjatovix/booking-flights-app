@@ -59,7 +59,6 @@ export const Booking = () => {
             <div>
               <h5>{Vue_company}</h5>
               <h6>{Vue_duracion.replace('PT', '')}</h6>
-              <h6>Escalas: {Vue_paradas}</h6>
             </div>
             <div>
               <h5>LLEGADA</h5>
@@ -76,7 +75,7 @@ export const Booking = () => {
         </div>
         <div>
           <h5>ESCALAS</h5>
-          <h4>0</h4>
+          <h4>{Vue_paradas}</h4>
         </div>
         <div>
           <h5>PRECIO</h5>
