@@ -6,11 +6,11 @@ import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../con
 import './menu.css';
 import { Logout } from './Logout';
 
-export const Menu = ({ menu, logged, dispatch, setToken, google }) => {
+export const Menu = ({ menu, logged, dispatch, setToken, google, photo }) => {
   return (
     <nav className="app-menu radius">
       <header className="app-menu__header">
-        <img src={ProfilePhoto} alt="foto de usuario" />
+        <img className='app-menu__avatar' src={photo} alt="foto de usuario" />
       </header>
 
       <ul className="app-menu__list">

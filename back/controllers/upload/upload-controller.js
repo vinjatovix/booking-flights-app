@@ -2,13 +2,14 @@
 
 const { deleteOldAvatar } = require('./deleteOldAvatar');
 const { getStorePath } = require('./getStorePath');
-const { getAvatar } = require('../../repositories/user/user-repository');
+const { getAvatar, getUserByEmail } = require('../../repositories/user/user-repository');
 const { imposibleError } = require('./imposibleError');
 const jwt = require('jsonwebtoken');
 const { newAvatarData } = require('./newAvatarData');
 const path = require('path');
 const { storePathInDb } = require('./storePahInDb');
 const { validateImage } = require('./validateImage');
+const { generatePayload } = require('../user/generatePayload');
 
 /**
  * This method updates the picture profile on the system.
@@ -19,7 +20,7 @@ const { validateImage } = require('./validateImage');
  */
 async function uploadAvatar(req, res, next) {
   try {
-    const { id } = jwt.decode(req.headers.authorization);
+    const { id, email } = jwt.decode(req.headers.authorization);
 
     //? Validamos que el tipo de archivo sea según especificaciones
     const file = await validateImage(req, next);
@@ -46,8 +47,11 @@ async function uploadAvatar(req, res, next) {
     ? const pathToStore = uploadPath.split('/').splice(8).join('/'); 
     */
     await storePathInDb(fileName, id);
+    const [user] = await getUserByEmail(email);
+    const tokenPayload = generatePayload(user);
+    const newToken = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
 
-    res.status(200).json({ ok: true, details: 'Foto subida.' });
+    res.status(200).json({ ok: true, details: 'Foto subida.', token: newToken });
   } catch (err) {
     next(err);
   }

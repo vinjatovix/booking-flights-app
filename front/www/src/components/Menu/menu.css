@@ -16,6 +16,10 @@
   right: 2rem;
   z-index: 1000;
 }
+.app-menu__avatar{
+  width: 180px;
+  border-radius: 40%;
+}
 
 /* .menu {
   width: 100%;

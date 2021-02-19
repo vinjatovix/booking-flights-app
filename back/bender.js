@@ -8,6 +8,7 @@ const loggers = require('./config/loggers');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const cors = require('cors');
+const fs = require('fs');
 
 const { validateAuth } = require('./middlewares/validate-auth');
 const { e404 } = require('./middlewares/e404');
@@ -50,6 +51,16 @@ app.post('/google', usersController.googleLogin);
 app.get('/me', usersController.verifyToken);
 
 //? AUTHORIZED
+app.get('/user/image', function (req, res, next) {
+  try {
+    console.log(req.query);
+    res.writeHead(200, { 'content-type': 'image/jpg' });
+    fs.createReadStream(__dirname + `/assets/avatars/${req.query.user}`).pipe(res);
+  } catch (error) {
+    next(error);
+  }
+});
+console.log(__dirname);
 app.get('/update', validateAuth, usersController.getUpdateData);
 app.get('/update/pass', validateAuth, usersController.getUpdatePass);
 
@@ -59,7 +70,6 @@ app.put('/update/pass', validateAuth, usersController.postUpdatePass);
 app.put('/update/upload', validateAuth, uploadController.uploadAvatar);
 app.put('/update/delete', validateAuth, usersController.deleteAccount);
 app.put('/myBookings/delete', validateAuth, bookingController.deleteBooking);
-
 app.get('/search/flights', amadeusController.getFlight);
 app.post('/book/flight', validateAuth, bookingController.bookFlight);
 app.post('/myBookings', validateAuth, bookingController.userBookings);
