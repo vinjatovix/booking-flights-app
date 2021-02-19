@@ -20,6 +20,7 @@ async function deleteAccount({ headers }, res, next) {
     }
 
     if (token) {
+      res.send({ ok: true, details: 'Cuenta eliminada' });
       res.redirect('/login');
     } else {
       throw new Error();
