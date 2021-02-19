@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../../../context/auth/Auth.context';
 import { makeBooking, switchBoolean } from '../../../context/flight/Flight.actions';
 import { fetchBender } from '../../../http/api';
 import { monthName } from '../../../utils/dateUtils';
@@ -33,7 +32,7 @@ const Itinerary = ({ itinerary, originLocationCode, destinationLocationCode }) =
 
 export const ResponseFlight = (props) => {
   const { itineraries, originLocationCode, destinationLocationCode, price, logged, id, dispatch } = props;
-  const [errorMessage,setErrorMessage] = useState('');
+  const [, setErrorMessage] = useState('');
 
   const handleBooking = () => {
     const token = localStorage.getItem('token');

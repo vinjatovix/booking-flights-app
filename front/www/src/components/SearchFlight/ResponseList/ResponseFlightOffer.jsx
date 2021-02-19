@@ -8,7 +8,7 @@ export const ResponseFlightOffer = (props) => {
     //TODO: abstraer esto a api.js
     // makeBooking(props, { token: token, errorMessage, setErrorMessage });
     const makeBook = async () => {
-      const res = await fetchBender(`http://localhost:8337/book/flight`, {
+      await fetchBender(`http://localhost:8337/book/flight`, {
         token: JSON.parse(token),
         method: 'POST',
         body: { ...props },
