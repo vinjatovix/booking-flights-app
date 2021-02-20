@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../context/auth/Auth.actions';
@@ -7,6 +7,7 @@ import './menu.css';
 import { Logout } from './Logout';
 
 export const Menu = ({ menu, logged, dispatch, setToken, google, photo }) => {
+  useEffect(() => {}, [logged]);
   return (
     <div className="menu-wrapper">
       <nav className="app-menu radius">

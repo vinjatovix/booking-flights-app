@@ -100,6 +100,46 @@ export async function makeBooking(req, { token, errorMessage, setErrorMessage, d
   }
 }
 
+export function getPhoto(photo, token, dispatch) {
+  if (!photo) {
+  } else {
+    if (!photo.includes('googleusercontent') || !photo.includes('localhost')) {
+      const getAvatar = async () => {
+        try {
+          const res = await fetch(`http://localhost:8337/user/image?user=${photo}`, {
+            method: 'GET',
+            headers: {
+              'Content-type': 'application/json',
+              Authorization: token,
+            },
+          });
+
+          if (res.status === 200) {
+            const img = await res.blob();
+            const localUrl = URL.createObjectURL(img);
+            dispatch(A.setAvatar(localUrl));
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      getAvatar();
+    }
+  }
+}
+
+export async function deleteAccount(token, dispatch) {
+  const res = await fetch('http://localhost:8337/update/delete', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  });
+  const json = await res.json();
+  json.ok && dispatch(A.authFailure());
+}
+
 //TODO: limpiar esta funcionalidad
 // export const searchFlight = async (
 //   {

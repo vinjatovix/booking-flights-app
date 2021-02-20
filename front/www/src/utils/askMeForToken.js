@@ -3,7 +3,7 @@ import { fetchBender } from '../http/api';
 import { path } from '../pageProps';
 
 export function askMeForToken(logged, token, dispatch) {
-  if (logged || token !== '') {
+  if (logged || token ) {
     try {
       const getRemoteData = async (token) => {
         const json = await fetchBender(path.me, { method: 'GET', token: token });

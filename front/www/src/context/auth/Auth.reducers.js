@@ -42,17 +42,19 @@ export const reducer = (state, { type, payload }) => {
         status: payload.status,
       };
     case C.AUTH_RESPONSE_FAILURE:
+      console.log('funciona');
       //? lógica
       return {
         ...state,
-        loading: false,
-        logged: false,
-        username: null,
         email: null,
+        username: null,
         id: null,
         photo: null,
         bio: null,
         status: null,
+        logged: false,
+        loading: false,
+        // modal: false,
       };
     case C.CHANGE_MENU_VISIBILITY:
       //? lógica

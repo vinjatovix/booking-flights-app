@@ -9,7 +9,7 @@ import { CustomModal } from '../components/Modal/Modal';
 import { Booking } from '../components/SearchFlight/Booking/Booking';
 import { Response } from '../components/SearchFlight/Response';
 
-export const SearchPage = ({ endPoint, title, menu, logged }) => {
+export const SearchPage = ({ endPoint, title, menu, logged,  }) => {
   const [
     {
       adults,
