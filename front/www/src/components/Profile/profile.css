@@ -1,90 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
 
-.profile-main {
+.profile {
   background-color: white;
+  padding: 0.5rem 0;
   width: 90vw;
   max-width: 700px;
 }
 
-.profile-main header {
+.profile-header {
   display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid black;
-  border-color: rgb(182, 177, 177);
+  padding: 0.5rem;
+  border-bottom: 1px solid rgb(182, 177, 177);
 }
 
-.profile-main header img {
-  height: 70px;
+.profile-header img {
   width: 70px;
-  margin: 1rem;
+  height: 70px;
 }
 
-.profile-main header div {
-  margin: 1.75rem 1rem 0.5rem 0;
-  padding-top: 0.75rem;
+.profile-header__info {
+  width: 70%;
+  padding: 1.25rem 0.5rem 0.5rem 0.5rem;
 }
 
-.profile-main header div h3 {
+.profile-header__info h3 {
   font-size: 18px;
   margin-bottom: 0.25rem;
 }
 
-.profile-main header div p {
+.profile-header__info h5 {
   font-size: 12px;
   font-style: italic;
+  font-weight: 100;
 }
 
-.categorias {
+.profile-main {
   padding: 1rem 0;
 }
 
-.categorias li {
+.profile-main__list > * {
   padding: 1rem 0.5rem 1rem 5rem;
   background-size: 1.25rem;
   background-position: 1.5rem;
   background-repeat: no-repeat;
 }
 
-.categorias li:active {
-  filter: opacity(0.5);
-}
-
-.categorias a li h4 {
-  font-size: 16px;
-}
-
-.categorias a li p {
+.profile-main__list p {
   font-size: 14px;
-  color: rgb(70, 67, 67);
 }
 
-.profile-data {
+.profile-main__list-data {
   background-image: url('../../assets/svg/informacion.svg');
 }
 
-.profile-pass {
+.profile-main__list-pass {
   background-image: url('../../assets/svg/password.svg');
 }
 
-.profile-booking {
+.profile-main__list-bookings {
   background-image: url('../../assets/svg/reserva.svg');
 }
 
-.profile-tools {
+.profile-main__list-tools {
   background-image: url('../../assets/svg/configuraciones.svg');
 }
 
-.profile-off {
+.profile-main__list-delete {
   background-image: url('../../assets/svg/turn-off.svg');
-}
-
-.update-error {
-  color: red;
-  text-align: center;
-}
-
-.update-success {
-  color: rgb(35, 170, 35);
 }
 
 /* PROFILE DATA */
@@ -281,4 +263,62 @@ p.booking-id {
 
 .booking-info.arrow {
   background-position-x: 7rem;
+}
+
+@media (min-width: 450px) {
+  .profile-main__list > * {
+    padding-left: 6rem;
+    background-size: 1.5rem;
+    background-position: 2rem;
+  }
+  .profile-header img {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-header__info {
+    padding: 1.75rem 0.75rem 0.75rem 0.75rem;
+  }
+  .profile-header__info h3 {
+    font-size: 22px;
+  }
+  .profile-header__info h5 {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 600px) {
+  .profile {
+    margin-top: 1rem;
+  }
+  .profile-main__list > * {
+    padding: 1.5rem 1rem 1.5rem 8rem;
+    background-size: 1.75rem;
+    background-position: 2.25rem;
+  }
+  .profile-main__list h4 {
+    font-size: 20px;
+  }
+  .profile-main__list p {
+    font-size: 16px;
+  }
+  .profile-header img {
+    width: 120px;
+    height: 120px;
+    margin-left: 3rem;
+  }
+  .profile-header__info {
+    padding: 2rem 1rem 0.75rem 1rem;
+  }
+  .profile-header__info h3 {
+    font-size: 28px;
+  }
+  .profile-header__info h5 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 800px) {
+  .profile {
+    margin-top: 1.5rem;
+  }
 }
