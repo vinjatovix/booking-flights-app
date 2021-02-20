@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
 
+/* MENU PROFILE*/
 .profile {
   background-color: white;
   padding: 0.5rem 0;
@@ -69,89 +70,133 @@
   background-image: url('../../assets/svg/turn-off.svg');
 }
 
+@media (min-width: 450px) {
+  .profile-main__list > * {
+    padding-left: 6rem;
+    background-size: 1.5rem;
+    background-position: 2rem;
+  }
+  .profile-header img {
+    width: 100px;
+    height: 100px;
+  }
+  .profile-header__info {
+    padding: 1.75rem 0.75rem 0.75rem 0.75rem;
+  }
+  .profile-header__info h3 {
+    font-size: 22px;
+  }
+  .profile-header__info h5 {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 600px) {
+  .profile {
+    margin-top: 1rem;
+  }
+  .profile-main__list > * {
+    padding: 1.5rem 1rem 1.5rem 8rem;
+    background-size: 1.75rem;
+    background-position: 2.25rem;
+  }
+  .profile-main__list h4 {
+    font-size: 20px;
+  }
+  .profile-main__list p {
+    font-size: 16px;
+  }
+  .profile-header img {
+    width: 120px;
+    height: 120px;
+    margin-left: 3rem;
+  }
+  .profile-header__info {
+    padding: 2rem 1rem 0.75rem 1rem;
+  }
+  .profile-header__info h3 {
+    font-size: 28px;
+  }
+  .profile-header__info h5 {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 800px) {
+  .profile {
+    margin-top: 1.5rem;
+  }
+}
+
 /* PROFILE DATA */
-
-div.profile-main {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-picture {
-  position: relative;
-  align-self: center;
-}
 
 img[alt='boton-atras'] {
   width: 22px;
   margin: 1rem 0 0 1rem;
 }
-
 img[alt='foto-de-usuario'] {
   width: 180px;
   border-radius: 40%;
 }
-
-.photo-button {
-  background-image: url('../../assets/svg/camara.svg');
-  background-repeat: no-repeat;
-  background-color: beige;
+.profile-data__photo {
+  width: 200px;
+  margin: 0 auto;
+  position: relative;
+}
+.profile-data__photo-edit {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-size: 1.5rem;
-  background-position: 0.6rem;
+  background-color: grey;
   position: absolute;
   left: 120px;
-  bottom: 5px;
+  bottom: 0px;
+  background: beige url('../../assets/svg/camara.svg') 0.5rem no-repeat;
+  background-size: 1.8rem;
 }
-
-.profile-inputs {
-  margin: 4rem 0 2rem 0;
+.profile-data__inputs {
+  margin: 1rem 0;
 }
-
-.profile-inputs li {
-  display: flex;
-  margin: 0 1rem 1rem 0rem;
-  padding-left: 5rem;
-  background-position: 1rem;
+.profile-data__inputs > * {
+  padding: 1rem 0.5rem 1rem 5rem;
+  background-size: 1.25rem;
+  background-position: 1.5rem;
   background-repeat: no-repeat;
+  display: flex;
 }
-.profile-inputs li div {
-  flex-grow: 2;
+.profile-data__inputs-nick {
+  background-image: url('../../assets/svg/user-solid.svg');
+  background-size: 1.25rem;
 }
-
-.profile-inputs li h4 {
-  padding: 0.25rem 0;
-  font-size: 16px;
-  border-bottom: 1px solid grey;
+.profile-data__inputs-bio {
+  background-image: url('../../assets/svg/biography.svg');
+  background-size: 1.5rem;
 }
-
-.profile-inputs li h5 {
+.profile-data__inputs-email {
+  background-image: url('../../assets/svg/email.svg');
+  background-size: 1.5rem;
+}
+.profile-data__inputs :first-child {
+  flex-grow: 1;
+}
+.profile-data__inputs :first-child h5 {
   padding: 0.25rem 0;
   font-weight: 100;
   color: rgb(182, 177, 177);
 }
-
-img[alt='boton-de-editar'] {
-  width: 32px;
-  padding: 0.5rem;
+.profile-data__inputs :first-child h4 {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid grey;
 }
-
-.profile-nickname {
-  background-image: url('../../assets/svg/user-solid.svg');
+.edit-button {
+  background-image: url('../../assets/svg/pen-solid.svg');
+  background-size: 2rem;
+  background-position: 0.6rem;
+  background-repeat: no-repeat;
   background-size: 1.25rem;
-}
-
-.profile-bio {
-  background-image: url('../../assets/svg/biography.svg');
-  background-size: 1.5rem;
-}
-
-.profile-email {
-  background-image: url('../../assets/svg/email.svg');
-  background-size: 1.5rem;
-  padding-right: 2rem;
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
 }
 
 /* PROFILE PASS */
@@ -263,62 +308,4 @@ p.booking-id {
 
 .booking-info.arrow {
   background-position-x: 7rem;
-}
-
-@media (min-width: 450px) {
-  .profile-main__list > * {
-    padding-left: 6rem;
-    background-size: 1.5rem;
-    background-position: 2rem;
-  }
-  .profile-header img {
-    width: 100px;
-    height: 100px;
-  }
-  .profile-header__info {
-    padding: 1.75rem 0.75rem 0.75rem 0.75rem;
-  }
-  .profile-header__info h3 {
-    font-size: 22px;
-  }
-  .profile-header__info h5 {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 600px) {
-  .profile {
-    margin-top: 1rem;
-  }
-  .profile-main__list > * {
-    padding: 1.5rem 1rem 1.5rem 8rem;
-    background-size: 1.75rem;
-    background-position: 2.25rem;
-  }
-  .profile-main__list h4 {
-    font-size: 20px;
-  }
-  .profile-main__list p {
-    font-size: 16px;
-  }
-  .profile-header img {
-    width: 120px;
-    height: 120px;
-    margin-left: 3rem;
-  }
-  .profile-header__info {
-    padding: 2rem 1rem 0.75rem 1rem;
-  }
-  .profile-header__info h3 {
-    font-size: 28px;
-  }
-  .profile-header__info h5 {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 800px) {
-  .profile {
-    margin-top: 1.5rem;
-  }
 }

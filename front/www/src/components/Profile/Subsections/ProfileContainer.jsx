@@ -5,7 +5,7 @@ import { switchBoolean } from '../../../context/auth/Auth.actions';
 
 export const ProfileContainer = ({ props, children }) => {
   return (
-    <div className="profile-main">
+    <div className="profile">
       <section>
         <img
           src={leftArrow}
