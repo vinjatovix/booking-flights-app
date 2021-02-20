@@ -32,4 +32,4 @@ bender-dev.environment.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-# front/www/.eslintcache
+front/www/.eslintcache
