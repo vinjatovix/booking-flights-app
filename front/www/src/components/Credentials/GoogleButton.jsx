@@ -9,8 +9,7 @@ export const GoogleButton = ({ setErrorMessage, setToken, dispatch }) => {
     await googleLogin(res.tokenId, { setErrorMessage, setToken, dispatch });
   };
 
-  const onFailure = (res) => {
-  };
+  const onFailure = (res) => {};
   return (
     <div>
       <GoogleLogin
@@ -20,6 +19,7 @@ export const GoogleButton = ({ setErrorMessage, setToken, dispatch }) => {
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
         isSignedIn={true}
+        theme="light"
       />
     </div>
   );

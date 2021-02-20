@@ -89,6 +89,7 @@ input {
 
 button,
 input[type='submit'] {
+  border-radius: 40px;
   width: 40vw;
   border: 4px groove;
   border-color: var(--input-border-color);
@@ -96,7 +97,7 @@ input[type='submit'] {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1rem;
-  max-width: 320px;
+  max-width: 150px;
   padding: 1rem;
   text-align: center;
   text-decoration: none;
