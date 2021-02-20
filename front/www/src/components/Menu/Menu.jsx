@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProfilePhoto from '../../assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../context/auth/Auth.actions';
@@ -7,10 +7,12 @@ import './menu.css';
 import { Logout } from './Logout';
 
 export const Menu = ({ menu, logged, dispatch, setToken, google, photo }) => {
+  useEffect(() => {
+  }, [logged]);
   return (
     <nav className="app-menu radius">
       <header className="app-menu__header">
-        <img className='app-menu__avatar' src={photo} alt="foto de usuario" />
+        <img className="app-menu__avatar" src={photo} alt="foto de usuario" />
       </header>
 
       <ul className="app-menu__list">
