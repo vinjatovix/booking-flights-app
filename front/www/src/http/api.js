@@ -128,6 +128,18 @@ export function getPhoto(photo, token, dispatch) {
   }
 }
 
+export async function deleteAccount(token, dispatch) {
+  const res = await fetch('http://localhost:8337/update/delete', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  });
+  const json = await res.json();
+  json.ok && dispatch(A.authFailure());
+}
+
 //TODO: limpiar esta funcionalidad
 // export const searchFlight = async (
 //   {

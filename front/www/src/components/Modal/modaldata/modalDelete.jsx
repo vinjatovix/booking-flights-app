@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import * as A from '../../../context/auth/Auth.actions';
+import { useAuthContext } from '../../../context/auth/Auth.context';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { askMeForToken } from '../../../utils/askMeForToken';
+import { deleteAccount } from '../../../http/api';
 
-export const DeleteAccount = ({ props }) => {
-  const { dispatch, modal } = props;
-  const token = JSON.parse(localStorage.getItem('token'));
-  const [, setToken] = useLocalStorage('', 'token');
-  const [redirect, setRedirect] = useState(false);
-  console.log(redirect);
+export const DeleteAccount = ({ modal }) => {
+  const [, dispatch] = useAuthContext();
+  const [token, setToken] = useLocalStorage(JSON.parse(localStorage.getItem('token')), 'token');
+  const [{ logged }] = useAuthContext();
+  // console.log(logged);
 
+  useEffect(() => {
+    if (!logged) {
+      setToken('');
+      window.location.reload();
+    }
+    return () => {};
+  }, [logged, setToken]);
   return (
     <>
       <div className="modal-container">
-        <div class="container-input">
+        <div className="container-input">
           <h4 className="delete-account">¿Estás seguro de desactivar tu cuenta?</h4>
           <h5 className="delete-account">
             (Si desactivas tu cuenta no podrás volver a logearte y perderás todos tus datos, además de no poder volver a
@@ -22,28 +30,22 @@ export const DeleteAccount = ({ props }) => {
           <button
             className="button-submit delete-account"
             onClick={async (e) => {
-              e.preventDefault();
-              const res = await fetch('http://localhost:8337/update/delete', {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: token,
-                },
-              });
-              const json = await res.json();
-              setToken('');
-              dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
-              setRedirect(true);
-              console.log(json);
+              try {
+                e.preventDefault();
+                await deleteAccount(token, dispatch);
+              } catch (err) {
+                console.log(err);
+                dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
+              }
             }}
           >
             Sí
           </button>
-          {redirect === true && <Redirect to="/login" />}
           <button
             className="button-close delete-account"
             onClick={() => {
               dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
+              console.log('no');
             }}
           >
             No
@@ -53,3 +55,4 @@ export const DeleteAccount = ({ props }) => {
     </>
   );
 };
+

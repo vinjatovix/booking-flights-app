@@ -32,6 +32,9 @@
   --yellow: #f9e24c;
   --inactive-color: #808080;
 }
+:focus{
+  outline: none;
+}
 * {
   font-family: 'Atkinson', sans-serif;
 }
