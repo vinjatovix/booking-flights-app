@@ -33,9 +33,7 @@ export const ResponseHeader = (props) => {
       ? 'Response-filter__duration filter active'
       : 'Response-filter__duration filter';
     const cssPrice = priceButtonState ? 'Response-filter__price filter active' : 'Response-filter__price filter';
-    const cssStops = stopsButtonState
-      ? 'Response-filter__stops filter active'
-      : 'Response-filter__stops filter ';
+    const cssStops = stopsButtonState ? 'Response-filter__stops filter active' : 'Response-filter__stops filter ';
     const payload = { cssDuration: cssDuration, cssPrice: cssPrice, cssStops: cssStops };
     // console.log(payload);
     // console.log(durationButtonState, stopsButtonState, priceButtonState);
@@ -69,8 +67,8 @@ export const ResponseHeader = (props) => {
           kind={'stopsButtonState'}
           name="stops"
           orderMethod={byStops}
-          // onClick={() => setFilter({ duration: false, price: false, stops: true })}
           response={response}
+          setFilter={setFilter}
           val={filter.stops}
         />
         <FilterButton
@@ -80,18 +78,19 @@ export const ResponseHeader = (props) => {
           name="duration"
           orderMethod={byDuration}
           response={response}
+          setFilter={setFilter}
           val={filter.duration}
         />
         <FilterButton
           className={filter.cssPrice}
+          dispatch={dispatch}
           kind={'priceButtonState'}
           name="price"
           // onClick={({ target }) => setFilter()}
-          val={filter.price}
           orderMethod={byPrice}
-          setFilter={setFilter}
-          dispatch={dispatch}
           response={response}
+          setFilter={setFilter}
+          val={filter.price}
         />
       </ul>
       <ResponseDates salida={salida} llegada={llegada} adults={adults} />
