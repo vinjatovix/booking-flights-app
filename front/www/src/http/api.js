@@ -120,7 +120,6 @@ export function getPhoto(photo, token, dispatch) {
             dispatch(A.setAvatar(localUrl));
           }
         } catch (err) {
-          console.log(err);
         }
       };
       getAvatar();

@@ -8,7 +8,6 @@ import { UpdateNickname, UpdateBio, UpdatePhoto } from '../../Modal/modaldata/mo
 export const ProfileData = ({ profile_data, photo, dispatch, username, bio, email, modal, token, setToken }) => {
   const logo = photo === '' ? ProfilePhoto : photo;
 
-  console.log('logo', logo);
 
   return (
     <>

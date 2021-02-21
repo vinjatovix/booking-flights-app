@@ -76,7 +76,6 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
                 setChangedPass(false);
               }, 5000);
             }
-            console.log(json);
           }}
         >
           Guardar

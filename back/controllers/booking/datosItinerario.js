@@ -15,13 +15,15 @@ const { storeBookingSegment } = require('./storeBookingSegment');
 async function datosItinerario(RC_ID, itineraryType, req, next) {
   try {
     const i = itineraryType === 'vuelta' ? 1 : 0;
+    
 
     const bookingItinerary = req.body.itineraries[i].segments;
+
     const bookingSegments = await createBookingSegments(bookingItinerary, next);
 
     for (const segment of bookingSegments) {
       await itinerarySchema.validateAsync(segment);
-      await storeBookingSegment(segment, itineraryType, RC_ID, next);
+      await storeBookingSegment({segment, itineraryType, RC_ID, next});
     }
 
     return { [`${itineraryType}`]: bookingSegments };

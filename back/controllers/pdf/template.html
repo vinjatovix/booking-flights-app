@@ -2,38 +2,210 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YourBooking</title>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      li {
+        list-style-type: none;
+      }
       body {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana,
           sans-serif;
+        margin: 0 auto;
+        display: grid;
+        gap: 0.5rem;
+        justify-content: center;
+        justify-items: center;
+        max-width: 800px;
+      }
+      .booking-header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .booking-header__ID {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        padding: 0.25rem 0.5rem 0.5rem 3rem;
+        background-color: rgb(0, 118, 228);
+        background-image: url('../../assets/svg/plane-arrival-solid.svg');
+        background-repeat: no-repeat;
+        background-size: 1.75rem;
+        background-position: 1rem 0.5rem;
+      }
+
+      .booking-header__mail {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: yellow;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .booking-locations {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .booking-logos {
+        grid-area: logos;
+        width: 100%;
+        padding: 0.75rem 1.75rem 0 1.75rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .booking-logos > * {
+        background-repeat: no-repeat;
+        max-width: 120px;
+        min-width: 3rem;
+        min-height: 3rem;
+      }
+      .booking-logos__line {
+        transform: rotate(45deg);
+        background-image: url('./linea.svg');
+      }
+      .booking-logos__plane {
+        transform: rotate(-45deg);
+        background-image: url('./avion.svg');
+      }
+
+      .booking-details {
+        display: grid;
+        grid-template-areas: 'logos';
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 1rem;
+        background-color: #b4b4b4;
+      }
+      .booking-details__itinerary {
+        gap: 1rem;
+        width: 100%;
+        padding: 0.5rem;
+        display: grid;
+        grid-template-areas: 'direccion';
+        justify-content: space-around;
+      }
+      .booking-details__itinerary-direction {
+        text-align: center;
+        width: 100%;
+        grid-area: direccion;
+      }
+      .booking-details__itinerary-data {
+        width: 100%;
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .booking-details__aditional-data {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h3>Booking Number: {{pdfData.bookingNumber}}</h3>
-      <p>Ordered by: {{pdfData.user.email}}</p>
-      <p>Adults: {{pdfData.adults}}</p>
-      <p>Total Ammount: {{pdfData.priceTotal}} €</p>
+    <header class="booking-header">
+      <p class="booking-header__ID">Número de reserva: ${pdfData.bookingNumber}</p>
+      <p class="booking-header__mail">Solicitada por: ${pdfData.user.email}</p>
     </header>
-
-    <section>
-      {{#each pdfData.travel.direction}}
-      <h4>Trayecto</h4>
-      <ul>
-        <li>Origen: {{this.origin}}</li>
-        <li>Destino: {{this.destination}}</li>
-        <li>Salida: {{this.departure}}</li>
-        <li>Llegada: {{this.arrival}}</li>
-        <li>Paradas: {{this.stops}}</li>
-        <li>Duración: {{this.duration}}</li>
-      </ul>
-      {{/each}}
+    <section class="booking-locations">
+      <div class="booking-locations__origin">
+        <p>{item.vuelo_Ida.locaOrigen}</p>
+        <h1>${seed.origin}</h1>
+      </div>
+      <div class="booking-locations__destination">
+        <p>{item.vuelo_Ida.locaDesti}</p>
+        <h1>${seed.destination}</h1>
+      </div>
     </section>
-    <footer>
-      <p>Thanks for using Flight Landers</p>
-    </footer>
+    <main class="booking-details">
+      <section class="booking-logos">
+        <div class="booking-logos__line"></div>
+        <div class="booking-logos__plane"></div>
+        <div class="booking-logos__line"></div>
+      </section>
+      <section class="booking-details__itinerary">
+        <h4 class="booking-details__itinerary-direction">${direccion}</h4>
+        <ul class="booking-details__itinerary-data">
+          <li>
+            <ul>
+              <li>${seed.origin}</li>
+              <li>${seed.departure.date}</li>
+              <li>${seed.departure.time}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>${seed.airline}</li>
+              <li>Paradas:${seed.stops}</li>
+              <li>Duración:${seed.duration}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>${seed.destination}</li>
+              <li>${seed.arrival.date}</li>
+              <li>${seed.arrival.time}</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section class="booking-details__itinerary">
+        <h4 class="booking-details__itinerary-direction">${direccion}</h4>
+        <ul class="booking-details__itinerary-data">
+          <li>
+            <ul>
+              <li>${seed.destination}</li>
+
+              <li>${seed.departure.date}</li>
+              <li>${seed.departure.time}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>${seed.airline}</li>
+              <li>Paradas:${seed.stops}</li>
+              <li>Duración:${seed.duration}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>${seed.origin}</li>
+              <li>${seed.arrival.date}</li>
+              <li>${seed.arrival.time}</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <section class="booking-details__aditional-data">
+      <ul>
+        <li>PLAZAS</li>
+        <li>${seed.adults}</li>
+      </ul>
+      <ul>
+        <li>ESCALAS</li>
+        <li>{`I: 2/V: 1`}</li>
+      </ul>
+      <ul>
+        <li>PRECIO</li>
+        <li>{`200€`}</li>
+      </ul>
+    </section>
   </body>
 </html>

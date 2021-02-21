@@ -9,5 +9,11 @@ const bookingHeaderSchema = Joi.object({
   RC_base: Joi.number().precision(2).required(),
   RC_total: Joi.number().precision(2).required(),
   RC_UsrID: Joi.number().required(),
+  username: Joi.string(),
+  email: Joi.string(),
+  duracionIda: Joi.string(),
+  aerolineaIda: Joi.string(),
+  aerolineaVuelta: Joi.string().allow(''),
+  duracionVuelta: Joi.string().allow(''),
 });
 module.exports = { bookingHeaderSchema };

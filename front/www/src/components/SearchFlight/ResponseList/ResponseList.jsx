@@ -4,7 +4,7 @@ import { ResponseFlight } from './ResponseFlight';
 import * as A from '../../../context/flight/Flight.actions';
 import './responseList.css';
 
-export const ResponseList = React.memo(({ data, logged, response, searching, adults, dispatch }) => {
+export const ResponseList = ({ data, logged, response, searching, adults, dispatch }) => {
   useEffect(() => {}, [response]);
   return (
     <ul className="Response-list">
@@ -36,4 +36,4 @@ export const ResponseList = React.memo(({ data, logged, response, searching, adu
         ))}
     </ul>
   );
-});
+};
