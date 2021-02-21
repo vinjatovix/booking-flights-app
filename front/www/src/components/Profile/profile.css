@@ -260,6 +260,11 @@ img[alt='foto-de-usuario'] {
     width: 230px;
   }
 }
+@media (min-width: 700px) {
+  .profile-pass__form input {
+    width: 280px;
+  }
+}
 /* .profile-main > h4 {
   margin: 1rem 0;
   font-size: 22px;
