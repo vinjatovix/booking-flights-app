@@ -32,7 +32,7 @@
   --yellow: #f9e24c;
   --inactive-color: #808080;
 }
-:focus{
+:focus {
   outline: none;
 }
 * {
@@ -101,6 +101,9 @@ input[type='submit'] {
   text-align: center;
   text-decoration: none;
   /* text-shadow: var(--button-text-shadow); */
+}
+button:hover {
+  cursor: pointer;
 }
 input[type='submit'] {
   background-color: var(--blue);

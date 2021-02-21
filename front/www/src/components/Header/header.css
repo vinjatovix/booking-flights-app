@@ -24,6 +24,9 @@
   height: 2rem;
   margin: 0 1rem;
 }
+.burguer:hover {
+  cursor: pointer;
+}
 
 @media (min-width: 600px) {
   .app-header {

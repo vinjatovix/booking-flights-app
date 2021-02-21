@@ -9,10 +9,8 @@ import '../profile.css';
 
 export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
   const [bookings, setBookings] = useState([]);
+  const [css, setCss] = useState('arrow-logo');
   const token = JSON.parse(localStorage.getItem('token'));
-  const css = {
-    backgroundPositionX: '7.25rem',
-  };
 
   useEffect(() => {
     async function getBookings() {
@@ -31,8 +29,8 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
 
   return (
     <>
-      <h3 className="profile-title">Mis reservas</h3>
-      <ul className="flight-offer">
+      <h4 className="profile-title">Mis reservas</h4>
+      <ul className="profile-bookings">
         {bookings.ok === false ? (
           <ErrorMessage>{bookings.details}</ErrorMessage>
         ) : (
@@ -43,6 +41,7 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
             const duration = getDuration(item);
             return (
               <li
+                className="profile-bookings__item"
                 key={`RC_ID:${item.details.id}`}
                 onClick={() => {
                   dispatch(
@@ -53,21 +52,22 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
                   dispatch(A.switchBoolean({ name: 'modal', value: modal }));
                 }}
               >
-                <section className="booking-date">
+                <section className="profile-bookings__item-time">
                   <p>{date[0]}</p>
                   <p>{monthName(+date[1] - 1).toUpperCase()}</p>
                   <p>{date[2]}</p>
                 </section>
-                <section className="booking-info" style={!item.vuelo_Vuelta ? css : null}>
-                  <p className="booking-iata">{iata[0]}</p>
-                  <div>
-                    <p className="booking-id">{`ID:${item.details.id}`}</p>
-                    <p className="booking-price">{`${item.details.total}€`}</p>
+                <section className="profile-bookings__item-data">
+                  <h5>{`ID:${item.details.id}`}</h5>
+                  <div className="profile-bookings__item-data__center">
+                    <h2>{iata[0]}</h2>
+                    <div className={item.vuelo_Vuelta ? 'double-arrow-logo' : 'arrow-logo'}></div>
+                    <h2>{iata[1]}</h2>
                   </div>
-                  <p className="booking-iata">{iata[1]}</p>
+                  <h4>{`${item.details.total}€`}</h4>
                 </section>
                 {item.vuelo_Vuelta ? (
-                  <section className="booking-date">
+                  <section className="profile-bookings__item-time">
                     <p>{date[6]}</p>
                     <p>{monthName(+date[4] - 1).toUpperCase()}</p>
                     <p>{date[8]}</p>
@@ -81,3 +81,24 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
     </>
   );
 };
+
+// {/* <section className="booking-date">
+//                   <p>{date[0]}</p>
+//                   <p>{monthName(+date[1] - 1).toUpperCase()}</p>
+//                   <p>{date[2]}</p>
+//                 </section>
+//                 <section className="booking-info" style={!item.vuelo_Vuelta ? css : null}>
+//                   <p className="booking-iata">{iata[0]}</p>
+//                   <div>
+//                     <p className="booking-id">{`ID:${item.details.id}`}</p>
+//                     <p className="booking-price">{`${item.details.total}€`}</p>
+//                   </div>
+//                   <p className="booking-iata">{iata[1]}</p>
+//                 </section>
+//                 {item.vuelo_Vuelta ? (
+//                   <section className="booking-date">
+//                     <p>{date[6]}</p>
+//                     <p>{monthName(+date[4] - 1).toUpperCase()}</p>
+//                     <p>{date[8]}</p>
+//                   </section>
+//                 ) : null} */}
