@@ -103,7 +103,7 @@ export async function makeBooking(req, { token, errorMessage, setErrorMessage, d
 export function getPhoto(photo, token, dispatch) {
   if (!photo) {
   } else {
-    if (!photo.includes('googleusercontent') || !photo.includes('localhost')) {
+    if (!photo.includes('googleusercontent') && !photo.includes('localhost')) {
       const getAvatar = async () => {
         try {
           const res = await fetch(`http://localhost:8337/user/image?user=${photo}`, {
@@ -119,8 +119,7 @@ export function getPhoto(photo, token, dispatch) {
             const localUrl = URL.createObjectURL(img);
             dispatch(A.setAvatar(localUrl));
           }
-        } catch (err) {
-        }
+        } catch (err) {}
       };
       getAvatar();
     }

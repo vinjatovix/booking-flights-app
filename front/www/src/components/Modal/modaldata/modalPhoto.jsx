@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import * as A from '../../../context/auth/Auth.actions';
 import { useForm } from 'react-hook-form';
 import { uploadPhoto } from './uploadPhoto';
+import { ErrorMessage } from '../../common/ErrorMessage';
 
 export const UpdatePhoto = ({ props, photo, token, setToken }) => {
   const { register, handleSubmit } = useForm();
 
   const { dispatch, modal } = props;
   const [value, setValue] = useState('Seleccionar archivo');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const handlerPhoto = (document) => {
@@ -27,10 +29,18 @@ export const UpdatePhoto = ({ props, photo, token, setToken }) => {
   }, [value]);
 
   const onSubmit = async (data) => {
-    const res = await uploadPhoto(data, token);
-    const json = await res.json();
-    setToken(json.token);
-    dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
+    try {
+      const res = await uploadPhoto(data, token);
+      const json = await res.json();
+      if (!json.ok) {
+        throw json;
+      }
+      setToken(json.token);
+      dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
+    } catch (err) {
+      setErrorMessage(err.details);
+      setTimeout(() => setErrorMessage(''), 3000);
+    }
   };
 
   return (
@@ -46,6 +56,7 @@ export const UpdatePhoto = ({ props, photo, token, setToken }) => {
             </figure>
             <span className="inputfilelabel">{value}</span>
           </label>
+        <ErrorMessage children={errorMessage} />
         </div>
         <div className="button-container">
           <button type="submit" formEncType="multipart/form-data" className="button-submit">
