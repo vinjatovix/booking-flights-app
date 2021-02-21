@@ -14,7 +14,7 @@ async function validateImage({ files }) {
   if (!files) {
     const error = new Error();
     error.code = 400;
-    error.details = 'No se ha detectado ningun archivo';
+    error.details = 'No se ha detectado ningún archivo';
     throw error;
   }
   const archivo = files.photo;

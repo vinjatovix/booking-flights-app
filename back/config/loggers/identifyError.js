@@ -50,6 +50,12 @@ function identifyError(err) {
     err.details = 'Acceso denegado';
   }
 
+  //? UPLOAD ERRORS
+  if (err.message === 'Input file is missing') {
+    err.code = 400;
+    err.details = 'El archivo está vacío';
+  }
+
   //? AMADEUS REQUEST ERRORS
   if (err.code === 'BADADULTS') {
     err.code = 400;
