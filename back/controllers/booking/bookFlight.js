@@ -17,7 +17,7 @@ async function bookFlight(req, res, next) {
   try {
     basicInputDataValidation(req);
 
-    let bookingCache = setInitialBookingCache(req);
+    let bookingCache = await setInitialBookingCache(req);
 
     await bookingHeaderSchema.validateAsync(bookingCache.header);
 

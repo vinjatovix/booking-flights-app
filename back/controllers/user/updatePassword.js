@@ -31,7 +31,6 @@ async function postUpdatePass({ headers, body }, res, next) {
     const { password, newPassword, repeatNewPassword } = body;
     const valid = await bcrypt.compare(password, user.Usr_password);
 
-    console.log(newPassword, repeatNewPassword);
     if (!valid) {
       const err = new Error();
       err.code = 401;

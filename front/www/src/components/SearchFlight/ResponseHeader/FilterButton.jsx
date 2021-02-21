@@ -9,7 +9,6 @@ export const FilterButton = ({ setFilter, kind, val, orderMethod, className, chi
     setNewData(data.sort(orderMethod));
   }, []);
   useEffect(() => {
-    console.log(className, orderMethod, on);
     const newResponse = on ? data.sort(orderMethod) : data.sort(orderMethod).reverse();
     setNewData(newResponse);
   }, [className, on, data, newData, orderMethod]);
@@ -19,7 +18,6 @@ export const FilterButton = ({ setFilter, kind, val, orderMethod, className, chi
       className={className}
       onClick={(e) => {
         setOn(!on);
-        console.log(kind, newData);
         dispatch(setFilterOn({ name: kind, value: true }));
         dispatch(setOrder({ adults: adults, data: newData }));
       }}

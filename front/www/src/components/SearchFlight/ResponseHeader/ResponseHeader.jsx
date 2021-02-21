@@ -35,18 +35,9 @@ export const ResponseHeader = (props) => {
     const cssPrice = priceButtonState ? 'Response-filter__price filter active' : 'Response-filter__price filter';
     const cssStops = stopsButtonState ? 'Response-filter__stops filter active' : 'Response-filter__stops filter ';
     const payload = { cssDuration: cssDuration, cssPrice: cssPrice, cssStops: cssStops };
-    // console.log(payload);
-    // console.log(durationButtonState, stopsButtonState, priceButtonState);
     setFilter(payload);
   }, [durationButtonState, stopsButtonState, priceButtonState]);
-  // useEffect(() => {
-  //   const cssDuration = filter.duration
-  //     ? 'Response-filter__duration filter active'
-  //     : 'Response-filter__duration filter';
-  //   const cssStops = filter.stops ? 'Response-filter__stops filter active' : 'Response-filter__stops filter';
-  //   const cssPrice = filter.price ? 'Response-filter__price filter active' : 'Response-filter__price filter';
-  //   setFilter({ cssDuration, cssPrice, cssStops });
-  // }, [filter]);
+
 
   const salida = formatHeaderDate(departureDate);
   const llegada = formatHeaderDate(returnDate);

@@ -2,25 +2,29 @@
 
 const path = require('path');
 const puppeteer = require('puppeteer');
-const { fillTemplate } = require("./fillTemplate");
-const { setDirection } = require("./setDirection");
-const { setHeader } = require("./setHeader");
+const { fillTemplate } = require('./fillTemplate');
+// const { setDirection } = require('./setDirection');
+// const { setHeader } = require('./setHeader');
 
 async function storePdf(pdfData, req, next) {
   try {
     const browser = await puppeteer.launch();
     const page = browser.newPage();
 
-    const header = setHeader(pdfData);
-    const ida = setDirection(pdfData, 'ida');
-    const vuelta = setDirection(pdfData, 'vuelta');
+    // const header = setHeader(pdfData);
+    // const ida = setDirection(pdfData, 'ida', req);
+    // const vuelta = setDirection(pdfData, 'vuelta', req);
 
-    const html = fillTemplate(header, ida, vuelta);
+    const html = fillTemplate(pdfData);
     await (await page).setContent(html); //TODO: WTF???
     const filePath = path.join(__dirname, `../../tmp/${req.auth.id}-${Date.now()}.pdf`);
+
     await (await page).pdf({
       path: filePath,
+      format: 'A4',
+      printBackground: true,
     });
+
     await browser.close();
     return filePath;
   } catch (err) {
@@ -29,4 +33,3 @@ async function storePdf(pdfData, req, next) {
   }
 }
 module.exports = { storePdf };
-

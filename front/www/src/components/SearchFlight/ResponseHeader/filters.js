@@ -7,13 +7,11 @@ export const byPrice = (a, b) => (+a.price.grandTotal < +b.price.grandTotal ? 1 
 export const byStops = (a, b) => {
   const paradasA = a.itineraries[0].segments.length;
   const paradasB = b.itineraries[0].segments.length;
-  console.log(a.id, paradasA, b.id, paradasB);
   return a.itineraries[0].segments.length > b.itineraries[0].segments.length ? -1 : 1;
 };
 
 export const byDuration = (a, b) => {
   const durA = formatDuration(a.itineraries[0].duration);
   const durB = formatDuration(b.itineraries[0].duration);
-  // console.log(durA - durB);
   return +durA - +durB;
 };

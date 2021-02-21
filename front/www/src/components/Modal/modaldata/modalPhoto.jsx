@@ -29,7 +29,6 @@ export const UpdatePhoto = ({ props, photo, token, setToken }) => {
   const onSubmit = async (data) => {
     const res = await uploadPhoto(data, token);
     const json = await res.json();
-    console.log(json);
     setToken(json.token);
     dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
   };

@@ -1,11 +1,15 @@
 'use strict';
 function setHeader(pdfData) {
   return `
-    <header>
-      <h3>Número de reserva: ${pdfData.bookingNumber}</h3>
-      <p>Solicitada por: ${pdfData.user.email}</p>
-      <p>Adultos: ${pdfData.adults}</p>
-      <p>Importe total: ${pdfData.priceTotal} €</p>
-    </header>`;
+  
+  <header class="booking-header">
+  <h1>FL</h1>
+  <small>0.6</small>
+  <p class="booking-header__ID">
+  Número de reserva: ${pdfData.header.RC_ID}</p>
+  <p class="booking-header__mail">Solicitada por: ${pdfData.header.email}</p>
+</header>
+
+`;
 }
 exports.setHeader = setHeader;

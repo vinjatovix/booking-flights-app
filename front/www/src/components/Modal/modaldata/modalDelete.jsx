@@ -34,7 +34,6 @@ export const DeleteAccount = ({ modal }) => {
                 e.preventDefault();
                 await deleteAccount(token, dispatch);
               } catch (err) {
-                console.log(err);
                 dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
               }
             }}
@@ -45,7 +44,6 @@ export const DeleteAccount = ({ modal }) => {
             className="button-close delete-account"
             onClick={() => {
               dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
-              console.log('no');
             }}
           >
             No

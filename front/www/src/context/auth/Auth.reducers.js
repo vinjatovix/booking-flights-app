@@ -42,7 +42,6 @@ export const reducer = (state, { type, payload }) => {
         status: payload.status,
       };
     case C.AUTH_RESPONSE_FAILURE:
-      console.log('funciona');
       //? lógica
       return {
         ...state,
