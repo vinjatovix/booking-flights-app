@@ -136,6 +136,7 @@ img[alt='boton-atras'] {
 }
 img[alt='foto-de-usuario'] {
   width: 180px;
+  height: 180px;
   border-radius: 40%;
 }
 .profile-data__photo {
@@ -155,7 +156,7 @@ img[alt='foto-de-usuario'] {
   background-size: 1.8rem;
 }
 .profile-data__inputs {
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 .profile-data__inputs > * {
   padding: 1rem 0.5rem 1rem 5rem;
@@ -175,6 +176,7 @@ img[alt='foto-de-usuario'] {
 .profile-data__inputs-email {
   background-image: url('../../assets/svg/email.svg');
   background-size: 1.5rem;
+  margin-right: 2.75rem;
 }
 .profile-data__inputs :first-child {
   flex-grow: 1;
@@ -190,7 +192,6 @@ img[alt='foto-de-usuario'] {
 }
 .edit-button {
   background-image: url('../../assets/svg/pen-solid.svg');
-  background-size: 2rem;
   background-position: 0.6rem;
   background-repeat: no-repeat;
   background-size: 1.25rem;
@@ -198,7 +199,36 @@ img[alt='foto-de-usuario'] {
   height: 40px;
   margin-right: 0.5rem;
 }
-
+@media (min-width: 600px) {
+  .profile-data__photo {
+    width: 270px;
+  }
+  img[alt='foto-de-usuario'] {
+    width: 250px;
+    height: 250px;
+  }
+  .profile-data__photo-edit {
+    width: 55px;
+    height: 55px;
+    left: 170px;
+    background-size: 2rem;
+    background-position: 0.75rem;
+  }
+  .profile-data__inputs > * {
+    padding: 1.5rem 1rem 1.5rem 6rem;
+    background-size: 1.75rem;
+    background-position: 2rem 2.5rem;
+  }
+  .edit-button {
+    background-size: 1.5rem;
+  }
+  .profile-data__inputs :first-child h5 {
+    font-size: 16px;
+  }
+  .profile-data__inputs :first-child h4 {
+    font-size: 20px;
+  }
+}
 /* PROFILE PASS */
 
 .profile-main > h4 {
