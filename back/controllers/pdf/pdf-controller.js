@@ -8,9 +8,9 @@ const { storePdf } = require('./storePdf');
 async function sendBookingPDF(bookingCache, req, next) {
   try {
     const storePath = await storePdf(bookingCache, req, next);
-    // const file = (await fs.readFile(storePath)).toString('base64');
-    // await sendBookingMail(file, req, next);
-    // await deleteFile(storePath);
+    const file = (await fs.readFile(storePath)).toString('base64');
+    await sendBookingMail(file, req, next);
+    await deleteFile(storePath);
     return true;
   } catch (err) {
     err.details = err.message;

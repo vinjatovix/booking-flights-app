@@ -8,10 +8,14 @@ const { getAirlineByIATA } = require('../../repositories/location/getAirlineByIA
  */
 async function setInitialBookingCache({ auth, body }) {
   const [aerolineaIda] = await getAirlineByIATA(body.itineraries[0].segments[0].carrierCode);
-  const [aerolineaVuelta] = await getAirlineByIATA(
-    body.itineraries[1].segments[body.itineraries[1].segments.length - 1].carrierCode
-  );
-  console.log(aerolineaVuelta);
+  let aerolineaVuelta;
+  if (body.itineraries[1]) {
+    [aerolineaVuelta] = await getAirlineByIATA(
+      body.itineraries[1].segments[body.itineraries[1].segments.length - 1].carrierCode
+    );
+  }
+  const cmpVuelta = aerolineaVuelta ? aerolineaVuelta.Cmp_nombre : null;
+  const durVuelta = body.itineraries[1] ? body.itineraries[1].duration : null;
   return {
     header: {
       RC_UsrID: +auth.id,
@@ -22,8 +26,8 @@ async function setInitialBookingCache({ auth, body }) {
       email: auth.email,
       duracionIda: body.itineraries[0].duration,
       aerolineaIda: aerolineaIda.Cmp_nombre,
-      aerolineaVuelta: aerolineaVuelta.Cmp_nombre || '',
-      duracionVuelta: body.itineraries[1].duration || '',
+      aerolineaVuelta: cmpVuelta || '',
+      duracionVuelta: durVuelta || '',
     },
     details: {
       ida: [],

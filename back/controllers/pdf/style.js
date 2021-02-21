@@ -17,7 +17,13 @@ body {
   justify-items: center;
   max-width: 800px;
 }
-
+.radius {
+  border: 2px groove #a5f3d634;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 5rem;
+}
 .modal-booking-header {
   width: 100vw;
   display: flex;
@@ -116,9 +122,9 @@ body {
 
 .modal-booking-flight-data {
   width:100vw;
-  padding: 0 0.75rem 0.5rem 0.75rem;
+  padding:1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .modal-booking-flight-data div:nth-child(2) {

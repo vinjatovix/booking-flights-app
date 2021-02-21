@@ -1,13 +1,10 @@
 'use strict';
 function setDirection(pdfData, direccion = 'ida') {
   const d = direccion === 'vuelta' ? 1 : 0;
-  console.log(d);
 
-  // console.log('seed', pdfData.details[`${direccion}`]);
 
   if (pdfData.details[`${direccion}`][d]) {
     const seed = pdfData.details[direccion];
-    console.log(seed);
     // return `${direccion}`;
     return `
     <h4>Trayecto ${direccion}</h4>

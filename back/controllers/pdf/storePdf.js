@@ -11,10 +11,6 @@ async function storePdf(pdfData, req, next) {
     const browser = await puppeteer.launch();
     const page = browser.newPage();
 
-    // const header = setHeader(pdfData);
-    // const ida = setDirection(pdfData, 'ida', req);
-    // const vuelta = setDirection(pdfData, 'vuelta', req);
-
     const html = fillTemplate(pdfData);
     await (await page).setContent(html); //TODO: WTF???
     const filePath = path.join(__dirname, `../../tmp/${req.auth.id}-${Date.now()}.pdf`);

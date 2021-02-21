@@ -14,6 +14,6 @@ const bookingHeaderSchema = Joi.object({
   duracionIda: Joi.string(),
   aerolineaIda: Joi.string(),
   aerolineaVuelta: Joi.string().allow(''),
-  duracionVuelta: Joi.string(),
+  duracionVuelta: Joi.string().allow(''),
 });
 module.exports = { bookingHeaderSchema };
