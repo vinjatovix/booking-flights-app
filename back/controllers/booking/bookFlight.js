@@ -14,10 +14,11 @@ const { setInitialBookingCache } = require('./setInitialBookingCache');
  * @param {*} next
  */
 async function bookFlight(req, res, next) {
+  console.log(req.body);
   try {
     basicInputDataValidation(req);
 
-    let bookingCache = setInitialBookingCache(req);
+    let bookingCache = await setInitialBookingCache(req);
 
     await bookingHeaderSchema.validateAsync(bookingCache.header);
 
@@ -38,6 +39,7 @@ async function bookFlight(req, res, next) {
     if (err.name === 'ValidationError') {
       err.code = 400;
     }
+    err.details = err.message;
     next(err);
   }
 }

@@ -58,11 +58,9 @@ const App = () => {
     dispatch,
   ] = useAuthContext();
 
-  console.log('lo gojo');
   const [token, setToken] = useLocalStorage(JSON.parse(localStorage.getItem('token')) || '', 'token');
 
   useEffect(() => {
-    console.log('app', logged, token);
     askMeForToken(logged, token, dispatch);
   }, [token, logged, dispatch]);
 
@@ -71,7 +69,6 @@ const App = () => {
   // }, [token, dispatch]);
 
   useEffect(() => {
-    console.log('photo', photo);
     getPhoto(photo, token, dispatch);
   }, [photo, dispatch, token]);
   /* 

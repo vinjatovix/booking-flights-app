@@ -53,14 +53,12 @@ app.get('/me', usersController.verifyToken);
 //? AUTHORIZED
 app.get('/user/image', function (req, res, next) {
   try {
-    console.log(req.query);
     res.writeHead(200, { 'content-type': 'image/jpg' });
     fs.createReadStream(__dirname + `/assets/avatars/${req.query.user}`).pipe(res);
   } catch (error) {
     next(error);
   }
 });
-console.log(__dirname);
 app.get('/update', validateAuth, usersController.getUpdateData);
 app.get('/update/pass', validateAuth, usersController.getUpdatePass);
 
