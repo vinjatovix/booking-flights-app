@@ -3,9 +3,11 @@
 /* MENU PROFILE*/
 .profile {
   background-color: white;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 1rem 0;
   width: 90vw;
   max-width: 700px;
+  margin-bottom: 1rem;
+  overflow: scroll;
 }
 
 .profile-header {
@@ -136,12 +138,12 @@ img[alt='boton-atras'] {
   margin: 1rem 0 0 1rem;
 }
 img[alt='foto-de-usuario'] {
-  width: 180px;
-  height: 180px;
+  width: 150px;
+  height: 150px;
   border-radius: 40%;
 }
 .profile-data__photo {
-  width: 200px;
+  width: 170px;
   margin: 0 auto;
   position: relative;
 }
@@ -200,6 +202,7 @@ img[alt='foto-de-usuario'] {
   height: 40px;
   margin-right: 0.5rem;
 }
+
 @media (min-width: 600px) {
   .profile-data__photo {
     width: 270px;
@@ -232,7 +235,32 @@ img[alt='foto-de-usuario'] {
 }
 /* PROFILE PASS */
 
-.profile-main > h4 {
+.profile-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+.profile-pass__form label {
+  font-size: 16px;
+}
+.profile-pass__form input {
+  margin-bottom: 1rem;
+}
+
+.profile-submit-button {
+  border-radius: 2rem;
+  font-size: 16px;
+  padding: 0.25rem 0.5rem;
+  font-weight: 200;
+  background-color: rgb(49, 218, 49);
+  margin: 0;
+}
+@media (min-width: 600px) {
+  .profile-pass__form input {
+    width: 230px;
+  }
+}
+/* .profile-main > h4 {
   margin: 1rem 0;
   font-size: 22px;
   text-align: center;
@@ -255,14 +283,9 @@ img[alt='foto-de-usuario'] {
   text-shadow: none;
   padding: 0.25rem 0.5rem;
   width: 100px;
-}
+} */
 
 /* PROFILE BOOKINGS */
-
-.profile-title {
-  text-align: center;
-  margin-bottom: 1rem;
-}
 
 .flight-offer {
   display: flex;

@@ -14,8 +14,8 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
 
   return (
     <>
-      <h4>Actualiza tu contraseña</h4>
-      <form className="change-pass-form">
+      <h4 className="profile-title">Actualiza tu contraseña</h4>
+      <form className="profile-pass__form">
         <label for="profile-password">Contraseña actual</label>
         <input
           type="password"
@@ -49,7 +49,7 @@ export const ProfilePass = ({ dispatch, profile_pass }) => {
         <ErrorMessage>{errorMessage}</ErrorMessage>
         {changedPass === true && <h4 className="update-success">Contraseña actualizada</h4>}
         <button
-          className="button-edit-pass"
+          className="profile-submit-button"
           type="submit"
           onClick={async (e) => {
             e.preventDefault();
