@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as A from '../../../context/auth/Auth.actions';
 import { useForm } from 'react-hook-form';
 import { uploadPhoto } from './uploadPhoto';
-import { ErrorMessage } from '../../common/index';
+import { ErrorMessage } from '../../common/ErrorMessage';
 
 export const UpdatePhoto = ({ props, photo, token, setToken }) => {
   const { register, handleSubmit } = useForm();

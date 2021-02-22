@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InputList } from '../common/ListDrawer/InputList';
-import { ErrorMessage } from '../common/index';
+import { ErrorMessage } from '../common/ErrorMessage';
 
 import './formDrawer.css';
 import { buttonProps } from './credentialsFormProps';
-import { Input } from '../common/index';
+import { Input } from '../common/Input';
 import { GoogleButton } from './GoogleButton';
 
 export const FormDrawer = React.memo((props) => {

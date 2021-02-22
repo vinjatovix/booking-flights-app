@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ErrorMessage } from '../../../components/common/index';
+import { ErrorMessage } from '../../../components/common/ErrorMessage';
 import '../profile.css';
 
 export const ProfilePass = ({ dispatch, profile_pass }) => {

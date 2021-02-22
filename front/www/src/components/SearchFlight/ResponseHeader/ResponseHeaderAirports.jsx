@@ -1,9 +1,7 @@
 import React from 'react';
 import * as A from '../../../context/flight/Flight.actions';
-import { useFlightContext } from '../../../context/flight/Flight.context';
 
-export const ResponseHeaderAirports = () => {
-  const [{ originLocationCode, destinationLocationCode, searching }, dispatch] = useFlightContext();
+export const ResponseHeaderAirports = ({ originLocationCode, destinationLocationCode, dispatch, searching }) => {
   return (
     <ul className="Response__airports">
       <li

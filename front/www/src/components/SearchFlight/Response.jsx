@@ -5,8 +5,8 @@ import { ResponseHeader } from './ResponseHeader/ResponseHeader';
 export const Response = (props) => {
   return (
     <div className="Response">
-      <ResponseHeader />
-      <ResponseList />
+      {props.response.adults && <ResponseHeader {...props} />}
+      <ResponseList {...props} />
     </div>
   );
 };

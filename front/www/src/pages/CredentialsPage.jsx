@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Article } from '../components/common/index';
+import { Article } from '../components/common/Article';
 import { LoginForm } from '../components/Credentials/LoginForm';
 import { RegisterForm } from '../components/Credentials/RegisterForm';
 

@@ -4,11 +4,11 @@ import React from 'react';
 // import { useAutocomplete } from '../../hooks/useAutocomplete';
 
 import { airports } from '../../../utils/airports.json';
-import { Input } from '../../common/index';
+import { Input } from '../../common/Input';
 
 const seed = airports.map((element, i) => ({ id: i, name: element.Loca_nombre, value: element.Aero_iata }));
 
-export const AirportSelector = React.memo(({ name, value, placeholder, r }) => {
+export const AirportSelector = React.memo(({ name, value, handler, dispatch, placeholder, r }) => {
   const inputProps = {
     r: r,
     defaultValue: value,

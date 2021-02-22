@@ -8,23 +8,63 @@ import { SearchForm } from '../components/SearchFlight/SearchForm/SearchForm';
 import { CustomModal } from '../components/Modal/Modal';
 import { Booking } from '../components/SearchFlight/Booking/Booking';
 import { Response } from '../components/SearchFlight/Response';
-import { useAuthContext } from '../context/auth/Auth.context';
 
-export const SearchPage = ({ endPoint, title }) => {
-  const [{ menu }] = useAuthContext();
-  const [{ response, searching, booking, bookingCache }] = useFlightContext();
+export const SearchPage = ({ endPoint, title, menu, logged,  }) => {
+  const [
+    {
+      adults,
+      departureDate,
+      destinationLocationCode,
+      loading,
+      max,
+      maxPrice,
+      nonStop,
+      oneWay,
+      originLocationCode,
+      response,
+      returnDate,
+      searching,
+      booking,
+      bookingCache,
+    },
+    dispatch,
+  ] = useFlightContext();
   useEffect(() => {}, [response, menu, booking]);
 
   const searchFormProps = {
+    adults,
+    departureDate,
+    destinationLocationCode,
+    dispatch,
     endPoint,
+    loading,
+    max,
+    maxPrice,
+    menu,
+    nonStop,
+    oneWay,
+    originLocationCode,
+    returnDate,
     searching,
     title,
+  };
+
+  const responseProps = {
+    adults,
+    logged,
+    departureDate,
+    destinationLocationCode,
+    dispatch,
+    response,
+    returnDate,
+    searching,
+    originLocationCode,
   };
 
   return (
     <>
       {!searching && <SearchForm {...searchFormProps} />}
-      {response.adults && <Response />}
+      <Response {...responseProps} />
       {booking && <CustomModal>{bookingCache && <Booking />}</CustomModal>}
     </>
   );

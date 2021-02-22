@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { formatDate, monthName, formatHour } from '../../../utils/dateUtils';
-import { ErrorMessage } from '../../../components/common/index';
+import { ErrorMessage } from '../../../components/common/ErrorMessage';
 import { getIata } from '../../../utils/getIata';
 import { getDuration } from '../../../utils/getDuration';
 import { GetBooking } from '../../Modal/modaldata/modalBooking';
