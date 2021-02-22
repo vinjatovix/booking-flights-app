@@ -19,6 +19,7 @@
   flex-direction: column;
   width: 90vw;
   max-width: 500px;
+  overflow: scroll;
 }
 
 .modal-container {

@@ -10,6 +10,7 @@
     'error error'
     'buscar buscar';
   justify-content: center;
+  margin-bottom: 1rem;
 }
 .SearchForm > * {
   width: 40vw;
