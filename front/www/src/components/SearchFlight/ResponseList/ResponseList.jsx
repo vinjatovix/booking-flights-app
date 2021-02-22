@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
-import { Article } from '../../common/Article';
+import { Article } from '../../common/index';
 import { ResponseFlight } from './ResponseFlight';
 import * as A from '../../../context/flight/Flight.actions';
 import './responseList.css';
+import { useAuthContext } from '../../../context/auth/Auth.context';
+import { useFlightContext } from '../../../context/flight/Flight.context';
 
-export const ResponseList = React.memo(({ data, logged, response, searching, adults, dispatch }) => {
+export const ResponseList = React.memo(({ data }) => {
+  const [{ logged }] = useAuthContext();
+  const [{ response, searching, adults }, dispatch] = useFlightContext();
+
   useEffect(() => {}, [response]);
   return (
     <ul className="Response-list">

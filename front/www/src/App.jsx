@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './css/index.css';
 
 /* ****************************
 ! CONTEXTO 
 *******************************/
 import { useAuthContext } from './context/auth/Auth.context';
 import { FlightProvider } from './context/flight/Flight.context';
-import * as A from './context/auth/Auth.actions';
 
 /* PÁGiNAS */
 import { CredentialsPage } from './pages/CredentialsPage';
@@ -17,21 +15,18 @@ import { SearchPage } from './pages/SearchPage';
 
 /* COMPONENTES */
 import { Header } from './components/Header/Header';
-import { Main } from './components/common/Main';
-import { Footer } from './components/common/Footer';
+import { Main, Footer, PublicRoute, PrivateRoute } from './components/common/index';
 import { aboutProps, searchProps } from './pageProps';
-import { CustomModal } from './components/Modal/Modal';
 
 /* HOOKS */
 import { FlightReducer, initialFlightFormState } from './context/flight/Flight.reducers';
 import { useLocalStorage } from './hooks/useLocalStorage';
-import { PublicRoute } from './components/common/PublicRoute';
-import { PrivateRoute } from './components/common/PrivateRoute';
 import { askMeForToken } from './utils/askMeForToken';
 
 import ProfilePhoto from './assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { getPhoto } from './http/api';
 
+import './css/index.css';
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
   /*
@@ -52,8 +47,6 @@ const App = () => {
       profile_bookings,
       profile_tools,
       modal,
-      modal_data,
-      google,
     },
     dispatch,
   ] = useAuthContext();
@@ -63,10 +56,6 @@ const App = () => {
   useEffect(() => {
     askMeForToken(logged, token, dispatch);
   }, [token, logged, dispatch]);
-
-  // useEffect(() => {
-  //   (!token || token === '') && dispatch(A.authFailure());
-  // }, [token, dispatch]);
 
   useEffect(() => {
     getPhoto(photo, token, dispatch);
@@ -83,7 +72,6 @@ const App = () => {
     dispatch,
     menu,
     logged,
-    google,
     username,
     email,
     bio,
@@ -97,10 +85,8 @@ const App = () => {
     <div className="App">
       <FlightProvider initialState={initialFlightFormState} reducer={FlightReducer}>
         <Router>
-          <Header {...controlProps} />
-          <Main className="app-main" {...controlProps}>
-            {modal && <CustomModal>{modal_data}</CustomModal>}
-
+          <Header />
+          <Main setToken={setToken}>
             <Switch>
               <Route path="/login">
                 <PublicRoute>
@@ -122,7 +108,7 @@ const App = () => {
                 </PrivateRoute>
               </Route>
               <Route path="/">
-                <SearchPage {...searchProps} {...controlProps} />
+                <SearchPage {...searchProps} />
               </Route>
             </Switch>
           </Main>

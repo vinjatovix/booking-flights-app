@@ -5,14 +5,16 @@ import { authFailure, changeMenu, switchBoolean, closeProfiles } from '../../con
 
 import './menu.css';
 import { Logout } from './Logout';
+import { useAuthContext } from '../../context/auth/Auth.context';
 
-export const Menu = ({ menu, logged, dispatch, setToken, google, photo }) => {
+export const Menu = ({ setToken }) => {
+  const [{ menu, logged, google, photo }, dispatch] = useAuthContext();
   useEffect(() => {}, [logged]);
   return (
     <div className="menu-wrapper">
       <nav className="app-menu radius">
         <header className="app-menu__header">
-          <img src={ProfilePhoto} alt="foto de usuario" />
+          <img src={photo || ProfilePhoto} alt="foto de usuario" />
         </header>
 
         <ul className="app-menu__list">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Article } from '../common/Article';
+import { Article } from '../common/index';
 import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 import PropTypes from 'prop-types';
 

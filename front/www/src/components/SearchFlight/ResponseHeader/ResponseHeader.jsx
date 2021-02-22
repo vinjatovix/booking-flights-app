@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { formatHeaderDate } from '../../../utils/dateUtils';
 
 import './responseHeader.css';
 import { FilterButton } from './FilterButton';
@@ -8,18 +7,7 @@ import { ResponseDates } from './ResponseDates';
 import { byStops, byDuration, byPrice } from './filters';
 import { useFlightContext } from '../../../context/flight/Flight.context';
 
-export const ResponseHeader = (props) => {
-  const {
-    originLocationCode,
-    destinationLocationCode,
-    departureDate,
-    returnDate,
-    adults,
-    dispatch,
-    searching,
-    response,
-    children,
-  } = props;
+export const ResponseHeader = () => {
   const [{ durationButtonState, stopsButtonState, priceButtonState }] = useFlightContext();
 
   const [filter, setFilter] = useState({
@@ -29,62 +17,61 @@ export const ResponseHeader = (props) => {
   });
 
   useEffect(() => {
-    const cssDuration = durationButtonState
-      ? 'Response-filter__duration filter active'
-      : 'Response-filter__duration filter';
-    const cssPrice = priceButtonState ? 'Response-filter__price filter active' : 'Response-filter__price filter';
-    const cssStops = stopsButtonState ? 'Response-filter__stops filter active' : 'Response-filter__stops filter ';
+    const cssDuration = setCssDuration(durationButtonState);
+    const cssPrice = setCssPrice(priceButtonState);
+    const cssStops = setCssStops(stopsButtonState);
     const payload = { cssDuration: cssDuration, cssPrice: cssPrice, cssStops: cssStops };
     setFilter(payload);
   }, [durationButtonState, stopsButtonState, priceButtonState]);
 
-
-  const salida = formatHeaderDate(departureDate);
-  const llegada = formatHeaderDate(returnDate);
+  const filters = [
+    {
+      className: filter.cssStops,
+      kind: 'stopsButtonState',
+      name: 'stops',
+      orderMethod: byStops,
+      setFilter: setFilter,
+      val: filter.stops,
+    },
+    {
+      className: filter.cssDuration,
+      kind: 'durationButtonState',
+      name: 'duration',
+      orderMethod: byDuration,
+      setFilter: setFilter,
+      val: filter.duration,
+    },
+    {
+      className: filter.cssPrice,
+      kind: 'priceButtonState',
+      name: 'price',
+      orderMethod: byPrice,
+      setFilter: setFilter,
+      val: filter.price,
+    },
+  ];
 
   return (
     <div className="Response-header">
-      {children}
-      <ResponseHeaderAirports
-        originLocationCode={originLocationCode}
-        destinationLocationCode={destinationLocationCode}
-        dispatch={dispatch}
-        searching={searching}
-      />
+      <ResponseHeaderAirports />
       <ul className="Response__filters">
-        <FilterButton
-          className={filter.cssStops}
-          dispatch={dispatch}
-          kind={'stopsButtonState'}
-          name="stops"
-          orderMethod={byStops}
-          response={response}
-          setFilter={setFilter}
-          val={filter.stops}
-        />
-        <FilterButton
-          className={filter.cssDuration}
-          dispatch={dispatch}
-          kind={'durationButtonState'}
-          name="duration"
-          orderMethod={byDuration}
-          response={response}
-          setFilter={setFilter}
-          val={filter.duration}
-        />
-        <FilterButton
-          className={filter.cssPrice}
-          dispatch={dispatch}
-          kind={'priceButtonState'}
-          name="price"
-          // onClick={({ target }) => setFilter()}
-          orderMethod={byPrice}
-          response={response}
-          setFilter={setFilter}
-          val={filter.price}
-        />
+        {filters.map((props) => (
+          <FilterButton key={props.name} {...props} />
+        ))}
       </ul>
-      <ResponseDates salida={salida} llegada={llegada} adults={adults} />
+      <ResponseDates />
     </div>
   );
 };
+
+function setCssStops(stopsButtonState) {
+  return stopsButtonState ? 'Response-filter__stops filter active' : 'Response-filter__stops filter ';
+}
+
+function setCssPrice(priceButtonState) {
+  return priceButtonState ? 'Response-filter__price filter active' : 'Response-filter__price filter';
+}
+
+function setCssDuration(durationButtonState) {
+  return durationButtonState ? 'Response-filter__duration filter active' : 'Response-filter__duration filter';
+}

@@ -1,13 +1,15 @@
 import React from 'react';
+import { useAuthContext } from '../../context/auth/Auth.context';
 import { Menu } from '../Menu/Menu';
+import { CustomModal } from '../Modal/Modal';
 
 export const Main = (props) => {
-  const { className, children, menu } = props;
+  const [{ menu, modal, modal_data }] = useAuthContext();
   return (
-    <main className={className}>
+    <main className="app-main">
       {menu ? <Menu className="app-menu" {...props} /> : null}
-
-      {children}
+      {modal && <CustomModal children={modal_data} />}
+      {props.children}
     </main>
   );
 };

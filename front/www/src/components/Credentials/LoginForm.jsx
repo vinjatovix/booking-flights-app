@@ -8,12 +8,13 @@ import { mailProps, passwordProps } from './credentialsFormProps';
 import { benderLogin } from '../../http/api';
 
 /* Styles */
-import './credentials.css';
 import { FormDrawer } from './FormDrawer';
 
-/* Component */
+import './credentials.css';
+
 export const LoginForm = (props) => {
   const { setToken, dispatch } = props;
+
   const [{ email, password, errorMessage }, handleInputChange, setErrorMessage, resetInput] = useForm({
     email: '',
     password: '',

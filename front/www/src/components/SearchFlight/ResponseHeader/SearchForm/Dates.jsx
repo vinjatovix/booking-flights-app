@@ -1,12 +1,12 @@
 import React from 'react';
-import { Input } from '../../../common/Input';
-import * as A from '../../../../context/flight/Flight.actions.js';
+import { Input } from '../../../common/index';
+import * as F from '../../../../context/flight/Flight.actions.js';
 
 export const Dates = React.memo(({ r, departureDate, returnDate, dispatch, oneWay }) => {
   const commonDateProps = {
     r: r,
     type: 'date',
-    onChange: ({ target }) => dispatch(A.setString({ name: target.name, value: target.value })),
+    onChange: ({ target }) => dispatch(F.setString({ name: target.name, value: target.value })),
   };
 
   const departureDateProps = {
@@ -16,7 +16,7 @@ export const Dates = React.memo(({ r, departureDate, returnDate, dispatch, oneWa
     name: 'departureDate',
     id: 'departureDate',
     value: departureDate,
-    onChange: (e) => dispatch(A.setString({ name: 'departureDate', value: e.target.value })),
+    onChange: (e) => dispatch(F.setString({ name: 'departureDate', value: e.target.value })),
     required: 'required',
     ...commonDateProps,
   };
@@ -28,7 +28,7 @@ export const Dates = React.memo(({ r, departureDate, returnDate, dispatch, oneWa
     name: 'returnDate',
     id: 'returnDate',
     value: returnDate,
-    onChange: (e) => dispatch(A.setString({ name: 'returnDate', value: e.target.value })),
+    onChange: (e) => dispatch(F.setString({ name: 'returnDate', value: e.target.value })),
     ...commonDateProps,
   };
 

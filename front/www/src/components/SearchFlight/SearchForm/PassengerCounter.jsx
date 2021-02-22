@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import { useAuthContext } from '../../../context/auth/Auth.context';
 import * as A from '../../../context/flight/Flight.actions';
 import { useCounter } from '../../../hooks/useCounter';
-import { Input } from '../../common/Input';
+import { Input } from '../../common/index';
 
-export const PassengerCounter = React.memo(({ adults, dispatch, r }) => {
+export const PassengerCounter = React.memo(({ r }) => {
+  const [{ adults }, dispatch] = useAuthContext();
   const { state: passengers, increment, decrement } = useCounter(adults);
 
   useEffect(() => {

@@ -2,133 +2,111 @@ import React, { useEffect, useRef, useState } from 'react';
 
 /* COMPONENTS */
 import { AirportSelector } from './AirportSelector';
-import { Article } from '../../common/Article';
+import { Article, ErrorMessage, Form, Input, Loading } from '../../common/index';
 import { Dates } from '../ResponseHeader/SearchForm/Dates';
-import { ErrorMessage } from '../../common/ErrorMessage';
-import { Input } from '../../common/Input';
-import { Loading } from '../../common/Loading/Loading';
 import { PassengerCounter } from './PassengerCounter';
 
 /* ACTIONS */
-import * as A from '../../../context/flight/Flight.actions';
-
-import './searchForm.css';
-import { useForm } from 'react-hook-form';
-import { resetReturnDate } from './resetReturnDate';
+import * as F from '../../../context/flight/Flight.actions';
 import { makeSearch } from './makeSearch';
+import { resetReturnDate } from './resetReturnDate';
 
-export const SearchForm = ({
-  title,
-  adults,
-  departureDate,
-  destinationLocationCode,
-  dispatch,
-  endPoint,
-  loading,
-  maxPrice,
-  nonStop,
-  oneWay,
-  originLocationCode,
-  returnDate,
-  searching,
-  menu,
-}) => {
-  const [errorMessage, setErrorMessage] = useState('');
+/* HOOKS */
+import { useForm } from 'react-hook-form';
+import { useAuthContext } from '../../../context/auth/Auth.context';
+import { useFlightContext } from '../../../context/flight/Flight.context';
+import './searchForm.css';
+
+//* ######################################## RAFC ##############################################
+export const SearchForm = React.memo(({ title, endPoint }) => {
+  //? CONTEXTOS
+  const [{ menu }] = useAuthContext();
+  const [
+    { departureDate, destinationLocationCode, loading, nonStop, oneWay, originLocationCode, returnDate, searching },
+    dispatch,
+  ] = useFlightContext();
+
+  //? ESTADOS
+  const { register, handleSubmit } = useForm();
   const [css, setCss] = useState('radius focus');
-  useEffect(() => {}, [searching]);
-  useEffect(() => {
-    menu ? setCss('radius blur') : setCss('radius focus');
-  }, [menu]);
+  const [errorMessage, setErrorMessage] = useState('');
 
+  //? EFECTOS
   const isMounted = useRef(true);
   useEffect(() => {
     return () => {
       isMounted.current = false;
     };
-  }, []);
+  }, [oneWay, nonStop]);
+  useEffect(() => {
+    menu ? setCss('radius blur') : setCss('radius focus');
+  }, [menu]);
+
   useEffect(() => {
     loading ? setCss((c) => c.trim() + ' Loading') : setCss((c) => c.replace('Loading', ''));
   }, [loading]);
 
-  const { register, handleSubmit } = useForm();
-
   const tripValue = oneWay ? 'Solo ida' : 'I/V';
   const stopsValue = nonStop ? 'Directo' : 'Todos';
 
-  // const onSubmit = async (data) => {
-  //   await makeSearch({ dispatch, data, endPoint, isMounted, loading, setErrorMessage, searching });
-  // };
   const onSubmit = async (data) => {
     await makeSearch({ dispatch, data, endPoint, isMounted, loading, setErrorMessage, searching });
   };
 
   const tripProps = {
-    r: register,
     className: 'SearchForm__trip radius',
-    type: 'button',
-    name: 'oneWay',
     id: 'trip',
-    value: tripValue,
+    name: 'oneWay',
     onClick: resetReturnDate(dispatch, oneWay),
-  };
-  const passengerProps = {
     r: register,
-    dispatch: dispatch,
-    adults: adults,
-  };
-  const nonStopProps = {
-    r: register,
-    className: 'SearchForm__nonStop radius',
     type: 'button',
-    name: 'nonStop',
-    id: 'escales',
-    value: stopsValue,
-    onClick: () => dispatch(A.switchBoolean({ name: 'nonStop', value: nonStop })),
-  };
-  const priceProps = {
-    r: register,
-    className: 'SearchForm__price radius',
-    type: 'number',
-    name: 'maxPrice',
-    id: 'price',
-    placeholder: 'Max €',
-    // value: +maxPrice,
-    handler: (e) => dispatch(A.setNumber({ name: 'maxPrice', value: e.target.value })),
-  };
-  const originAirportProps = {
-    r: register,
-    placeholder: 'Compostela',
-    name: 'originLocationCode',
-    value: originLocationCode,
-    dispatch: dispatch,
-  };
-  const destinationAirportProps = {
-    r: register,
-    placeholder: 'London',
-    name: 'destinationLocationCode',
-    value: destinationLocationCode,
-    dispatch: dispatch,
-  };
-  const datesProps = {
-    r: register,
-    className: 'SearchForm__dates',
-    departureDate: departureDate,
-    returnDate: returnDate,
-    dispatch: dispatch,
-    oneWay: oneWay,
+    value: tripValue,
   };
 
+  const nonStopProps = {
+    className: 'SearchForm__nonStop radius',
+    id: 'escales',
+    name: 'nonStop',
+    onClick: () => dispatch(F.switchBoolean({ name: 'nonStop', value: nonStop })),
+    r: register,
+    type: 'button',
+    value: stopsValue,
+  };
+  const priceProps = {
+    className: 'SearchForm__price radius',
+    handler: (e) => dispatch(F.setNumber({ name: 'maxPrice', value: e.target.value })),
+    id: 'price',
+    name: 'maxPrice',
+    placeholder: 'Max €',
+    r: register,
+    type: 'number',
+  };
+  const originAirportProps = {
+    name: 'originLocationCode',
+    placeholder: 'Compostela',
+    r: register,
+    value: originLocationCode,
+  };
+  const destinationAirportProps = {
+    name: 'destinationLocationCode',
+    placeholder: 'London',
+    r: register,
+    value: destinationLocationCode,
+  };
+  const datesProps = {
+    className: 'SearchForm__dates',
+    departureDate: departureDate,
+    dispatch: dispatch,
+    oneWay: oneWay,
+    r: register,
+    returnDate: returnDate,
+  };
+  //* ################################# RETURN ##########################
   return (
     <Article title={title} className={css}>
-      <form
-        className="SearchForm"
-        method="GET"
-        endpoint={endPoint}
-        encType="multipart/form-data"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <Form className="SearchForm" endpoint={endPoint} handler={handleSubmit(onSubmit)}>
         <Input {...tripProps} />
-        <PassengerCounter {...passengerProps} />
+        <PassengerCounter r={register} />
         <Input {...nonStopProps} />
         <Input {...priceProps} />
         <AirportSelector {...originAirportProps} />
@@ -140,8 +118,8 @@ export const SearchForm = ({
         ) : (
           <Loading />
         )}
-      </form>
+      </Form>
       <ErrorMessage children={errorMessage} />
     </Article>
   );
-};
+});
