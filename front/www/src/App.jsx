@@ -99,6 +99,7 @@ const App = () => {
         <Router>
           <Header {...controlProps} />
           <Main className="app-main" {...controlProps}>
+            {modal && <CustomModal>{modal_data}</CustomModal>}
 
             <Switch>
               <Route path="/login">
