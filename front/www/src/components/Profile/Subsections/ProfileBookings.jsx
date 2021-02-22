@@ -57,7 +57,11 @@ export const ProfileBookings = ({ dispatch, profile_bookings, modal }) => {
                   <p>{monthName(+date[1] - 1).toUpperCase()}</p>
                   <p>{date[2]}</p>
                 </section>
-                <section className="profile-bookings__item-data">
+                <section
+                  className={
+                    item.vuelo_Vuelta ? 'profile-bookings__item-data' : 'profile-bookings__item-data lost-border'
+                  }
+                >
                   <h5>{`ID:${item.details.id}`}</h5>
                   <div className="profile-bookings__item-data__center">
                     <h2>{iata[0]}</h2>

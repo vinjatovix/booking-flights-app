@@ -316,19 +316,16 @@ img[alt='foto-de-usuario'] {
   font-size: 16px;
 }
 .profile-bookings__item-data {
-  flex-grow: 2;
+  background-color: #c4dfe6;
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
   border-bottom: 2px solid black;
   border-top: 2px solid black;
-  background-color: #c4dfe6;
 }
 .profile-bookings__item-data > * {
   display: flex;
   justify-content: center;
-}
-.profile-bookings__item-data {
-  flex-grow: 3;
-  display: flex;
-  flex-direction: column;
 }
 .profile-bookings__item-data > :last-child {
   font-size: 14px;
@@ -363,6 +360,10 @@ img[alt='foto-de-usuario'] {
 }
 .double-arrow-logo {
   background-image: url('../../assets/svg/exchange-alt-solid.svg');
+}
+
+.lost-border {
+  border-right: 2px solid black;
 }
 
 @media (min-width: 600px) {
