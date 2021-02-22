@@ -14,7 +14,6 @@ const { setInitialBookingCache } = require('./setInitialBookingCache');
  * @param {*} next
  */
 async function bookFlight(req, res, next) {
-  console.log(req.body);
   try {
     basicInputDataValidation(req);
 

@@ -10,7 +10,8 @@ const path = require('path');
 const { storePathInDb } = require('./storePahInDb');
 const { validateImage } = require('./validateImage');
 const { generatePayload } = require('../user/generatePayload');
-
+const sharp = require('sharp');
+const fs = require('fs').promises;
 /**
  * This method updates the picture profile on the system.
  *
@@ -24,7 +25,6 @@ async function uploadAvatar(req, res, next) {
 
     //? Validamos que el tipo de archivo sea según especificaciones
     const file = await validateImage(req, next);
-
     //? si no existe el directorio de almacenamiento lo creamos
     const storePath = await getStorePath();
 
@@ -33,17 +33,21 @@ async function uploadAvatar(req, res, next) {
     const oldPath = path.join(storePath, oldAvatar.Usr_foto);
 
     //? Creamos los datos relativos al usuario, path,nombre de archivo...
-    const { uploadPath, fileName } = newAvatarData(file, id);
+    const { uploadPath, fileName } = await newAvatarData(file, id);
 
-    //? subimos el archivo a su directorio en el Back End
+    // ? subimos el archivo a su directorio en el Back End
     await file.mv(uploadPath, imposibleError());
+    const content = await fs.readFile(uploadPath);
+    //? y lo procesamos
+    const sharpedFile = await sharp(content).resize(200, 200);
+    await sharpedFile.toFile(uploadPath);
 
     //? Si Existe una foto anterior la borramos
     await deleteOldAvatar(oldPath, next);
 
     /* 
     ? almacenamos la ruta en la BBDD
-    ? si guardamos toda la ruta y luego modificamos la ubicacion por lo que sea, hay que modificar todos los registros de la base, pero si solo guardamos el nombre de archivo el resto de la ruta siempre queda en la logica del servidor.
+    ? si guardamos toda la ruta y luego modificamos la ubicación por lo que sea, hay que modificar todos los registros de la base, pero si solo guardamos el nombre de archivo el resto de la ruta siempre queda en la logica del servidor.
     ? const pathToStore = uploadPath.split('/').splice(8).join('/'); 
     */
     await storePathInDb(fileName, id);
