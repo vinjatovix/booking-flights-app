@@ -2,20 +2,20 @@
 
 /* RESET */
 
-@import "./reset.css";
+@import './reset.css';
 
 /* COMPATIBILITY */
 
-@import "./comp/ie.css";
-@import "./comp/firefox.css";
-@import "./comp/ios.css";
+@import './comp/ie.css';
+@import './comp/firefox.css';
+@import './comp/ios.css';
 
 /* FONTS */
 
 @font-face {
-  font-family: "atkinson";
-  src: url("./fonts/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2"),
-    url("./fonts/Atkinson-Hyperlegible-Regular-102.woff") format("woff");
+  font-family: 'atkinson';
+  src: url('./fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
+    url('./fonts/Atkinson-Hyperlegible-Regular-102.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -36,7 +36,7 @@
   outline: none;
 }
 * {
-  font-family: "Atkinson", sans-serif;
+  font-family: 'Atkinson', sans-serif;
 }
 body {
   max-width: 100vw;
@@ -88,7 +88,7 @@ input {
 }
 
 button,
-input[type="submit"] {
+input[type='submit'] {
   width: 40vw;
   border: 4px groove;
   border-color: var(--input-border-color);
@@ -105,10 +105,27 @@ input[type="submit"] {
 button:hover {
   cursor: pointer;
 }
-input[type="submit"] {
+input[type='submit'] {
   background-color: var(--blue);
   color: var(--yellow);
 }
+
+/* button.update {
+  background-color: var(--yellow);
+}
+button.update {
+  background-color: #3f6abe;
+}
+button.cancel {
+  background-color: #41b812;
+}
+button.deactivate {
+  background-color: orange;
+}
+button.delete {
+  background-color: red;
+  color: white;
+} */
 
 /*!! IVI format */
 .radius {
@@ -134,8 +151,8 @@ input[type="submit"] {
   align-content: center;
   align-items: center;
   display: grid;
-  grid-template-areas: "header" "main" "footer";
-  height: 10%;
+  grid-template-areas: 'header' 'main' 'footer';
+  height: 100%;
   justify-content: space-between;
   justify-items: center;
 }
@@ -145,7 +162,7 @@ input[type="submit"] {
   align-items: start;
   background-attachment: fixed;
   background-color: var(--basecolor);
-  background-image: url("../assets/img/bgi.jpg");
+  background-image: url('../assets/img/bgi.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -159,13 +176,15 @@ input[type="submit"] {
 }
 
 .app-footer {
-  background-color: #fff;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  padding: 0.3rem;
-  text-align: center;
+  background-color: var(--basecolor);
   color: var(--blue);
   grid-area: footer;
-  z-index: 3000;
+  height: 5vh;
+  padding: 1rem;
+  text-align: center;
+  width: 100vw;
+}
+.app-footer ul {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -35,7 +35,19 @@ const App = () => {
   ? y el segundo el método para manipular estos estados 
   */
   const [
-    { menu, logged, username, email, bio, photo, profile_data, profile_pass, profile_bookings, profile_tools, modal },
+    {
+      menu,
+      logged,
+      username,
+      email,
+      bio,
+      photo,
+      profile_data,
+      profile_pass,
+      profile_bookings,
+      profile_tools,
+      modal,
+    },
     dispatch,
   ] = useAuthContext();
 
@@ -81,13 +93,11 @@ const App = () => {
                   <CredentialsPage title="Log In" {...controlProps} />
                 </PublicRoute>
               </Route>
-
               <Route path="/register">
                 <PublicRoute>
                   <CredentialsPage title="Sign Up" {...controlProps} />
                 </PublicRoute>
               </Route>
-
               <Route path="/about">
                 <AboutPage {...aboutProps} />
               </Route>
@@ -97,13 +107,12 @@ const App = () => {
                   <ProfilePage {...controlProps} />
                 </PrivateRoute>
               </Route>
-
               <Route path="/">
                 <SearchPage {...searchProps} />
               </Route>
             </Switch>
           </Main>
-          <Footer />
+          <Footer className="app-footer">Code-Vix &copy; 2021 FLanders v0.6</Footer>
         </Router>
       </FlightProvider>
     </div>
