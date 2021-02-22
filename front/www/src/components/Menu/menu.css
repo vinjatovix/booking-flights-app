@@ -41,7 +41,7 @@
   text-align: center;
   min-width: 300px;
   justify-content: center;
-  padding-top: 1rem;
+  padding: 1rem 1rem;
   width: 70%;
 }
 
@@ -63,24 +63,24 @@
 }
 
 .search-button {
-  background-image: url("../../assets/svg/magnifier.svg");
+  background-image: url('../../assets/svg/magnifier.svg');
 }
 .login-button {
-  background-image: url("../../assets/svg/login.svg");
+  background-image: url('../../assets/svg/login.svg');
 }
 
 .register-button {
-  background-image: url("../../assets/svg/register.svg");
+  background-image: url('../../assets/svg/register.svg');
 }
 .profile-button {
-  background-image: url("../../assets/svg/user-solid.svg");
+  background-image: url('../../assets/svg/user-solid.svg');
 }
 
 .about-button {
-  background-image: url("../../assets/svg/about.svg");
+  background-image: url('../../assets/svg/about.svg');
 }
 .logout-button {
-  background-image: url("../../assets/svg/long-arrow-alt-right-solid.svg");
+  background-image: url('../../assets/svg/long-arrow-alt-right-solid.svg');
 }
 /* 
 
@@ -115,5 +115,8 @@
 @media (min-width: 600px) {
   .app-menu {
     margin-top: 5rem;
+  }
+  .app-menu__list {
+    padding: 1rem 0;
   }
 }
