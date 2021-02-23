@@ -276,11 +276,6 @@
       "Aero_iata": "AOO"
     },
     {
-      "Loca_nombre": "Altus",
-      "Pais_nombre": "USA",
-      "Aero_iata": "AXS"
-    },
-    {
       "Loca_nombre": "Amami",
       "Pais_nombre": "Japan",
       "Aero_iata": "ASJ"
@@ -289,11 +284,6 @@
       "Loca_nombre": "Amarillo (TX)",
       "Pais_nombre": "USA",
       "Aero_iata": "AMA"
-    },
-    {
-      "Loca_nombre": "Amazon Bay",
-      "Pais_nombre": "Papua New Guinea",
-      "Aero_iata": "AZB"
     },
     {
       "Loca_nombre": "Amman - Queen Alia International Airport",
@@ -316,11 +306,6 @@
       "Aero_iata": "AMS"
     },
     {
-      "Loca_nombre": "Anand",
-      "Pais_nombre": "India",
-      "Aero_iata": "QNB"
-    },
-    {
       "Loca_nombre": "Anchorage (AK) - Ted Stevens Anchorage International",
       "Pais_nombre": "USA",
       "Aero_iata": "ANC"
@@ -329,11 +314,6 @@
       "Loca_nombre": "Ancona - Ancona Falconara Airport",
       "Pais_nombre": "Italy",
       "Aero_iata": "AOI"
-    },
-    {
-      "Loca_nombre": "Andorra La Vella - Heliport",
-      "Pais_nombre": "Andorra",
-      "Aero_iata": "ALV"
     },
     {
       "Loca_nombre": "Anguilla",
@@ -434,11 +414,6 @@
       "Loca_nombre": "Araxos",
       "Pais_nombre": "Greece",
       "Aero_iata": "GPA"
-    },
-    {
-      "Loca_nombre": "Arlit",
-      "Pais_nombre": "Niger",
-      "Aero_iata": "RLT"
     },
     {
       "Loca_nombre": "Arrecife/Lanzarote",
@@ -565,11 +540,7 @@
       "Pais_nombre": "Australia",
       "Aero_iata": "AYQ"
     },
-    {
-      "Loca_nombre": "Ayr",
-      "Pais_nombre": "Australia",
-      "Aero_iata": "AYR"
-    },
+
     {
       "Loca_nombre": "Badajoz",
       "Pais_nombre": "Spain",
@@ -605,11 +576,7 @@
       "Pais_nombre": "USA",
       "Aero_iata": "BFL"
     },
-    {
-      "Loca_nombre": "Baku - Heydar Aliyev International Airport",
-      "Pais_nombre": "Azerbaijan",
-      "Aero_iata": "BAK"
-    },
+
     {
       "Loca_nombre": "Ballina",
       "Pais_nombre": "Australia",
@@ -642,11 +609,7 @@
       "Pais_nombre": "India",
       "Aero_iata": "BLR"
     },
-    {
-      "Loca_nombre": "Bangassou",
-      "Pais_nombre": "Central African Republic",
-      "Aero_iata": "BGU"
-    },
+
     {
       "Loca_nombre": "Bangkok, Don Muang",
       "Pais_nombre": "Thailand",
@@ -721,11 +684,6 @@
       "Loca_nombre": "Basel",
       "Pais_nombre": "Switzerland",
       "Aero_iata": "BSL"
-    },
-    {
-      "Loca_nombre": "Basel/Mulhouse",
-      "Pais_nombre": "Switzerland/France",
-      "Aero_iata": "EAP"
     },
     {
       "Loca_nombre": "Basra, Basrah",
@@ -849,11 +807,6 @@
       "Aero_iata": "BUG"
     },
     {
-      "Loca_nombre": "Benton Harbour (MI)",
-      "Pais_nombre": "USA",
-      "Aero_iata": "BEH"
-    },
-    {
       "Loca_nombre": "Berberati",
       "Pais_nombre": "Central African Republic",
       "Aero_iata": "BBT"
@@ -870,11 +823,6 @@
       "Aero_iata": "EGC"
     },
     {
-      "Loca_nombre": "Berlin",
-      "Pais_nombre": "Germany",
-      "Aero_iata": "BER"
-    },
-    {
       "Loca_nombre": "Berlin, Schoenefeld",
       "Pais_nombre": "Germany",
       "Aero_iata": "SXF"
@@ -883,11 +831,6 @@
       "Loca_nombre": "Berlin, Tegel",
       "Pais_nombre": "Germany",
       "Aero_iata": "TXL"
-    },
-    {
-      "Loca_nombre": "Berlin, Tempelhof (ceased operating in 2008)",
-      "Pais_nombre": "Germany",
-      "Aero_iata": "THF"
     },
     {
       "Loca_nombre": "Bermuda - L.F. Wade International Airport",
@@ -5875,11 +5818,6 @@
       "Loca_nombre": "Moruya",
       "Pais_nombre": "Australia",
       "Aero_iata": "MYA"
-    },
-    {
-      "Loca_nombre": "Moscow - Metropolitan Area",
-      "Pais_nombre": "Russia",
-      "Aero_iata": "MOW"
     },
     {
       "Loca_nombre": "Moscow - Domodedovo",
