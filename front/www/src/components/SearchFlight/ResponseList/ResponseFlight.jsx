@@ -53,7 +53,7 @@ export const ResponseFlight = (props) => {
     makeBook();
   };
   return (
-    <li className="Flight radius">
+    <li className="Flight radius animate__animated animate__flipInX">
       <Itinerary
         itinerary={itineraries[0]}
         originLocationCode={originLocationCode}
