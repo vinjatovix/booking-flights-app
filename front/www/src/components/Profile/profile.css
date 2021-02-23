@@ -7,7 +7,7 @@
   width: 90vw;
   max-width: 700px;
   margin-bottom: 1rem;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .profile-header {
@@ -19,6 +19,7 @@
 .profile-header img {
   width: 70px;
   height: 70px;
+  border-radius: 50%;
 }
 
 .profile-header__info {
@@ -114,9 +115,9 @@
     font-size: 16px;
   }
   .profile-header img {
-    width: 120px;
-    height: 120px;
-    margin-left: 3rem;
+    width: 115px;
+    height: 115px;
+    margin: 0 1rem;
   }
   .profile-header__info {
     padding: 2rem 1rem 0.75rem 1rem;

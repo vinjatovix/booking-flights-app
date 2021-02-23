@@ -56,14 +56,14 @@ export const UpdatePhoto = ({ props, photo, token, setToken }) => {
             </figure>
             <span className="inputfilelabel">{value}</span>
           </label>
-        <ErrorMessage children={errorMessage} />
+          <ErrorMessage children={errorMessage} />
         </div>
         <div className="button-container">
-          <button type="submit" formEncType="multipart/form-data" className="button-submit">
+          <button type="submit" formEncType="multipart/form-data" className="modal-button submit-button">
             Subir
           </button>
           <button
-            className="button-close"
+            className="modal-button close-button"
             onClick={() => {
               dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
             }}
@@ -75,26 +75,3 @@ export const UpdatePhoto = ({ props, photo, token, setToken }) => {
     </form>
   );
 };
-
-// export const UpdatePhoto = ({ props }) => {
-//   const { dispatch, modal } = props;
-//   return (
-//     <>
-//       <form>
-//         <label for="update-photo">Sube una nueva foto</label>
-//         <input type="file" name="update-photo" id="update-photo" accept=".jpg, .png, .jpeg" />
-//       </form>
-//       <div className="button-container">
-//         <button className="button-submit">Subir</button>
-//         <button
-//           className="button-close"
-//           onClick={() => {
-//             dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
-//           }}
-//         >
-//           Cerrar
-//         </button>
-//       </div>
-//     </>
-//   );
-// };

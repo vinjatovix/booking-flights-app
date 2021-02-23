@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import * as A from '../../../context/auth/Auth.actions';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { ErrorMessage } from '../../../components/common/ErrorMessage';
 
 export const UpdateBio = ({ props }) => {
   const { dispatch, modal, username } = props;
   const [value, setValue] = useState('');
-  const [emptyString, setEmptyString] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [, setDatos] = useLocalStorage('', 'token');
 
   const token = JSON.parse(localStorage.getItem('token'));
@@ -24,26 +25,29 @@ export const UpdateBio = ({ props }) => {
               setValue(target.value);
             }}
           />
-          {emptyString === true && <h4 className="update-error">La bio no puede estar vacía</h4>}
         </form>
+        <ErrorMessage>{errorMessage}</ErrorMessage>
         <div className="button-container">
           <button
             type="submit"
-            className="button-submit"
+            className="modal-button submit-button"
             onClick={async (e) => {
               e.preventDefault();
-              if (value === '') {
-                setEmptyString(true);
+              const res = await fetch('http://localhost:8337/update/data', {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: token,
+                },
+                body: JSON.stringify(body),
+              });
+              const json = await res.json();
+              if (json.ok === false) {
+                setErrorMessage(json.details);
+                setTimeout(() => {
+                  setErrorMessage(false);
+                }, 5000);
               } else {
-                const res = await fetch('http://localhost:8337/update/data', {
-                  method: 'PUT',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: token,
-                  },
-                  body: JSON.stringify(body),
-                });
-                const json = await res.json();
                 dispatch(A.setString({ name: 'bio', value: value }));
                 setDatos(json.newToken);
                 dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
@@ -53,7 +57,7 @@ export const UpdateBio = ({ props }) => {
             Actualizar
           </button>
           <button
-            className="button-close"
+            className="modal-button close-button"
             onClick={() => {
               dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
             }}
