@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './profile.css';
 import * as A from '../../context/auth/Auth.actions';
 import { DeleteAccount } from '../Modal/modaldata/modalDelete';
 import { switchBoolean } from '../../context/auth/Auth.actions';
+import { useAuthContext } from '../../context/auth/Auth.context';
 
 export const Profile = ({ photo, username, bio, dispatch, profile_data, profile_pass, profile_bookings, modal }) => {
+  const [css, setCss] = useState('profile radius focus');
+
+  const [{ menu }] = useAuthContext();
+  useEffect(() => {
+    menu ? setCss('profile  blur') : setCss('profile  focus');
+  }, [menu]);
+
   return (
-    <section className="profile">
+    <section className={css}>
       <header className="profile-header">
         <img src={photo} alt="foto-usuario" />
         <div className="profile-header__info">

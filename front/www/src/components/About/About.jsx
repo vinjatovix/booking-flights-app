@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Article } from '../common/Article';
 import { ListDrawer } from '../common/ListDrawer/ListDrawer';
 import PropTypes from 'prop-types';
 
 import './about.css';
+import { useAuthContext } from '../../context/auth/Auth.context';
 export const About = ({ logo = '', info, formers, stack, tools, links, credits, thanks }) => {
-  const css = 'About radius';
+  const [{ menu }] = useAuthContext();
+  const [css, setCss] = useState('About radius focus');
+
+  useEffect(() => {
+    menu ? setCss('About radius blur') : setCss('About radius focus');
+  }, [menu]);
+
   return (
     <div className="About__wrapper">
       <Article className={css} title="About">
