@@ -8,7 +8,7 @@ export const CredentialsPage = (props) => {
   const { title, menu } = props;
   const css = menu ? 'radius blur' : 'radius focus';
   return (
-    <Article className={css} title={title}>
+    <Article className={`animate__animated animate__fadeInDownBig ${css}`} title={title}>
       {title === 'Log In' && <LoginForm {...props} />}
       {title === 'Sign Up' && <RegisterForm {...props} />}
     </Article>

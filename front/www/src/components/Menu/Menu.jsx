@@ -12,7 +12,7 @@ export const Menu = ({ menu, logged, dispatch, setToken, google, photo }) => {
     <div className="menu-wrapper">
       <nav className="app-menu radius">
         <header className="app-menu__header">
-          <img src={ProfilePhoto} alt="foto de usuario" />
+          <img src={photo || ProfilePhoto} alt="foto de usuario" />
         </header>
 
         <ul className="app-menu__list">

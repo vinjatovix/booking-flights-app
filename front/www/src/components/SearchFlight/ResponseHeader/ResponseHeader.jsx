@@ -43,7 +43,7 @@ export const ResponseHeader = (props) => {
   const llegada = formatHeaderDate(returnDate);
 
   return (
-    <div className="Response-header">
+    <div className="Response-header animate__animated animate__fadeInDown">
       {children}
       <ResponseHeaderAirports
         originLocationCode={originLocationCode}

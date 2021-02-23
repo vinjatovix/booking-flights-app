@@ -113,7 +113,7 @@ const App = () => {
                 </PublicRoute>
               </Route>
               <Route path="/about">
-                <AboutPage {...aboutProps} />
+                <AboutPage {...aboutProps} menu={menu} />
               </Route>
 
               <Route path="/profile">

@@ -14,7 +14,6 @@ async function createBookingData(bookings) {
   for (const booking of bookings) {
     // Recuperamos los datos de las Reservas en detalle
     const RD_bookings = await getBookingDetail(booking.RC_ID);
-    console.log(RD_bookings);
     // Calculamos el número de escalas de la ida y la vuelta
     const counter = { ida: 0, vuelta: 0 };
     for (const booking of RD_bookings) {

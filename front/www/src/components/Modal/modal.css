@@ -286,7 +286,7 @@
   margin: 0;
   padding: 0.25rem;
   font-size: 14px;
-  font-family: 'atkinson';
+  font-family: "atkinson";
   text-shadow: none;
 }
 
@@ -358,7 +358,7 @@ form label {
 .inputfilelabel {
   font-size: 16px;
   font-weight: normal;
-  font-family: 'Lato';
+  font-family: "Lato";
 }
 
 /* MODAL GETBOOKINGS */
@@ -374,7 +374,7 @@ form label {
   flex-direction: row;
   padding: 0.25rem 0.5rem 0.5rem 3rem;
   background-color: rgb(0, 118, 228);
-  background-image: url('../../assets/svg/plane-arrival-solid.svg');
+  background-image: url("../../assets/svg/plane-arrival-solid.svg");
   background-repeat: no-repeat;
   background-size: 1.75rem;
   background-position: 1rem 0.5rem;
@@ -451,7 +451,7 @@ form label {
   transform: rotate(45deg);
 }
 
-.modal-booking-main section img[alt='silueta-avion'] {
+.modal-booking-main section img[alt="silueta-avion"] {
   margin-right: 0.75rem;
 }
 
