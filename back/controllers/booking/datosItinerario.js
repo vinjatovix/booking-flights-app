@@ -33,7 +33,7 @@ async function datosItinerario(RC_ID, itineraryType, req, next) {
     }
     //TODO: mover a winston
     err.code = err.code || 400;
-    err.details = err.details || 'Itinerario inválido o mal formateado';
+    err.details = err.message || err.details || 'Itinerario inválido o mal formateado';
     next(err);
   }
 }
