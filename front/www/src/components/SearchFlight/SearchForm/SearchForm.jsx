@@ -119,9 +119,9 @@ export const SearchForm = ({
   };
 
   return (
-    <Article title={title} className={css}>
+    <Article title={title} className={`animate__animated animate__zoomIn ${css}`}>
       <form
-        className="SearchForm"
+        className="SearchForm "
         method="GET"
         endpoint={endPoint}
         encType="multipart/form-data"

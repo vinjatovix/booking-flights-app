@@ -14,8 +14,8 @@ export const About = ({ logo = '', info, formers, stack, tools, links, credits, 
   }, [menu]);
 
   return (
-    <div className="About__wrapper">
-      <Article className={css} title="About">
+    <div className="About__wrapper animate__animated animate__slideInUp">
+      <Article className={` ${css}`} title="About">
         {logo && <img className="About-logo radius" src={logo} alt="logo" />}
         <ListDrawer type="p" title="Info" items={info}></ListDrawer>
         <ListDrawer type="links" title="Enlaces" cssClassName="aboutLinks" items={links} />
