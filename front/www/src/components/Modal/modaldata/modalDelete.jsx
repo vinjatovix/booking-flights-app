@@ -9,7 +9,6 @@ export const DeleteAccount = ({ modal }) => {
   const [, dispatch] = useAuthContext();
   const [token, setToken] = useLocalStorage(JSON.parse(localStorage.getItem('token')), 'token');
   const [{ logged }] = useAuthContext();
-  // console.log(logged);
 
   useEffect(() => {
     if (!logged) {
@@ -21,14 +20,17 @@ export const DeleteAccount = ({ modal }) => {
   return (
     <>
       <div className="modal-container">
-        <div className="container-input">
-          <h4 className="delete-account">¿Estás seguro de desactivar tu cuenta?</h4>
-          <h5 className="delete-account">
+        <div className="delete-account">
+          <h4>¿Estás seguro de desactivar tu cuenta?</h4>
+          <h5>
             (Si desactivas tu cuenta no podrás volver a logearte y perderás todos tus datos, además de no poder volver a
             registrarte con el email utilizado)
           </h5>
+        </div>
+
+        <div className="button-container">
           <button
-            className="button-submit delete-account"
+            className="modal-button submit-button"
             onClick={async (e) => {
               try {
                 e.preventDefault();
@@ -41,7 +43,7 @@ export const DeleteAccount = ({ modal }) => {
             Sí
           </button>
           <button
-            className="button-close delete-account"
+            className="modal-button close-button"
             onClick={() => {
               dispatch(A.switchBoolean({ name: 'modal', value: !modal }));
             }}
@@ -53,4 +55,3 @@ export const DeleteAccount = ({ modal }) => {
     </>
   );
 };
-
