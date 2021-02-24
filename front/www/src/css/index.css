@@ -115,7 +115,7 @@ input[type="submit"] {
 
 input[type="submit"].OK {
   background-color: rgba(42, 55, 40, 0.864);
-  color:rgb(201, 204, 26);
+  color: rgb(201, 204, 26);
 }
 /* button.update {
   background-color: var(--yellow);
@@ -137,6 +137,10 @@ button.delete {
   border-top-right-radius: 2rem;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 5rem;
+}
+
+.Disclaimer .clouds {
+  background-image: url("../assets/img/cloud_PNG24.png");
 }
 .focus {
   transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 200ms;
