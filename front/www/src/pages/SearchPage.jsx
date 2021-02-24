@@ -8,8 +8,9 @@ import { SearchForm } from '../components/SearchFlight/SearchForm/SearchForm';
 import { CustomModal } from '../components/Modal/Modal';
 import { Booking } from '../components/SearchFlight/Booking/Booking';
 import { Response } from '../components/SearchFlight/Response';
+import { Loading } from '../components/common/Loading/Loading';
 
-export const SearchPage = ({ endPoint, title, menu, logged,  }) => {
+export const SearchPage = ({ endPoint, title, menu, logged }) => {
   const [
     {
       adults,
@@ -29,7 +30,9 @@ export const SearchPage = ({ endPoint, title, menu, logged,  }) => {
     },
     dispatch,
   ] = useFlightContext();
-  useEffect(() => {}, [response, menu, booking]);
+  useEffect(() => {
+    if (!response.adults && bookingCache !== null) console.log(response);
+  }, [response, menu, bookingCache]);
 
   const searchFormProps = {
     adults,
@@ -65,7 +68,11 @@ export const SearchPage = ({ endPoint, title, menu, logged,  }) => {
     <>
       {!searching && <SearchForm {...searchFormProps} />}
       <Response {...responseProps} />
-      {booking && <CustomModal>{bookingCache && <Booking />}</CustomModal>}
+      {booking && (
+        <CustomModal className={bookingCache ? 'modal' : 'modal__loading'}>
+          {bookingCache ? <Booking /> : <Loading />}
+        </CustomModal>
+      )}
     </>
   );
 };

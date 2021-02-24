@@ -43,3 +43,4 @@ export const makeBooking = (payload) => ({
   type: C.BOOKING_MAKE_BOOK,
   payload,
 });
+export const emptyBookingCache = () => ({ type: C.BOOKING_EMPTY_CACHE });

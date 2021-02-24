@@ -119,7 +119,7 @@ export const SearchForm = ({
   };
 
   return (
-    <Article title={title} className={`animate__animated animate__zoomIn ${css}`}>
+    <Article title={title} className={css}>
       <form
         className="SearchForm "
         method="GET"

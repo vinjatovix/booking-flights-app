@@ -31,6 +31,7 @@ import { askMeForToken } from './utils/askMeForToken';
 
 import ProfilePhoto from './assets/svg/imagen-de-usuario-con-fondo-negro.svg';
 import { getPhoto } from './http/api';
+import { Disclaimer } from './components/common/Disclaimer/Disclaimer';
 
 // console.log(process.env.REACT_APP_BENDER_HOST);
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
   */
   const [
     {
+      disclaimer,
       menu,
       logged,
       username,
@@ -62,7 +64,7 @@ const App = () => {
 
   useEffect(() => {
     askMeForToken(logged, token, dispatch);
-  }, [token, logged, dispatch]);
+  }, [token, logged, dispatch, disclaimer]);
 
   // useEffect(() => {
   //   (!token || token === '') && dispatch(A.authFailure());
@@ -91,6 +93,7 @@ const App = () => {
     setToken,
     token,
     modal,
+    disclaimer,
   };
 
   return (
@@ -100,6 +103,11 @@ const App = () => {
           <Header {...controlProps} />
           <Main className="app-main" {...controlProps}>
             {modal && <CustomModal>{modal_data}</CustomModal>}
+            {!disclaimer && (
+              <CustomModal className="Disclaimer radius animate__animated animate__backInUp">
+                <Disclaimer />
+              </CustomModal>
+            )}
 
             <Switch>
               <Route path="/login">

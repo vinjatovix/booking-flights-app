@@ -19,6 +19,7 @@ export const initialState = {
   modal: false,
   modal_data: null,
   google: false,
+  disclaimer: false,
 };
 
 /* EL REDUCER CONTIENE LAS LÓGICAS ASOCIADAS A ESE CONTEXTO */

@@ -5,7 +5,7 @@ import { changeMenu } from '../../context/auth/Auth.actions';
 import './header.css';
 
 const Header = React.memo((props) => {
-  const { menu, dispatch } = props;
+  const { menu, dispatch, disclaimer } = props;
   const [shape, setShape] = useState(LogoMenu);
 
   useEffect(() => {
@@ -19,8 +19,10 @@ const Header = React.memo((props) => {
 
   return (
     <header className="app-header">
-      <h1>FL<small> 0.6</small></h1>
-      <img className="burguer" src={shape} alt="Botón de menú" onClick={displayMenu} />
+      <h1>
+        FL<small> 0.6</small>
+      </h1>
+      {disclaimer && <img className="burguer" src={shape} alt="Botón de menú" onClick={displayMenu} />}
     </header>
   );
 });

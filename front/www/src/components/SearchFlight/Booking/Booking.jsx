@@ -2,7 +2,7 @@ import React from 'react';
 import { useFlightContext } from '../../../context/flight/Flight.context';
 import Avion from '../../../assets/svg/avion.svg';
 import Linea from '../../../assets/svg/linea.svg';
-import { setResponse, switchBoolean } from '../../../context/flight/Flight.actions';
+import { setResponse, switchBoolean, emptyBookingCache } from '../../../context/flight/Flight.actions';
 
 export const Booking = () => {
   const [{ bookingCache, booking }, dispatch] = useFlightContext();
@@ -63,11 +63,6 @@ export const Booking = () => {
         </div>
         {vuelta.length !== 0 && (
           <div className="vuelta">
-            <section className="modal-booking-logos">
-              <img src={Linea} alt="linea-de-trayecto" />
-              <img src={Avion} alt="silueta-avion" style={{ transform: 'rotation(180deg)' }} />
-              <img src={Linea} alt="linea-de-trayecto" />
-            </section>
             <section className="modal-booking-flight-data">
               <div>
                 <h5>SALIDA</h5>
@@ -98,7 +93,8 @@ export const Booking = () => {
         <div>
           <h5>ESCALAS</h5>
           <h4>
-            I: {ida.length - 1}/ V: {vuelta.length - 1}
+            I: {ida.length - 1}
+            {vuelta.length !== 0 ? `/ V: ${vuelta.length - 1}` : ''}
           </h4>
         </div>
         <div>
@@ -115,9 +111,10 @@ export const Booking = () => {
           className="button-close"
           onClick={(e) => {
             e.preventDefault();
-            dispatch(switchBoolean({ name: 'booking', value: booking }));
-            dispatch(switchBoolean({ name: 'searching', value: booking }));
-            dispatch(setResponse({}));
+            // dispatch(switchBoolean({ name: 'booking', value: booking }));
+            // dispatch(switchBoolean({ name: 'searching', value: booking }));
+            // dispatch(setResponse({}));
+            dispatch(emptyBookingCache());
           }}
         >
           Cerrar

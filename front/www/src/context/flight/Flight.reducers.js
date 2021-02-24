@@ -15,6 +15,7 @@ export const initialFlightFormState = {
   durationButtonState: false,
   stopsButtonState: false,
   priceButtonState: true,
+  bookingCache: null,
 };
 
 export const FlightReducer = (state, { type, payload }) => {
@@ -68,6 +69,8 @@ export const FlightReducer = (state, { type, payload }) => {
         booking: true,
         bookingCache: payload,
       };
+    case C.BOOKING_EMPTY_CACHE:
+      return { ...state, booking: false, searching: false, bookingCache: null, response: {} };
 
     default:
       return state;
