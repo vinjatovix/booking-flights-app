@@ -44,6 +44,10 @@ function showAbout(req, res) {
       'María Viña',
       'Fernando Tato',
       'Ozo Perozo',
+      'Lucía Moraña',
+      'MªCarmen Ferro',
+      'Aurelio Codesido',
+      'Carmen Leborán',
     ],
     links: [
       {
