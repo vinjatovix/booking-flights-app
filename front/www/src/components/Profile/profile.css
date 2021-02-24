@@ -163,7 +163,7 @@ img[alt='foto-de-usuario'] {
   border-radius: 50%;
   background-color: grey;
   position: absolute;
-  left: 120px;
+  left: 110px;
   bottom: 0px;
   background: beige url('../../assets/svg/camara.svg') 0.5rem no-repeat;
   background-size: 1.8rem;
