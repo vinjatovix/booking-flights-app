@@ -1,8 +1,10 @@
 'use strict';
 
-const Joi = require('joi');
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user-repository');
+const { updateData } = require('../../repositories/user/user-repository');
+const { updateProfileSchema } = require('../../repositories/schemas/updateProfileSchema');
+const { getUserByEmail } = require('../../repositories/user/getUserByEmail');
+const { generatePayload } = require('./generatePayload');
 
 /**
  *? Ruta hacia la update page.
@@ -19,7 +21,6 @@ function getUpdateData(req, res) {
     .send(
       '<form method="post" action="/signin" enctype="multipart/form-data">' +
         `<p>Username: <input type="text" name="username" id="username" value=${decoded.username} placeholder="Username" required /></p>` +
-        `<p>Avatar: <input type="file" name="avatar" value=${decoded.photo} /></p>` +
         `<p>Bio: <input type="text" name="bio" id="bio" value='${decoded.bio}' placeholder="Short bio"  /></p>` +
         '<p><input type="submit" value="Send" /></p>' +
         '</form>'
@@ -29,27 +30,26 @@ function getUpdateData(req, res) {
 /**
  *? Actualizador de los datos del usuario. Validamos el contenido del body con Joi.
  *Recuperamos la info del usuario a través del payload de su token y recopilamos la info nueva del body.
- * Hacemos una consulta actualizando la DB con los nuevos valores.
+ * Hacemos una consulta actualizando la DB con los nuevos valores y generamos un nuevo token que el frontend leerá para actualizar sus datos a través de él.
  *
  * @param {*} req
  * @param {*} res
  */
 async function postUpdateData(req, res, next) {
   try {
-    const updateSchema = Joi.object({
-      username: Joi.string().min(5).max(100).required(),
-      bio: Joi.string().max(255).required().allow(''),
-      photo: Joi.string().required().allow(''),
-    });
-    await updateSchema.validateAsync(req.body);
+    await updateProfileSchema.validateAsync(req.body);
 
-    const { username, bio, photo } = req.body;
+    const { username, bio } = req.body;
     const token = req.headers.authorization;
     const decoded = jwt.decode(token);
 
-    await userRepository.updateData([username, bio, photo, decoded.id]);
+    await updateData([username, bio, decoded.id]);
+    const [user] = await getUserByEmail(decoded.email);
+    const tokenPayload = generatePayload(user);
 
-    res.send({ ok: true, detail: 'Perfil actualizado', user: { username, bio, photo } });
+    const newToken = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
+
+    res.send({ ok: true, detail: 'Perfil actualizado', newToken: newToken, user: { username, bio } });
   } catch (err) {
     next(err);
   }

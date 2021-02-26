@@ -1,0 +1,123 @@
+.menu-wrapper {
+  position: fixed;
+  padding: 1rem;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-menu {
+  /* position: fixed 0 center; */
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  max-width: 500px;
+  -webkit-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 19px 20px 31px 14px rgba(0, 0, 0, 0.3);
+  animation: open 0.5s ease 0s;
+  animation-fill-mode: backwards;
+  margin: 0 auto;
+}
+.app-menu__avatar {
+  width: 180px;
+  border-radius: 40%;
+}
+
+.app-menu__header {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.app-menu__header img {
+  border-radius: 40%;
+  height: 70px;
+  width: 70px;
+  margin: 0 0 0.75rem 1.5rem;
+}
+
+.app-menu__list {
+  text-align: center;
+  min-width: 300px;
+  justify-content: center;
+  padding: 1rem 1rem;
+  width: 70%;
+}
+
+.app-menu__list-item {
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background-color: #c4c4c4b7;
+  border: 1px solid black;
+  background-repeat: no-repeat;
+  background-size: 1.5rem;
+  background-position: 1rem center;
+  box-shadow: inset 3px 2px 7px rgba(120, 146, 180, 0.664);
+}
+
+.app-menu__list-item:active {
+  background-color: rgb(109, 114, 114);
+  color: white;
+}
+
+.search-button {
+  background-image: url("../../assets/svg/magnifier.svg");
+}
+.login-button {
+  background-image: url("../../assets/svg/login.svg");
+}
+
+.register-button {
+  background-image: url("../../assets/svg/register.svg");
+}
+.profile-button {
+  background-image: url("../../assets/svg/user-solid.svg");
+}
+
+.about-button {
+  background-image: url("../../assets/svg/about.svg");
+}
+.logout-button {
+  background-image: url("../../assets/svg/long-arrow-alt-right-solid.svg");
+}
+/* 
+
+@keyframes open {
+  from {
+    transform: scale(0.8);
+    opacity: 0.2;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  from {
+    transform: translateY(0px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(500px);
+    opacity: 0;
+  }
+} */
+
+@media (min-width: 400px) {
+  .app-menu__header img {
+    margin-left: 4rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .app-menu {
+    margin-top: 5rem;
+  }
+  .app-menu__list {
+    padding: 1rem 0;
+  }
+}

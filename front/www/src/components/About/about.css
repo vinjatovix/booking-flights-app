@@ -1,0 +1,28 @@
+
+
+/* ABOUT */
+.About__wrapper{
+  display: grid;
+  gap: 1rem;
+}
+
+.About h3 {
+  margin-top: 0.5rem;
+}
+
+.About-logo {
+  width: 150px;
+  padding: 0.5rem;
+  box-shadow: inset -4px -4px 18px rgba(0, 0, 255, 0.426), inset 4px 4px 18px rgba(218, 211, 25, 0.878),
+    3px 3px 10px rgba(0, 0, 0, 0.713);
+  margin-bottom: 1rem;
+}
+
+.About p {
+  margin-bottom: 0.5rem;
+}
+.AboutLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

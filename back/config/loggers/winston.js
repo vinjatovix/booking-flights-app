@@ -2,6 +2,7 @@
 
 const winston = require('winston');
 const path = require('path');
+const { identifyError } = require('./identifyError');
 
 /**
  * Esta clase define los transportes de winston hacia el archivo y hacia la consola
@@ -56,30 +57,9 @@ function logThis(err, req) {
  * @return {*}
  */
 function winstonCatch() {
-  // eslint-disable-next-line no-unused-vars
   return function (err, req, res, next) {
-    if (err.name === 'ValidationError') {
-      err.code = 400;
-    }
-    if (err.code === 'EAI_AGAIN') {
-      err.message = `${process.env.DATABASE_HOST} is'n a known host.`;
-      err.code = 400;
-    }
-    if (err.code === 'ECONNREFUSED') {
-      err.message = `Connection to port ${process.env.DATABASE_PORT} refused. Please, check settings.`;
-      err.code = 400;
-    }
-    if (err.code === 'ER_BAD_DB_ERROR') {
-      err.message = `Are you sure '${process.env.DATABASE_NAME}' is the correct database name?`;
-      err.code = 400;
-    }
-    if (err.code === 'ER_ACCESS_DENIED_ERROR') {
-      err.message = 'Access denied';
-      err.code = 401;
-    }
-    err.ok = err.ok || false;
-    err.code = err.code || 500;
-    err.details = err.details || 'Unknown error...'
+    //!!!!!!!! aunque el linter diga q no se usa, winton lo necesita
+    identifyError(err);
     logThis(err, req);
     res.status(err.code).json(err);
   };

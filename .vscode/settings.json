@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "ctxt"
+    ],
+    "conventionalCommits.scopes": [
+        "searchFlight",
+        "auth",
+        "test",
+        "profile",
+        "booking"
+    ]
+}

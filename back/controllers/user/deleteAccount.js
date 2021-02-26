@@ -1,7 +1,7 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const userRepository = require('../../repositories/user-repository');
+const userRepository = require('../../repositories/user/user-repository');
 
 /**
  *? Funcionalidad que permite eliminar la cuenta de usuario.
@@ -10,9 +10,9 @@ const userRepository = require('../../repositories/user-repository');
  * @param {*} req
  * @param {*} res
  */
-async function deleteAccount(req, res, next) {
+async function deleteAccount({ headers }, res, next) {
   try {
-    const token = req.headers.authorization;
+    const token = headers.authorization;
     const decoded = jwt.decode(token);
 
     if (decoded.status === 'a') {
@@ -20,10 +20,13 @@ async function deleteAccount(req, res, next) {
     }
 
     if (token) {
+      res.send({ ok: true, details: 'Cuenta eliminada' });
       res.redirect('/login');
-    } else throw new Error();
+    } else {
+      throw new Error();
+    }
   } catch (err) {
-    err.details = 'Something weird happened ';
+    err.details = 'Ha ocurrido algo raro';
     next(err);
   }
 }

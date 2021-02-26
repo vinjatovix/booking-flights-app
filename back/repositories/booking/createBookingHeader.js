@@ -9,9 +9,9 @@ const db = require('../../infraestructure/database');
  * @return {Number} "Inserted RC_ID"
  */
 
-async function createBookingHeader(bookingCache, next) {
+async function createBookingHeader({ header }, next) {
   try {
-    const { RC_UsrID, RC_base, RC_total, RC_adults } = bookingCache.header;
+    const { RC_UsrID, RC_base, RC_total, RC_adults } = header;
     const array = [+RC_UsrID, +RC_base, +RC_total, +RC_adults];
 
     const pool = await db.getPool();

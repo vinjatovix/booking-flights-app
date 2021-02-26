@@ -1,0 +1,119 @@
+.SearchForm {
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    'tipo escalas'
+    'pasajeros precio'
+    'origen origen'
+    'destino destino'
+    'dates dates'
+    'error error'
+    'buscar buscar';
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.SearchForm > * {
+  width: 40vw;
+  max-width: 285px;
+}
+.SearchForm__trip {
+  background-image: url('../../../assets/svg/repeat.svg');
+  background-position: 1rem;
+  grid-area: tipo;
+}
+
+.SearchForm__nonStop {
+  background-image: url('../../../assets/svg/route-solid.svg');
+  background-position: 0.8rem;
+  grid-area: escalas;
+}
+.SearchForm__passengers {
+  display: flex;
+  gap: 0;
+  grid-area: pasajeros;
+}
+.SearchForm__passengers-trigger {
+  width: 20%;
+}
+.SearchForm__passengers-value {
+  background-image: url('../../../assets/svg/user-friends-solid.svg');
+  width: 60%;
+}
+.SearchForm__price {
+  background-image: url('../../../assets/svg/funnel-dollar-solid.svg');
+  background-position: 1rem;
+  grid-area: precio;
+}
+.SearchForm__airport {
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  max-width: 585px;
+}
+#originLocationCode input,
+#destinationLocationCode input {
+  background-position: 1.2rem;
+  width: 100%;
+}
+#originLocationCode {
+  grid-area: origen;
+}
+#destinationLocationCode {
+  grid-area: destino;
+}
+#originLocationCode input {
+  background-image: url('../../../assets/svg/plane-departure-solid.min.svg');
+}
+#destinationLocationCode input {
+  background-image: url('../../../assets/svg/plane-arrival-solid.svg');
+}
+.SearchForm__dates {
+  grid-area: dates;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.SearchForm__dates > * {
+  max-width: 280px;
+  width: 40vw;
+}
+.SearchForm__dates-departure {
+  grid-area: salida;
+}
+
+.SearchForm__dates-return {
+  grid-area: retorno;
+}
+.SearchForm [type='submit'] {
+  border: 4px groove;
+  border-color: rgba(163, 147, 147, 0.411);
+  box-shadow: 3px 2px 7px rgba(5, 5, 5, 0.542);
+  display: block;
+  font-weight: bold;
+  grid-area: buscar;
+  margin: 1rem;
+  max-width: 150px;
+  min-width: 120px;
+  padding: 1rem;
+  text-decoration: none;
+  text-shadow: 2px 2px 3px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.SearchForm__error {
+  grid-area: error;
+  display: block;
+  color: red;
+  min-height: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .SearchForm > *,
+  .SeachForm__dates > *,
+  .SearchForm__airport {
+    font-size: 20px;
+  }
+  .SearchForm__dates > * {
+    margin: 1rem 0;
+  }
+}

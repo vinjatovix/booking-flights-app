@@ -1,13 +1,14 @@
 'use strict';
 
-function detailsToPdfCache(itinerary, bookingCache) {
-  if (!['ida', 'vuelta'].includes(itinerary)) {
+function detailsToPdfCache(itineraryType, { details }) {
+  if (!['ida', 'vuelta'].includes(itineraryType)) {
     const error = new Error();
     error.code = 403;
-    error.details = `${itinerary} is not a valid itinerary`;
+    error.details = `${itineraryType} no es un itinerario válido`;
     throw error;
   }
-  const cache = bookingCache.details[`${itinerary}`];
+
+  const cache = details[`${itineraryType}`];
 
   const origin = cache[0].Vue_origen;
   const destination = cache[cache.length - 1].Vue_destino;

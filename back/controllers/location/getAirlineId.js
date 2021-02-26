@@ -1,6 +1,6 @@
 'use strict';
 
-const locationRepository = require('../../repositories/location/location-repository');
+const { createAirline } = require('../../repositories/location/location-repository');
 const { fetchAmadeus } = require('../amadeus/amadeus-controller');
 const { validateReturn } = require('../utils/utils-controller');
 /**
@@ -25,7 +25,7 @@ async function getAirlineId(isOriginInDb, iata, next) {
 
     //? Introducimos la comapñia aérea en el sistema
     const newAirline = [iata, amadeusAirlineInfo[0].commonName];
-    return await locationRepository.createAirline(newAirline, next);
+    return await createAirline(newAirline, next);
   } catch (error) {
     next(error);
   }

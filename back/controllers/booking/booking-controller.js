@@ -1,5 +1,5 @@
 const { bookFlight } = require('./bookFlight');
-const { userBookings } = require('./userBookings');
 const { deleteBooking } = require('./deleteBooking');
+const { userBookings } = require('./userBookings');
 
-module.exports = { bookFlight, userBookings, deleteBooking };
+module.exports = { bookFlight, deleteBooking, userBookings };
