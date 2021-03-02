@@ -54,7 +54,7 @@ Mateo Codesido and Pablo Viña's Hack a Boss Project
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
+## About The Project - WIP
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 This is the final proyecto of Hack A Boss Bootcamp on MERN for Mateo Codesido and Pablo Viña. 2020-2021
@@ -64,6 +64,7 @@ This is the final proyecto of Hack A Boss Bootcamp on MERN for Mateo Codesido an
 - [MySQL](https://www.mysql.com/)
 - [Node](https://nodejs.org/es/)
 - [Express](https://expressjs.com/es/)
+- [React](https://es.reactjs.org/)
 
 <!-- GETTING STARTED -->
 
