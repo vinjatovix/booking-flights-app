@@ -1,10 +1,5 @@
 'use strict';
-/**
- * Generates payload
- *
- * @param {Object} user
- * @return {Object}
- */
+
 function generatePayload(user) {
   return {
     id: user.Usr_ID,

@@ -3,16 +3,8 @@
 const fetch = require('node-fetch');
 const { getToken } = require('./getToken');
 
-/**
- * This is the conection with amadeus
- *
- * @param {String} url "Any valid Amadeus API url"
- * @param {*} next
- * @return {Object} "Amadeus response"
- */
 async function fetchAmadeus(url, next) {
-  
-  const amadeusToken = await getToken(next); //? First we must refresh Amadeus token
+  const amadeusToken = await getToken(next);
 
   const amadeusResponse = await fetch(url, {
     method: 'get',

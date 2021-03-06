@@ -1,12 +1,6 @@
 'use strict';
 const db = require('../../infraestructure/database');
-/**
- * Stores a flight in db if it wasn't already
- *
- * @param {Object} segment
- * @param {String} itineraryType "ida || vuelta"
- * @return {Number} "Vue_ID"
- */
+
 async function createFlight(
   {
     Vue_origenID,

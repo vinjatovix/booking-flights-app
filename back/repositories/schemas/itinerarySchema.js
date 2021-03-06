@@ -1,7 +1,6 @@
 'use strict';
 const Joi = require('joi');
 
-/** @type {Object} "Schema for validate data to introduce to Vuelos in Database" */
 const itinerarySchema = Joi.object({
   Vue_aircraft: Joi.string().required(),
   Vue_company: Joi.string().required(),

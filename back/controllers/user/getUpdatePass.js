@@ -1,11 +1,5 @@
 'use strict';
-/**
- *? Ruta hacia la página de cambio de contraseña.
- *
- *
- * @param {*} req
- * @param {*} res
- */
+
 function getUpdatePass(req, res) {
   res
     .status(200)

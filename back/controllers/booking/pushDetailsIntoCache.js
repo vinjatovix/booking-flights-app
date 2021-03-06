@@ -2,13 +2,6 @@
 
 const { datosItinerario } = require('./datosItinerario');
 
-/**
- * Stores itinerary data and returns cache
- * @param {String} itineraryType "ida || vuelta"
- * @param {Object} bookingCache
- * @param {Object} req "Original request"
- * @param {*} next
- */
 async function pushDetailsIntoCache(itineraryType, { header, details }, req, next) {
   if (!['ida', 'vuelta'].includes(itineraryType)) {
     const err = new Error();

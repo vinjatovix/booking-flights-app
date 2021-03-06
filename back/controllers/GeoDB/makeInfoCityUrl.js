@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * Creates an URL for grab info from GeoDB
- *
- * @param {Object} airport "Object with airport information."
- * @param {String} latitude "±DD.DDDD"
- * @param {String} longitude "±DDD.DDDD"
- * @return {String}
- */
 function makeInfoCityUrl(airport) {
   let { city, latitude, longitude } = airport;
   latitude = latitude > 0 ? `%2B${latitude.toFixed(4)}` : latitude.toFixed(4);

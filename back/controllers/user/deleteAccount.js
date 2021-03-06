@@ -3,13 +3,6 @@
 const jwt = require('jsonwebtoken');
 const userRepository = require('../../repositories/user/user-repository');
 
-/**
- *? Funcionalidad que permite eliminar la cuenta de usuario.
- *
- *
- * @param {*} req
- * @param {*} res
- */
 async function deleteAccount({ headers }, res, next) {
   try {
     const token = headers.authorization;

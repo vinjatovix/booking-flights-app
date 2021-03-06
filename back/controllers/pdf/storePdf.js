@@ -1,10 +1,8 @@
 'use strict';
 
+const { fillTemplate } = require('./fillTemplate');
 const path = require('path');
 const puppeteer = require('puppeteer');
-const { fillTemplate } = require('./fillTemplate');
-// const { setDirection } = require('./setDirection');
-// const { setHeader } = require('./setHeader');
 
 async function storePdf(pdfData, req, next) {
   try {
@@ -12,7 +10,8 @@ async function storePdf(pdfData, req, next) {
     const page = browser.newPage();
 
     const html = fillTemplate(pdfData);
-    await (await page).setContent(html); //TODO: WTF???
+    await (await page).setContent(html);
+
     const filePath = path.join(__dirname, `../../tmp/${req.auth.id}-${Date.now()}.pdf`);
 
     await (await page).pdf({
@@ -22,6 +21,7 @@ async function storePdf(pdfData, req, next) {
     });
 
     await browser.close();
+
     return filePath;
   } catch (err) {
     err.details = err.message;
