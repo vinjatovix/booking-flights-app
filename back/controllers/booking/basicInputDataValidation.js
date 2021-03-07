@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * Verifies if some data exists
- *
- * @param {Object} req
- * @return {Boolean}
- */
 function basicInputDataValidation({ auth, body }) {
   const { id } = auth;
   const { adults, itineraries, price, validatingAirlineCodes } = body;

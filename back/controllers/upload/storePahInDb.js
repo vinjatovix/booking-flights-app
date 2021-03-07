@@ -2,13 +2,6 @@
 
 const { storeAvatar } = require('../../repositories/user/user-repository');
 
-/**
- * Stores the new path to the file in db
- *
- * @param {string} fileName
- * @param {number} id
- * @return {Boolean}
- */
 async function storePathInDb(fileName, id) {
   const storePathInDb = await storeAvatar([fileName, id]);
   if (!storePathInDb) {

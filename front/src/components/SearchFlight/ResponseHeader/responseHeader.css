@@ -1,0 +1,106 @@
+.Response-header {
+  align-self: flex-start;
+  border-radius: 0.4rem;
+  max-width: 90vw;
+  padding: 0.2rem;
+  margin: 1rem 0;
+  background-color: #ffffffd3;
+  display: grid;
+  grid-template-columns: 3.3fr 2fr;
+  grid-template-areas: "air filter" "date filter";
+}
+.Response__airports {
+  grid-area: air;
+  font-size: 1.8rem;
+  justify-content: space-between;
+  display: flex;
+}
+.Response__dates {
+  grid-area: date;
+  justify-content: space-around;
+  gap: 1rem;
+  font-size: 1rem;
+  display: flex;
+}
+
+.Response__filters {
+  grid-area: filter;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  grid-area: filter;
+}
+.Response-filter__stops {
+  background-image: var(--stop-filter-btn-bgi);
+}
+.Response-filter__duration {
+  background-image: var(--duration-filter-btn-bgi);
+}
+.Response-filter__price {
+  background-image: var(--price-filter-btn-bgi);
+}
+
+.filter {
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-size: 1.8rem;
+  background-position: center center;
+  display: block;
+  height: 100%;
+  width: 33%;
+}
+.active {
+  display: block;
+  box-shadow: inset 0px 0px 10px black, inset -2px 0px 20px #bdc91acc;
+  background-color: #b6b90694;
+  animation: blink 10s infinite cubic-bezier(0.075, 0.82, 0.8, 0.5);
+}
+@keyframes blink {
+  0% {
+    background-color: #b6b90694;
+  }
+  80% {
+    background-color: green;
+  }
+}
+
+.roundTrip-icon {
+  background-image: var(--roundtrip-btn-bgi);
+  width: 20%;
+  background-repeat: no-repeat;
+  background-size: 1.3rem;
+  background-position: center center;
+}
+.pencil-icon {
+  background-image: var(--edit-btn-bgi);
+  background-repeat: no-repeat;
+  width: 20%;
+  background-size: 1.3rem;
+  background-position: center center;
+}
+
+.hide {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .Response-header {
+    padding: 0.3rem;
+    margin-top: 1.5rem;
+  }
+  .filter {
+    background-size: 2rem;
+  }
+  .Response__airports {
+    font-size: 32px;
+  }
+  .Response__dates {
+    font-size: 20px;
+  }
+  .roundTrip-icon {
+    background-size: 1.7rem;
+  }
+  .pencil-icon {
+    background-size: 1.5rem;
+  }
+}

@@ -1,3 +1,5 @@
+'use strict';
+
 const { detailsToPdfCache } = require('./detailsToPdfCache');
 
 function createPdfData(bookingCache, { auth, body }) {
@@ -19,6 +21,7 @@ function createPdfData(bookingCache, { auth, body }) {
     priceTotal,
     travel,
   };
+
   return pdfData;
 }
 exports.createPdfData = createPdfData;

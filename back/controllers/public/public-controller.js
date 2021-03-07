@@ -1,11 +1,6 @@
 'use strict';
 const path = require('path');
-/**
- *? Ruta hacia el about
- *
- * @param {*} req
- * @param {*} res
- */
+
 function showAbout(req, res) {
   res.status(200).send({
     ok: true,
@@ -17,7 +12,7 @@ function showAbout(req, res) {
       {
         id: 1,
         text:
-          'Flight Landers es una app desarrollada como proyecto final de curso en Hack A Boss por Mateo Codesido y Pablo Viña con meros fines didácticos y sin ánimo de lucro.',
+          'Flight Landers es una app desarrollada de manera independiente y sin ánimo lucro por Mateo Codesido y Pablo Viña. Es una demostración de algunos conocimientos adquiridos.',
       },
       {
         id: 2,
@@ -31,7 +26,7 @@ function showAbout(req, res) {
       },
     ],
     stack: ['MySQL', 'Node', 'Express', 'React'],
-    tools: ['Trello', 'Basecamp', 'Figma', 'ERDplus', 'MySQL WorkBench', 'DBeaver', 'VSCode', 'Git Hub'],
+    tools: ['Trello', 'Basecamp', 'Figma', 'ERDplus', 'MySQL WorkBench', 'DBeaver', 'VSCode', 'Git Hub', 'Postman'],
     thanks: [
       'Emilia Rebolledo',
       'Sabela Hermida',
@@ -52,7 +47,7 @@ function showAbout(req, res) {
     links: [
       {
         name: 'Repositorio',
-        url: 'https://github.com/vinjatovix/booking-flights-app',
+        url: 'https://github.com/vinjatovix/flight-landers',
         linkText: 'GitHub',
       },
       {
@@ -62,12 +57,12 @@ function showAbout(req, res) {
       },
       {
         name: 'Bugs',
-        url: 'https://github.com/vinjatovix/booking-flights-app/issues',
+        url: 'https://github.com/vinjatovix/flight-landers/issues',
         linkText: 'Informar de un error',
       },
       {
         name: 'Sugerencias',
-        url: 'https://github.com/vinjatovix/booking-flights-app/issues',
+        url: 'https://github.com/vinjatovix/flight-landers/issues',
         linkText: 'Sugerir mejora',
       },
     ],
@@ -249,12 +244,6 @@ function showAbout(req, res) {
   });
 }
 
-/**
- *? Ruta hacia la landing
- *
- * @param {*} req
- * @param {*} res
- */
 function showLanding(req, res) {
   res.status(200).send({
     title: 'LO (&& behold ^^)',
@@ -262,22 +251,10 @@ function showLanding(req, res) {
   });
 }
 
-/**
- * ? Devuelve el formulario de registro
- *
- * @param {*} req
- * @param {*} res
- */
 function getSignIn(req, res) {
   res.sendFile(path.join(__dirname, '../../public/signin.html'));
 }
 
-/**
- * ? Devuelve el formulario de acceso
- *
- * @param {*} req
- * @param {*} res
- */
 function getLogIn(req, res) {
   res.sendFile(path.join(__dirname, '../../public/login.html'));
 }

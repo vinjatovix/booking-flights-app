@@ -1,0 +1,38 @@
+.Loading {
+    animation: rainbow 25s linear;
+    animation-fill-mode: forwards;
+}
+
+.Loading__item {
+    animation: rotation 5s infinite linear;
+    background-image: url("../../../assets/svg/loading.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    grid-area: buscar;
+    height: 10vh;
+    width: 10vh;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg) scale(0.93);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+@keyframes rainbow {
+    4% {
+        background-color: rgba(40, 122, 7, 0.829);
+    }
+    25% {
+        background-color: rgb(184, 184, 51, 0.9);
+    }
+    100% {
+        background-color: rgb(201, 60, 60);
+    }
+}

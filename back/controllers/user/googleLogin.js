@@ -1,12 +1,10 @@
 'use strict';
-// TODO: A trabajar con front
+
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.CLIENT_ID);
 const userRepository = require('../../repositories/user/user-repository');
 const { registerSchema } = require('../../repositories/schemas/registerSchema');
 const bcrypt = require('bcryptjs');
-
-// const jwt = require('jsonwebtoken');
 
 async function verifyGoogleToken(token) {
   const ticket = await client.verifyIdToken({
@@ -41,24 +39,11 @@ async function googleLogin(req, res, next) {
       };
 
       await registerSchema.validateAsync(data);
-//TODO: REVISAR
       const passwordHash = await bcrypt.hash(data.password, 12);
-      const id = (await userRepository.createUser([data.username, data.email, passwordHash, data.avatar, data.bio]))
-        .insertId;
+      await userRepository.createUser([data.username, data.email, passwordHash, data.avatar, data.bio]);
 
-      // const tokenPayload = {
-      //   id,
-      //   email,
-      // };
-      // const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
       res.status(200).send({ ok: true, idtoken });
     }
-    // const tokenPayload = {
-    //   id: user.Usr_ID,
-    //   mail: user.Usr_mail,
-    // };
-
-    // const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
 
     res.send({ ok: true, idtoken });
   } catch (err) {

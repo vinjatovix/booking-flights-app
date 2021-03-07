@@ -7,12 +7,6 @@ const { pushDetailsIntoCache } = require('./pushDetailsIntoCache');
 const { sendBookingPDF } = require('../pdf/pdf-controller');
 const { setInitialBookingCache } = require('./setInitialBookingCache');
 
-/**
- * Stores a new booking on the system
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
 async function bookFlight(req, res, next) {
   try {
     basicInputDataValidation(req);

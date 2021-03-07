@@ -2,14 +2,6 @@
 
 const { createFileChunk, deleteFile, validateExtension } = require('../utils/utils-controller');
 
-/**
- * Esta funcion valida el archivo subido por el usuario con respecto a los parametros que prefijamos,
- * en este caso el mimetype debe de ser imagen y solo se permiten 4 extensiones.
- * El tamaño máximo de archivo serán de 5mb
- *
- * @param {*} req
- * @return {*}
- */
 async function validateImage({ files }) {
   if (!files) {
     const error = new Error();
@@ -31,9 +23,10 @@ async function validateImage({ files }) {
     error.details = 'El archivo está vacío o corrupto';
     throw error;
   }
-  //? Preparamos el chunk a comparar
+
   const fileBuffer = await createFileChunk(archivo);
   const validExtensions = ['jpg', 'png', 'gif', 'jpeg'];
+
   if (!validateExtension(fileBuffer, validExtensions)) {
     await deleteFile(archivo.tempFilePath);
     const err = new Error();

@@ -6,15 +6,6 @@ const { getUserByEmail, updatePass } = require('../../repositories/user/user-rep
 const { updatePasswordSchema } = require('../../repositories/schemas/updatePasswordSchema');
 const { wait } = require('../utils/wait');
 
-/**
- *? Actualizador de la contraseña.
- * Validamos el contenido del body con Joi.
- * Comprobamos si la contraseña introducida se corresponde con la contraseña encriptada guardada.
- * Sustituimos la contraseña antigua por la nueva, previo encriptado.
- *
- * @param {*} req
- * @param {*} res
- */
 async function postUpdatePass({ headers, body }, res, next) {
   try {
     await updatePasswordSchema.validateAsync(body);
@@ -28,7 +19,7 @@ async function postUpdatePass({ headers, body }, res, next) {
     const token = headers.authorization;
     const decoded = jwt.decode(token);
     const [user] = await getUserByEmail(decoded.email);
-    const { password, newPassword, repeatNewPassword } = body;
+    const { password, newPassword } = body;
     const valid = await bcrypt.compare(password, user.Usr_password);
 
     if (!valid) {

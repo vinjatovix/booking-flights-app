@@ -1,14 +1,8 @@
 'use strict';
+
 const { getAirlineByIATA } = require('../../repositories/location/location-repository');
 const { getAirlineId } = require('../location/getAirlineId');
 
-/**
- *  Returns an airline id for a given IATA code
- *
- * @param {String} iata "2 chars code"
- * @param {*} next
- * @return {Number}
- */
 async function airlineID(iata, next) {
   try {
     const existingAirline = await getAirlineByIATA(iata);

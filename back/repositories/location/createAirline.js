@@ -1,13 +1,6 @@
 'use strict';
 const db = require('../../infraestructure/database');
 
-/**
- * Register a new airline in MySQL DB
- *
- * @param {Array} airlineData [Cmp_iata, Cmp_nombre]
- * @return {number}  "Airline Id"
- */
-
 async function createAirline(airlineData, next) {
   try {
     const pool = await db.getPool();

@@ -16,6 +16,7 @@ function detailsToPdfCache(itineraryType, { details }) {
   const arrival = cache[cache.length - 1].Vue_horaSalida.replace('T', ' ');
   const stops = cache.length - 1;
   const duration = cache[0].Vue_duracion.replace('PT', '');
+
   return { origin, destination, departure, arrival, stops, duration };
 }
 

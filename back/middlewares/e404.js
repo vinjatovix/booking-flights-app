@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * Constrol de rutas no declaradas
- *
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
 function e404(req, res, next) {
   const err = new Error();
   err.ok = false;

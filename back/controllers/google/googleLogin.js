@@ -2,13 +2,14 @@
 
 const bcrypt = require('bcryptjs');
 const { createUser, getUserByEmail } = require('../../repositories/user/user-repository');
+const { generatePayload } = require('../user/generatePayload');
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const { registerSchema } = require('../../repositories/schemas/registerSchema');
 const { storePathInDb } = require('../upload/storePahInDb');
-const { generatePayload } = require('../user/generatePayload');
 
 const client = new OAuth2Client(process.env.CLIENT_ID);
+
 async function verifyGoogleToken(token) {
   const ticket = await client.verifyIdToken({
     idToken: token,
@@ -26,7 +27,6 @@ async function verifyGoogleToken(token) {
 
 async function googleLogin(req, res, next) {
   try {
-    //TODO REFACTORIZAR ESTO !!!
     const { email, nombre, foto } = await verifyGoogleToken(req.body.idtoken);
     const [user] = await getUserByEmail(email);
 
@@ -51,13 +51,14 @@ async function googleLogin(req, res, next) {
         bio: data.bio,
         status: 'a',
       };
-
       const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
+
       return res.send({ token });
     }
-    const tokenPayload = generatePayload(user);
 
+    const tokenPayload = generatePayload(user);
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: '30d' });
+
     res.send({ ok: true, token });
   } catch (err) {
     err.code = 403;

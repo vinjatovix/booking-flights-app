@@ -2,13 +2,6 @@
 
 const db = require('../../infraestructure/database');
 
-/**
- *  Inserts a new booking on ReservaCabeceras
- *
- * @param {Object} bookingCache
- * @return {Number} "Inserted RC_ID"
- */
-
 async function createBookingHeader({ header }, next) {
   try {
     const { RC_UsrID, RC_base, RC_total, RC_adults } = header;

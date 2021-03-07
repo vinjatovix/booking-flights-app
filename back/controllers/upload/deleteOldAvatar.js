@@ -2,13 +2,6 @@
 
 const { deleteFile, fileExists } = require('../utils/utils-controller');
 
-/**
- * Deletes the old avatar picture from the system
- *
- * @param {String} oldPath
- * @param {*} next
- * @return {Boolean}
- */
 async function deleteOldAvatar(oldPath, next) {
   if ((await fileExists(oldPath)) && !(await deleteFile(oldPath))) {
     const err = new Error();
