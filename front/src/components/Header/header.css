@@ -1,0 +1,66 @@
+.app-header {
+  align-items: center;
+  background-color: var(--base-color);
+  background-image: var(--arrival-bgi);
+  background-position: 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  display: flex;
+  grid-area: header;
+  height: 2.5rem;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 1337;
+}
+
+.app-header h1 {
+  margin-left: 2.75rem;
+  padding-top: 0.25rem;
+}
+
+.burguer {
+  height: 2rem;
+  margin: 0 1rem;
+  padding: 0.25rem;
+}
+.burguer:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 600px) {
+  .app-header {
+    height: 3rem;
+    background-size: 2.5rem;
+  }
+  .app-header h1 {
+    font-size: 38px;
+    margin-left: 3.5rem;
+    padding-top: 0.25rem;
+  }
+  .app-header small {
+    font-size: 26px;
+  }
+  .burguer {
+    height: 2.25rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .app-header {
+    height: 3.5rem;
+    background-position: 0.75rem center;
+    background-size: 3rem;
+  }
+
+  .app-header h1 {
+    font-size: 42px;
+    margin-left: 4rem;
+  }
+  .app-header small {
+    font-size: 30px;
+  }
+  .burguer {
+    height: 2.5rem;
+  }
+}
