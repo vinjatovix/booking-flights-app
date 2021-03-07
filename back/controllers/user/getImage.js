@@ -5,7 +5,6 @@ const path = require('path');
 function getImage() {
   return function (req, res, next) {
     try {
-      console.log(req.query);
       res.writeHead(200, { 'content-type': 'image/jpg' });
       fs.createReadStream(path.resolve(__dirname + `/../../assets/avatars/${req.query.user}`)).pipe(res);
     } catch (error) {
